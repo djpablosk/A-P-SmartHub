@@ -9,4 +9,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="fingerprint-scan.png" />
+    <None Remove="Gemini_Generated_Image_r9o13ir9o13ir9o1.png" />
+    <None Remove="user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fingerprint-scan.png" />
+    <Resource Include="Gemini_Generated_Image_r9o13ir9o13ir9o1.png" />
+    <Resource Include="user.png" />
+  </ItemGroup>
+
 </Project>
