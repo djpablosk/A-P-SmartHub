@@ -19,6 +19,8 @@ namespace A_P_SmartHub
         public MainWindow()
         {
             InitializeComponent();
+
+            
         }
     }
 }
