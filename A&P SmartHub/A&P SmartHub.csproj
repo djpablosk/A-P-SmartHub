@@ -9,4 +9,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Graphics\Additional\A&amp;P SmartHub Image Cut.png" />
+    <None Remove="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
+    <None Remove="Graphics\Additional\Gemini_Generated_Image_qbiokcqbiokcqbio.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Graphics\MainGrap\Dashboard\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Graphics\Additional\A&amp;P SmartHub Image Cut.png" />
+    <Resource Include="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
+    <Resource Include="Graphics\Additional\Gemini_Generated_Image_qbiokcqbiokcqbio.png" />
+  </ItemGroup>
+
 </Project>
