@@ -15,8 +15,9 @@
             <Button Content="▢" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="MaxRestoreButton_Click"/>
             <Button Content="✕" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="CloseButton_Click"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Width="100" >
+        <StackPanel HorizontalAlignment="Left" Width="180" Orientation="Horizontal" >
             <Image HorizontalAlignment="Left" Height="62" Margin="-15" Width="76" Source="/Graphics/Additional/A&amp;P SmartHub Image Cut.png"/>
+            <TextBlock HorizontalAlignment="Center" Width="130" Text="A&amp;P Smarthub" VerticalAlignment="Center" FontFamily="Impact" FontSize="22"  />
         </StackPanel>
 
     </Grid>

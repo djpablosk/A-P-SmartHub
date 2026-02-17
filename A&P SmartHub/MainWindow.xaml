@@ -7,6 +7,7 @@
         Title="Smart Hub" Height="1000" Width="1500"
         WindowStyle="None"
         AllowsTransparency="True"
+        Icon="/Graphics/MainGrap/Login/ChatGPT Image 16. 2. 2026, 20_11_40.png"
         Background="Black">
 
     <Grid Background="Black">
