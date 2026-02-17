@@ -4,9 +4,10 @@
         xmlns:local="clr-namespace:A_P_SmartHub"
         xmlns:additional="clr-namespace:A_P_SmartHub.Graphics.Additional"
         xmlns:login="clr-namespace:A_P_SmartHub.Graphics.Login"
-        Title="Smart Hub" Height="1000" Width="1500"
+        Title="Smart Hub" Height="800" Width="1500"
         WindowStyle="None"
         AllowsTransparency="True"
+        xmlns:registration="clr-namespace:A_P_SmartHub.Graphics.MainGrap"
         Icon="/Graphics/MainGrap/Login/ChatGPT Image 16. 2. 2026, 20_11_40.png"
         Background="Black">
 
@@ -18,8 +19,8 @@
         </Grid.RowDefinitions>
 
        <additional:CustomUpperBar Grid.Row="0"/>
-        <login:Login Grid.Row="1"/>
-    
+        
+        <registration:Register Grid.Row="1"/>
 
 
 

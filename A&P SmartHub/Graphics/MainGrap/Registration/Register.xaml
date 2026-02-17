@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.MainGrap"
              mc:Ignorable="d" 
-             d:DesignHeight="1000" d:DesignWidth="1500">
+             d:DesignHeight="900" d:DesignWidth="1500">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -16,21 +16,38 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="900" />
+            <ColumnDefinition Width="*"/>
 
-        <Border Grid.Row="1" CornerRadius="30" Background="#22FFFFFF" BorderBrush="#44FFFFFF" BorderThickness="1.2" Margin="30" >
-            <StackPanel>
-                <TextBlock Height="100" HorizontalAlignment="Left" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" />
-                <Border Margin="0,70" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Left" BorderBrush="White">
-                    <TextBox HorizontalAlignment="Left" Background="Transparent"      BorderThickness="0"  Height="100" />
+        </Grid.ColumnDefinitions>
+
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Background="Transparent" >
+                <TextBlock Margin="0,40" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
+                <Border Margin="0,70" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
+                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
                 </Border>
-                <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="100">
-                    <TextBox Background="Transparent" BorderThickness="0" FontFamily="Impact"/>
+                <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                    <PasswordBox Background="Transparent" BorderThickness="0" FontFamily="Impact"/>
+                </Border>
+                <Border Margin="0,-400" Height="700" Width="700" HorizontalAlignment="Right" VerticalAlignment="Center"  >
+                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
                 </Border>
             </StackPanel> 
+        <Border Grid.Column="1" Width="700" Grid.Row="1" CornerRadius="30" Background="White" Opacity="0.15" BorderThickness="2" Margin="30" >
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#CCFFFFFF" Offset="0"/>
+                    <GradientStop Color="#33FFFFFF" Offset="1"/>
+                </LinearGradientBrush>
+              
+            </Border.BorderBrush>
         </Border>
     </Grid>
 </UserControl>
