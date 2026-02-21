@@ -19,6 +19,19 @@ namespace A_P_SmartHub
         public MainWindow()
         {
             InitializeComponent();
+           
+
+
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Začne presúvanie okna, keď stlačíš ľavé tlačidlo myši
+            if (e.ButtonState == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
 
        
