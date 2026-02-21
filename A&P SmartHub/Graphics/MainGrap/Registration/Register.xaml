@@ -16,38 +16,42 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="900" />
+            <ColumnDefinition Width="680" />
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
 
 
-            <StackPanel Grid.Row="1" Grid.Column="1" Background="Transparent" >
-                <TextBlock Margin="0,40" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
-                <Border Margin="0,70" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
-                    <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
-                </Border>
-                <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                    <PasswordBox Background="Transparent" BorderThickness="0" FontFamily="Impact"/>
-                </Border>
-                <Border Margin="0,-400" Height="700" Width="700" HorizontalAlignment="Right" VerticalAlignment="Center"  >
-                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  />
-                </Border>
-            </StackPanel> 
-        <Border Grid.Column="1" Width="700" Grid.Row="1" CornerRadius="30" Background="White" Opacity="0.15" BorderThickness="2" Margin="30" >
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#CCFFFFFF" Offset="0"/>
-                    <GradientStop Color="#33FFFFFF" Offset="1"/>
-                </LinearGradientBrush>
-              
-            </Border.BorderBrush>
+        <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF"  HorizontalAlignment="Stretch" >
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
+            <TextBlock Margin="0,40" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
+            <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
+            <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
+                <TextBox FontSize="90" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
+            </Border>
+            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
+            <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Impact"/>
+            </Border>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Repeat password:" Width="300" FontSize="36" FontFamily="Impact" Foreground="White"/>
+            <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
+                <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Impact"/>
+            </Border>
+            <Border Width="500" Margin="0,90" Background="#9D44FF"  Height="64" BorderBrush="White" BorderThickness="1" CornerRadius="20">
+                <Button  BorderThickness="0" Content="Continue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Impact" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" />
+            </Border>
+
+        </StackPanel>
         </Border>
     </Grid>
 </UserControl>

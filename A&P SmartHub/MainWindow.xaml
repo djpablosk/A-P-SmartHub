@@ -19,8 +19,9 @@
         </Grid.RowDefinitions>
 
        <additional:CustomUpperBar Grid.Row="0"/>
-        
-        <registration:Register Grid.Row="1"/>
+        <additional:VerificationCodeWindow Grid.Row="1"/>
+
+       
 
 
 
