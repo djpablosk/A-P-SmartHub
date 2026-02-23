@@ -37,7 +37,7 @@
             <TextBlock Margin="0,40" VerticalAlignment="Center"  HorizontalAlignment="Center"  Text="Verification code" FontFamily="Impact" FontSize="72" Foreground="White"  />
            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Enter the code sent to your email:" Width="500" FontSize="36" FontFamily="Impact" Foreground="White"/>
             <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
-                <TextBox FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
+                <TextBox x:Name="VerifCodeInput" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
             </Border>
             <Border Width="500" VerticalAlignment="Bottom" Margin="0,90" Background="#9D44FF"  Height="64" BorderBrush="White" BorderThickness="1" CornerRadius="20">
                 <Button  BorderThickness="0" Content="Register" HorizontalAlignment="Stretch"  Background="Transparent" FontSize="31" FontFamily="Impact" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click"/>
