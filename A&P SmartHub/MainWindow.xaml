@@ -19,9 +19,9 @@
         </Grid.RowDefinitions>
 
        <additional:CustomUpperBar Grid.Row="0"/>
-        <additional:VerificationCodeWindow Grid.Row="1"/>
+        
 
-       
+        <ContentControl Grid.Row="1" x:Name="MainDisplay"/>
 
 
 

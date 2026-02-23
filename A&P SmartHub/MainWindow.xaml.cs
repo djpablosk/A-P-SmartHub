@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using A_P_SmartHub.Graphics.Login;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,7 +20,7 @@ namespace A_P_SmartHub
         public MainWindow()
         {
             InitializeComponent();
-           
+           MainDisplay.Content = new Login();
 
 
         }

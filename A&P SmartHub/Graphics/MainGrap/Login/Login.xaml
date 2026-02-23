@@ -51,7 +51,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="8,0" Text="Need register? Click here:" FontFamily="Impact" FontSize="16" Foreground="Black"/>
-                        <Button  BorderThickness="0" Background="Transparent" Content="Register" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="183,0,0,0" Padding="8,4" FontFamily="Impact" FontSize="16" Foreground="White"/>
+                        <Button  BorderThickness="0" Background="Transparent" Content="Register" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="183,0,0,0" Padding="8,4" FontFamily="Impact" FontSize="16" Foreground="White" Click="Button_Click"/>
                     </Grid>
                 </Border>
             </StackPanel>
