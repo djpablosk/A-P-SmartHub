@@ -31,6 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.3" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
+    <PackageReference Include="SQLitePCLRaw.core" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Graphics\Additional\A&amp;P SmartHub Image Cut.png" />
     <Resource Include="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
     <Resource Include="Graphics\Additional\Gemini_Generated_Image_qbiokcqbiokcqbio.png" />

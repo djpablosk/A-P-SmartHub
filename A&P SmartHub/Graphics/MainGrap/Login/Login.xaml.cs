@@ -34,5 +34,15 @@ namespace A_P_SmartHub.Graphics.Login
                 mainWindow.MainDisplay.Content = new Register();
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // nic nepridavat
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }
