@@ -1,4 +1,5 @@
 ﻿using A_P_SmartHub.Graphics.MainGrap;
+using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,7 +43,13 @@ namespace A_P_SmartHub.Graphics.Login
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-           
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            if (mainWindow != null)
+            {
+
+                mainWindow.MainDisplay.Content = new MainDashboard();
+            }
         }
     }
 }

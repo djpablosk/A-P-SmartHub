@@ -7,8 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="1000" d:DesignWidth="1500">
 
-    
-        <Grid>
+    <Viewbox Stretch="UniformToFill">
+        
+        <Grid Height="900" Width="1500">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#FF311060" Offset="0"/>
@@ -70,7 +71,7 @@
                 </Rectangle.Fill>
             </Rectangle>
 
-        <Border Width="680" CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF" HorizontalAlignment="Left" Margin="70,70,0,70" >
+        <Border Width="680" Height="700" CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF" HorizontalAlignment="Left" Margin="70,70,0,70" >
             <Border.Effect>
                 <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
             </Border.Effect>
@@ -99,8 +100,8 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="8,0" Text="Need register? Click here:" FontFamily="Impact" FontSize="16" Foreground="Black"/>
-                        <Button  BorderThickness="0" Background="Transparent" Content="Register" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="183,0,0,0" Padding="8,4" FontFamily="Impact" FontSize="16" Foreground="White" Click="Button_Click"/>
+
+                        <Button  BorderThickness="0" Background="Transparent" Content="I dont't have account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Impact" FontSize="16" Foreground="White" Click="Button_Click"/>
                     </Grid>
                 </Border>
             </StackPanel>
@@ -118,4 +119,5 @@
 
         </Grid>
     
+    </Viewbox>
 </UserControl>
