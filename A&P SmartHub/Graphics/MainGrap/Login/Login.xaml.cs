@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.MainGrap;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,27 @@ namespace A_P_SmartHub.Graphics.Login
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            if (mainWindow != null)
+            {
+                
+                mainWindow.MainDisplay.Content = new Register();
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // nic nepridavat
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }
