@@ -13,13 +13,13 @@
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
-                 <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
-       <additional:CustomUpperBar Grid.Row="0"/>
-        
+        <additional:CustomUpperBar Grid.Row="0"/>
+
 
         <ContentControl Grid.Row="1" x:Name="MainDisplay"/>
 
