@@ -13,13 +13,13 @@
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
-                 <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
-       <additional:CustomUpperBar Grid.Row="0"/>
-        
+        <additional:CustomUpperBar Grid.Row="0"/>
+
 
         <ContentControl Grid.Row="1" x:Name="MainDisplay"/>
 
@@ -56,7 +56,7 @@
             </Border>
             <Border UseLayoutRounding="False" BorderBrush="Transparent" BorderThickness="1" Margin="30,78,257,321">
                 <Border.Background>
-                    <ImageBrush ImageSource="/user.png" Stretch="UniformToFill" TileMode="None"/>
+                    <ImageBrush ImageSource="/A_P_SmartHub;component/Graphics/MainGrap/Login/61967f80-ab26-4379-a087-ad1715df34f7.png" Stretch="UniformToFill" TileMode="None"/>
 
                 </Border.Background>
             </Border>
