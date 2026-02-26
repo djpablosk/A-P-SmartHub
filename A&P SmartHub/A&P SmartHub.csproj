@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Graphics\MainGrap\Dashboard\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\..\..\Downloads\ChatGPT Image 16. 2. 2026, 20_11_40.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
