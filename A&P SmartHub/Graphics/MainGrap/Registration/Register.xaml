@@ -37,13 +37,14 @@
             <TextBlock Margin="0,40" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
             <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
             <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
-                <TextBox FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
+                <TextBox x:Name="EmailRegWind" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" TextChanged="TextBox_TextChanged" />
             </Border>
             <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
             <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
                 <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="48"/>
             </Border>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Repeat password:" Width="300" FontSize="36" FontFamily="Impact" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm
+ password:" Width="300" FontSize="36" FontFamily="Impact" Foreground="White"/>
             <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
                 <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="48"/>
             </Border>
