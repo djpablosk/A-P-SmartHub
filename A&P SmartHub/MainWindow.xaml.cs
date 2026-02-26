@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using A_P_SmartHub.Graphics.Login;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SQLitePCL;
+
+
+
 
 namespace A_P_SmartHub
 {
@@ -19,7 +24,7 @@ namespace A_P_SmartHub
         public MainWindow()
         {
             InitializeComponent();
-           
+           MainDisplay.Content = new Login();
 
 
         }
