@@ -7,72 +7,79 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1500">
     <Viewbox Stretch="UniformToFill">
-        
+
         <Grid Height="900" Width="1500">
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#FF311060" Offset="0"/>
-                <GradientStop Color="#FF1E093D" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF311060" Offset="0"/>
+                    <GradientStop Color="#FF1E093D" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <Canvas IsHitTestVisible="False">
 
-            <Ellipse Width="800" Height="800" Canvas.Left="-200" Canvas.Top="-150" Opacity="0.5">
-                <Ellipse.Fill>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FF00F2FF" Offset="0"/>
-                        <GradientStop Color="#0000F2FF" Offset="1"/>
+            <Canvas IsHitTestVisible="False">
+
+                <Ellipse Width="800" Height="800" Canvas.Left="-89" Canvas.Top="75" Opacity="0.5">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF00F2FF" Offset="0"/>
+                            <GradientStop Color="#0000F2FF" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="150"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+
+                <Ellipse Width="700" Height="700" Canvas.Right="50" Canvas.Top="-100" Opacity="0.4">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FFFF00D4" Offset="0"/>
+                            <GradientStop Color="#00FF00D4" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="130"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+
+                <Ellipse Width="600" Height="600" Canvas.Right="-150" Canvas.Bottom="-100" Opacity="0.3" Canvas.Left="1038" Canvas.Top="10">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FFFF9500" Offset="0"/>
+                            <GradientStop Color="#00FF9500" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="150"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+
+            </Canvas>
+
+            <Rectangle IsHitTestVisible="False" Opacity="0.05">
+                <Rectangle.Fill>
+                    <RadialGradientBrush Center="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="Transparent" Offset="0.7"/>
                     </RadialGradientBrush>
-                </Ellipse.Fill>
-                <Ellipse.Effect>
-                    <BlurEffect Radius="150"/>
-                </Ellipse.Effect>
-            </Ellipse>
+                </Rectangle.Fill>
+            </Rectangle>
 
-            <Ellipse Width="700" Height="700" Canvas.Right="50" Canvas.Top="-100" Opacity="0.4">
-                <Ellipse.Fill>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FFFF00D4" Offset="0"/>
-                        <GradientStop Color="#00FF00D4" Offset="1"/>
-                    </RadialGradientBrush>
-                </Ellipse.Fill>
-                <Ellipse.Effect>
-                    <BlurEffect Radius="130"/>
-                </Ellipse.Effect>
-            </Ellipse>
-
-            <Ellipse Width="600" Height="600" Canvas.Right="-150" Canvas.Bottom="-100" Opacity="0.3">
-                <Ellipse.Fill>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FFFF9500" Offset="0"/>
-                        <GradientStop Color="#00FF9500" Offset="1"/>
-                    </RadialGradientBrush>
-                </Ellipse.Fill>
-                <Ellipse.Effect>
-                    <BlurEffect Radius="150"/>
-                </Ellipse.Effect>
-            </Ellipse>
-
-        </Canvas>
-
-        <Rectangle IsHitTestVisible="False" Opacity="0.05">
-            <Rectangle.Fill>
-                <RadialGradientBrush Center="0.5,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="Transparent" Offset="0.7"/>
-                </RadialGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+            <Border Background="#22CCCCCC" Margin="0" CornerRadius="30">
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Text="Dashboard" FontSize="36" FontWeight="Bold" Foreground="White" Margin="20"/>
+                    <TextBlock Text="Overview of your smart home" FontSize="18" Foreground="White" Margin="20,30,0,0"/>
+                </StackPanel>
+            </Border>
 
 
-        <Rectangle Grid.Row="0" Fill="White" />
-    </Grid>
-    
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
     </Viewbox>
 </UserControl>
