@@ -6,53 +6,107 @@
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.MainGrap"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1500">
-    <Grid>
+
+        
+    <Viewbox Stretch="UniformToFill">
+    <Grid Width="1500" Height="900">
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#4A2691" Offset="0.0"/>
-                <GradientStop Color="#6F2DA8" Offset="0.5"/>
-                <GradientStop Color="#B21F3C" Offset="1.0"/>
+                <GradientStop Color="#FF311060" Offset="0"/>
+                <GradientStop Color="#FF1E093D" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
+        <Canvas IsHitTestVisible="False">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="70"/>
-        </Grid.RowDefinitions>
+            <Ellipse Width="800" Height="800" Canvas.Left="-200" Canvas.Top="-150" Opacity="0.5">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF00F2FF" Offset="0"/>
+                        <GradientStop Color="#0000F2FF" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="150"/>
+                </Ellipse.Effect>
+            </Ellipse>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="680" />
-            <ColumnDefinition Width="*"/>
+            <Ellipse Width="700" Height="700" Canvas.Right="50" Canvas.Top="-100" Opacity="0.4">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFFF00D4" Offset="0"/>
+                        <GradientStop Color="#00FF00D4" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="130"/>
+                </Ellipse.Effect>
+            </Ellipse>
 
-        </Grid.ColumnDefinitions>
+            <Ellipse Width="600" Height="600" Canvas.Right="-150" Canvas.Bottom="-100" Opacity="0.3">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FFFF9500" Offset="0"/>
+                        <GradientStop Color="#00FF9500" Offset="1"/>
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+                <Ellipse.Effect>
+                    <BlurEffect Radius="150"/>
+                </Ellipse.Effect>
+            </Ellipse>
+
+        </Canvas>
+
+        <Rectangle IsHitTestVisible="False" Opacity="0.05">
+            <Rectangle.Fill>
+                <RadialGradientBrush Center="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Transparent" Offset="0.7"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Grid Margin="25">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="680" />
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
 
 
-        <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF"  HorizontalAlignment="Stretch" >
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
-            </Border.Effect>
-            <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
-            <TextBlock Margin="0,40" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
-            <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
-            <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
-                <TextBox x:Name="EmailRegWind" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" TextChanged="TextBox_TextChanged" />
+            <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF"  HorizontalAlignment="Stretch" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
+                    <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
+                    <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
+                        <TextBox x:Name="EmailRegWind" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" TextChanged="TextBox_TextChanged" />
+                    </Border>
+                    <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                        <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="48"/>
+                    </Border>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm password:" Width="300" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
+                        <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="48"/>
+                    </Border>
+                    <Border Width="500" Margin="0,30" Background="#9D44FF"  Height="64" BorderBrush="White" BorderThickness="1" CornerRadius="20">
+                        <Button  BorderThickness="0" Content="Continue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Impact" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" />
+                    </Border>
+                   
+
+                </StackPanel>
             </Border>
-            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
-            <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="48"/>
-            </Border>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm
- password:" Width="300" FontSize="36" FontFamily="Impact" Foreground="White"/>
-            <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
-                <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="48"/>
-            </Border>
-            <Border Width="500" Margin="0,90" Background="#9D44FF"  Height="64" BorderBrush="White" BorderThickness="1" CornerRadius="20">
-                <Button  BorderThickness="0" Content="Continue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Impact" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" />
-            </Border>
-
-        </StackPanel>
-        </Border>
+        </Grid>
     </Grid>
+    </Viewbox>
 </UserControl>
