@@ -85,5 +85,10 @@ namespace A_P_SmartHub.Graphics.MainGrap
         {
            //
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
