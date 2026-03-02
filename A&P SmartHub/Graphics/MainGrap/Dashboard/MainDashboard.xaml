@@ -69,8 +69,8 @@
 
             <Border Background="#22CCCCCC" Margin="0" CornerRadius="30">
                 <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="Dashboard" FontSize="36" FontWeight="Bold" Foreground="White" Margin="20"/>
-                    <TextBlock Text="Overview of your smart home" FontSize="18" Foreground="White" Margin="20,30,0,0"/>
+                    <TextBlock Text="Dashboard" FontSize="46" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
+                    <TextBlock Text="Overview of your smart home" FontSize="19" Foreground="White" Margin="-210,90,0,0"/>
                 </StackPanel>
             </Border>
 
