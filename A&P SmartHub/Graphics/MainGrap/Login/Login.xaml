@@ -97,7 +97,7 @@
                                 </ControlTemplate>
                             </Button.Template>
 
-                            <Border Background="#22FFFFFF" CornerRadius="20">
+                            <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
                                 <TextBlock Text="Login" FontSize="31" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Impact" />
                             </Border>
                         </Button>

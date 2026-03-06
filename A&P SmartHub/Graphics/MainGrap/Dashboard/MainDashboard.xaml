@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.MainGrap.Dashboard"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+              RenderOptions.BitmapScalingMode="LowQuality"
+ RenderOptions.EdgeMode="Aliased"
              d:DesignHeight="900" d:DesignWidth="1500">
     <Viewbox Stretch="UniformToFill">
 
@@ -87,7 +89,13 @@
                     <ColumnDefinition Width="750"/>
                 </Grid.ColumnDefinitions>
 
-                <Border CornerRadius="30" Margin="10" Background="#22FFFFFF">
+                <Border CacheMode="BitmapCache" CornerRadius="30" Margin="10" Background="#22FFFFFF">
+                    <StackPanel Margin="10">
+                        
+                    </StackPanel>
+                    
+                    
+                    
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
@@ -124,7 +132,14 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border CornerRadius="30" Margin="10" Background="#22FFFFFF" Grid.Column="1">
+                <Border CacheMode="BitmapCache" CornerRadius="30" Margin="10" Background="#22FFFFFF" Grid.Column="1">
+                    <StackPanel Margin="10">
+                        <local:TemplateForDevice/>
+                    </StackPanel>
+                    
+                    
+                    
+                    
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
@@ -161,7 +176,16 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border Grid.Row="1" Margin="10" CornerRadius="30" Background="#22FFFFFF">
+                <Border CacheMode="BitmapCache" Grid.Row="1" Margin="10" CornerRadius="30" Background="#22FFFFFF">
+                    <StackPanel Margin="10">
+                        
+                    </StackPanel>
+                    
+                    
+                    
+                    
+                    
+                    
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
@@ -198,8 +222,15 @@
                         </Style>
                     </Border.Style>
                 </Border>
-                <Border Grid.Row="1"  Grid.Column="1" Margin="10"  CornerRadius="30" Background="#22FFFFFF">
+                <Border CacheMode="BitmapCache" Grid.Row="1"  Grid.Column="1" Margin="10"  CornerRadius="30" Background="#22FFFFFF">
 
+                    <StackPanel Margin="10">
+                        
+                    </StackPanel>
+                    
+                    
+                    
+                    
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
