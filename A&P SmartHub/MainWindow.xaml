@@ -9,6 +9,8 @@
         AllowsTransparency="True"
         xmlns:registration="clr-namespace:A_P_SmartHub.Graphics.MainGrap"
         Icon="/Graphics/MainGrap/Login/ChatGPT Image 16. 2. 2026, 20_11_40.png"
+        RenderOptions.BitmapScalingMode="LowQuality"
+        RenderOptions.EdgeMode="Aliased"
         Background="Black">
 
     <Grid Background="Black">

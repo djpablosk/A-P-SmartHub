@@ -75,35 +75,73 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
             </Border.Effect>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80" >
+            <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="44,0,0,0" Width="509" >
 
                 <TextBlock HorizontalAlignment="Left" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="175" FontSize="72" FontFamily="Impact" Foreground="White"/>
 
-                <TextBlock Margin="0,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
-                <Border BorderBrush="White" CornerRadius="20" HorizontalAlignment="Left" Height="64" Width="482" BorderThickness="1">
-                    <TextBox  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="48" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChanged"/>
+                <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                <Border Margin="10,0" BorderBrush="White" CornerRadius="20" HorizontalAlignment="Left" Height="64" Width="482" BorderThickness="1">
+                        <TextBox  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="48" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChanged"/>
+                    </Border>
 
-                </Border>
-
-                <TextBlock Margin="0,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
                 <Border CornerRadius="20" Width="482" Height="64" BorderThickness="1" BorderBrush="White">
                     <PasswordBox BorderThickness="0"  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Background="{x:Null}" FontSize="48"/>
 
                 </Border>
                 <Border Width="482" Height="64" Margin="0,20" BorderThickness="1" BorderBrush="White" Background="#9D44FF" CornerRadius="20" >
-                    <Button BorderThickness="0"  Content="Login" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Grid.Row="1" Background="Transparent" FontSize="31" FontFamily="Impact" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_1"/>
+                        <Button Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                                </ControlTemplate>
+                            </Button.Template>
 
-                </Border>
-                <Border BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="400" Height="40" CornerRadius="6">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                            <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
+                                <TextBlock Text="Login" FontSize="31" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Impact" />
+                            </Border>
+                        </Button>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Setter.Value>
+                                </Setter>
 
-                        <Button  BorderThickness="0" Background="Transparent" Content="I dont't have account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Impact" FontSize="16" Foreground="White" Click="Button_Click"/>
-                    </Grid>
-                </Border>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                             To="1.05" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                             To="1.05" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                             To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                             To="1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                
+                        
+                  <Button  BorderThickness="0" Background="Transparent" Content="Create new account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Impact" FontSize="19" Foreground="White" Click="Button_Click"/>
+                          
+                
             </StackPanel>
 
 
