@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.MainGrap.Dashboard"
              mc:Ignorable="d"
               RenderOptions.BitmapScalingMode="LowQuality"
- RenderOptions.EdgeMode="Aliased"
+              RenderOptions.EdgeMode="Aliased"
              d:DesignHeight="900" d:DesignWidth="1500">
     <Viewbox Stretch="UniformToFill">
 
@@ -80,7 +80,7 @@
             <Grid Name="MainDivision" Grid.Row="1">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="750"/>
+                    <ColumnDefinition Width="700"/>
                     <ColumnDefinition Width="750"/>
                 </Grid.ColumnDefinitions>
 
@@ -95,8 +95,8 @@
 
             </Grid>
 
-                <Grid Name="DevicesSide" Grid.Column="1">
-                    <Rectangle Fill="Blue" Margin="10" RadiusX="20" RadiusY="20"/>
+                <Grid Background="Blue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="DevicesSide" Grid.Column="1">
+                    
 
 
 
