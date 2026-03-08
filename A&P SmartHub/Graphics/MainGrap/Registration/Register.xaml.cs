@@ -1,5 +1,5 @@
-﻿using A_P_SmartHub.Graphics.Additional;
-using A_P_SmartHub.Graphics.MainGrap.Registration;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Additional;
 using BCrypt.Net;
 using Microsoft.Data.Sqlite;
 using Microsoft.Win32;
@@ -26,7 +26,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
     /// </summary>
     /// 
 
-        
+
     public partial class Register : UserControl
     {
         public Register()
@@ -35,15 +35,17 @@ namespace A_P_SmartHub.Graphics.MainGrap
         }
 
 
-        public string Mail { get; set; }
+
         private string Password { get; set; }
-        private string PassHash { get; set; }
+        public string Mail { get; set; }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
             smtpClientMail smtpClientMail = new smtpClientMail();
-            VerificationCodeWindow verificationCode  = new VerificationCodeWindow();
+            VerificationCodeWindow verificationCode = new VerificationCodeWindow();
+            SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
 
 
@@ -65,25 +67,28 @@ namespace A_P_SmartHub.Graphics.MainGrap
             }
             else
             {
-
-                Mail = EmailRegWind.Text;
                 Password = Passw1.Text;
-                PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
-                bool uncrypPass = BCrypt.Net.BCrypt.EnhancedVerify(Password, PassHash);
+                Mail = EmailRegWind.Text;
+                
+                verificationCode.Mail = EmailRegWind.Text;
+                verificationCode.PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
                 var mainWindow = Window.GetWindow(this) as MainWindow;
-                smtpClientMail.SendMail(verificationCode, this);
                 mainWindow.MainDisplay.Content = verificationCode;
+                smtpClientMail.SendMail(verificationCode, this);
+
             }
-            
 
         }
-     
-        
+
+
+
+
+
 
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-           //
+            //
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

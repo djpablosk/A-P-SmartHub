@@ -21,11 +21,13 @@ namespace A_P_SmartHub.Graphics.Login
     public partial class Login : UserControl
     {
         public Login()
-        {
-            InitializeComponent();
+            {
+           InitializeComponent();                                         
+            
         }
+      
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ClickLogin(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
@@ -36,8 +38,8 @@ namespace A_P_SmartHub.Graphics.Login
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+       private void TextBox_TextChangedLogin(object sender, TextChangedEventArgs e)
+       {
             // nic nepridavat
         }
 
