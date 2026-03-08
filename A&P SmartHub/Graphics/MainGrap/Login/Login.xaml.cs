@@ -41,7 +41,9 @@ namespace A_P_SmartHub.Graphics.Login
             // nic nepridavat
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+       
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
@@ -50,6 +52,7 @@ namespace A_P_SmartHub.Graphics.Login
 
                 mainWindow.MainDisplay.Content = new MainDashboard();
             }
+
         }
     }
 }
