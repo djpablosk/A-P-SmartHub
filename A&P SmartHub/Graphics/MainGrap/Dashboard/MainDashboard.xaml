@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.MainGrap.Dashboard"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+              RenderOptions.BitmapScalingMode="LowQuality"
+ RenderOptions.EdgeMode="Aliased"
              d:DesignHeight="900" d:DesignWidth="1500">
     <Viewbox Stretch="UniformToFill">
 
@@ -67,7 +69,7 @@
                 </Rectangle.Fill>
             </Rectangle>
 
-            <Border Background="#22CCCCCC" Margin="0" CornerRadius="30">
+            <Border Background="#22808080" Margin="0" CornerRadius="30">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Dashboard" FontSize="46" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
                     <TextBlock Text="Overview of your smart home" FontSize="19" Foreground="White" Margin="-210,90,0,0"/>
@@ -75,11 +77,53 @@
             </Border>
 
 
+            <Grid Name="MainDivision" Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="750"/>
+                    <ColumnDefinition Width="750"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+
+                </Grid.RowDefinitions>
+                    <Grid Name="HelooSide"  >
+                <Border Background="Green" Margin="10" CornerRadius="30"/>
+
+
+            </Grid>
+
+                <Grid Name="DevicesSide" Grid.Column="1">
+                    <Rectangle Fill="Blue" Margin="10" RadiusX="20" RadiusY="20"/>
+
+
+
+                </Grid>
+                
+                
+            </Grid>
+
+
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
         </Grid>
+
 
     </Viewbox>
 </UserControl>
