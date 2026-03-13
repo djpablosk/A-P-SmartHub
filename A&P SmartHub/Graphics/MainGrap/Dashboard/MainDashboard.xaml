@@ -73,7 +73,7 @@
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Dashboard" FontSize="46" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
                     <TextBlock Text="Overview of your smart home" FontSize="19" Foreground="White" Margin="-210,90,0,0"/>
-                    <TextBlock Text="Welcome to AP SmartHub" FontSize="30" FontFamily="Impact" Foreground="White" Margin="310,50,0,0"/>
+                    <TextBlock Text="Welcome to AP SmartHub" FontSize="30" FontFamily="Impact" Foreground="White" Margin="850,50,0,0"/>
                 </StackPanel>
             </Border>
 
@@ -103,8 +103,8 @@
 
                     <Border Margin="5" Background="#22FFFFFF" CornerRadius="30">
                         <StackPanel>
-                            <TextBlock Text="Welcome back, User!" FontSize="50" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
-                            <TextBlock Text="24 devices are online!" FontSize="19" Foreground="White" Margin="20,0,0,0"/>
+                            <TextBox Background="Transparent" Text="Welcome back, User!" FontSize="50" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
+                            <TextBox Background="Transparent" Text="24 devices are online!" FontSize="19" Foreground="White" Margin="20,0,0,0"/>
 
 
                         </StackPanel>
@@ -122,28 +122,31 @@
                         </Grid.ColumnDefinitions>
 
                         <Border Margin="5" CornerRadius="30" Grid.Column="1" Background="#1AFFFFFF">
-                            
+                            <Rectangle Fill="Orange"/>  
                         </Border>
                         <Border Margin="5" Grid.Row="1" Background="#1AFFFFFF" CornerRadius="30">
-                            
+                            <Rectangle Fill="Green"/>
                         </Border>
                         <Border Margin="5" Background="#1AFFFFFF" CornerRadius="30">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Foreground="White" Text="Teplota" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="200" Margin="10,0,0,0"/>
-                                <TextBlock Text="22°C" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="70,0,0,0"/>
-                                
-                                
-                                
+                                <Border VerticalAlignment="Top" Width="90" Height="70" CornerRadius="8">
+                                   
+                                </Border>
+
+                                <TextBlock Foreground="White" Text="Temperature" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="220" Margin="-85,0,0,0"/>
+                                <TextBox  Text="22°C" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="70,0,0,0"/>
+
+
                             </StackPanel>
                         </Border>
                         <Border Grid.Row="2" Background="#1AFFFFFF" CornerRadius="30" Margin="5">
-                            
+                            <Rectangle Fill="White"/>
                         </Border>
                         <Border Grid.Column="1" Grid.Row="1" Margin="5" CornerRadius="30" Background="#1AFFFFFF">
-                            
+                            <Rectangle Fill="Blue" />
                         </Border>
                         <Border Grid.Column="1" Grid.Row="2" Margin="5" CornerRadius="30" Background="#1AFFFFFF">
-                            
+                            <Rectangle Fill="Gray"/>
                         </Border>
                         
                     </Grid>

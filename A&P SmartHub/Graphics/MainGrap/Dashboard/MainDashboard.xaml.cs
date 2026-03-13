@@ -21,6 +21,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
         public MainDashboard()
         {
             InitializeComponent();
+
         }
     }
 }
