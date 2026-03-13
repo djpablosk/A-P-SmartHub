@@ -14,6 +14,7 @@
     <None Remove="Graphics\Additional\A&amp;P SmartHub Image Cut.png" />
     <None Remove="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
     <None Remove="Graphics\Additional\Gemini_Generated_Image_qbiokcqbiokcqbio.png" />
+    <None Remove="Graphics\MainGrap\Dashboard\45a565a0-2808-4ea6-848d-363ef45072bb.png" />
     <None Remove="Graphics\MainGrap\Login\0524bc62-f61b-452c-ad26-62fc32d2451e.png" />
     <None Remove="Graphics\MainGrap\Login\1368afba-9254-4f91-bd56-95b1d642cb0d.png" />
     <None Remove="Graphics\MainGrap\Login\61967f80-ab26-4379-a087-ad1715df34f7.jpg" />
@@ -41,6 +42,7 @@
     <Resource Include="Graphics\Additional\A&amp;P SmartHub Image Cut.png" />
     <Resource Include="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
     <Resource Include="Graphics\Additional\Gemini_Generated_Image_qbiokcqbiokcqbio.png" />
+    <Resource Include="Graphics\MainGrap\Dashboard\45a565a0-2808-4ea6-848d-363ef45072bb.png" />
     <Resource Include="Graphics\MainGrap\Login\0524bc62-f61b-452c-ad26-62fc32d2451e.png" />
     <Resource Include="Graphics\MainGrap\Login\1368afba-9254-4f91-bd56-95b1d642cb0d.png" />
     <Resource Include="Graphics\MainGrap\Login\61967f80-ab26-4379-a087-ad1715df34f7.jpg" />
