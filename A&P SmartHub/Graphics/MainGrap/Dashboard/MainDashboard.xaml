@@ -125,7 +125,12 @@
                             <Rectangle Fill="Orange"/>  
                         </Border>
                         <Border Margin="5" Grid.Row="1" Background="#1AFFFFFF" CornerRadius="30">
-                            <Rectangle Fill="Green"/>
+                            <StackPanel Orientation="Horizontal">
+                            <TextBox Text="45%" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="0,0,0,0"/>
+                            <TextBlock Foreground="White" Text="Humidity" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="220" Margin="-150,0,0,0"/>
+                                
+                            </StackPanel>
+
                         </Border>
                         <Border Margin="5" Background="#1AFFFFFF" CornerRadius="30">
                             <StackPanel Orientation="Horizontal">
