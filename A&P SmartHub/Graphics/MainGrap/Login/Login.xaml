@@ -9,87 +9,48 @@
 
     <Viewbox Stretch="UniformToFill">
         
-        <Grid Height="900" Width="1500">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF311060" Offset="0"/>
-                    <GradientStop Color="#FF1E093D" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
+
+    <Grid Background="#101725" Height="900" Width="1500">
+
 
         <Grid.RowDefinitions>
 
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-            <Canvas IsHitTestVisible="False">
 
-                <Ellipse Width="800" Height="800" Canvas.Left="-200" Canvas.Top="-150" Opacity="0.5">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FF00F2FF" Offset="0"/>
-                            <GradientStop Color="#0000F2FF" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <BlurEffect Radius="150"/>
-                    </Ellipse.Effect>
-                </Ellipse>
 
-                <Ellipse Width="700" Height="700" Canvas.Right="50" Canvas.Top="-100" Opacity="0.4">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FFFF00D4" Offset="0"/>
-                            <GradientStop Color="#00FF00D4" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <BlurEffect Radius="130"/>
-                    </Ellipse.Effect>
-                </Ellipse>
 
-                <Ellipse Width="600" Height="600" Canvas.Right="-150" Canvas.Bottom="-100" Opacity="0.3">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FFFF9500" Offset="0"/>
-                            <GradientStop Color="#00FF9500" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <BlurEffect Radius="150"/>
-                    </Ellipse.Effect>
-                </Ellipse>
 
-            </Canvas>
 
-            <Rectangle IsHitTestVisible="False" Opacity="0.05">
-                <Rectangle.Fill>
-                    <RadialGradientBrush Center="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="Transparent" Offset="0.7"/>
-                    </RadialGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
 
-        <Border Width="680" Height="700" CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF" HorizontalAlignment="Left" Margin="70,70,0,70" >
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
-            </Border.Effect>
+        <Border Name="LogoPanel" Width="680" Height="700" CornerRadius="30" BorderThickness="2" Background="#374151" BorderBrush="#2A3342" HorizontalAlignment="Left" Margin="70,70,0,70" >
+            
             <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="44,0,0,0" Width="509" >
 
-                <TextBlock HorizontalAlignment="Left" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="175" FontSize="72" FontFamily="Impact" Foreground="White"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="185" FontSize="72" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
 
-                <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
                 <Border Margin="10,0" BorderBrush="White" CornerRadius="20" HorizontalAlignment="Left" Height="64" Width="482" BorderThickness="1">
-                        <TextBox  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="48" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChanged"/>
+                        <TextBox  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="40" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChanged"/>
                     </Border>
 
-                <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
                 <Border CornerRadius="20" Width="482" Height="64" BorderThickness="1" BorderBrush="White">
                     <PasswordBox BorderThickness="0"  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Background="{x:Null}" FontSize="48"/>
 
                 </Border>
-                <Border Width="482" Height="64" Margin="0,20" BorderThickness="1" BorderBrush="White" Background="#9D44FF" CornerRadius="20" >
+                    <Border Width="482" Height="64" Margin="0,20" BorderThickness="1.5"  Background="#2A3342" CornerRadius="20" >
+                        <Border.CacheMode>
+                            <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
+                        </Border.CacheMode>
+
+                        <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FF1493" Offset="0.0" />
+                                    <GradientStop Color="#FFC400" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
                         <Button Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
@@ -97,8 +58,10 @@
                                 </ControlTemplate>
                             </Button.Template>
 
+                            
+
                             <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
-                                <TextBlock Text="Login" FontSize="31" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Impact" />
+                                <TextBlock Text="Login" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
                             </Border>
                         </Button>
                         <Border.Style>
@@ -137,9 +100,59 @@
                             </Style>
                         </Border.Style>
                     </Border>
-                
-                        
-                  <Button  BorderThickness="0" Background="Transparent" Content="Create new account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Impact" FontSize="19" Foreground="White" Click="Button_Click"/>
+
+
+                    <Button BorderThickness="0" Background="Transparent" Content="Create new account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Bahnschrift" FontSize="19" Foreground="#E0E6ED" Click="Button_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </ControlTemplate>
+                        </Button.Template>
+
+
+
+                        <Button.CacheMode>
+                            <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
+                        </Button.CacheMode>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1.1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1.1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                                 To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                                 To="1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+
+                    </Button>  
                           
                 
             </StackPanel>
@@ -148,7 +161,7 @@
         </Border>
 
         <StackPanel HorizontalAlignment="Right">
-            <Image HorizontalAlignment="Left" Height="688" Margin="820,70,0,0" VerticalAlignment="Top" Width="670" Source="/Graphics/MainGrap/Login/61967f80-ab26-4379-a087-ad1715df34f7.png"/>
+            <Image HorizontalAlignment="Left" Height="688" Margin="820,70,0,0" VerticalAlignment="Top" Width="670" Source="/Graphics/MainGrap/Login/Picture Login.png"/>
 
         </StackPanel>
 
@@ -157,5 +170,6 @@
 
         </Grid>
     
+  
     </Viewbox>
 </UserControl>
