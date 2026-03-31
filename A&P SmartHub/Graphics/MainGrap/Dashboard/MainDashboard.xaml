@@ -73,7 +73,65 @@
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="Dashboard" FontSize="46" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
                     <TextBlock Text="Overview of your smart home" FontSize="19" Foreground="White" Margin="-210,90,0,0"/>
-                    <TextBlock Text="Welcome to AP SmartHub" FontSize="30" FontFamily="Impact" Foreground="White" Margin="850,50,0,0"/>
+
+                    <Button x:Name="BtnNotifications" Width="45" Height="45" Margin="5" Cursor="Hand" Background="#22FFFFFF" BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </Button.Resources>
+                        <Grid>
+                            <TextBlock Text="&#xEA8F;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Ellipse Width="8" Height="8" Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="-5,0,10,0"/>
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="BtnSettings" Width="45" Height="45" Margin="5" Cursor="Hand" Background="#22FFFFFF" BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </Button.Resources>
+                        <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+
+                    <Button x:Name="BtnLogout" Width="45" Height="45" Margin="5" Cursor="Hand" Background="#22FF4444" BorderThickness="0" Click="BtnLogout_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="12"/>
+                            </Style>
+                        </Button.Resources>
+                        <TextBlock Text="&#xF3B1;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Button>
+
+
+
+
+
+                    <Button Width="50" Height="50" 
+                        HorizontalAlignment="Left" 
+                         VerticalAlignment="Top" 
+                           Margin="20" 
+                          Cursor="Hand" 
+                         Background="#22FFFFFF" 
+                         BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="15"/>
+                            </Style>
+                        </Button.Resources>
+
+                        <Grid>
+                            <TextBlock Text="&#xE77B;" 
+                   FontFamily="Segoe MDL2 Assets" 
+                   FontSize="22" 
+                   Foreground="White" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </Button>
+
+
                 </StackPanel>
             </Border>
 
@@ -126,8 +184,8 @@
                         </Border>
                         <Border Margin="5" Grid.Row="1" Background="#1AFFFFFF" CornerRadius="30">
                             <StackPanel Orientation="Horizontal">
-                            <TextBox Text="45%" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="0,0,0,0"/>
-                            <TextBlock Foreground="White" Text="Humidity" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="220" Margin="-150,0,0,0"/>
+                            <TextBlock Foreground="White" Text="Humidity" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="220" Margin="15,0,0,0"/>
+                            <TextBox Text="45%" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="60,0,0,0"/>
                                 
                             </StackPanel>
 
