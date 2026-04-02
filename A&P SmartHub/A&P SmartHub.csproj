@@ -14,7 +14,6 @@
     <None Remove="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
     <None Remove="Graphics\MainGrap\Dashboard\45a565a0-2808-4ea6-848d-363ef45072bb.png" />
     <None Remove="Graphics\MainGrap\Login\Picture Login.png" />
-    <None Remove="Graphics\MainGrap\Registration\45a591d1-d0fb-4810-8ea6-112199adddb2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +34,6 @@
     <Resource Include="Graphics\Additional\ChatGPT Image 15. 2. 2026, 17_59_32.png" />
     <Resource Include="Graphics\MainGrap\Dashboard\45a565a0-2808-4ea6-848d-363ef45072bb.png" />
     <Resource Include="Graphics\MainGrap\Login\Picture Login.png" />
-    <Resource Include="Graphics\MainGrap\Registration\45a591d1-d0fb-4810-8ea6-112199adddb2.png" />
   </ItemGroup>
 
 </Project>
