@@ -90,5 +90,12 @@ namespace A_P_SmartHub.Graphics.MainGrap
         {
 
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            if (window != null)
+                window.Close();
+        }
     }
 }
