@@ -12,6 +12,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Effects;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
 
 
 
@@ -35,7 +38,7 @@ namespace A_P_SmartHub
         {
             base.OnMouseLeftButtonDown(e);
 
-            // Začne presúvanie okna, keď stlačíš ľavé tlačidlo myši
+           
             if (e.ButtonState == MouseButtonState.Pressed)
             {
                 this.DragMove();
@@ -51,39 +54,33 @@ namespace A_P_SmartHub
 
         }
 
-        public void SlideViewTransition(UserControl newView, bool slideLeftToRight)
+        public void SlideViewTransition(UserControl newView, bool v)    //animacia blur 
         {
-            // 1. Zabezpečíme, že náš kontajner sa vôbec môže hýbať (pridáme mu Transform)
-            if (!(MainDisplay.RenderTransform is TranslateTransform))
+           
+            BlurEffect blur = new BlurEffect()
             {
-                MainDisplay.RenderTransform = new TranslateTransform();
-            }
-            TranslateTransform trans = (TranslateTransform)MainDisplay.RenderTransform;
+                Radius = 0
+            };
+            MainDisplay.Effect = blur;
 
-            // Vypočítame, kam to má odletieť (napr. 800 pixelov mimo obrazovku)
-            double distance = slideLeftToRight ? 800 : -800;
+            TimeSpan duration = TimeSpan.FromSeconds(0.15);
 
-            // 2. Animácia ODCHODU (Starý pohľad letí preč)
-            DoubleAnimation slideOut = new DoubleAnimation(0, distance, TimeSpan.FromSeconds(0.4));
-            // Easing je to isté, ako keď v DaVinci zakrivíš Spline (aby to malo pekný rozbeh)
-            slideOut.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseIn };
+          
+            DoubleAnimation blurOut = new DoubleAnimation(0, 20, duration);
+            DoubleAnimation fadeOut = new DoubleAnimation(1, 0, duration);
 
-            // Keď animácia odchodu skončí, urobíme "strih"
-            slideOut.Completed += (s, e) =>
+            blurOut.Completed += (s, e) =>
             {
-                // Vymeníme UserControl (Login za Register)
                 MainDisplay.Content = newView;
+                DoubleAnimation blurIn = new DoubleAnimation(50, 0, duration);
+                DoubleAnimation fadeIn = new DoubleAnimation(0, 1, duration);
 
-                // 3. Animácia PRÍCHODU (Nový pohľad letí dnu z opačnej strany)
-                DoubleAnimation slideIn = new DoubleAnimation(-distance, 0, TimeSpan.FromSeconds(0.4));
-                slideIn.EasingFunction = new CubicEase() { EasingMode = EasingMode.EaseOut };
-
-                // Spustíme let dnu
-                trans.BeginAnimation(TranslateTransform.XProperty, slideIn);
+                blur.BeginAnimation(BlurEffect.RadiusProperty, blurIn);
+                MainDisplay.BeginAnimation(OpacityProperty, fadeIn);
             };
 
-            // Spustíme let von
-            trans.BeginAnimation(TranslateTransform.XProperty, slideOut);
+            blur.BeginAnimation(BlurEffect.RadiusProperty, blurOut);
+            MainDisplay.BeginAnimation(OpacityProperty, fadeOut);
         }
     }
 }

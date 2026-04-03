@@ -8,239 +8,38 @@
               RenderOptions.BitmapScalingMode="LowQuality"
               RenderOptions.EdgeMode="Aliased"
              d:DesignHeight="900" d:DesignWidth="1500">
-    <Viewbox Stretch="UniformToFill">
-
-        <Grid Height="900" Width="1500">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FF311060" Offset="0"/>
-                    <GradientStop Color="#FF1E093D" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-
-
-
-            <Canvas IsHitTestVisible="False">
-
-                <Ellipse Width="800" Height="800" Canvas.Left="-89" Canvas.Top="75" Opacity="0.5">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FF00F2FF" Offset="0"/>
-                            <GradientStop Color="#0000F2FF" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <BlurEffect Radius="150"/>
-                    </Ellipse.Effect>
-                </Ellipse>
-
-                <Ellipse Width="700" Height="700" Canvas.Right="50" Canvas.Top="-100" Opacity="0.4">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FFFF00D4" Offset="0"/>
-                            <GradientStop Color="#00FF00D4" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <BlurEffect Radius="130"/>
-                    </Ellipse.Effect>
-                </Ellipse>
-
-                <Ellipse Width="600" Height="600" Canvas.Right="-150" Canvas.Bottom="-100" Opacity="0.3" Canvas.Left="1038" Canvas.Top="10">
-                    <Ellipse.Fill>
-                        <RadialGradientBrush>
-                            <GradientStop Color="#FFFF9500" Offset="0"/>
-                            <GradientStop Color="#00FF9500" Offset="1"/>
-                        </RadialGradientBrush>
-                    </Ellipse.Fill>
-                    <Ellipse.Effect>
-                        <BlurEffect Radius="150"/>
-                    </Ellipse.Effect>
-                </Ellipse>
-
-            </Canvas>
-
-            <Rectangle IsHitTestVisible="False" Opacity="0.05">
-                <Rectangle.Fill>
-                    <RadialGradientBrush Center="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="Transparent" Offset="0.7"/>
-                    </RadialGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-
-            <Border Background="#22808080" Margin="0" CornerRadius="30">
-                <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="Dashboard" FontSize="46" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
-                    <TextBlock Text="Overview of your smart home" FontSize="19" Foreground="White" Margin="-210,90,0,0"/>
-
-                    <Button x:Name="BtnNotifications" Width="45" Height="45" Margin="5" Cursor="Hand" Background="#22FFFFFF" BorderThickness="0">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="12"/>
-                            </Style>
-                        </Button.Resources>
-                        <Grid>
-                            <TextBlock Text="&#xEA8F;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <Ellipse Width="8" Height="8" Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="-5,0,10,0"/>
-                        </Grid>
-                    </Button>
-
-                    <Button x:Name="BtnSettings" Width="45" Height="45" Margin="5" Cursor="Hand" Background="#22FFFFFF" BorderThickness="0">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="12"/>
-                            </Style>
-                        </Button.Resources>
-                        <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-
-                    <Button x:Name="BtnLogout" Width="45" Height="45" Margin="5" Cursor="Hand" Background="#22FF4444" BorderThickness="0" Click="BtnLogout_Click">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="12"/>
-                            </Style>
-                        </Button.Resources>
-                        <TextBlock Text="&#xF3B1;" FontFamily="Segoe MDL2 Assets" FontSize="18" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-
-
-
-
-
-                    <Button Width="50" Height="50" 
-                        HorizontalAlignment="Left" 
-                         VerticalAlignment="Top" 
-                           Margin="20" 
-                          Cursor="Hand" 
-                         Background="#22FFFFFF" 
-                         BorderThickness="0">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
-                            </Style>
-                        </Button.Resources>
-
-                        <Grid>
-                            <TextBlock Text="&#xE77B;" 
-                   FontFamily="Segoe MDL2 Assets" 
-                   FontSize="22" 
-                   Foreground="White" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Bottom"/>
-                        </Grid>
-                    </Button>
-
-
-                </StackPanel>
-            </Border>
-
-
-            <Grid Name="MainDivision" Grid.Row="1">
-
+    
+        <Grid  Background="#101725">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Border CornerRadius="30" Background="#374151" Margin="10">
+            <Grid Margin="10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="600"/>
+                    <ColumnDefinition Width="400"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="100"/>
-
                 </Grid.RowDefinitions>
-                    <Grid Name="HelooSide"  >
-                    <Grid.ColumnDefinitions>
-                        
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="200"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
 
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="YourHomeName" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
 
-                    <Border Margin="5" Background="#22FFFFFF" CornerRadius="30">
-                        <StackPanel>
-                            <TextBox Background="Transparent" Text="Welcome back, User!" FontSize="50" FontWeight="Bold" Foreground="White" Margin="20" FontFamily="Impact"/>
-                            <TextBox Background="Transparent" Text="24 devices are online!" FontSize="19" Foreground="White" Margin="20,0,0,0"/>
+                <Button Grid.Column="1" Width="30" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent">
+                    <Viewbox Width="24" Height="24">
+                        <Path Data="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.81,11.69,4.81,12c0,0.31,0.02,0.65,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" 
+                        Fill="White" />
+                    </Viewbox>
+                </Button>
 
-
-                        </StackPanel>
-                    </Border>
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            
-                            <RowDefinition Height="150"/>
-                            <RowDefinition Height="150"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="400"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Border Margin="5" CornerRadius="30" Grid.Column="1" Background="#1AFFFFFF">
-                            <Rectangle Fill="Orange"/>  
-                        </Border>
-                        <Border Margin="5" Grid.Row="1" Background="#1AFFFFFF" CornerRadius="30">
-                            <StackPanel Orientation="Horizontal">
-                            <TextBlock Foreground="White" Text="Humidity" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="220" Margin="15,0,0,0"/>
-                            <TextBox Text="45%" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="60,0,0,0"/>
-                                
-                            </StackPanel>
-
-                        </Border>
-                        <Border Margin="5" Background="#1AFFFFFF" CornerRadius="30">
-                            <StackPanel Orientation="Horizontal">
-                                <Border VerticalAlignment="Top" Width="90" Height="70" CornerRadius="8">
-                                   
-                                </Border>
-
-                                <TextBlock Foreground="White" Text="Temperature" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="220" Margin="-85,0,0,0"/>
-                                <TextBox  Text="22°C" Foreground="White" FontSize="40" VerticalAlignment="Bottom" FontFamily="Impact" Background="Transparent"  Height="50" Width="100" Margin="70,0,0,0"/>
-
-
-                            </StackPanel>
-                        </Border>
-                        <Border Grid.Row="2" Background="#1AFFFFFF" CornerRadius="30" Margin="5">
-                            <Rectangle Fill="White"/>
-                        </Border>
-                        <Border Grid.Column="1" Grid.Row="1" Margin="5" CornerRadius="30" Background="#1AFFFFFF">
-                            <Rectangle Fill="Blue" />
-                        </Border>
-                        <Border Grid.Column="1" Grid.Row="2" Margin="5" CornerRadius="30" Background="#1AFFFFFF">
-                            <Rectangle Fill="Gray"/>
-                        </Border>
-                        
-                    </Grid>
-                    </Grid>
-
-                <Border Margin="5" CornerRadius="30" Background="#22FFFFFF" Name="DevicesSide" Grid.Column="1">
-                    
-                </Border>
-                
-                
             </Grid>
+        </Border>
 
 
-        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    
         </Grid>
-
-
-    </Viewbox>
 </UserControl>
