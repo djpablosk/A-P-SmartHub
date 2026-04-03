@@ -46,14 +46,19 @@ namespace A_P_SmartHub.Graphics.Login
 
        
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
+
+            // Teraz už 'await' nebude podčiarknuté
+            await Task.Delay(5000);
+
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
             if (mainWindow != null)
             {
-
-                mainWindow.MainDisplay.Content = new MainDashboard();
+                
+                mainWindow.SlideViewTransition(new MainDashboard(), true);
             }
 
         }
