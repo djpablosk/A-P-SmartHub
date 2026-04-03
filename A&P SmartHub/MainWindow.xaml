@@ -20,7 +20,9 @@
 
         </Grid.RowDefinitions>
 
-        <additional:CustomUpperBar Grid.Row="0"/>
+
+        <ContentControl Grid.Row="0" Name="UpperBar"/>
+        
 
 
         <ContentControl Grid.Row="1" x:Name="MainDisplay"/>

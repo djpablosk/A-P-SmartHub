@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace A_P_SmartHub.Graphics.Login
 {
     /// <summary>
@@ -29,10 +30,12 @@ namespace A_P_SmartHub.Graphics.Login
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
+            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
             if (mainWindow != null)
             {
-                
-                mainWindow.MainDisplay.Content = new Register();
+                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
+                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
+                mainWindow.SlideViewTransition(new Register(), true);
             }
         }
 

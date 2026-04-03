@@ -1,4 +1,5 @@
 ﻿using A_P_SmartHub.Graphics.Additional;
+using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap.Registration;
 using BCrypt.Net;
 using Microsoft.Data.Sqlite;
@@ -17,7 +18,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using A_P_SmartHub.Graphics.Login;
 using VerificationCodeWindow = A_P_SmartHub.Graphics.Additional.VerificationCodeWindow;
+using A_P_SmartHub.Interfaces;
 
 namespace A_P_SmartHub.Graphics.MainGrap
 {
@@ -93,9 +96,15 @@ namespace A_P_SmartHub.Graphics.MainGrap
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            var window = Window.GetWindow(this);
-            if (window != null)
-                window.Close();
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+            if (mainWindow != null)
+            {
+                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
+                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
+                mainWindow.SlideViewTransition(new Log(), true);
+            }
         }
     }
 }
