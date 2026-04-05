@@ -24,7 +24,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         }
 
-        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        private void Settings_Click(object sender, RoutedEventArgs e)
         {
 
         }
