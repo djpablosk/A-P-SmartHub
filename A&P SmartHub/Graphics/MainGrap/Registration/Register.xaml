@@ -74,7 +74,7 @@
                         <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
                     </Border>
                 <Border Width="500" Margin="0,30" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
-                    <Button BorderThickness="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
+                    <Button Cursor="Hand" BorderThickness="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
@@ -135,7 +135,7 @@
 
                 </StackPanel>
         </Border>
-        <Button  Height="50" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="exit" Click="Exit_Click" Grid.Row="1" Grid.Column="1" >
+        <Button Cursor="Hand"  Height="50" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="exit" Click="Exit_Click" Grid.Row="1" Grid.Column="1" >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
@@ -175,9 +175,10 @@
 
 
             <Button.Template>
-                
                 <ControlTemplate TargetType="Button">
-                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                    <Border Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
                 </ControlTemplate>
             </Button.Template>
             <Viewbox Width="50" Height="35">

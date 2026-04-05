@@ -67,7 +67,7 @@
                             </LinearGradientBrush>
                         </Border.BorderBrush>
 
-                        <Button Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                        <Button Cursor="Hand" Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
@@ -110,7 +110,7 @@
                         </Border.Style>
                     </Border>
 
-                    <Button BorderThickness="0" Background="Transparent" Content="Create new account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Bahnschrift" FontSize="19" Foreground="#E0E6ED" Click="Button_Click">
+                    <Button Cursor="Hand" BorderThickness="0" Background="Transparent" Content="Create new account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Bahnschrift" FontSize="19" Foreground="#E0E6ED" Click="Button_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
