@@ -1,4 +1,5 @@
-﻿using A_P_SmartHub.Graphics.Login;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace A_P_SmartHub.Graphics.Additional
     public partial class VerificationCodeWindow : UserControl
     {
         public int RandomCode {  get; set; }
-
+        public string Mail { get; set; }
+               public string PassHash { get; set; }
         public VerificationCodeWindow()
         {
             InitializeComponent();
@@ -41,8 +43,14 @@ namespace A_P_SmartHub.Graphics.Additional
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (VerifCodeInput.Text == RandomCode.ToString())
-            {
+            { SQLITE_Users sQLITE_Users = new SQLITE_Users();
+                sQLITE_Users.CreateDB();
+                sQLITE_Users.RegisterNewUser(Mail, PassHash);
+
+
                 MessageBox.Show("verification succesful");
+               
+             
             }
             {
                 var mainWindow = Window.GetWindow(this) as MainWindow;
