@@ -1,7 +1,11 @@
-﻿using A_P_SmartHub.Graphics.MainGrap;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,7 +26,10 @@ namespace A_P_SmartHub.Graphics.Login
     {
         public Login()
             {
-           InitializeComponent();                                         
+           InitializeComponent();
+           
+            
+
             
         }
       
@@ -51,10 +58,57 @@ namespace A_P_SmartHub.Graphics.Login
 
             if (mainWindow != null)
             {
+                SQLITE_Users users = new SQLITE_Users();
 
-                mainWindow.MainDisplay.Content = new MainDashboard();
+                bool success = CheckLogin(users); // make CheckLogin return bool
+                if (success)
+                {
+                    mainWindow.MainDisplay.Content = new MainDashboard();
+                }
+
+
             }
 
+        }
+
+        public bool CheckLogin(SQLITE_Users users)
+        {
+            bool checkHash = false;
+            users.LoggingInDB(LoginMail.Text, LoginPasword.Password);
+            if (users.FetchedMail == LoginMail.Text)
+            {
+                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+            }
+        
+            if ( users.FetchedMail == LoginMail.Text && checkHash == true)
+            {
+                MessageBox.Show("login ok");
+                return true;
+
+            }
+            else if (users.FetchedMail != LoginMail.Text && checkHash != true)
+            {
+                MessageBox.Show(" Mail or Password is incorrect");
+            }
+            return false;
+            
+        }
+
+
+        public void ForgotPass_button_Click()
+        {
+            // prepise obrazovku na forgotpassword
+            MessageBox.Show("zadaj mail");
+            // smtp posle kod 
+            //ak je smtp kod spravny
+            //deletnem si databazu (dorobim command na db)(nie celu db len select from users where bla bla bla a deletnem pass) \
+            // a poviem nech si  vytvori new heslo 
+            // ulozim heslo do databaze | ano databaze yet again uz sa mi o nich aj sniva
+            // a ak  sa nezhoduje tak ho poslem dopice takzvane ze nematchuje pls try again later alebo daco
+            //kamo preco som ja zacal s backendom...
+            Console.Beep();
+
+           
         }
     }
 }
