@@ -85,23 +85,33 @@
                         <TextBox  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="48" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChangedLogin"/>
                     </Border>
 
-                <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
-                <Border CornerRadius="20" Width="482" Height="64" BorderThickness="1" BorderBrush="White">
-                    <PasswordBox BorderThickness="0"  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Background="{x:Null}" FontSize="48"/>
+                    <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
+                    <Border CornerRadius="20" Width="482" Height="64" BorderThickness="1" BorderBrush="White">
+                        <PasswordBox BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{x:Null}" FontSize="48" Foreground="White" CaretBrush="White"/>
+                    </Border>
 
-                </Border>
-                <Border Width="482" Height="64" Margin="0,20" BorderThickness="1" BorderBrush="White" Background="#9D44FF" CornerRadius="20" >
+                    <Border Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
+                        <Border.CacheMode>
+                            <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
+                        </Border.CacheMode>
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FF1493" Offset="0.0" />
+                                <GradientStop Color="#FFC400" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+
                         <Button Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </ControlTemplate>
                             </Button.Template>
-
                             <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
-                                <TextBlock Text="Login" FontSize="31" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Impact" />
+                                <TextBlock Text="Login" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
                             </Border>
                         </Button>
+
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
@@ -110,26 +120,21 @@
                                         <ScaleTransform ScaleX="1" ScaleY="1" />
                                     </Setter.Value>
                                 </Setter>
-
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Trigger.EnterActions>
                                             <BeginStoryboard>
                                                 <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                             To="1.05" Duration="0:0:0.2" />
-                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                             To="1.05" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.2" />
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.EnterActions>
                                         <Trigger.ExitActions>
                                             <BeginStoryboard>
                                                 <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-                                             To="1" Duration="0:0:0.2" />
-                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-                                             To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2" />
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.ExitActions>
@@ -155,8 +160,77 @@
 
 
 
+                    <Button BorderThickness="0" Background="Transparent" Content="Create new account" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" Padding="8,4" FontFamily="Bahnschrift" FontSize="19" Foreground="#E0E6ED" Click="Button_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Button.CacheMode>
+                            <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
+                        </Button.CacheMode>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1.1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1.1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="670" Height="800">
+
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="LogoScale" ScaleX="1" ScaleY="1" />
+                        <TranslateTransform x:Name="LogoTranslate" X="0" Y="0" />
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.RenderTransformOrigin>0.5,0.5</Grid.RenderTransformOrigin>
+
+                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="688" Width="670" Source="/Graphics/MainGrap/Login/Picture Login.png"/>
+
+                <StackPanel x:Name="LoadingArea" Opacity="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,40">
+                    <ProgressBar IsIndeterminate="True" 
+                                 Width="120" 
+                                 Height="4" 
+                                 Foreground="#53FFDC" 
+                                 Background="#22FFFFFF" 
+                                 BorderThickness="0"/>
+                    <TextBlock Text="Logging in..." 
+                               Foreground="#53FFDC" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,15,0,0"
+                               FontSize="16"
+                               FontWeight="SemiBold"/>
+                </StackPanel>
+            </Grid>
 
         </Grid>
-    
     </Viewbox>
 </UserControl>

@@ -8,7 +8,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         xmlns:registration="clr-namespace:A_P_SmartHub.Graphics.MainGrap"
-        Icon="/Graphics/MainGrap/Login/ChatGPT Image 16. 2. 2026, 20_11_40.png"
+  
         RenderOptions.BitmapScalingMode="LowQuality"
         RenderOptions.EdgeMode="Aliased"
         Background="Black">
@@ -20,7 +20,9 @@
 
         </Grid.RowDefinitions>
 
-        <additional:CustomUpperBar Grid.Row="0"/>
+
+        <ContentControl Grid.Row="0" Name="UpperBar"/>
+        
 
 
         <ContentControl Grid.Row="1" x:Name="MainDisplay"/>

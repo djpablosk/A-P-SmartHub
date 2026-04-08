@@ -7,87 +7,61 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1500">
 
+
+  
         
-    <Viewbox Stretch="UniformToFill">
-    <Grid Width="1500" Height="900">
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#FF311060" Offset="0"/>
-                <GradientStop Color="#FF1E093D" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Canvas IsHitTestVisible="False">
 
-            <Ellipse Width="800" Height="800" Canvas.Left="-200" Canvas.Top="-150" Opacity="0.5">
-                <Ellipse.Fill>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FF00F2FF" Offset="0"/>
-                        <GradientStop Color="#0000F2FF" Offset="1"/>
-                    </RadialGradientBrush>
-                </Ellipse.Fill>
-                <Ellipse.Effect>
-                    <BlurEffect Radius="150"/>
-                </Ellipse.Effect>
-            </Ellipse>
-
-            <Ellipse Width="700" Height="700" Canvas.Right="50" Canvas.Top="-100" Opacity="0.4">
-                <Ellipse.Fill>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FFFF00D4" Offset="0"/>
-                        <GradientStop Color="#00FF00D4" Offset="1"/>
-                    </RadialGradientBrush>
-                </Ellipse.Fill>
-                <Ellipse.Effect>
-                    <BlurEffect Radius="130"/>
-                </Ellipse.Effect>
-            </Ellipse>
-
-            <Ellipse Width="600" Height="600" Canvas.Right="-150" Canvas.Bottom="-100" Opacity="0.3">
-                <Ellipse.Fill>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FFFF9500" Offset="0"/>
-                        <GradientStop Color="#00FF9500" Offset="1"/>
-                    </RadialGradientBrush>
-                </Ellipse.Fill>
-                <Ellipse.Effect>
-                    <BlurEffect Radius="150"/>
-                </Ellipse.Effect>
-            </Ellipse>
-
-        </Canvas>
-
-        <Rectangle IsHitTestVisible="False" Opacity="0.05">
-            <Rectangle.Fill>
-                <RadialGradientBrush Center="0.5,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="Transparent" Offset="0.7"/>
-                </RadialGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <Grid Margin="25">
+    <Grid Background="#101725" >
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="90"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="680" />
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="700" />
+                <ColumnDefinition Width="50"/>
 
             </Grid.ColumnDefinitions>
 
+        <Grid Grid.Row="1">
 
-            <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.2" Background="#22FFFFFF" BorderBrush="#44FFFFFF"  HorizontalAlignment="Stretch" >
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="40" Color="Black" Opacity="0.2" ShadowDepth="0"/>
-                </Border.Effect>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+        <StackPanel Margin="50,0,0,0"  Grid.Row="0">
+        <TextBlock  FontFamily="Bahnschrift" FontSize="200" Text="AP" Foreground="White" />
+            <TextBlock FontFamily="Bahnschrift" FontSize="80" Margin="-15,30" Text="SmartHub" Foreground="#22FFFFFF" />
+
+        </StackPanel>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+            <Image   Grid.Column="1" Source="/Graphics/MainGrap/Registration/RegisterImageEDITED.png"/>
+                
+            </Grid>
+            
+
+        </Grid>
+
+
+        <TextBlock  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="20,0" VerticalAlignment="Center" FontSize="24" FontFamily="Bahnschrift" Foreground="#22FFFFFF" Text="AP SmartHub"/>
+
+        <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.5" Background="#374151" BorderBrush="#2A3342"  HorizontalAlignment="Stretch" >
+               
                 <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
-                    <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Impact" FontSize="72" Foreground="White"  />
-                    <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Bahnschrift" FontSize="72" Foreground="White"  />
+                    <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
                     <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
                         <TextBox x:Name="EmailRegWind" FontSize="42" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" TextChanged="TextBox_TextChanged" />
                     </Border>
@@ -95,18 +69,133 @@
                     <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
                         <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="42"/>
                     </Border>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm password:" Width="300" FontSize="36" FontFamily="Impact" Foreground="White"/>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm password:" Width="350" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
                     <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
                         <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Impact" FontSize="42"/>
                     </Border>
                     <Border Width="500" Margin="0,30" Background="#9D44FF"  Height="64" BorderBrush="White" BorderThickness="1" CornerRadius="20">
                         <Button  BorderThickness="0" Content="Continue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Impact" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" />
                     </Border>
+                <Border Width="500" Margin="0,30" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
+                    <Button BorderThickness="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Border>
+                            <TextBlock Text="Continue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Foreground="White"/>
+                        </Border>    
+                        
+                        
+                    </Button>
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF1493" Offset="0.0" />
+                            <GradientStop Color="#FFC400" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                      To="1.05" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                      To="1.05" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                      To="1" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                      To="1" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+
+
+                </Border>
                    
 
                 </StackPanel>
-            </Border>
+        </Border>
+        <Button  Height="50" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="exit" Click="Exit_Click" Grid.Row="1" Grid.Column="1" >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                             To="2" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                             To="2" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                             To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                              To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+
+
+            <Button.Template>
+                
+                <ControlTemplate TargetType="Button">
+                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                </ControlTemplate>
+            </Button.Template>
+            <Viewbox Width="50" Height="35">
+                <Path Data="M18.4,12.2l-4.5-4.5c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l2.8,2.8H8.5c-3.6,0-6.5,2.9-6.5,6.5s2.9,6.5,6.5,6.5h2c0.6,0,1-0.4,1-1s-0.4-1-1-1h-2c-2.5,0-4.5-2-4.5-4.5s2-4.5,4.5-4.5h6.8l-2.8,2.8c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l4.5-4.5C18.8,13.2,18.8,12.6,18.4,12.2z" 
+              Fill="White"
+              RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <ScaleTransform ScaleX="-1" />
+                    </Path.RenderTransform>
+                </Path>
+            </Viewbox>
+        </Button>
+
         </Grid>
-    </Grid>
-    </Viewbox>
+   
+   
+
 </UserControl>
