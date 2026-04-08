@@ -41,19 +41,29 @@ namespace A_P_SmartHub.Graphics.Additional
        
        
         private void Button_Click(object sender, RoutedEventArgs e)
+       
         {
             if (VerifCodeInput.Text == RandomCode.ToString())
-            { SQLITE_Users sQLITE_Users = new SQLITE_Users();
-                sQLITE_Users.CreateDB();
-                sQLITE_Users.RegisterNewUser(Mail, PassHash);
-
-
-                MessageBox.Show("verification succesful");
-               
-             
-            }
             {
-                var mainWindow = Window.GetWindow(this) as MainWindow;
+                SQLITE_Users sQLITE_Users = new SQLITE_Users();
+
+                sQLITE_Users.CreateDB();
+
+                if (sQLITE_Users.RegisterNewUser(Mail, PassHash))
+                {
+                    MessageBox.Show("verification successful");
+                }
+                else
+                {
+                    MessageBox.Show("Mail already used");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong verification code");
+            }
+        
+        var mainWindow = Window.GetWindow(this) as MainWindow;
                 //smtpClientMail smtpClientMail = new smtpClientMail();
                 // smtpClientMail.SendMail(register);
 
@@ -66,4 +76,3 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
     }
-}

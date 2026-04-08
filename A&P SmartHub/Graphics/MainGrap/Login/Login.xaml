@@ -82,12 +82,12 @@
                 <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="26
                            " FontFamily="Impact" Foreground="White"/>
                 <Border Margin="10,0" BorderBrush="White" CornerRadius="20" HorizontalAlignment="Left" Height="64" Width="482" BorderThickness="1">
-                        <TextBox  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="48" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChangedLogin"/>
+                        <TextBox x:Name="LoginMail"  BorderThickness="0"  TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="1" FontSize="48" Background="{x:Null}" Height="62" TextChanged="TextBox_TextChangedLogin"/>
                     </Border>
 
                 <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42"  TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Impact" Foreground="White"/>
                 <Border CornerRadius="20" Width="482" Height="64" BorderThickness="1" BorderBrush="White">
-                    <PasswordBox BorderThickness="0"  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Background="{x:Null}" FontSize="48"/>
+                    <PasswordBox x:Name="LoginPasword" BorderThickness="0"  HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"  Background="{x:Null}" FontSize="48"/>
 
                 </Border>
                 <Border Width="482" Height="64" Margin="0,20" BorderThickness="1" BorderBrush="White" Background="#9D44FF" CornerRadius="20" >
