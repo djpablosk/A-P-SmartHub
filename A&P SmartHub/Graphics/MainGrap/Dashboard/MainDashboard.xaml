@@ -137,13 +137,25 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Background="#000000" CornerRadius="30" Margin="5" >
+            <Border x:Name="cast" Background="#000000" CornerRadius="30" Margin="5" >
                 
             </Border>
-            
-        </Grid>
-            
+            <Border Grid.Column="1" Background="#000000" CornerRadius="30" Margin="5" >
 
-    
+            </Border>
+            <Border Grid.Column="2" Background="#000000" CornerRadius="30" Margin="5" >
+
+            </Border>
+
+            
+            
+            
         </Grid>
+        <Border Background="#374151" Grid.Row="2" CornerRadius="30" Margin="10"  >
+            
+        </Border   >
+        <StackPanel>
+
+        </StackPanel>
+    </Grid>
 </UserControl>
