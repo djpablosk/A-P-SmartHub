@@ -17,7 +17,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using A_P_SmartHub.Graphics.Login;
 using VerificationCodeWindow = A_P_SmartHub.Graphics.Additional.VerificationCodeWindow;
+using A_P_SmartHub.Interfaces;
 
 namespace A_P_SmartHub.Graphics.MainGrap
 {
@@ -94,6 +96,20 @@ namespace A_P_SmartHub.Graphics.MainGrap
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+            if (mainWindow != null)
+            {
+                // If the user control class is named "Login" inside the namespace A_P_SmartHub.Graphics.Login,
+                // fully qualify the type to avoid the namespace-vs-type ambiguity.
+                // If the actual class name is different, replace the final "Login" with the real class name.
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+            }
         }
     }
 }
