@@ -21,6 +21,12 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
         public MainDashboard()
         {
             InitializeComponent();
+
+        }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
