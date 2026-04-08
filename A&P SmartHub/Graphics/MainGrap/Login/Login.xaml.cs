@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace A_P_SmartHub.Graphics.Login
 {
     /// <summary>
@@ -31,10 +32,12 @@ namespace A_P_SmartHub.Graphics.Login
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
+            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
             if (mainWindow != null)
             {
-                
-                mainWindow.MainDisplay.Content = new Register();
+                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
+                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
+                mainWindow.SlideViewTransition(new Register(), true);
             }
         }
 
@@ -45,14 +48,19 @@ namespace A_P_SmartHub.Graphics.Login
 
        
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
+
+            // Teraz už 'await' nebude podčiarknuté
+            await Task.Delay(5000);
+
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
             if (mainWindow != null)
             {
-
-                mainWindow.MainDisplay.Content = new MainDashboard();
+                
+                mainWindow.SlideViewTransition(new MainDashboard(), true);
             }
 
         }
