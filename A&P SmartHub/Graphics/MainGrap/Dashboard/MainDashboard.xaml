@@ -152,8 +152,8 @@
             
         </Grid>
         <Border  Background="#374151" Grid.Row="2" CornerRadius="30" Margin="10"   >
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <ItemsControl x:Name="DeviceList">
+            <ScrollViewer Margin="10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ItemsControl Margin="10"  x:Name="DeviceList">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
 
@@ -183,20 +183,22 @@
 
             <Button Background="Transparent" >
                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" 
-              Width="45" Height="45" Stretch="Uniform" 
+              Width="40" Height="40" Stretch="Uniform" 
               Fill="#A9ACBB" 
               Data="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
             </Button>
 
             <Button Grid.Column="1" Background="Transparent">
+                
                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" 
-              Width="45" Height="45" Stretch="Uniform" 
+              Width="40" Height="40" Stretch="Uniform" 
               Fill="#A9ACBB" 
               Data="M4,6H22V20H24V22H0V20H2V6C2,4.89 2.89,4 4,4H20C21.1,4 22,4.89 22,6V8H20V6H4V18H10V20H4Z M20,10H16C15.45,10 15,10.45 15,11V21C15,21.55 15.45,22 16,22H20C20.55,22 21,21.55 21,21V11C21,10.45 20.55,10 20,10Z M19,19H17V12H19Z"/>
             </Button>
             <Button Grid.Column="2" Background="Transparent">
+                
                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" 
-              Width="45" Height="45" Stretch="Uniform" 
+              Width="40" Height="40" Stretch="Uniform" 
               Fill="#A9ACBB" 
               Data="M3,18H21V16H3V18ZM3,13H21V11H3V13ZM3,6V8H21V6H3Z"/>
             </Button>
