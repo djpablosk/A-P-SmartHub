@@ -13,10 +13,14 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border Margin="20" Background="Beige" CornerRadius="30">
+        <Border Margin="20" Background="#374151" CornerRadius="30">
             <StackPanel Margin="10" >
-                <TextBlock Text="Home Setup" FontSize="30" FontWeight="Bold" Margin="10"/>
-                
+                <TextBlock Text="Home Setup" FontFamily="Bahnschrift" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
+                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+
             </StackPanel>
         </Border>
     </Grid>

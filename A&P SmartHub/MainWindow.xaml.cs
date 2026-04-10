@@ -31,7 +31,7 @@ namespace A_P_SmartHub
             InitializeComponent();
            MainDisplay.Content = new Login();
             UpperBar.Content = new CustomUpperBar();
-
+            this.WindowState = WindowState.Maximized;
 
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
