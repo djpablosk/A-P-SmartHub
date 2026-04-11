@@ -45,6 +45,13 @@ namespace A_P_SmartHub.Graphics.Additional
         private void Button_Click(object sender, RoutedEventArgs e)
        
         {
+                var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
+
+            }
             if (VerifCodeInput.Text == RandomCode.ToString())
             {
                 SQLITE_Users sQLITE_Users = new SQLITE_Users();
