@@ -10,6 +10,51 @@ namespace A_P_SmartHub.Graphics.Additional
 {
     internal class smtpClientMail
     {
+
+        public void SendCode(VerificationCodeWindow verification)
+        {
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("apsmarthub@gmail.com", "mqsorowexagrnmng"),
+                EnableSsl = true,
+            };
+            var mail = new MailMessage();
+            mail.From = new MailAddress("A&PSmarthub@gmail.com");
+            mail.To.Add("alexozaniakk@gmail.com");//pridam aby to dalo tomu co zabudol heslo
+            mail.Subject = ("Your Code For Resseting Password is here!");
+            mail.IsBodyHtml = true;
+            mail.Body = @$"
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=""UTF-8"">
+  <title>Password Reset</title>
+</head>
+<body style=""font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;"">
+
+  <div style=""max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; text-align: center;"">
+    
+    <h2>Password Reset</h2>
+    
+    <p>Your code for resetting your password is:</p>
+    
+    <div style=""font-size: 24px; font-weight: bold; background: #f0f0f0; padding: 15px; border-radius: 8px; letter-spacing: 3px;"">
+      {verification.RandomCode}
+    </div>
+    
+    <p style=""margin-top: 20px; font-size: 12px; color: gray;"">
+      If you didn’t request this, just ignore this email.
+    </p>
+
+  </div>
+
+</body>
+</html>
+```
+";
+            smtp.Send(mail);
+                }
         public void SendMail(VerificationCodeWindow verificationCode, Register register)
         {
 
