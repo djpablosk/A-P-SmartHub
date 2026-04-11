@@ -49,6 +49,8 @@ namespace A_P_SmartHub.Graphics.MainGrap
             VerificationCodeWindow verificationCode = new VerificationCodeWindow();
             SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
+            //smtpClientMail smtpClientMail = new smtpClientMail();
+            VerificationCodeWindow verificationCode  = new VerificationCodeWindow();
 
 
 
@@ -80,6 +82,8 @@ namespace A_P_SmartHub.Graphics.MainGrap
             }
 
 
+            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+           
         }
 
 
