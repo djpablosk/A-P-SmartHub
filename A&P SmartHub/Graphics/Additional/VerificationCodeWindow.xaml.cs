@@ -11,9 +11,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using Login = A_P_SmartHub.Graphics.Login.Login;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -69,8 +71,10 @@ namespace A_P_SmartHub.Graphics.Additional
 
                 if (mainWindow != null)
                 {
+                 
+              
 
-                    // mainWindow.MainDisplay.Content = new ();    este doriesim
+                mainWindow.MainDisplay.Content = new MainDashboard();
 
                 }
             }

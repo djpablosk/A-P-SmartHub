@@ -9,7 +9,7 @@ namespace A_P_SmartHub.Databazicky
     {
         public string FetchedMail { get; set; }
         public string FetchedHash { get; set; }
-        public int UseriID { get; set; }
+        public string UseriID { get; set; }
         //--------------------------------(len si rozdelujem infos od code)
 
      
@@ -62,23 +62,30 @@ namespace A_P_SmartHub.Databazicky
                 FROM users
                  WHERE Mail = $mail ";
             GetFromDB.Parameters.AddWithValue("$mail", Mail);
-
+            
             using var reader = GetFromDB.ExecuteReader();
             reader.Read();
 
-          
-
-            UseriID = reader.GetInt32(0);
+            UseriID = reader.GetString(0);
             FetchedMail = reader.GetString(1);
             FetchedHash = reader.GetString(2);
-
-           
-
-
-
-
-
+          
 
         }
+
+        public void UpdateHashInDb(string Mail,string Hash)
+        {
+            using var connection = new SqliteConnection("Data Source=users.db");
+            connection.Open();
+
+            var UpdateHashInDb = connection.CreateCommand();
+            UpdateHashInDb.CommandText = @"
+             UPDATE users
+             SET Hash = $hash
+              WHERE Mail = $mail;";
+            UpdateHashInDb.Parameters.AddWithValue("$mail", Mail);
+            UpdateHashInDb.Parameters.AddWithValue("$hash", Hash);
+                
+            }
+        }
     }
-}

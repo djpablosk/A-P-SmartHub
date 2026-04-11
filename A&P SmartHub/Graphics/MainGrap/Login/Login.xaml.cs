@@ -1,4 +1,5 @@
 ﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 using System;
@@ -26,39 +27,30 @@ namespace A_P_SmartHub.Graphics.Login
     public partial class Login : UserControl
     {
         public Login()
-            {
-           InitializeComponent();
-           
-            
-
-            
-        }
-      
-
-        private void Button_ClickLogin(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Window.GetWindow(this) as MainWindow;
+            InitializeComponent();
 
-            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
-            if (mainWindow != null)
-            {
-                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
-                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
-                mainWindow.SlideViewTransition(new Register(), true);
-            }
+
+
+
         }
 
-       private void TextBox_TextChangedLogin(object sender, TextChangedEventArgs e)
-       {
+
+       
+
+        private void TextBox_TextChangedLogin(object sender, TextChangedEventArgs e)
+        {
             // nic nepridavat
         }
 
-       
+
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
-
+            smtpClientMail smtpClientMail = new smtpClientMail();//0
+            VerificationCodeWindow verificationCodeWindow = new VerificationCodeWindow();//potom vymazat1
+            
             // Teraz už 'await' nebude podčiarknuté
             await Task.Delay(5000);
 
@@ -71,24 +63,30 @@ namespace A_P_SmartHub.Graphics.Login
                 bool success = CheckLogin(users); // make CheckLogin return bool
                 if (success)
                 {
-                    mainWindow.MainDisplay.Content = new MainDashboard();
+
+                    smtpClientMail.SendCode(verificationCodeWindow);//2
+
+
+
+                    mainWindow.SlideViewTransition(new MainDashboard(), true);
+                    MessageBox.Show("ide to");
+
+
+
                 }
 
-
             }
-
         }
 
         public bool CheckLogin(SQLITE_Users users)
         {
             bool checkHash = false;
-            users.LoggingInDB(LoginMail.Text, LoginPasword.Password);
             if (users.FetchedMail == LoginMail.Text)
             {
-                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+                checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
-        
-            if ( users.FetchedMail == LoginMail.Text && checkHash == true)
+
+            if (users.FetchedMail == LoginMail.Text && checkHash == true)
             {
                 MessageBox.Show("login ok");
                 return true;
@@ -99,7 +97,7 @@ namespace A_P_SmartHub.Graphics.Login
                 MessageBox.Show(" Mail or Password is incorrect");
             }
             return false;
-            
+
         }
 
 
@@ -116,11 +114,25 @@ namespace A_P_SmartHub.Graphics.Login
             //kamo preco som ja zacal s backendom...
             Console.Beep();
 
-           
-                
-                mainWindow.SlideViewTransition(new MainDashboard(), true);
-            }
 
         }
+      
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+            if (mainWindow != null)
+            {
+                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
+                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
+                mainWindow.SlideViewTransition(new Register(), true);
+            }
+        }
     }
+
 }
+
+
+
+
