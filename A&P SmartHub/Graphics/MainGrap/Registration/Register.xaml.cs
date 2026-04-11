@@ -46,7 +46,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
         {
 
             //smtpClientMail smtpClientMail = new smtpClientMail();
-            //VerificationCodeWindow verificationCode  = new VerificationCodeWindow();
+            VerificationCodeWindow verificationCode  = new VerificationCodeWindow();
 
 
 
@@ -75,19 +75,19 @@ namespace A_P_SmartHub.Graphics.MainGrap
             //    bool uncrypPass = BCrypt.Net.BCrypt.EnhancedVerify(Password, PassHash);
             //    var mainWindow = Window.GetWindow(this) as MainWindow;
             //    smtpClientMail.SendMail(verificationCode, this);
-            //    mainWindow.MainDisplay.Content = verificationCode;
-            //}
             var mainWindow = Window.GetWindow(this) as MainWindow;
+                mainWindow.MainDisplay.Content = verificationCode;
+            //}
 
             // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
-            if (mainWindow != null)
-            {
-                // If the user control class is named "Login" inside the namespace A_P_SmartHub.Graphics.Login,
-                // fully qualify the type to avoid the namespace-vs-type ambiguity.
-                // If the actual class name is different, replace the final "Login" with the real class name.
-                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
+            //if (mainWindow != null)
+            //{
+            //    // If the user control class is named "Login" inside the namespace A_P_SmartHub.Graphics.Login,
+            //    // fully qualify the type to avoid the namespace-vs-type ambiguity.
+            //    // If the actual class name is different, replace the final "Login" with the real class name.
+            //    mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
 
-            }
+            //}
         }
      
         
