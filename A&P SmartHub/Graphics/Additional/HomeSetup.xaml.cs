@@ -30,11 +30,13 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void AddDeviceButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
+            addDeviceWindow.ShowDialog();
         }
         private void AddRoomButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AddRoomWindow addRoomWindow = new AddRoomWindow();
+            addRoomWindow.ShowDialog();
         }
 
     }
