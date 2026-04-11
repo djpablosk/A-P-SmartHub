@@ -9,19 +9,31 @@
     
     <Grid Background="#0E1620">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="550"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+        
         </Grid.ColumnDefinitions>
         <Border Margin="20" Background="#374151" CornerRadius="30">
             <StackPanel Margin="10" >
                 <TextBlock Text="Home Setup" FontFamily="Bahnschrift" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
+                <TextBlock Text="Enter your home name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+                <TextBlock Text="Enter your name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+                <TextBlock Text="Enter your city below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
-                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
+                
 
             </StackPanel>
         </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/> 
+            </Grid.ColumnDefinitions>
+            
+            
+        </Grid>
     </Grid>
 </UserControl>
