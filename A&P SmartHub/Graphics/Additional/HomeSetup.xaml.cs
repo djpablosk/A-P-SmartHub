@@ -28,6 +28,14 @@ namespace A_P_SmartHub.Graphics.Additional
             
         }
 
-        
+        private void AddDeviceButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void AddRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
