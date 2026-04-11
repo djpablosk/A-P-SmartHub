@@ -1,7 +1,5 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using SQLitePCL;
 using System.Windows;
-using SQLitePCL;
 
 namespace A_P_SmartHub
 {
