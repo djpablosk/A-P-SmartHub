@@ -40,12 +40,25 @@ namespace A_P_SmartHub.Graphics.Additional
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+                var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
+
+            }
             if (VerifCodeInput.Text == RandomCode.ToString())
             {
                 MessageBox.Show("verification succesful");
+                if (mainWindow != null)
+                {
+
+                    mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
+
+                }
             }
             {
-                var mainWindow = Window.GetWindow(this) as MainWindow;
+               
                 //smtpClientMail smtpClientMail = new smtpClientMail();
                 // smtpClientMail.SendMail(register);
 

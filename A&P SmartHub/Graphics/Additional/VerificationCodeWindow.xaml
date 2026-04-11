@@ -18,9 +18,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="160"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="190"/>
         </Grid.RowDefinitions>
 
                 <Border Grid.Row="1" Grid.Column="1" CornerRadius="30" BorderThickness="1.2" Background="#374151" BorderBrush="#2A3342"  HorizontalAlignment="Stretch" >
@@ -61,9 +61,9 @@
                                             <BeginStoryboard>
                                                 <Storyboard>
                                                     <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-  To="1.05" Duration="0:0:0.2" />
+                                                             To="1.05" Duration="0:0:0.2" />
                                                     <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-  To="1.05" Duration="0:0:0.2" />
+                                                             To="1.05" Duration="0:0:0.2" />
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.EnterActions>
@@ -71,9 +71,9 @@
                                             <BeginStoryboard>
                                                 <Storyboard>
                                                     <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
-  To="1" Duration="0:0:0.2" />
+                                                             To="1" Duration="0:0:0.2" />
                                                     <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
-  To="1" Duration="0:0:0.2" />
+                                                             To="1" Duration="0:0:0.2" />
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.ExitActions>

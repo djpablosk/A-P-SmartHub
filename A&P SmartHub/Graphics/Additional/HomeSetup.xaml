@@ -15,14 +15,20 @@
         </Grid.ColumnDefinitions>
         <Border Margin="20" Background="#374151" CornerRadius="30">
             <StackPanel Margin="10" >
-                <TextBlock Text="Home Setup" FontFamily="Bahnschrift" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
-                <TextBlock Text="Enter your home name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
-                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
-                <TextBlock Text="Enter your name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
-                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
-                <TextBlock Text="Enter your city below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
-                <TextBox Margin="10" BorderBrush="Black" Height="40" Background="Transparent" FontSize="30" FontFamily="Bahnschrift" />
-                
+                <TextBlock Foreground="#E0E6ED" Text="Home Setup" FontFamily="Bahnschrift" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
+                <TextBlock Foreground="#E0E6ED" Text="Enter your home name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+                <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
+                    
+                <TextBox  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
+                </Border>
+                <TextBlock Foreground="#E0E6ED" Text="Enter your name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+                <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
+                <TextBox  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
+                </Border>
+                <TextBlock Foreground="#E0E6ED" Text="Enter your city below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+                <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
+                <TextBox FontSize="50"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"  FontFamily="Bahnschrift" />
+                </Border>
 
             </StackPanel>
         </Border>
@@ -32,7 +38,21 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/> 
             </Grid.ColumnDefinitions>
-            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Margin="20" Background="#374151" CornerRadius="30">
+                <StackPanel>
+                    <TextBlock Text="Add Device" VerticalAlignment="Top" Height="50" FontSize="40" FontFamily="Bahnschrift" HorizontalAlignment="Left" Foreground="#E0E6ED" Margin="10"/>
+                    
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" Margin="20" Background="#374151" CornerRadius="30">
+                <StackPanel>
+                    
+                </StackPanel>
+            </Border>
             
         </Grid>
     </Grid>
