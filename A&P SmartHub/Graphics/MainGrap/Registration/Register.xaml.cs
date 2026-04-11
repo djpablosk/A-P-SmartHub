@@ -1,5 +1,8 @@
 ﻿using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
+using A_P_SmartHub.Graphics.Login;
+using A_P_SmartHub.Graphics.Login;
+using A_P_SmartHub.Interfaces;
 using BCrypt.Net;
 using Microsoft.Data.Sqlite;
 using Microsoft.Win32;
@@ -17,9 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using A_P_SmartHub.Graphics.Login;
 using VerificationCodeWindow = A_P_SmartHub.Graphics.Additional.VerificationCodeWindow;
-using A_P_SmartHub.Interfaces;
 
 namespace A_P_SmartHub.Graphics.MainGrap
 {
@@ -37,10 +38,9 @@ namespace A_P_SmartHub.Graphics.MainGrap
         }
 
 
-
-        private string Password { get; set; }
         public string Mail { get; set; }
-
+        private string Password { get; set; }
+        private string PassHash { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -71,19 +71,16 @@ namespace A_P_SmartHub.Graphics.MainGrap
             {
                 Password = Passw1.Text;
                 Mail = EmailRegWind.Text;
-                
+                var mainWindow = Window.GetWindow(this) as MainWindow;
+
                 verificationCode.Mail = EmailRegWind.Text;
                 verificationCode.PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
-                var mainWindow = Window.GetWindow(this) as MainWindow;
                 mainWindow.MainDisplay.Content = verificationCode;
                 smtpClientMail.SendMail(verificationCode, this);
-
             }
 
+
         }
-
-
-
 
 
 
