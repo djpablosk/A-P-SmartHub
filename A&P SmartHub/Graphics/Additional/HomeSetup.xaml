@@ -45,12 +45,93 @@
             <Border Margin="20" Background="#374151" CornerRadius="30">
                 <StackPanel>
                     <TextBlock Text="Add Device" VerticalAlignment="Top" Height="50" FontSize="40" FontFamily="Bahnschrift" HorizontalAlignment="Left" Foreground="#E0E6ED" Margin="10"/>
-                    
+                    <ListBox Margin="5" Height="240" Background="Transparent" BorderBrush="White" x:Name="DeviceListBox"/>
+                    <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" Margin="10" Background="#22FFFFFF">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+  To="1.05" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+  To="1.05" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+  To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+  To="1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Button Content="Add Device" HorizontalAlignment="Stretch"  FontSize="20" FontFamily="Bahnschrift" Background="Transparent" BorderThickness="0"  Click="AddDeviceButton_Click">
+                           
+                        </Button>
+                    </Border>
                 </StackPanel>
             </Border>
             <Border Grid.Row="1" Margin="20" Background="#374151" CornerRadius="30">
                 <StackPanel>
-                    
+                    <TextBlock Text="Add Room" VerticalAlignment="Top" Height="50" FontSize="40" FontFamily="Bahnschrift" HorizontalAlignment="Left" Foreground="#E0E6ED" Margin="10"/>
+                    <ListBox Margin="5" Height="240" Background="Transparent" BorderBrush="White" x:Name="RoomListBox"/>
+                    <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" Margin="10" Background="#22FFFFFF">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Setter.Value>
+                                </Setter>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+To="1.05" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+To="1.05" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+To="1" Duration="0:0:0.2" />
+                                                    <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+To="1" Duration="0:0:0.2" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Button Content="Add Room" HorizontalAlignment="Stretch"  FontSize="20" FontFamily="Bahnschrift" Background="Transparent" BorderThickness="0"  Click="AddRoomButton_Click" >
+                            
+                        </Button>
+                    </Border>
                 </StackPanel>
             </Border>
             
