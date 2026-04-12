@@ -45,5 +45,16 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.AllDevices(), true);
+
+            }
+        }
     }
 }
