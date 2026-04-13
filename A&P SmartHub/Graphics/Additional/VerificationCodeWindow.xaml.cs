@@ -72,7 +72,7 @@ namespace A_P_SmartHub.Graphics.Additional
                 MessageBox.Show("Wrong verification code");
             }
         
-        var mainWindow = Window.GetWindow(this) as MainWindow;
+         mainWindow = Window.GetWindow(this) as MainWindow;
                 //smtpClientMail smtpClientMail = new smtpClientMail();
                 // smtpClientMail.SendMail(register);
 

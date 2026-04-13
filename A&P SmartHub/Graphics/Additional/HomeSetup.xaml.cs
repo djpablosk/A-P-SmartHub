@@ -20,6 +20,9 @@ namespace A_P_SmartHub.Graphics.Additional
     /// </summary>
     public partial class HomeSetup : UserControl
     {
+        public string HomeName {  get; set; }
+        public string Name { get; set; }
+        public string City { get; set; }
         
 
         public HomeSetup()
@@ -28,6 +31,15 @@ namespace A_P_SmartHub.Graphics.Additional
             
         }
 
+        public void AddValues()
+        {  
+        HomeName = HomeNameSetupBox.Text;
+            Name = NameSetupBox.Text;
+            City = CitySetupBox.Text;
+
+
+        }
+            
         
     }
 }

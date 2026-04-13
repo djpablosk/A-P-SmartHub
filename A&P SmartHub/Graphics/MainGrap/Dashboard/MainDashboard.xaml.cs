@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.Additional;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,12 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
     /// </summary>
     public partial class MainDashboard : UserControl
     {
+        HomeSetup setup;
         public MainDashboard()
         {
             InitializeComponent();
+            DashboardHomeName.Text = "DefaultName =-=";
+
             var myDevices = new List<SmartDevice>
     {
         new SmartDevice { Name = "Main Light" },
@@ -41,9 +45,15 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
             public string Name { get; set; }
         }
 
+        public void Uprava()
+        {
+            
+            DashboardHomeName.Text = setup.HomeName;
+        }
+
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Coming soon");
         }
     }
 }
