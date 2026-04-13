@@ -50,7 +50,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
             SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
             //smtpClientMail smtpClientMail = new smtpClientMail();
-            VerificationCodeWindow verificationCode  = new VerificationCodeWindow();
+            
 
 
 

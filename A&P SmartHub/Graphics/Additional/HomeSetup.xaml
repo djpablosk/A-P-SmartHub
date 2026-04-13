@@ -19,15 +19,15 @@
                 <TextBlock Foreground="#E0E6ED" Text="Enter your home name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
                     
-                <TextBox  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
+                <TextBox x:Name="HomeNameSetupBox"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
                 </Border>
                 <TextBlock Foreground="#E0E6ED" Text="Enter your name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
-                <TextBox  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
+                <TextBox x:Name="NameSetupBox"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
                 </Border>
                 <TextBlock Foreground="#E0E6ED" Text="Enter your city below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
-                <TextBox FontSize="50"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"  FontFamily="Bahnschrift" />
+                <TextBox x:Name="CitySetupBox" FontSize="50"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"  FontFamily="Bahnschrift" />
                 </Border>
 
             </StackPanel>
