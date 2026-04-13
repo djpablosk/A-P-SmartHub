@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using DotNetEnv;
+
+ 
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -13,9 +16,11 @@ namespace A_P_SmartHub.Graphics.Additional
 
         public void SendCode(VerificationCodeWindow verification)
         {
+            Env.Load();
+            string MailCode = Environment.GetEnvironmentVariable("mailPass");
             var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("apsmarthub@gmail.com", "mqsorowexagrnmng"),
+                Credentials = new NetworkCredential("apsmarthub@gmail.com", MailCode),
                 EnableSsl = true,
             };
             var mail = new MailMessage();
@@ -57,11 +62,13 @@ namespace A_P_SmartHub.Graphics.Additional
                 }
         public void SendMail(VerificationCodeWindow verificationCode, Register register)
         {
+            Env.Load();
+             string MailCode = Environment.GetEnvironmentVariable("mailPass");
 
 
-            var smtp = new SmtpClient("smtp.gmail.com", 587)
+        var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("apsmarthub@gmail.com", "mqsorowexagrnmng"),// zmenit
+                Credentials = new NetworkCredential("apsmarthub@gmail.com", MailCode),// zmenit
 
                 EnableSsl = true
             };
