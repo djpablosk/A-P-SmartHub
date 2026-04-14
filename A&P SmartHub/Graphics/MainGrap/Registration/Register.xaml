@@ -8,23 +8,23 @@
              d:DesignHeight="900" d:DesignWidth="1500">
 
 
-  
-        
+
+
 
     <Grid Background="#101725" >
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="700" />
-                <ColumnDefinition Width="50"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="700" />
+            <ColumnDefinition Width="50"/>
 
-            </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="1">
 
@@ -36,21 +36,21 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
-        <StackPanel Margin="50,0,0,0"  Grid.Row="0">
-        <TextBlock  FontFamily="Bahnschrift" FontSize="200" Text="AP" Foreground="White" />
-            <TextBlock FontFamily="Bahnschrift" FontSize="80" Margin="-15,30" Text="SmartHub" Foreground="#22FFFFFF" />
+            <StackPanel Margin="50,0,0,0"  Grid.Row="0">
+                <TextBlock  FontFamily="Bahnschrift" FontSize="200" Text="AP" Foreground="White" />
+                <TextBlock FontFamily="Bahnschrift" FontSize="80" Margin="-15,30" Text="SmartHub" Foreground="#22FFFFFF" />
 
-        </StackPanel>
+            </StackPanel>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="400"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
-            <Image   Grid.Column="1" Source="/Graphics/MainGrap/Registration/RegisterImageEDITED.png"/>
-                
+
+                <Image   Grid.Column="1" Source="/Graphics/MainGrap/Registration/RegisterImageEDITED.png"/>
+
             </Grid>
-            
+
 
         </Grid>
 
@@ -58,21 +58,21 @@
         <TextBlock  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="20,0" VerticalAlignment="Center" FontSize="24" FontFamily="Bahnschrift" Foreground="#22FFFFFF" Text="AP SmartHub"/>
 
         <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.5" Background="#374151" BorderBrush="#2A3342"  HorizontalAlignment="Stretch" >
-               
-                <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
-                    <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Bahnschrift" FontSize="72" Foreground="White"  />
-                    <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
-                    <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
-                        <TextBox x:Name="EmailRegWind" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" TextChanged="TextBox_TextChanged" />
-                    </Border> 
-                    <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="168" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
-                    <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                        <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
-                    </Border>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm password:" Width="350" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
-                    <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
-                        <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
-                    </Border>
+
+            <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
+                <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Bahnschrift" FontSize="72" Foreground="White"  />
+                <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
+                <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
+                    <TextBox x:Name="EmailRegWind" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" TextChanged="TextBox_TextChanged" />
+                </Border>
+                <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="168" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
+                <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                    <TextBox Name="Passw1" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
+                </Border>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm password:" Width="350" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
+                <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
+                    <TextBox x:Name="Passw2" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
+                </Border>
                 <Border Width="500" Margin="0,30" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
                     <Button Cursor="Hand" BorderThickness="0"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
                         <Button.Template>
@@ -82,9 +82,9 @@
                         </Button.Template>
                         <Border>
                             <TextBlock Text="Continue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Foreground="White"/>
-                        </Border>    
-                        
-                        
+                        </Border>
+
+
                     </Button>
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -131,9 +131,9 @@
 
 
                 </Border>
-                   
 
-                </StackPanel>
+
+            </StackPanel>
         </Border>
         <Button Cursor="Hand"  Height="50" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="exit" Click="Exit_Click" Grid.Row="1" Grid.Column="1" >
             <Button.Style>
@@ -192,8 +192,8 @@
             </Viewbox>
         </Button>
 
-        </Grid>
-   
-   
+    </Grid>
+
+
 
 </UserControl>

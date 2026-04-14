@@ -1,4 +1,5 @@
-﻿using A_P_SmartHub.Graphics.Login;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using Login = A_P_SmartHub.Graphics.Login.Login;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -22,7 +25,8 @@ namespace A_P_SmartHub.Graphics.Additional
     public partial class VerificationCodeWindow : UserControl
     {
         public int RandomCode {  get; set; }
-
+        public string Mail { get; set; }
+               public string PassHash { get; set; }
         public VerificationCodeWindow()
         {
             InitializeComponent();
@@ -39,6 +43,7 @@ namespace A_P_SmartHub.Graphics.Additional
        
        
         private void Button_Click(object sender, RoutedEventArgs e)
+       
         {
                 var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
@@ -49,26 +54,36 @@ namespace A_P_SmartHub.Graphics.Additional
             }
             if (VerifCodeInput.Text == RandomCode.ToString())
             {
-                MessageBox.Show("verification succesful");
-                if (mainWindow != null)
+                SQLITE_Users sQLITE_Users = new SQLITE_Users();
+
+                sQLITE_Users.CreateDB();
+
+                if (sQLITE_Users.RegisterNewUser(Mail, PassHash))
                 {
-
-                    mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
-
+                    MessageBox.Show("verification successful");
+                }
+                else
+                {
+                    MessageBox.Show("Mail already used");
                 }
             }
+            else
             {
-               
+                MessageBox.Show("Wrong verification code");
+            }
+        
+        var mainWindow = Window.GetWindow(this) as MainWindow;
                 //smtpClientMail smtpClientMail = new smtpClientMail();
                 // smtpClientMail.SendMail(register);
 
                 if (mainWindow != null)
                 {
+                 
+              
 
-                    // mainWindow.MainDisplay.Content = new ();    este doriesim
+                mainWindow.MainDisplay.Content = new MainDashboard();
 
                 }
             }
         }
     }
-}

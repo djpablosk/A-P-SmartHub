@@ -1,6 +1,8 @@
-﻿using A_P_SmartHub.Graphics.Additional;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Login;
-using A_P_SmartHub.Graphics.MainGrap.Registration;
+using A_P_SmartHub.Graphics.Login;
+using A_P_SmartHub.Interfaces;
 using BCrypt.Net;
 using Microsoft.Data.Sqlite;
 using Microsoft.Win32;
@@ -18,9 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using A_P_SmartHub.Graphics.Login;
 using VerificationCodeWindow = A_P_SmartHub.Graphics.Additional.VerificationCodeWindow;
-using A_P_SmartHub.Interfaces;
 
 namespace A_P_SmartHub.Graphics.MainGrap
 {
@@ -29,7 +29,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
     /// </summary>
     /// 
 
-        
+
     public partial class Register : UserControl
     {
         public Register()
@@ -45,50 +45,53 @@ namespace A_P_SmartHub.Graphics.MainGrap
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+            smtpClientMail smtpClientMail = new smtpClientMail();
+            VerificationCodeWindow verificationCode = new VerificationCodeWindow();
+            SQLITE_Users sQLITE_Users = new SQLITE_Users();
+
             //smtpClientMail smtpClientMail = new smtpClientMail();
             VerificationCodeWindow verificationCode  = new VerificationCodeWindow();
 
 
 
+            if (Passw1.Text != Passw2.Text)
+            {
+                MessageBox.Show("Password do not match");
+                return;
+            }
+            else if (Passw1.Text.Length < 8)
+            {
+                MessageBox.Show("This password is too weak, please use password with 8 or more chars");
+                return;
+            }
+            else if (!EmailRegWind.Text.Contains("@"))
+            {
+                MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
+                return;
+            }
+            else
+            {
+                Password = Passw1.Text;
+                Mail = EmailRegWind.Text;
+                var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            //if (Passw1.Text != Passw2.Text)
-            //{
-            //    MessageBox.Show("Password do not match");
-            //    return;
-            //}
-            //else if (Passw1.Text.Length < 8)
-            //{
-            //    MessageBox.Show("This password is too weak, please use password with 8 or more chars");
-            //    return;
-            //}
-            //else if (!EmailRegWind.Text.Contains("@"))
-            //{
-            //    MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
-            //    return;
-            //}
-            //else
-            //{
+                verificationCode.Mail = EmailRegWind.Text;
+                verificationCode.PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
+                mainWindow.MainDisplay.Content = verificationCode;
+                smtpClientMail.SendMail(verificationCode, this);
+            }
 
-            //    Mail = EmailRegWind.Text;
-            //    Password = Passw1.Text;
-            //    PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
-            //    bool uncrypPass = BCrypt.Net.BCrypt.EnhancedVerify(Password, PassHash);
-            //    var mainWindow = Window.GetWindow(this) as MainWindow;
-            //    smtpClientMail.SendMail(verificationCode, this);
-            var mainWindow = Window.GetWindow(this) as MainWindow;
-             mainWindow.MainDisplay.Content = verificationCode;
-            //}
 
             // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
            
         }
-     
-        
+
+
 
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-           //
+            //
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
