@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.Additional;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -7,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -18,43 +20,66 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
     /// </summary>
     public partial class MainDashboard : UserControl
     {
+
+        private HomePage homePage;
+        private AllDevices allDevices;
+        private MenuPage menuPage;
+
         public MainDashboard()
         {
             InitializeComponent();
-            var myDevices = new List<SmartDevice>
-    {
-        new SmartDevice { Name = "Main Light" },
-        new SmartDevice { Name = "Thermostat" },
-        new SmartDevice { Name = "TV Living Room" },
-        new SmartDevice { Name = "Led Strip" },
-        new SmartDevice { Name = "Humidifier" },
-        new SmartDevice { Name = "PC Station" },
-        new SmartDevice { Name = "Camera 1" },
-        new SmartDevice { Name = "Router" }
-    };
-
-            // A tu to pripojíme na ten náš XAML zoznam
-            DeviceList.ItemsSource = myDevices;
-        }
-        public class SmartDevice
-        {
-            public string Name { get; set; }
+            homePage = new HomePage();
+            allDevices = new AllDevices();
+            menuPage = new MenuPage();
+            MainDisplay.Content = homePage;
         }
 
-        private void Settings_Click(object sender, RoutedEventArgs e)
+        private void SlideAnimation(UserControl newScreen)
         {
+            MainDisplay.Content = newScreen;
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Window.GetWindow(this) as MainWindow;
-            if (mainWindow != null)
+           
+            TranslateTransform slide = new TranslateTransform();
+            newScreen.RenderTransform = slide;
+            
+            DoubleAnimation fadeAnimation = new DoubleAnimation
             {
+                From = 0.0,
+                To = 1.0,
+                Duration = TimeSpan.FromMilliseconds(900), 
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut } 
+            };
 
-                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.AllDevices(), true);
+           
+            DoubleAnimation slideAnimation = new DoubleAnimation
+            {
+                From = 30,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(900),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
 
-            }
+           
+            newScreen.BeginAnimation(UIElement.OpacityProperty, fadeAnimation);
+            slide.BeginAnimation(TranslateTransform.YProperty, slideAnimation);
         }
+
+       
+
+        private void HomePage_Click(object sender, RoutedEventArgs e)
+        {
+            SlideAnimation(homePage);
+        }
+
+        private void AllDevices_Click(object sender, RoutedEventArgs e)
+        {
+            SlideAnimation(allDevices);
+        }
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            SlideAnimation(menuPage);
+        }
+
     }
 }
+
