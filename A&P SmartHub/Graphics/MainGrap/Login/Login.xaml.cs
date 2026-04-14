@@ -56,49 +56,49 @@ namespace A_P_SmartHub.Graphics.Login
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            if (mainWindow != null)
-            {
-                SQLITE_Users users = new SQLITE_Users();
+            //if (mainWindow != null)
+            //{
+            //    SQLITE_Users users = new SQLITE_Users();
 
-                bool success = CheckLogin(users); // make CheckLogin return bool
-                if (success)
-                {
+            //    bool success = CheckLogin(users); // make CheckLogin return bool
+            //    if (success)
+            //    {
 
-                    smtpClientMail.SendCode(verificationCodeWindow);//2
-
-
-
-                    mainWindow.SlideViewTransition(new MainDashboard(), true);
-                    MessageBox.Show("ide to");
+            //        smtpClientMail.SendCode(verificationCodeWindow);//2
 
 
 
-                }
+                   mainWindow.SlideViewTransition(new MainDashboard(), true);
+            //        MessageBox.Show("ide to");
 
-            }
+
+
+            //    }
+
+            //}
         }
 
-        public bool CheckLogin(SQLITE_Users users)
-        {
-            bool checkHash = false;
-            if (users.FetchedMail == LoginMail.Text)
-            {
-                checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
-            }
+        //public bool CheckLogin(SQLITE_Users users)
+        //{
+        //    bool checkHash = false;
+        //    if (users.FetchedMail == LoginMail.Text)
+        //    {
+        //        checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+        //    }
 
-            if (users.FetchedMail == LoginMail.Text && checkHash == true)
-            {
-                MessageBox.Show("login ok");
-                return true;
+        //    if (users.FetchedMail == LoginMail.Text && checkHash == true)
+        //    {
+        //        MessageBox.Show("login ok");
+        //        return true;
 
-            }
-            else if (users.FetchedMail != LoginMail.Text && checkHash != true)
-            {
-                MessageBox.Show(" Mail or Password is incorrect");
-            }
-            return false;
+        //    }
+        //    else if (users.FetchedMail != LoginMail.Text && checkHash != true)
+        //    {
+        //        MessageBox.Show(" Mail or Password is incorrect");
+        //    }
+        //    return false;
 
-        }
+        //}
 
 
         public void ForgotPass_button_Click()
