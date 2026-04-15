@@ -1,5 +1,6 @@
 ﻿using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
+using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 using System;
@@ -121,12 +122,23 @@ namespace A_P_SmartHub.Graphics.Login
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+           
             if (mainWindow != null)
             {
-                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
-                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
+               
                 mainWindow.SlideViewTransition(new Register(), true);
+            }
+        }
+
+        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new NewPasswordScreen(), true);
             }
         }
     }
