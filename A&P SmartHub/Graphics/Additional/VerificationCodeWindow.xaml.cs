@@ -43,47 +43,36 @@ namespace A_P_SmartHub.Graphics.Additional
        
        
         private void Button_Click(object sender, RoutedEventArgs e)
-       
         {
-                var mainWindow = Window.GetWindow(this) as MainWindow;
-            if (mainWindow != null)
-            {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
 
-                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
+            //if (VerifCodeInput.Text == RandomCode.ToString())
+            //{
+            //    SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
-            }
-            if (VerifCodeInput.Text == RandomCode.ToString())
-            {
-                SQLITE_Users sQLITE_Users = new SQLITE_Users();
+            //    sQLITE_Users.CreateDB();
 
-                sQLITE_Users.CreateDB();
-
-                if (sQLITE_Users.RegisterNewUser(Mail, PassHash))
-                {
-                    MessageBox.Show("verification successful");
-                }
-                else
+            //    if (sQLITE_Users.RegisterNewUser(Mail, PassHash))
+            //    {
+            //        MessageBox.Show("verification successful");
+            //        if (mainWindow != null)
+            //        {
+            //            mainWindow.MainDisplay.Content = new MainDashboard();
+            //        }
+            //    }
+                //else
                 {
                     MessageBox.Show("Mail already used");
+                    if (mainWindow != null)
+                    {
+                        mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Wrong verification code");
-            }
-        
-         mainWindow = Window.GetWindow(this) as MainWindow;
-                //smtpClientMail smtpClientMail = new smtpClientMail();
-                // smtpClientMail.SendMail(register);
-
-                if (mainWindow != null)
-                {
-                 
-              
-
-                mainWindow.MainDisplay.Content = new MainDashboard();
-
-                }
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Wrong verification code");
+            //}
+        }
         }
     }
