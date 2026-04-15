@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
-
+using DotNetEnv;
 
 namespace A_P_SmartHub.Databazicky
 {
@@ -51,7 +51,7 @@ namespace A_P_SmartHub.Databazicky
             }
         }
 
-        public void LoggingInDB(string Mail, string Hash)
+        public void LoggingInDB(string Mail)
         {
             using var connection = new SqliteConnection("Data Source=users.db");
             connection.Open();
