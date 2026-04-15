@@ -67,6 +67,8 @@ namespace A_P_SmartHub.Graphics.Login
 
                     mainWindow.SlideViewTransition(new MainDashboard(), true);
                     MessageBox.Show("ide to");
+                    MySql mySql = new MySql();
+                    mySql.DataBase();
 
 
 
