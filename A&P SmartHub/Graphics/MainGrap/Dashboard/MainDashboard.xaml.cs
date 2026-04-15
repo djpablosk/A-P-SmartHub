@@ -20,18 +20,26 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
     /// </summary>
     public partial class MainDashboard : UserControl
     {
-
-        private HomePage homePage;
-        private AllDevices allDevices;
-        private MenuPage menuPage;
-
+        HomeSetup setup;
         public MainDashboard()
         {
             InitializeComponent();
-            homePage = new HomePage();
-            allDevices = new AllDevices();
-            menuPage = new MenuPage();
-            MainDisplay.Content = homePage;
+            DashboardHomeName.Text = "DefaultName =-=";
+
+            var myDevices = new List<SmartDevice>
+    {
+        new SmartDevice { Name = "Main Light" },
+        new SmartDevice { Name = "Thermostat" },
+        new SmartDevice { Name = "TV Living Room" },
+        new SmartDevice { Name = "Led Strip" },
+        new SmartDevice { Name = "Humidifier" },
+        new SmartDevice { Name = "PC Station" },
+        new SmartDevice { Name = "Camera 1" },
+        new SmartDevice { Name = "Router" }
+    };
+
+            // A tu to pripojíme na ten náš XAML zoznam
+            DeviceList.ItemsSource = myDevices;
         }
 
         private void SlideAnimation(UserControl newScreen)
@@ -64,16 +72,15 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
             slide.BeginAnimation(TranslateTransform.YProperty, slideAnimation);
         }
 
-       
-
-        private void HomePage_Click(object sender, RoutedEventArgs e)
+        public void Uprava()
         {
-            SlideAnimation(homePage);
+            
+            DashboardHomeName.Text = setup.HomeName;
         }
 
-        private void AllDevices_Click(object sender, RoutedEventArgs e)
+        private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            SlideAnimation(allDevices);
+            MessageBox.Show("Coming soon");
         }
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
