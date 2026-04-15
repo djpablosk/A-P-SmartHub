@@ -16,9 +16,6 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Animation;
 using System.Windows.Media;
 
-
-
-
 namespace A_P_SmartHub
 {
     /// <summary>
@@ -29,23 +26,23 @@ namespace A_P_SmartHub
         public MainWindow()
         {
             InitializeComponent();
-           MainDisplay.Content = new Login();
+            MainDisplay.Content = new Login();
             UpperBar.Content = new CustomUpperBar();
             this.WindowState = WindowState.Maximized;
 
+            
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
 
-           
+
             if (e.ButtonState == MouseButtonState.Pressed)
             {
                 this.DragMove();
             }
         }
 
-       
 
         private void usernamebox_Copy1_GotFocus_1(object sender, RoutedEventArgs e)
         {
@@ -56,7 +53,7 @@ namespace A_P_SmartHub
 
         public void SlideViewTransition(UserControl newView, bool v)    //animacia blur 
         {
-           
+
             BlurEffect blur = new BlurEffect()
             {
                 Radius = 0
@@ -65,7 +62,7 @@ namespace A_P_SmartHub
 
             TimeSpan duration = TimeSpan.FromSeconds(0.15);
 
-          
+
             DoubleAnimation blurOut = new DoubleAnimation(0, 20, duration);
             DoubleAnimation fadeOut = new DoubleAnimation(1, 0, duration);
 
