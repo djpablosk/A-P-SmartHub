@@ -75,7 +75,7 @@
 
 
 
-                    <Button Margin="10" Width="40" Height="40" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Log out">
+                    <Button Click="LogOut_Click" Margin="10" Width="40" Height="40" Background="Transparent" BorderThickness="0" Cursor="Hand" ToolTip="Log out">
 
 
                         <Button.Template>
