@@ -1,4 +1,6 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.Login;
+using A_P_SmartHub.Graphics.MainGrap;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -45,6 +47,18 @@ namespace A_P_SmartHub.Graphics.Additional
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+            }
         }
     }
 }
