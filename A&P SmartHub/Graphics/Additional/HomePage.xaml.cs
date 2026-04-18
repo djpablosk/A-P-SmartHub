@@ -46,7 +46,14 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
 
+
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new SettingsScreen(), true);
+            }
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
