@@ -52,9 +52,14 @@
                     </Grid.ColumnDefinitions>
                     <Border Margin="10" CornerRadius="20" Background="#2A3342" >
                         <Grid Margin="10">
-                            <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Scheludes:" />
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                                <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Scheludes:" />
                             <Button x:Name="ScheBtn" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40" Foreground="White" Content="+" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" />
-                            <ItemsControl x:Name="ScheItemsControl" Margin="0,60,0,0">
+                            <ItemsControl x:Name="ScheItemsControl" Grid.Row="1">
                                 
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
@@ -69,8 +74,13 @@
                     
                     <Border Grid.Column="1" Margin="10" CornerRadius="20" Background="#2A3342" >
                         <Grid Margin="10">
-                            <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Notifications:" />
-                            <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="380">
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                                <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Notifications:" />
+                            <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
                                 
                             </ItemsControl>
                         </Grid>
@@ -81,9 +91,14 @@
                 <Grid x:Name="BottomGrid" Grid.Row="2">
                     <Border Margin="10" CornerRadius="20" Background="#2A3342" >
                         <Grid Margin="10">
-                            <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Smart rules:" />
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                                <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Smart rules:" />
                             <Button x:Name="RulesBtn" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40" Foreground="White" Content="+" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" />
-                            <ItemsControl>
+                            <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
                                 
                             
                             </ItemsControl>

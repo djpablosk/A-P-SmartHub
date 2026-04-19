@@ -22,5 +22,17 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             InitializeComponent();
         }
+
+        private void DeleteAccount_Click(object sender, RoutedEventArgs e)
+        {
+            // Handle delete account logic here
+            MessageBox.Show("Delete Account button clicked.");
+        }   
+
+        private void AlertToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Handle toggle button logic here
+            MessageBox.Show("Toggle button clicked.");
+        }
     }
 }
