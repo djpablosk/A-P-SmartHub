@@ -109,16 +109,15 @@
                                 <GradientStop Color="#FFC400" Offset="1.0" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
-
-                        <Button Cursor="Hand" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+ 
+                        <Button Cursor="Hand" Height="55" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2" >
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </ControlTemplate>
                             </Button.Template>
-                            <Border CacheMode="BitmapCache" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#22FFFFFF" CornerRadius="20">
-                                <TextBlock Text="Login" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
-                            </Border>
+                            <TextBlock Text="Login" FontSize="45" VerticalAlignment="Stretch" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
+
                         </Button>
 
                         <Border.Style>
