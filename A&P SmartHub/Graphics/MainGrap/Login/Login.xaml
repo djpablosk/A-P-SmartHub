@@ -99,7 +99,7 @@
                         </Button>
                     </Border>
 
-                    <Border Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
+                    <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
                         <Border.CacheMode>
                             <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
                         </Border.CacheMode>
@@ -110,13 +110,13 @@
                             </LinearGradientBrush>
                         </Border.BorderBrush>
 
-                        <Button Cursor="Hand" Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                        <Button Cursor="Hand" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </ControlTemplate>
                             </Button.Template>
-                            <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
+                            <Border CacheMode="BitmapCache" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#22FFFFFF" CornerRadius="20">
                                 <TextBlock Text="Login" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
                             </Border>
                         </Button>
