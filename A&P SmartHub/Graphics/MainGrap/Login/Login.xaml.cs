@@ -61,10 +61,10 @@ namespace A_P_SmartHub.Graphics.Login
             if (mainWindow != null)
             {
                 SQLITE_Users users = new SQLITE_Users();
-
-            //    bool success = CheckLogin(users); // make CheckLogin return bool
-            //    if (success)
-            //    {
+                MySql mySql = new MySql();
+                bool success = CheckLogin(users,mySql); // make CheckLogin return bool
+                if (success)
+                {
 
                     mainWindow.SlideViewTransition(new MainDashboard(), true);
                     MessageBox.Show("ide to");
@@ -76,11 +76,12 @@ namespace A_P_SmartHub.Graphics.Login
                 }
                
 
-            //}
+            }
         }
 
-        public bool CheckLogin(SQLITE_Users users)
+        public bool CheckLogin(SQLITE_Users users,MySql mySql)
         {
+            string tempMail = LoginMail.Text; 
             users.LoggingInDB(LoginMail.Text);
             bool checkHash = false;
             if (users.FetchedMail == LoginMail.Text)
@@ -88,10 +89,13 @@ namespace A_P_SmartHub.Graphics.Login
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
 
-        //    if (users.FetchedMail == LoginMail.Text && checkHash == true)
-        //    {
-        //        MessageBox.Show("login ok");
-        //        return true;
+           if (users.FetchedMail == LoginMail.Text && checkHash == true)
+           {
+                SessionInfo.ID = users.GetUserId(tempMail);
+                mySql.ReturnBasicFromDB(SessionInfo.ID);
+                MessageBox.Show("login ok");
+               return true;
+              
 
             }
             else if (users.FetchedMail != LoginMail.Text || checkHash != true)
@@ -100,7 +104,7 @@ namespace A_P_SmartHub.Graphics.Login
             }
             return false;
 
-        //}
+        }
 
 
         public void ForgotPass_button_Click()

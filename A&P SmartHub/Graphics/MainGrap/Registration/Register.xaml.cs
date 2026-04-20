@@ -42,46 +42,71 @@ namespace A_P_SmartHub.Graphics.MainGrap
         private string Password { get; set; }
         private string PassHash { get; set; }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var mainWindow = Window.GetWindow(this) as MainWindow;
             smtpClientMail smtpClientMail = new smtpClientMail();
             VerificationCodeWindow verificationCode = new VerificationCodeWindow();
             SQLITE_Users sQLITE_Users = new SQLITE_Users();
+            sQLITE_Users.CreateDB();
 
 
 
-            //if (Passw1.Text != Passw2.Text)
-            //{
-            //    MessageBox.Show("Password do not match");
-            //    return;
-            //}
-            //else if (Passw1.Text.Length < 8)
-            //{
-            //    MessageBox.Show("This password is too weak, please use password with 8 or more chars");
-            //    return;
-            //}
-            //else if (!EmailRegWind.Text.Contains("@"))
-            //{
-            //    MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
-            //    return;
-            //}
-            //else
-            //{
-            //    Password = Passw1.Text;
-            //    Mail = EmailRegWind.Text;
-               var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (Passw1.Text != Passw2.Text)
+            {
+                MessageBox.Show("Password do not match");
+                return;
+            }
+            else if (Passw1.Text.Length < 8)
+            {
+                MessageBox.Show("This password is too weak, please use password with 8 or more chars");
+                return;
+            }
+            else if (!EmailRegWind.Text.Contains("@"))
+            {
+                MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
+                return;
+            }
+            else
+            {
+                Password = Passw1.Text;
+                Mail = EmailRegWind.Text;
+                PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
+                SessionInfo.Mail = Mail;
 
-            //    verificationCode.Mail = EmailRegWind.Text;
-            //    verificationCode.PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
-               mainWindow.MainDisplay.Content = verificationCode;
-            //    smtpClientMail.SendMail(verificationCode, this);
-            //}
+                bool result = sQLITE_Users.RegisterNewUser(Mail, PassHash);
+
+                if (!result)
+                {
 
 
-            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
-           
+
+                    MessageBox.Show("Looks Like This Mail is already Used Please Log In");
+                    if (mainWindow != null)
+                    {
+
+                        mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+                    }
+                }
+                else if (result)
+                {
+
+                    verificationCode.Mail = EmailRegWind.Text;
+                    verificationCode.PassHash = this.PassHash;
+                    mainWindow.MainDisplay.Content = verificationCode;
+                    smtpClientMail.SendMail(verificationCode, this);
+                }
+
+
+
+                // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+
+            }
         }
+        
+        
+        
 
 
 
@@ -93,17 +118,17 @@ namespace A_P_SmartHub.Graphics.MainGrap
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            //
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-           
+
             if (mainWindow != null)
             {
-               
+
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
             }
         }

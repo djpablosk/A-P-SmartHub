@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 
+
 namespace A_P_SmartHub.Graphics.Additional
 {
     /// <summary>
@@ -24,55 +25,52 @@ namespace A_P_SmartHub.Graphics.Additional
     /// </summary>
     public partial class VerificationCodeWindow : UserControl
     {
-        public int RandomCode {  get; set; }
+        public int RandomCode { get; set; }
         public string Mail { get; set; }
-               public string PassHash { get; set; }
+        public string PassHash { get; set; }
         public VerificationCodeWindow()
         {
             InitializeComponent();
             Random random = new Random();
-          RandomCode = random.Next(100000,1000000);
-            
+            RandomCode = random.Next(100000, 1000000);
+
         }
-       
-       
-        
-        
-      
-            
-       
-       
+
+
+
+
+
+
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            //if (VerifCodeInput.Text == RandomCode.ToString())
-            //{
-            //    SQLITE_Users sQLITE_Users = new SQLITE_Users();
+            if (VerifCodeInput.Text == RandomCode.ToString())
+            {
+                SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
-            //    sQLITE_Users.CreateDB();
+                sQLITE_Users.CreateDB();
 
-            //    if (sQLITE_Users.RegisterNewUser(Mail, PassHash))
-            //    {
-            //        MessageBox.Show("verification successful");
-            //        if (mainWindow != null)
-            //        {
-            //            mainWindow.MainDisplay.Content = new MainDashboard();
-            //        }
-            //    }
-                //else
+
+                MessageBox.Show("verification successful");
+                if (mainWindow != null)
                 {
-                    MessageBox.Show("Mail already used");
-                    if (mainWindow != null)
-                    {
-                        mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Additional.HomeSetup(), true);
-                    }
+                    mainWindow.MainDisplay.Content = new HomeSetup();
                 }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Wrong verification code");
-            //}
-        }
+                else
+                {
+                    MessageBox.Show("Verification Code Seems to not Match Our System");
+                }
+
+
+                
+            }
         }
     }
+}
+
+
+
+
