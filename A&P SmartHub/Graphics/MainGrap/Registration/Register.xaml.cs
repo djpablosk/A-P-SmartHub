@@ -49,37 +49,34 @@ namespace A_P_SmartHub.Graphics.MainGrap
             VerificationCodeWindow verificationCode = new VerificationCodeWindow();
             SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
-            //smtpClientMail smtpClientMail = new smtpClientMail();
-            
 
 
+            //if (Passw1.Text != Passw2.Text)
+            //{
+            //    MessageBox.Show("Password do not match");
+            //    return;
+            //}
+            //else if (Passw1.Text.Length < 8)
+            //{
+            //    MessageBox.Show("This password is too weak, please use password with 8 or more chars");
+            //    return;
+            //}
+            //else if (!EmailRegWind.Text.Contains("@"))
+            //{
+            //    MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
+            //    return;
+            //}
+            //else
+            //{
+            //    Password = Passw1.Text;
+            //    Mail = EmailRegWind.Text;
+               var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            if (Passw1.Text != Passw2.Text)
-            {
-                MessageBox.Show("Password do not match");
-                return;
-            }
-            else if (Passw1.Text.Length < 8)
-            {
-                MessageBox.Show("This password is too weak, please use password with 8 or more chars");
-                return;
-            }
-            else if (!EmailRegWind.Text.Contains("@"))
-            {
-                MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
-                return;
-            }
-            else
-            {
-                Password = Passw1.Text;
-                Mail = EmailRegWind.Text;
-                var mainWindow = Window.GetWindow(this) as MainWindow;
-
-                verificationCode.Mail = EmailRegWind.Text;
-                verificationCode.PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
-                mainWindow.MainDisplay.Content = verificationCode;
-                smtpClientMail.SendMail(verificationCode, this);
-            }
+            //    verificationCode.Mail = EmailRegWind.Text;
+            //    verificationCode.PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
+               mainWindow.MainDisplay.Content = verificationCode;
+            //    smtpClientMail.SendMail(verificationCode, this);
+            //}
 
 
             // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
@@ -103,12 +100,10 @@ namespace A_P_SmartHub.Graphics.MainGrap
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+           
             if (mainWindow != null)
             {
-                // If the user control class is named "Login" inside the namespace A_P_SmartHub.Graphics.Login,
-                // fully qualify the type to avoid the namespace-vs-type ambiguity.
-                // If the actual class name is different, replace the final "Login" with the real class name.
+               
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
+using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 using System;
@@ -61,19 +62,21 @@ namespace A_P_SmartHub.Graphics.Login
             {
                 SQLITE_Users users = new SQLITE_Users();
 
-                bool success = CheckLogin(users); // make CheckLogin return bool
-                if (success)
-                {
+            //    bool success = CheckLogin(users); // make CheckLogin return bool
+            //    if (success)
+            //    {
 
                     mainWindow.SlideViewTransition(new MainDashboard(), true);
                     MessageBox.Show("ide to");
+                    MySql mySql = new MySql();
+                    mySql.DataBase();
 
 
 
                 }
                
 
-            }
+            //}
         }
 
         public bool CheckLogin(SQLITE_Users users)
@@ -85,10 +88,10 @@ namespace A_P_SmartHub.Graphics.Login
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
 
-            if (users.FetchedMail == LoginMail.Text && checkHash == true)
-            {
-                MessageBox.Show("login ok");
-                return true;
+        //    if (users.FetchedMail == LoginMail.Text && checkHash == true)
+        //    {
+        //        MessageBox.Show("login ok");
+        //        return true;
 
             }
             else if (users.FetchedMail != LoginMail.Text || checkHash != true)
@@ -97,7 +100,7 @@ namespace A_P_SmartHub.Graphics.Login
             }
             return false;
 
-        }
+        //}
 
 
         public void ForgotPass_button_Click()
@@ -121,12 +124,23 @@ namespace A_P_SmartHub.Graphics.Login
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
+           
             if (mainWindow != null)
             {
-                // Tu musíme možno pridať plnú cestu k Registru, ak je v inom priečinku. 
-                // Ak ti podčiarkne slovo Register, napíš: new Registration.Register()
+               
                 mainWindow.SlideViewTransition(new Register(), true);
+            }
+        }
+
+        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new NewPasswordScreen(), true);
             }
         }
     }

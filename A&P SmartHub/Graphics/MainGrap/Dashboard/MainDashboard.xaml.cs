@@ -8,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -40,9 +41,35 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
             // A tu to pripojíme na ten náš XAML zoznam
             DeviceList.ItemsSource = myDevices;
         }
-        public class SmartDevice
+
+        private void SlideAnimation(UserControl newScreen)
         {
-            public string Name { get; set; }
+            MainDisplay.Content = newScreen;
+
+           
+            TranslateTransform slide = new TranslateTransform();
+            newScreen.RenderTransform = slide;
+            
+            DoubleAnimation fadeAnimation = new DoubleAnimation
+            {
+                From = 0.0,
+                To = 1.0,
+                Duration = TimeSpan.FromMilliseconds(900), 
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut } 
+            };
+
+           
+            DoubleAnimation slideAnimation = new DoubleAnimation
+            {
+                From = 30,
+                To = 0,
+                Duration = TimeSpan.FromMilliseconds(900),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+
+           
+            newScreen.BeginAnimation(UIElement.OpacityProperty, fadeAnimation);
+            slide.BeginAnimation(TranslateTransform.YProperty, slideAnimation);
         }
 
         public void Uprava()
@@ -55,5 +82,11 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
         {
             MessageBox.Show("Coming soon");
         }
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            SlideAnimation(menuPage);
+        }
+
     }
 }
+
