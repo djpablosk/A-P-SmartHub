@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-        <Border Style="{StaticResource NeonBorderStyle_Blue}" Margin="20" Background="#374151" CornerRadius="30">
+        <Border Style="{StaticResource GradientHoverPanel}" Margin="20" Background="#374151" CornerRadius="30">
             <StackPanel Margin="10" >
                 <TextBlock Text="Step 1: Home profile" HorizontalAlignment="Center" FontSize="46" Margin="10" Foreground="White" FontFamily="Bahnschrift"/>
    

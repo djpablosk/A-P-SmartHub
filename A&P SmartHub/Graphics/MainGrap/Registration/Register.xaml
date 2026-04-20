@@ -80,9 +80,9 @@
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
                             </ControlTemplate>
                         </Button.Template>
-                        <Border>
+                        
                             <TextBlock Text="Continue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Foreground="White"/>
-                        </Border>
+                       
 
 
                     </Button>
