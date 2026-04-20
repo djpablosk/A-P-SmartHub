@@ -1,5 +1,7 @@
-﻿using System;
+﻿using A_P_SmartHub.Databazicky;
+using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,8 @@ namespace A_P_SmartHub.Graphics.Additional
         public HomePage()
         {
             InitializeComponent();
+            LoadFromDB();
+
             var myDevices = new List<SmartDevice>
     {
         new SmartDevice { Name = "Main Light" },
@@ -33,6 +37,9 @@ namespace A_P_SmartHub.Graphics.Additional
         new SmartDevice { Name = "Camera 1" },
         new SmartDevice { Name = "Router" }
     };
+
+
+
 
             // A tu to pripojíme na ten náš XAML zoznam
             DeviceList.ItemsSource = myDevices;
@@ -46,5 +53,23 @@ namespace A_P_SmartHub.Graphics.Additional
         {
 
         }
+
+        public async void LoadFromDB()
+        {
+            MySql sql = new MySql();
+            string id = SessionInfo.ID;
+           await sql.ReturnBasicFromDB(id);
+            dashHomeName.Text = sql.HomeName.ToString();
+            string LengthCheck = dashHomeName.Text;
+            if (LengthCheck.Length == 0)
+            {
+                dashHomeName.Text = "Defaultne Meno";
+            }
+
+          
+            
+        
+        }
     }
 }
+
