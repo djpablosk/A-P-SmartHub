@@ -99,7 +99,7 @@
                         </Button>
                     </Border>
 
-                    <Border  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
+                    <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20">
                         <Border.CacheMode>
                             <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
                         </Border.CacheMode>
@@ -109,15 +109,16 @@
                                 <GradientStop Color="#FFC400" Offset="1.0" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
- 
-                        <Button Cursor="Hand" Height="55" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2" >
+
+                        <Button Cursor="Hand" Background="Transparent" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                            <TextBlock Text="Login" FontSize="40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                                    <Border Background="Transparent">
+                                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
                                 </ControlTemplate>
                             </Button.Template>
-                            <TextBlock Text="Login" FontSize="45" VerticalAlignment="Stretch" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
-
                         </Button>
 
                         <Border.Style>
