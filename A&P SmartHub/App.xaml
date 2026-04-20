@@ -6,12 +6,77 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Teal" SecondaryColor="Teal" />
-
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
-
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="GradientHoverPanel" TargetType="Border">
+                <Setter Property="Background" Value="#1A2235"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Padding" Value="15"/>
+
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <TranslateTransform Y="0"/>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#64748B" Offset="0.0"/>
+                            <GradientStop Color="#E2E8F0" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#94A3B8" BlurRadius="50" ShadowDepth="5" Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                     To="-5" Duration="0:0:0.3" />
+
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)"
+                                     To="0.6" Duration="0:0:0.3" />
+
+                                <PointAnimation Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.StartPoint)"
+                                    To="1,0" Duration="0:0:2" AutoReverse="True" RepeatBehavior="Forever"/>
+                                <PointAnimation Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.EndPoint)"
+                                    To="0,1" Duration="0:0:2" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                     To="0" Duration="0:0:0.3" />
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)"
+                                     To="0.3" Duration="0:0:0.3" />
+                                
+
+                                <PointAnimation Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.StartPoint)"
+                                    To="0,0" Duration="0:0:0.5" />
+                                <PointAnimation Storyboard.TargetProperty="(Border.BorderBrush).(LinearGradientBrush.EndPoint)"
+                                    To="1,1" Duration="0:0:0.5" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>
