@@ -20,45 +20,37 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
     /// </summary>
     public partial class MainDashboard : UserControl
     {
-        HomeSetup setup;
+
+        private HomePage homePage;
+        private AllDevices allDevices;
+        private MenuPage menuPage;
+
         public MainDashboard()
         {
             InitializeComponent();
-            DashboardHomeName.Text = "DefaultName =-=";
-
-            var myDevices = new List<SmartDevice>
-    {
-        new SmartDevice { Name = "Main Light" },
-        new SmartDevice { Name = "Thermostat" },
-        new SmartDevice { Name = "TV Living Room" },
-        new SmartDevice { Name = "Led Strip" },
-        new SmartDevice { Name = "Humidifier" },
-        new SmartDevice { Name = "PC Station" },
-        new SmartDevice { Name = "Camera 1" },
-        new SmartDevice { Name = "Router" }
-    };
-
-            // A tu to pripojíme na ten náš XAML zoznam
-            DeviceList.ItemsSource = myDevices;
+            homePage = new HomePage();
+            allDevices = new AllDevices();
+            menuPage = new MenuPage();
+            MainDisplay.Content = homePage;
         }
 
         private void SlideAnimation(UserControl newScreen)
         {
             MainDisplay.Content = newScreen;
 
-           
+
             TranslateTransform slide = new TranslateTransform();
             newScreen.RenderTransform = slide;
-            
+
             DoubleAnimation fadeAnimation = new DoubleAnimation
             {
                 From = 0.0,
                 To = 1.0,
-                Duration = TimeSpan.FromMilliseconds(900), 
-                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut } 
+                Duration = TimeSpan.FromMilliseconds(900),
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
             };
 
-           
+
             DoubleAnimation slideAnimation = new DoubleAnimation
             {
                 From = 30,
@@ -67,20 +59,21 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
                 EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
             };
 
-           
+
             newScreen.BeginAnimation(UIElement.OpacityProperty, fadeAnimation);
             slide.BeginAnimation(TranslateTransform.YProperty, slideAnimation);
         }
 
-        public void Uprava()
+
+
+        private void HomePage_Click(object sender, RoutedEventArgs e)
         {
-            
-            DashboardHomeName.Text = setup.HomeName;
+            SlideAnimation(homePage);
         }
 
-        private void Settings_Click(object sender, RoutedEventArgs e)
+        private void AllDevices_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Coming soon");
+            SlideAnimation(allDevices);
         }
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
@@ -89,4 +82,3 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
     }
 }
-

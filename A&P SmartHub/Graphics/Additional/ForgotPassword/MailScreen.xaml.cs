@@ -37,5 +37,10 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
                 }
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
