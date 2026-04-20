@@ -68,7 +68,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("apsmarthub@gmail.com", MailCode),// zmenit
+                Credentials = new NetworkCredential("apsmarthub@gmail.com", MailCode),
 
                 EnableSsl = true
             };

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.MainGrap;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,26 +22,44 @@ namespace A_P_SmartHub.Graphics.Additional
     /// </summary>
     public partial class HomeSetup : UserControl
     {
-        public string HomeName {  get; set; }
-        public string Name { get; set; }
-        public string City { get; set; }
-        
+
 
         public HomeSetup()
         {
             InitializeComponent();
-            
-        }
-
-        public void AddValues()
-        {  
-        HomeName = HomeNameSetupBox.Text;
-            Name = NameSetupBox.Text;
-            City = CitySetupBox.Text;
-
 
         }
-            
-        
+
+        private void AddDeviceButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
+            addDeviceWindow.ShowDialog();
+        }
+        private void AddRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddRoomWindow addRoomWindow = new AddRoomWindow();
+            addRoomWindow.ShowDialog();
+        }
+
+
+
+        public async Task SaveToDB()
+        {
+            string mail = SessionInfo.Mail;
+
+            SQLITE_Users users = new SQLITE_Users();
+            string id = users.GetUserId(mail);
+
+            SessionInfo.ID = id;
+
+            MySql sql = new MySql();
+            await sql.SaveToDB(id, HomeName.Text, UserName.Text, City.Text);
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveToDB();
+        }
     }
 }
