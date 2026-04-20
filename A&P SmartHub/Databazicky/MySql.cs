@@ -27,6 +27,8 @@ namespace A_P_SmartHub.Databazicky
 
 
 
+
+
         public async Task DataBase()
         {
             using (var conn = new MySqlConnection(getConn()))
