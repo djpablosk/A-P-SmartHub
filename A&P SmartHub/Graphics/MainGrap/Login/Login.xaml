@@ -110,7 +110,7 @@
                             </LinearGradientBrush>
                         </Border.BorderBrush>
 
-                        <Button Cursor="Hand" Background="Transparent" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                        <Button Cursor="Hand" Background="Transparent" Height="64"  HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
                             <TextBlock Text="Login" FontSize="40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
