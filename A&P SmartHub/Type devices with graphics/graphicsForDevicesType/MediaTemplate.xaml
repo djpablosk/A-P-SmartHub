@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="White">
             
     </Grid>
 </UserControl>
