@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
+  
+    <PackageReference Include="MySqlConnector" Version="2.5.0" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.6" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.6" />
@@ -33,6 +36,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Picture Login.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update=".env">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
