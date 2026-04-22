@@ -11,7 +11,7 @@
 
             <StackPanel>
                 <TextBlock Text="Write down your mail" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBox Width="300" Height="30" Margin="0,20,0,0" HorizontalAlignment="Center" TextChanged="TextBox_TextChanged"/>
+                <TextBox x:Name="forgotPassMail" Width="300" Height="30" Margin="0,20,0,0" HorizontalAlignment="Center"/>
 
                 <Border Width="300" Height="35" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
                     <Border.CacheMode>
