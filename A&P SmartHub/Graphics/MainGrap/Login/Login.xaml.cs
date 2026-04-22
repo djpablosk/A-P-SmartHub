@@ -27,34 +27,31 @@ namespace A_P_SmartHub.Graphics.Login
     /// </summary>
     public partial class Login : UserControl
     {
-       
+
         public Login()
         {
             InitializeComponent();
 
-
-
-
         }
 
 
-       
+
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
-           
-            
-            // Teraz už 'await' nebude podčiarknuté
+
+
+            //Teraz už 'await' nebude podčiarknuté
             await Task.Delay(5000);
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
-            
+
             if (mainWindow != null)
             {
                 SQLITE_Users users = new SQLITE_Users();
                 MySql mySql = new MySql();
-                bool success = CheckLogin(users,mySql); // make CheckLogin return bool
+                bool success = CheckLogin(users, mySql); // make CheckLogin return bool
                 if (success)
                 {
 
@@ -65,14 +62,14 @@ namespace A_P_SmartHub.Graphics.Login
 
 
                 }
-               
+
 
             }
         }
 
-        public bool CheckLogin(SQLITE_Users users,MySql mySql)
+        public bool CheckLogin(SQLITE_Users users, MySql mySql)
         {
-            string tempMail = LoginMail.Text; 
+            string tempMail = LoginMail.Text;
             users.LoggingInDB(LoginMail.Text);
             bool checkHash = false;
             if (users.FetchedMail == LoginMail.Text)
@@ -80,49 +77,42 @@ namespace A_P_SmartHub.Graphics.Login
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
 
-           if (users.FetchedMail == LoginMail.Text && checkHash == true)
-           {
-                SessionInfo.ID = users.GetUserId(tempMail);
-                mySql.ReturnBasicFromDB(SessionInfo.ID);
-                MessageBox.Show("login ok");
-               return true;
-              
-
-            }
-            else if (users.FetchedMail != LoginMail.Text || checkHash != true)
+            if (users.FetchedMail == LoginMail.Text && checkHash == true)
             {
-                MessageBox.Show(" Mail or Password is incorrect");
+                MessageBox.Show("login ok");
+                return true;
+                if (users.FetchedMail == LoginMail.Text && checkHash == true)
+                {
+                    SessionInfo.ID = users.GetUserId(tempMail);
+                    mySql.ReturnBasicFromDB(SessionInfo.ID);
+                    MessageBox.Show("login ok");
+                    return true;
+
+
+                }
+                else if (users.FetchedMail != LoginMail.Text || checkHash != true)
+                {
+                    MessageBox.Show(" Mail or Password is incorrect");
+                }
+                return false;
+
             }
             return false;
-
         }
 
 
-        public void ForgotPass_button_Click()
-        {
-            // prepise obrazovku na forgotpassword
-            MessageBox.Show("zadaj mail");
-            
-            // smtp posle kod 
-            //ak je smtp kod spravny
-            //deletnem si databazu (dorobim command na db)(nie celu db len select from users where bla bla bla a deletnem pass) \
-            // a poviem nech si  vytvori new heslo 
-            // ulozim heslo do databaze | ano databaze yet again uz sa mi o nich aj sniva
-            // a ak  sa nezhoduje tak ho poslem dopice takzvane ze nematchuje pls try again later alebo daco
-            //kamo preco som ja zacal s backendom...
-            Console.Beep();
+        
 
 
-        }
-      
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-           
+
             if (mainWindow != null)
             {
-               
+
                 mainWindow.SlideViewTransition(new Register(), true);
             }
         }
@@ -141,7 +131,5 @@ namespace A_P_SmartHub.Graphics.Login
     }
 
 }
-
-
 
 

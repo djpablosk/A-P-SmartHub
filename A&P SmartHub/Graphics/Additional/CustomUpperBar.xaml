@@ -11,9 +11,15 @@
 
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Horizontal" >
 
-            <Button Content="—" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="MinimizeButton_Click"/>
-            <Button Content="▢" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="MaxRestoreButton_Click"/>
-            <Button Content="✕" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="CloseButton_Click"/>
+            <Button  HorizontalAlignment="Left" Height="30"  VerticalAlignment="Stretch" Width="53" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="MinimizeButton_Click">
+                <TextBlock Text="—" FontSize="24" FontFamily="Calibri" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button  HorizontalAlignment="Left" Height="30"  VerticalAlignment="Stretch" Width="53" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="MaxRestoreButton_Click">
+                <TextBlock Text="▢" FontSize="24" FontFamily="Calibri" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button  HorizontalAlignment="Left" Height="30"  VerticalAlignment="Stretch" Width="53" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="24" FontFamily="Calibri" Click="CloseButton_Click">
+                <TextBlock Text="✕" FontSize="24" FontFamily="Calibri" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Width="180" Orientation="Horizontal" >
             <Image HorizontalAlignment="Left" Height="62" Margin="-15" Width="76" Source="/Graphics/Additional/A&amp;P SmartHub Image Cut.png"/>

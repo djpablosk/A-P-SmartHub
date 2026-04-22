@@ -34,14 +34,21 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
             MainDisplay.Content = homePage;
         }
 
-        private void SlideAnimation(UserControl newScreen)
+        private async void SlideAnimation(UserControl newScreen)
         {
-            MainDisplay.Content = newScreen;
-
-
-            TranslateTransform slide = new TranslateTransform();
+            // 1. Zneviditeľníme ju a posunieme ju rovno o 30px nižšie
+            newScreen.Opacity = 0;
+            TranslateTransform slide = new TranslateTransform(0, 30);
             newScreen.RenderTransform = slide;
 
+            // 2. Vložíme ju do hlavného okna (WPF začne zbesilo počítať tiene a farby)
+            MainDisplay.Content = newScreen;
+
+            // 3. TOTO JE TEN MAGICKÝ TRIK: Pauza na 50 milisekúnd.
+            // Dáme grafike čas všetko vykresliť, kým začneme hýbať oknom.
+            await Task.Delay(50); // Tip: Ak by to stále trochu trhlo, skús prepísať na 100
+
+            // 4. Obrazovka je plne načítaná v pamäti, spúšťame plynulé animácie
             DoubleAnimation fadeAnimation = new DoubleAnimation
             {
                 From = 0.0,
@@ -49,7 +56,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
                 Duration = TimeSpan.FromMilliseconds(900),
                 EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
             };
-
+            Timeline.SetDesiredFrameRate(fadeAnimation, 60);
 
             DoubleAnimation slideAnimation = new DoubleAnimation
             {
@@ -58,8 +65,9 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
                 Duration = TimeSpan.FromMilliseconds(900),
                 EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
             };
+            Timeline.SetDesiredFrameRate(slideAnimation, 60);
 
-
+            // Vystrelenie
             newScreen.BeginAnimation(UIElement.OpacityProperty, fadeAnimation);
             slide.BeginAnimation(TranslateTransform.YProperty, slideAnimation);
         }
