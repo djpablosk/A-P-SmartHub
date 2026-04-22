@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
+using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 
 
 namespace A_P_SmartHub.Graphics.Additional
@@ -24,6 +25,7 @@ namespace A_P_SmartHub.Graphics.Additional
     /// Interaction logic for VerificationCodeWindow.xaml
     /// </summary>
     public partial class VerificationCodeWindow : UserControl
+
     {
         public int RandomCode { get; set; }
         public string Mail { get; set; }
@@ -33,6 +35,8 @@ namespace A_P_SmartHub.Graphics.Additional
             InitializeComponent();
             Random random = new Random();
             RandomCode = random.Next(100000, 1000000);
+            
+
 
         }
 

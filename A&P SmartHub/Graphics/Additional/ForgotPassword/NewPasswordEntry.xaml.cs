@@ -15,14 +15,14 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
-        {
+        {MailScreen screen = new MailScreen();
             DependencyObject parent = this;
             while (parent != null)
             {
                 parent = VisualTreeHelper.GetParent(parent);
                 if (parent is NewPasswordScreen newPasswordScreen)
                 {
-                    newPasswordScreen.ShowMailScreen();
+                    newPasswordScreen.ShowMailScreen(screen);
                     break;
                 }
             }

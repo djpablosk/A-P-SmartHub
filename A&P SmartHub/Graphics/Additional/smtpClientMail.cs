@@ -6,16 +6,21 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using DotNetEnv;
+using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 
- 
+
 
 namespace A_P_SmartHub.Graphics.Additional
 {
     internal class smtpClientMail
     {
-
-        public void SendCode(VerificationCodeWindow verification)
+        public string ResetMail {  get; set; }
+        public void SendCode( CodeScreen screen, MailScreen mailScreen)
         {
+           
+            ResetMail = mailScreen.ForgotMail;
+            screen.Mail = ResetMail;
+            
             Env.Load();
             string MailCode = Environment.GetEnvironmentVariable("mailPass");
             var smtp = new SmtpClient("smtp.gmail.com", 587)
@@ -25,11 +30,11 @@ namespace A_P_SmartHub.Graphics.Additional
             };
             var mail = new MailMessage();
             mail.From = new MailAddress("A&PSmarthub@gmail.com");
-            mail.To.Add("alexozaniakk@gmail.com");//pridam aby to dalo tomu co zabudol heslo
+            mail.To.Add(ResetMail);
             mail.Subject = ("Your Code For Resseting Password is here!");
             mail.IsBodyHtml = true;
             mail.Body = @$"
-```html
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +50,7 @@ namespace A_P_SmartHub.Graphics.Additional
     <p>Your code for resetting your password is:</p>
     
     <div style=""font-size: 24px; font-weight: bold; background: #f0f0f0; padding: 15px; border-radius: 8px; letter-spacing: 3px;"">
-      {verification.RandomCode}
+      {screen.RandomCode}
     </div>
     
     <p style=""margin-top: 20px; font-size: 12px; color: gray;"">
@@ -56,10 +61,10 @@ namespace A_P_SmartHub.Graphics.Additional
 
 </body>
 </html>
-```
 ";
             smtp.Send(mail);
                 }
+       
         public void SendMail(VerificationCodeWindow verificationCode, Register register)
         {
             Env.Load();
