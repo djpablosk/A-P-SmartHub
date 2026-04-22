@@ -13,26 +13,36 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-        <Border Margin="20" Background="#374151" CornerRadius="30">
+        <Border Style="{StaticResource GradientHoverPanel}" Margin="20" Background="#374151" CornerRadius="30">
             <StackPanel Margin="10" >
-                <TextBlock Foreground="#E0E6ED" Text="Home Setup" FontFamily="Bahnschrift" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold" Margin="10"/>
-                <TextBlock Foreground="#E0E6ED" Text="Enter your home name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+                <TextBlock Text="Step 1: Home profile" HorizontalAlignment="Center" FontSize="46" Margin="10" Foreground="White" FontFamily="Bahnschrift"/>
+   
+                <TextBlock Foreground="#E0E6ED" Text="Enter your home name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10,40,10,10"/>
                 <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
-
-                    <TextBox x:Name="HomeName"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
+                    <TextBox  x:Name="HomeName" BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
                 </Border>
+                
                 <TextBlock Foreground="#E0E6ED" Text="Enter your name below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
                     <TextBox x:Name="UserName"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" FontSize="50" FontFamily="Bahnschrift" />
                 </Border>
+                
                 <TextBlock Foreground="#E0E6ED" Text="Enter your city below:" FontFamily="Bahnschrift" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
                 <Border CornerRadius="20" Height="60" Margin="10" BorderThickness="1" BorderBrush="White">
                     <TextBox x:Name="City" FontSize="50"  BorderThickness="0" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent"  FontFamily="Bahnschrift" />
                 </Border>
 
 
-                <Border Margin="10"  Background="#22FFFFFF" CornerRadius="20" BorderThickness="1" BorderBrush="White" HorizontalAlignment="Stretch" Height="50">
-                    <Button Content="CREATE" FontFamily="Bahnschrift" FontSize="40" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Button_Click" />
+                <Border Margin="10"  Background="#22FFFFFF" CornerRadius="20" BorderThickness="1" BorderBrush="White" HorizontalAlignment="Stretch" Height="55">
+                    <Button  FontFamily="Bahnschrift" FontSize="40" Background="Transparent" BorderThickness="0" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                        <TextBlock Text="Create" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    </Button>
                 </Border>
             </StackPanel>
         </Border>

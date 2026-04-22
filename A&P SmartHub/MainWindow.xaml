@@ -15,18 +15,19 @@
 
     <Grid Background="Black">
         <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
 
         </Grid.RowDefinitions>
 
 
-        <ContentControl Grid.Row="0" Name="UpperBar"/>
+        <ContentControl Grid.Row="1" Name="UpperBar"/>
         
 
 
-        <ContentControl Grid.Row="1" x:Name="MainDisplay"/>
-
+        <ContentControl Grid.Row="2" x:Name="MainDisplay"/>
 
 
        
