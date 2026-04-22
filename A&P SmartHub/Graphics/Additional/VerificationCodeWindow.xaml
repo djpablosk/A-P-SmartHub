@@ -23,7 +23,7 @@
             <RowDefinition Height="190"/>
         </Grid.RowDefinitions>
 
-                <Border Grid.Row="1" Grid.Column="1" CornerRadius="30" BorderThickness="1.2" Background="#374151" BorderBrush="#2A3342"  HorizontalAlignment="Stretch" >
+                <Border Style="{StaticResource GradientHoverPanel}" Grid.Row="1" Grid.Column="1" CornerRadius="30"  Background="#374151"   HorizontalAlignment="Stretch" >
 
            
         </Border>

@@ -31,7 +31,9 @@
                             </ControlTemplate>
                         </Button.Template>
                         <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
-                            <TextBlock Text="Send Code" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
+                            <TextBlock Text="Send Code" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" >
+                                
+                            </TextBlock>
                         </Border>
                     </Button>
 

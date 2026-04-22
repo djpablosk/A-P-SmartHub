@@ -22,6 +22,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         public NewPassword()
         {
             InitializeComponent();
+
         }
 
         private void ResetPassword_Click(object sender, RoutedEventArgs e)

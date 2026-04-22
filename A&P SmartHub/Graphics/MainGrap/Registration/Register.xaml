@@ -57,7 +57,7 @@
 
         <TextBlock  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="20,0" VerticalAlignment="Center" FontSize="24" FontFamily="Bahnschrift" Foreground="#22FFFFFF" Text="AP SmartHub"/>
 
-        <Border  Grid.Row="1" Grid.Column="1"  CornerRadius="30" BorderThickness="1.5" Background="#374151" BorderBrush="#2A3342"  HorizontalAlignment="Stretch" >
+        <Border Style="{StaticResource GradientHoverPanel}"  Grid.Row="1" Grid.Column="1"  CornerRadius="30"  Background="#374151"   HorizontalAlignment="Stretch" >
 
             <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
                 <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Bahnschrift" FontSize="72" Foreground="White"  />
@@ -77,11 +77,13 @@
                     <Button Cursor="Hand" BorderThickness="0"  HorizontalAlignment="Stretch"  Height="64" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
-                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                                <Border Background="Transparent">
+                                    <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
                             </ControlTemplate>
                         </Button.Template>
-                        
-                            <TextBlock Text="Continue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Foreground="White"/>
+
+                        <TextBlock Background="{x:Null}" Text="Continue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Foreground="White"/>
                        
 
 
