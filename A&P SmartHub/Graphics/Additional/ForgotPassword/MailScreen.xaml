@@ -31,7 +31,9 @@
                             </ControlTemplate>
                         </Button.Template>
                         <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
-                            <Button x:Name="RessPassMailBtn" Content="Send Code" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="#2A3342" FontFamily="Bahnschrift" />
+                            <TextBlock Text="Send Code" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" >
+                                
+                            </TextBlock>
                         </Border>
                     </Button>
 

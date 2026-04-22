@@ -16,6 +16,7 @@
 
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
+       
 
         <ContentControl Grid.Row="0" x:Name="MainDisplay"/>
 
