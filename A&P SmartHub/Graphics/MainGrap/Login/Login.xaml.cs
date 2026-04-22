@@ -98,22 +98,7 @@ namespace A_P_SmartHub.Graphics.Login
         }
 
 
-        public void ForgotPass_button_Click()
-        {
-            // prepise obrazovku na forgotpassword
-            MessageBox.Show("zadaj mail");
-            
-            // smtp posle kod 
-            //ak je smtp kod spravny
-            //deletnem si databazu (dorobim command na db)(nie celu db len select from users where bla bla bla a deletnem pass) \
-            // a poviem nech si  vytvori new heslo 
-            // ulozim heslo do databaze | ano databaze yet again uz sa mi o nich aj sniva
-            // a ak  sa nezhoduje tak ho poslem dopice takzvane ze nematchuje pls try again later alebo daco
-            //kamo preco som ja zacal s backendom...
-            Console.Beep();
-
-
-        }
+       
       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
