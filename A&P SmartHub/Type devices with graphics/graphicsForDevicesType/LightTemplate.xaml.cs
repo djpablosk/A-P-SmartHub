@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace A_P_SmartHub.Graphics.Additional
+namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
 {
     /// <summary>
-    /// Interaction logic for SettingsPage.xaml
+    /// Interaction logic for LightTemplate.xaml
     /// </summary>
-    public partial class SettingsPage : UserControl
+    public partial class LightTemplate : UserControl
     {
-        public SettingsPage()
+        public LightTemplate()
         {
             InitializeComponent();
         }

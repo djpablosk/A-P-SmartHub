@@ -23,7 +23,7 @@
             <RowDefinition Height="190"/>
         </Grid.RowDefinitions>
 
-                <Border Grid.Row="1" Grid.Column="1" CornerRadius="30" BorderThickness="1.2" Background="#374151" BorderBrush="#2A3342"  HorizontalAlignment="Stretch" >
+                <Border Style="{StaticResource GradientHoverPanel}" Grid.Row="1" Grid.Column="1" CornerRadius="30"  Background="#374151"   HorizontalAlignment="Stretch" >
 
            
         </Border>
@@ -35,11 +35,11 @@
                 <TextBox x:Name="VerifCodeInput" FontSize="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64" />
             </Border >
                     <Border Width="550" VerticalAlignment="Bottom" Margin="0,90" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
-                        <Button Cursor="Hand" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" BorderThickness="0"   Background="Transparent" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold"    Foreground="White" Width="550" Click="Button_Click">
-                            <Border CacheMode="BitmapCache" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Button Cursor="Hand" Height="64"  HorizontalAlignment="Stretch" BorderThickness="0"   Background="Transparent" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold"    Foreground="White" Width="550" Click="Button_Click">
+                           
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Text="Register" FontFamily="Bahnschrift" FontSize="40"/>
                                 
-                            </Border>
+                            
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>

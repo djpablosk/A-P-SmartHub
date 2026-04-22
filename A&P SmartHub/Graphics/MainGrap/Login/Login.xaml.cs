@@ -32,9 +32,6 @@ namespace A_P_SmartHub.Graphics.Login
         {
             InitializeComponent();
 
-
-
-
         }
 
 
@@ -43,13 +40,13 @@ namespace A_P_SmartHub.Graphics.Login
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
-           
-            
-            // Teraz už 'await' nebude podčiarknuté
+
+
+            //Teraz už 'await' nebude podčiarknuté
             await Task.Delay(5000);
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
-            
+
             if (mainWindow != null)
             {
                 SQLITE_Users users = new SQLITE_Users();
@@ -65,8 +62,10 @@ namespace A_P_SmartHub.Graphics.Login
 
 
                 }
-               
 
+
+            }
+        }
             }
         }
 
@@ -80,6 +79,10 @@ namespace A_P_SmartHub.Graphics.Login
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
 
+            if (users.FetchedMail == LoginMail.Text && checkHash == true)
+            {
+                MessageBox.Show("login ok");
+                return true;
            if (users.FetchedMail == LoginMail.Text && checkHash == true)
            {
                 SessionInfo.ID = users.GetUserId(tempMail);
@@ -95,6 +98,7 @@ namespace A_P_SmartHub.Graphics.Login
             }
             return false;
 
+        }
         }
 
 
@@ -113,8 +117,7 @@ namespace A_P_SmartHub.Graphics.Login
             Console.Beep();
 
 
-        }
-      
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
