@@ -41,7 +41,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Border x:Name="LoginForm" Grid.Column="0" Width="680" Height="700" CornerRadius="30" BorderThickness="2" Background="#374151" BorderBrush="#2A3342" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border Style="{StaticResource GradientHoverPanel}" x:Name="LoginForm" Grid.Column="0" Width="680" Height="700" CornerRadius="30"  Background="#374151" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="44,0,0,0" Width="509" >
 
                     <TextBlock HorizontalAlignment="Left" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="185" FontSize="72" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
@@ -99,7 +99,7 @@
                         </Button>
                     </Border>
 
-                    <Border Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
+                    <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20">
                         <Border.CacheMode>
                             <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
                         </Border.CacheMode>
@@ -110,15 +110,15 @@
                             </LinearGradientBrush>
                         </Border.BorderBrush>
 
-                        <Button Cursor="Hand" Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                        <Button Cursor="Hand" Background="Transparent" Height="64"  HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
+                            <TextBlock Text="Login" FontSize="40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                                    <Border Background="Transparent">
+                                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
                                 </ControlTemplate>
                             </Button.Template>
-                            <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
-                                <TextBlock Text="Login" FontSize="45" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
-                            </Border>
                         </Button>
 
                         <Border.Style>
