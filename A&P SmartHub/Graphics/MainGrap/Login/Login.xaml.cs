@@ -27,8 +27,7 @@ namespace A_P_SmartHub.Graphics.Login
     /// </summary>
     public partial class Login : UserControl
     {
-        smtpClientMail smtpClientMail = new smtpClientMail();//0
-        VerificationCodeWindow verificationCodeWindow = new VerificationCodeWindow();//potom vymazat1
+       
         public Login()
         {
             InitializeComponent();
@@ -40,13 +39,6 @@ namespace A_P_SmartHub.Graphics.Login
 
 
        
-
-        private void TextBox_TextChangedLogin(object sender, TextChangedEventArgs e)
-        {
-            // nic nepridavat
-        }
-
-
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -68,7 +60,6 @@ namespace A_P_SmartHub.Graphics.Login
 
                     mainWindow.SlideViewTransition(new MainDashboard(), true);
                     MessageBox.Show("ide to");
-                    MySql mySql = new MySql();
                     mySql.DataBase();
 
 
@@ -111,7 +102,7 @@ namespace A_P_SmartHub.Graphics.Login
         {
             // prepise obrazovku na forgotpassword
             MessageBox.Show("zadaj mail");
-            smtpClientMail.SendCode(verificationCodeWindow);//2
+            
             // smtp posle kod 
             //ak je smtp kod spravny
             //deletnem si databazu (dorobim command na db)(nie celu db len select from users where bla bla bla a deletnem pass) \

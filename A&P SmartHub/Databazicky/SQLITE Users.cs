@@ -85,6 +85,7 @@ namespace A_P_SmartHub.Databazicky
               WHERE Mail = $mail;";
             UpdateHashInDb.Parameters.AddWithValue("$mail", Mail);
             UpdateHashInDb.Parameters.AddWithValue("$hash", Hash);
+            UpdateHashInDb.ExecuteNonQuery();
 
         }
 
@@ -93,13 +94,15 @@ namespace A_P_SmartHub.Databazicky
             using var connection = new SqliteConnection("Data Source=users.db");
             connection.Open();
 
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT UserID FROM users WHERE Mail = $mail";
-            cmd.Parameters.AddWithValue("$mail", mail);
+            var getUserId = connection.CreateCommand();
+            getUserId.CommandText = "SELECT UserID FROM users WHERE Mail = $mail"; 
+            getUserId.Parameters.AddWithValue("$mail", mail);
 
-            var result = cmd.ExecuteScalar();
+            var result = getUserId.ExecuteScalar();
 
             return result?.ToString();
         }
+
+      
     }
 }
