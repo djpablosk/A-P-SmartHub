@@ -25,6 +25,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         {
             
             InitializeComponent();
+
         }
 
        
