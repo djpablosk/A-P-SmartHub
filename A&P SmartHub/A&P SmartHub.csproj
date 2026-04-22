@@ -19,12 +19,16 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
-    <PackageReference Include="DotNetEnv" Version="3.1.1" />
-  
-    <PackageReference Include="MySqlConnector" Version="2.5.0" />
+<<<<<<< HEAD
     <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.6" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.6" />
+=======
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.3" />
+    <PackageReference Include="MySqlConnector" Version="2.5.0" />
+>>>>>>> a05853b5b7ba4f274f7900ba068fa612effd273f
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
     <PackageReference Include="SQLitePCLRaw.core" Version="3.0.2" />
   </ItemGroup>
