@@ -26,9 +26,10 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="All Devices" FontFamily="Bahnschrift" FontSize="46" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                <StackPanel Grid.Row="1" Margin="10" Orientation="Vertical">
+                <Grid Grid.Row="1">
+                    
 
-                    <ScrollViewer Margin="10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                   
                         <ItemsControl Margin="10"  x:Name="DeviceList">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -51,8 +52,9 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                    </ScrollViewer>
-                </StackPanel>
+                  
+                </Grid>
+                
             </Grid>
         </Border>
     </Grid>

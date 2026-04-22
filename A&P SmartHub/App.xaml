@@ -35,14 +35,14 @@
 
                 <Setter Property="Effect">
                     <Setter.Value>
-                        <DropShadowEffect Color="#94A3B8" BlurRadius="50" ShadowDepth="5" Opacity="0.5"/>
+                        <DropShadowEffect Color="#94A3B8" BlurRadius="5" ShadowDepth="5" Opacity="0.5"/>
                     </Setter.Value>
                 </Setter>
 
                 <Style.Triggers>
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
-                            <Storyboard>
+                            <Storyboard Timeline.DesiredFrameRate="60">
                                 <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
                                      To="-5" Duration="0:0:0.3" />
 
@@ -59,7 +59,7 @@
 
                     <EventTrigger RoutedEvent="MouseLeave">
                         <BeginStoryboard>
-                            <Storyboard>
+                            <Storyboard Timeline.DesiredFrameRate="60">
                                 <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
                                      To="0" Duration="0:0:0.3" />
                                 <DoubleAnimation Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)"
