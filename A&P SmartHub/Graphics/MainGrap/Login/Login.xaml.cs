@@ -59,43 +59,43 @@ namespace A_P_SmartHub.Graphics.Login
             {
                 SQLITE_Users users = new SQLITE_Users();
 
-                bool success = CheckLogin(users); // make CheckLogin return bool
-                if (success)
-                {
+                //bool success = CheckLogin(users); // make CheckLogin return bool
+                //if (success)
+                //{
 
                     mainWindow.SlideViewTransition(new MainDashboard(), true);
                     MessageBox.Show("ide to");
 
 
 
-                }
+               // }
 
 
             }
         }
 
-        public bool CheckLogin(SQLITE_Users users)
-        {
-            users.LoggingInDB(LoginMail.Text);
-            bool checkHash = false;
-            if (users.FetchedMail == LoginMail.Text)
-            {
-                checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
-            }
+       // public bool CheckLogin(SQLITE_Users users)
+       // {
+            //users.LoggingInDB(LoginMail.Text);
+            //bool checkHash = false;
+            //if (users.FetchedMail == LoginMail.Text)
+            //{
+            //    checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+            //}
 
-            if (users.FetchedMail == LoginMail.Text && checkHash == true)
-            {
-                MessageBox.Show("login ok");
-                return true;
+            //if (users.FetchedMail == LoginMail.Text && checkHash == true)
+            //{
+            //    MessageBox.Show("login ok");
+            //    return true;
 
-            }
-            else if (users.FetchedMail != LoginMail.Text || checkHash != true)
-            {
-                MessageBox.Show(" Mail or Password is incorrect");
-            }
-            return false;
+            //}
+            //else if (users.FetchedMail != LoginMail.Text || checkHash != true)
+            //{
+            //    MessageBox.Show(" Mail or Password is incorrect");
+            //}
+            //return false;
 
-        }
+       // }
 
 
 
