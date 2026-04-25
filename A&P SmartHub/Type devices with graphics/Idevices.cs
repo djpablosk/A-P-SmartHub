@@ -1,11 +1,12 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.Additional;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace A_P_SmartHub.Type_devices_with_graphics
 {
-    class Idevices
-    {
+    
+    
 
         public enum DeviceTypeEnum
         {
@@ -24,5 +25,5 @@ namespace A_P_SmartHub.Type_devices_with_graphics
             public DeviceTypeEnum Type { get; set; }
 
         }
-    }
+    
 }

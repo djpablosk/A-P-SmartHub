@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Additional"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1500">
+    <Grid>
+        
     <Grid Background="#101725">
         <Grid.RowDefinitions>
             <RowDefinition Height="180"/>
@@ -148,34 +150,35 @@
 
 
         </Grid>
-        <Border Style="{StaticResource GradientHoverPanel}"  Background="#374151" Grid.Row="2" CornerRadius="30" Margin="10"   >
-            <ScrollViewer Margin="10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <ItemsControl Margin="10"  x:Name="DeviceList">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
+        <Grid   Background="#374151" Grid.Row="2"  Margin="10"   >
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="DeviceList">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-
                             <Border Width="160" Height="80" Background="#101725" CornerRadius="20" Margin="10">
                                 <Button Content="{Binding Name}" 
-                           Foreground="White" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"
-                           FontSize="18"
-                           FontFamily="Bahnschrift"/>
-
+                                Click="Button_Click" 
+                                Foreground="White" 
+                                Background="Transparent" 
+                                BorderThickness="0"/>
                             </Border>
-
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                 </ItemsControl>
             </ScrollViewer>
-        </Border>
+        </Grid>
 
 
      
+    </Grid>
+
+            <Grid x:Name="PopupOverlay" Visibility="Collapsed" Background="#C0000000">
+                <ContentControl x:Name="PopupContent" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            </Grid>
     </Grid>
 </UserControl>
