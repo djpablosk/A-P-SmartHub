@@ -114,9 +114,13 @@
                                 <RowDefinition Height="60" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
+                            <TextBlock TextWrapping="Wrap" LineHeight="16" Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="1" Text="AP SmartHub
+                                       
+                A centralized management system for modern IoT ecosystems. Built for speed, scalability, and seamless device integration. Focus less on managing tech and more on living your life.
+" FontSize="20" FontWeight="Light" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
                             <TextBlock Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="0" Text="About" FontSize="36" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
                             <TextBlock Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="1" Text="Version 1.0.0" FontSize="20" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
-                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Delete Account" Grid.Row="1" Background="Red" BorderThickness="0" Width="90" Height="18" FontFamily="Bahnschrift" Margin="10" Click="DeleteAccount_Click" />
+                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Delete Account" Grid.Row="1" Background="Red" BorderThickness="0" Width="130" Height="21" FontFamily="Bahnschrift" Margin="10" Click="DeleteAccount_Click" />
 
 
                         </Grid>
@@ -145,13 +149,13 @@
                             <TextBlock Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="0" Text="Alert type:" FontSize="36" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <TextBlock Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="1" Text="Email" FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"  />
-                            <TextBlock Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="1" Text="SMS" FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"  />
+                            <TextBlock Margin="10" FontFamily="Bahnschrift" Grid.Column="0" Grid.Row="1" Text="Push Notifications" FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"  />
                                 
                             </StackPanel>
 
                             <StackPanel Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-                            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" x:Name="AlertToggleButton" Grid.Row="1" Content="Toggle Alert Type" Width="200" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="AlertToggleButton_Click"/>
-                                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" x:Name="AlertToggleButton1" Grid.Row="1" Content="Toggle Alert Type" Width="70" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="AlertToggleButton_Click"/>
+                            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" x:Name="AlertToggleButton" Grid.Row="1"  Width="55" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="AlertToggleButton_Click"/>
+                                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" x:Name="AlertToggleButton1" Grid.Row="1"  Width="55" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="AlertToggleButton_Click"/>
 
                             </StackPanel>
 
