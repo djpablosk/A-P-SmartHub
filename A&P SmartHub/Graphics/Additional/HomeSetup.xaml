@@ -106,7 +106,7 @@
                 </Border>
                 <Border Grid.Row="1" Margin="20" Background="#374151" CornerRadius="30">
                     <StackPanel>
-                        <TextBlock Text="Add Room" VerticalAlignment="Top" Height="50" FontSize="40" FontFamily="Bahnschrift" HorizontalAlignment="Left" Foreground="#E0E6ED" Margin="10"/>
+                        <TextBlock Text="Quick add device" VerticalAlignment="Top" Height="50" FontSize="40" FontFamily="Bahnschrift" HorizontalAlignment="Left" Foreground="#E0E6ED" Margin="10"/>
                         <ListBox Margin="5" Height="240" Background="Transparent" BorderBrush="White" x:Name="RoomListBox"/>
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10" Margin="10" Background="#22FFFFFF">
                             <Border.Style>
@@ -144,7 +144,7 @@ To="1" Duration="0:0:0.2" />
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <Button Content="Add Room" HorizontalAlignment="Stretch"  FontSize="20" FontFamily="Bahnschrift" Background="Transparent" BorderThickness="0"  Click="AddRoomButton_Click" >
+                            <Button Content="Add device" HorizontalAlignment="Stretch"  FontSize="20" FontFamily="Bahnschrift" Background="Transparent" BorderThickness="0"  Click="AddRoomButton_Click" >
 
                             </Button>
                         </Border>
