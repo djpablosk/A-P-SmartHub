@@ -54,7 +54,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void CreateHome_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Content = new CreatingProfileLoading();
         }
 
 
