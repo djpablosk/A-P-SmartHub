@@ -18,28 +18,43 @@ namespace A_P_SmartHub.Graphics.Additional
     /// <summary>
     /// Interaction logic for HomeSetup.xaml
     /// </summary>
+        public class SmartDevice
+        {
+            public string Name { get; set; }
+            public string Type { get; set; }
+            public string IpAddress { get; set; }
+        }
     public partial class HomeSetup : UserControl
     {
-        public string HomeName {  get; set; }
-        public string Name { get; set; }
-        public string City { get; set; }
-        
 
+        public ObservableCollection<SmartDevice> TempDevices = new ObservableCollection<SmartDevice>();
         public HomeSetup()
         {
             InitializeComponent();
-            
+            deviceList.ItemsSource = TempDevices;
         }
 
         private void AddDeviceButton_Click(object sender, RoutedEventArgs e)
         {
-            AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
-            addDeviceWindow.ShowDialog();
+            //AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
+            //addDeviceWindow.ShowDialog();
+            var addWindow = new AddNewDeviceWindow();
+            if (addWindow.ShowDialog() == true)
+            {
+                TempDevices.Add(addWindow.NewDevice); // Pridá sa do zoznamu a hneď sa zjaví Border
+            }
         }
-        private void AddRoomButton_Click(object sender, RoutedEventArgs e)
+        
+        private void DeleteDevice_Click(object sender, RoutedEventArgs e)
         {
-            AddRoomWindow addRoomWindow = new AddRoomWindow();
-            addRoomWindow.ShowDialog();
+            var btn = sender as Button;
+            var device = btn.Tag as SmartDevice;
+            TempDevices.Remove(device); 
+        }
+
+        private void CreateHome_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 
