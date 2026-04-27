@@ -41,7 +41,7 @@ namespace A_P_SmartHub.Graphics.Additional
             var addWindow = new AddNewDeviceWindow();
             if (addWindow.ShowDialog() == true)
             {
-                TempDevices.Add(addWindow.NewDevice); // Pridá sa do zoznamu a hneď sa zjaví Border
+                TempDevices.Add(addWindow.NewDevice); 
             }
         }
         
