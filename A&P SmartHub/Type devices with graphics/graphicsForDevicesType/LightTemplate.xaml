@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="1500">
+             d:DesignHeight="900" d:DesignWidth="1000">
   
         <Border Background="#1A2235" CornerRadius="30" BorderThickness="1" BorderBrush="#2A3342" Margin="15">
             <Border.Effect>
