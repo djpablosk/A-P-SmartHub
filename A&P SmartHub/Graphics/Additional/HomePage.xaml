@@ -183,7 +183,7 @@
 
         </Grid>
 
-        <Grid x:Name="PopupOverlay" Visibility="Collapsed" Background="#C0000000">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="PopupOverlay" Visibility="Collapsed" Background="#C0000000">
             <ContentControl x:Name="PopupContent" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
