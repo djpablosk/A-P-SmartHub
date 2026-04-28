@@ -103,7 +103,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                                 <TextBlock FontFamily="Bahnschrift" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Scheludes:" />
-                            <Button x:Name="ScheBtn" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40" Foreground="White"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" >
+                            <Button x:Name="ScheBtn" Click="NewSchelude_Click" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40" Foreground="White"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" >
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="Transparent">
