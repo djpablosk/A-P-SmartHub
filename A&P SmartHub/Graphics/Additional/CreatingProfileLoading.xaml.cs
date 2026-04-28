@@ -50,9 +50,9 @@ namespace A_P_SmartHub.Graphics.Additional
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard(), true);
             }
 
-            // Example usage// Replace the problematic line with:
-var welcome = new WelcomeWidow { Owner = mainWindow };
-welcome.ShowDialog(); 
+            
+            var welcome = new WelcomeWidow { Owner = mainWindow };
+            welcome.ShowDialog(); 
         }
     }
 }
