@@ -1,4 +1,6 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.MainGrap.Registration;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -39,6 +41,18 @@ namespace A_P_SmartHub.Graphics.Additional
                 await System.Threading.Tasks.Task.Delay(5000); 
             }
 
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+
+            if (mainWindow != null)
+            {
+
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard(), true);
+            }
+
+            // Example usage// Replace the problematic line with:
+var welcome = new WelcomeWidow { Owner = mainWindow };
+welcome.ShowDialog(); 
         }
     }
 }
