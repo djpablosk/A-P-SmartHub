@@ -3,6 +3,7 @@ using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
+using A_P_SmartHub.Weather;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -39,70 +40,90 @@ namespace A_P_SmartHub.Graphics.Login
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
+            SQLITE_Users users = new SQLITE_Users();
+            MySql mySql = new MySql();
+
+            bool success = CheckLogin(users, mySql);
+
+            if (!success)
+            {
+                MessageBox.Show("Mail Or Password Is Incorrect");
+                return;
+            }
+
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
 
-
-            //Teraz už 'await' nebude podčiarknuté
             await Task.Delay(5000);
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            if (mainWindow != null)
-            {
-                SQLITE_Users users = new SQLITE_Users();
-                MySql mySql = new MySql();
-                bool success = CheckLogin(users, mySql); // make CheckLogin return bool
-                if (success)
-                {
+            if (mainWindow == null)
+                return;
 
-                    mainWindow.SlideViewTransition(new MainDashboard(), true);
-                    MessageBox.Show("ide to");
-                    mySql.DataBase();
+            mainWindow.SlideViewTransition(new MainDashboard(), true);
 
+            MessageBox.Show("ide to");
 
-
-                }
-
-
-            }
+            await mySql.DataBase();
         }
+
+
 
         public bool CheckLogin(SQLITE_Users users, MySql mySql)
         {
-            string tempMail = LoginMail.Text;
-            users.LoggingInDB(LoginMail.Text);
+            
             bool checkHash = false;
+            if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
+              string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
+            users.LoggingInDB(LoginMail.Text);
+            if (string.IsNullOrEmpty(users.FetchedMail)) return false;
+            if (string.IsNullOrEmpty(users.FetchedHash)) return false;
+            string tempMail = LoginMail.Text;
+
             if (users.FetchedMail == LoginMail.Text)
             {
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
 
+
+           
             if (users.FetchedMail == LoginMail.Text && checkHash == true)
             {
-                MessageBox.Show("login ok");
+                SessionInfo.ID = users.GetUserId(tempMail);
+                mySql.ReturnBasicFromDB(SessionInfo.ID);
+
                 return true;
-                if (users.FetchedMail == LoginMail.Text && checkHash == true)
-                {
-                    SessionInfo.ID = users.GetUserId(tempMail);
-                    mySql.ReturnBasicFromDB(SessionInfo.ID);
-                    MessageBox.Show("login ok");
-                    return true;
+            }
+            else if (users.FetchedMail != LoginMail.Text || checkHash != true)
+            {
 
-
-                }
-                else if (users.FetchedMail != LoginMail.Text || checkHash != true)
-                {
-                    MessageBox.Show(" Mail or Password is incorrect");
-                }
                 return false;
-
             }
             return false;
         }
+                
+            
+            
 
 
-       
-      
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
