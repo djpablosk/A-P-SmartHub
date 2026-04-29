@@ -10,14 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace A_P_SmartHub.Graphics.Additional
+namespace A_P_SmartHub.Graphics.MainGrap.Registration
 {
     /// <summary>
-    /// Interaction logic for AddRoomWindow.xaml
+    /// Interaction logic for WelcomeWidow.xaml
     /// </summary>
-    public partial class AddRoomWindow : Window
+    public partial class WelcomeWidow : Window
     {
-        public AddRoomWindow()
+        public WelcomeWidow()
         {
             InitializeComponent();
         }
