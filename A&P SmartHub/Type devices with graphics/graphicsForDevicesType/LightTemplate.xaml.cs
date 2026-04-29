@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using A_P_SmartHub.Graphics.Additional;
 
 namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
 {
@@ -18,9 +19,28 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
     /// </summary>
     public partial class LightTemplate : UserControl
     {
-        public LightTemplate()
+        // Konštruktor, ktorý prijíma dáta
+        // Konštruktor teraz presne vie, čo je DeviceType
+        public LightTemplate(DeviceType device)
         {
             InitializeComponent();
+            this.DataContext = device;
+        }
+
+        // Metóda pre krížik (zavretie)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Hľadáme PopupOverlay na HomePage, aby sme ho skryli
+            DependencyObject parent = VisualTreeHelper.GetParent(this);
+            while (parent != null && !(parent is Grid && ((Grid)parent).Name == "PopupOverlay"))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            if (parent is Grid overlay)
+            {
+                overlay.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

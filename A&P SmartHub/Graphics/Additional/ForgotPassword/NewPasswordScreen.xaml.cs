@@ -14,19 +14,23 @@ using System.Windows.Shapes;
 namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
 {
     /// <summary>
-    /// Interaction logic for NewPasswordScreen.xaml
+    /// Interaction logic for newpasswordScreen.xaml
     /// </summary>
-    public partial class NewPasswordScreen : UserControl
+    public partial class newpasswordScreen : UserControl
     {
-        public NewPasswordScreen()
+        public newpasswordScreen()
         {
             InitializeComponent();
-            NewPasswordContentControl.Content = new MailScreen();
+            // Show initial screen (mail entry) when this control is constructed
+            passwordnewControl.Content = new MailScreen();
         }
 
+        // Show the code entry screen
+        public void ShowCodeScreen()
         // Called by child screens to switch the displayed content to the code entry screen
         public void ShowCodeScreen(CodeScreen screen)
         {
+            passwordnewControl.Content = new CodeScreen();
             NewPasswordContentControl.Content = screen;
         }
 
@@ -36,9 +40,12 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
             NewPasswordContentControl.Content = screen;
         }
 
+        // Show the new password screen
+        public void ShowNewPasswordScreen()
         // Switch to the new password entry screen
         public void ShowNewPasswordScreen(NewPassword newPassword)
         {
+            passwordnewControl.Content = new NewPassword();
             NewPasswordContentControl.Content = newPassword;
         }
     }
