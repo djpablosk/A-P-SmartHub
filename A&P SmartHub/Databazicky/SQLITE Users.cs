@@ -29,6 +29,8 @@ namespace A_P_SmartHub.Databazicky
             using var CreateSqlTable = new SqliteCommand(sql, connection);
             CreateSqlTable.ExecuteNonQuery();
         }
+
+        
         public bool RegisterNewUser(string Mail, string Hash)
         {
             try
@@ -51,6 +53,30 @@ namespace A_P_SmartHub.Databazicky
             }
         }
 
+
+        public bool IsMailInDB(string Mail)
+        {
+            using var connction = new SqliteConnection("Data Source =users.db");
+            connction.Open();
+            var isMailInDb = connction.CreateCommand();
+            isMailInDb.CommandText = @"
+            SELECT UserID
+             FROM users 
+             WHERE Mail = $mail";
+            isMailInDb.Parameters.AddWithValue("$mail", Mail);
+
+            using var reader = isMailInDb.ExecuteReader();
+            if (reader.Read())
+            {
+                UseriID = reader.GetInt32(0).ToString();
+                return true;
+            }
+            else
+            {
+                UseriID = null;
+                return false;
+            }
+        }
         public void LoggingInDB(string Mail)
         {
             using var connection = new SqliteConnection("Data Source=users.db");
@@ -114,3 +140,4 @@ namespace A_P_SmartHub.Databazicky
       
     }
 }
+    

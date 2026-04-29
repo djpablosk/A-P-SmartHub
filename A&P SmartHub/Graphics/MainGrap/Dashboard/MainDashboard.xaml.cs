@@ -21,34 +21,32 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
     public partial class MainDashboard : UserControl
     {
 
-        private HomePage homePage;
-        private AllDevices allDevices;
-        private MenuPage menuPage;
+        private HomePage _homePage;
+        private AllDevices _allDevices;
+        private MenuPage _menuPage;
 
         public MainDashboard()
         {
             InitializeComponent();
-            homePage = new HomePage();
-            allDevices = new AllDevices();
-            menuPage = new MenuPage();
-            MainDisplay.Content = homePage;
+            _homePage = new HomePage();
+            _allDevices = new AllDevices();
+            _menuPage = new MenuPage();
+            MainDisplay.Content = _homePage;
         }
 
         private async void SlideAnimation(UserControl newScreen)
         {
-            // 1. Zneviditeľníme ju a posunieme ju rovno o 30px nižšie
+
             newScreen.Opacity = 0;
             TranslateTransform slide = new TranslateTransform(0, 30);
             newScreen.RenderTransform = slide;
 
-            // 2. Vložíme ju do hlavného okna (WPF začne zbesilo počítať tiene a farby)
+
             MainDisplay.Content = newScreen;
 
-            // 3. TOTO JE TEN MAGICKÝ TRIK: Pauza na 50 milisekúnd.
-            // Dáme grafike čas všetko vykresliť, kým začneme hýbať oknom.
-            await Task.Delay(50); // Tip: Ak by to stále trochu trhlo, skús prepísať na 100
 
-            // 4. Obrazovka je plne načítaná v pamäti, spúšťame plynulé animácie
+
+
             DoubleAnimation fadeAnimation = new DoubleAnimation
             {
                 From = 0.0,
@@ -76,16 +74,16 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
-            SlideAnimation(homePage);
+            SlideAnimation(_homePage);
         }
 
         private void AllDevices_Click(object sender, RoutedEventArgs e)
         {
-            SlideAnimation(allDevices);
+            SlideAnimation(_allDevices);
         }
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            SlideAnimation(menuPage);
+            SlideAnimation(_menuPage);
         }
 
     }

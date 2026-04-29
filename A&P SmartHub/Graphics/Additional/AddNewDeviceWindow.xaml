@@ -23,11 +23,11 @@
             <TextBlock Text="Add New Device" FontSize="40" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" FontFamily="Bahnschrift" Margin="0,20,0,0"/>
                 <TextBlock Text="Device Name" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" FontFamily="Bahnschrift" Margin="10,20,0,5"/>
                 <Border Margin="10" Height="50"  CornerRadius="20" BorderThickness="1" BorderBrush="White">
-                     <TextBox x:Name="DeviceName" FontSize="40" FontFamily="Bahnschrift"   HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" />
+                     <TextBox x:Name="DeviceNameBox" FontSize="40" FontFamily="Bahnschrift"   HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" TextChanged="DeviceName_TextChanged" />
                 </Border>
                 <TextBlock Text="IP Address" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" FontFamily="Bahnschrift" Margin="10,20,0,5"/>
                 <Border Margin="10" Height="50"  CornerRadius="20" BorderThickness="1" BorderBrush="White">
-                    <TextBox x:Name="DeviceIPAddress" FontSize="40" FontFamily="Bahnschrift"   HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" />
+                    <TextBox x:Name="DeviceIPAddressBox" FontSize="40" FontFamily="Bahnschrift"   HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0" VerticalAlignment="Stretch" />
                 </Border>
                     <TextBlock Text="Select your device type" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Left" FontFamily="Bahnschrift" Margin="10,20,0,5"/>
                 <ComboBox Background="LightGray" Margin="10" x:Name="deviceType">
