@@ -75,9 +75,21 @@ namespace A_P_SmartHub.Graphics.Additional
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+ 
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            SaveToDB();
+            try
+            {
+                // Await the asynchronous database operation
+                    await SaveToDB();
+                MessageBox.Show("pokracovanie nabuduce");
+            }
+            catch (Exception ex)
+            {
+                // Shows the error if the database save fails (e.g., missing .env variables, connection failure)
+                MessageBox.Show($"Error saving to database: {ex.Message}");
+            }
         }
     }
 }

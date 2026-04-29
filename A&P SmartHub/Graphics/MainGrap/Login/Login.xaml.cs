@@ -3,6 +3,7 @@ using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
+using A_P_SmartHub.Weather;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -39,15 +40,34 @@ namespace A_P_SmartHub.Graphics.Login
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
 
+            SQLITE_Users users = new SQLITE_Users();
+            MySql mySql = new MySql();
+
+            bool success = CheckLogin(users, mySql);
             //Teraz už 'await' nebude podčiarknuté
             await System.Threading.Tasks.Task.Delay(5000);
 
+            if (!success)
+            {
+                MessageBox.Show("Mail Or Password Is Incorrect");
+                return;
+            }
+
+            VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
+
+            await Task.Delay(5000);
+
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
-            if (mainWindow != null)
-            {
+            if (mainWindow == null)
+                return;
+
+            mainWindow.SlideViewTransition(new MainDashboard(), true);
+
+            MessageBox.Show("ide to");
+
+            await mySql.DataBase();
                 SQLITE_Users users = new SQLITE_Users();
                 MySql mySql = new MySql();
                 bool success = CheckLogin(users, mySql);
@@ -60,15 +80,35 @@ namespace A_P_SmartHub.Graphics.Login
             }
         }
 
+
+
         public bool CheckLogin(SQLITE_Users users, MySql mySql)
         {
-            string tempMail = LoginMail.Text;
-            users.LoggingInDB(LoginMail.Text);
+            
             bool checkHash = false;
+            if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
+              string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
+            users.LoggingInDB(LoginMail.Text);
+            if (string.IsNullOrEmpty(users.FetchedMail)) return false;
+            if (string.IsNullOrEmpty(users.FetchedHash)) return false;
+            string tempMail = LoginMail.Text;
+
             if (users.FetchedMail == LoginMail.Text)
             {
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
+
+
+           
+            if (users.FetchedMail == LoginMail.Text && checkHash == true)
+            {
+                SessionInfo.ID = users.GetUserId(tempMail);
+                mySql.ReturnBasicFromDB(SessionInfo.ID);
+
+                return true;
+            }
+            else if (users.FetchedMail != LoginMail.Text || checkHash != true)
+            {
 
             if (users.FetchedMail == LoginMail.Text && checkHash)
             {
@@ -83,9 +123,25 @@ namespace A_P_SmartHub.Graphics.Login
                 return false;
             }
         }
+                
+            
+            
+
+
+
 
 
         
+
+
+
+
+
+
+
+
+
+
 
 
 

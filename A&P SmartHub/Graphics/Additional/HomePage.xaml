@@ -153,6 +153,10 @@
 
                 </Border>
 
+            <Border x:Name="cast" Background="#000000" CornerRadius="30" Margin="5" >
+                <TextBlock x:Name="Weather" FontSize="15"
+                 Text="" Foreground="White" Margin="10"
+                   TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
 
 
 

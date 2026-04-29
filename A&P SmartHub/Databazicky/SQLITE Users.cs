@@ -64,12 +64,20 @@ namespace A_P_SmartHub.Databazicky
             GetFromDB.Parameters.AddWithValue("$mail", Mail);
 
             using var reader = GetFromDB.ExecuteReader();
-            reader.Read();
+           
 
-            UseriID = reader.GetInt32(0).ToString();
-            FetchedMail = reader.GetString(1);
-            FetchedHash = reader.GetString(2);
-
+            if (reader.Read())
+            {
+                UseriID = reader.GetInt32(0).ToString();
+                FetchedMail = reader.GetString(1);
+                FetchedHash = reader.GetString(2);
+            }
+            else
+            {
+                UseriID = null;
+                FetchedMail = null;
+                FetchedHash = null;
+            }
 
         }
 

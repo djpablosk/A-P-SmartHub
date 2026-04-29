@@ -1,11 +1,14 @@
-﻿using A_P_SmartHub.Graphics.Login;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
+using A_P_SmartHub.Weather;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 using A_P_SmartHub.Databazicky;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Type_devices_with_graphics;
@@ -31,9 +35,13 @@ namespace A_P_SmartHub.Graphics.Additional
    
     public partial class HomePage : UserControl
     {
+        DispatcherTimer timer = new DispatcherTimer();
+        getData data = new getData();
+        public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
         public HomePage()
         {
+
             InitializeComponent();
 
             MyDevices = new ObservableCollection<DeviceType>();
@@ -54,6 +62,7 @@ namespace A_P_SmartHub.Graphics.Additional
         public class SmartDevice
         {
             public string Name { get; set; }
+            
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -80,6 +89,7 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
+        public async Task LoadFromDB(getData getData)
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button stlaceneButton = sender as Button;
@@ -102,19 +112,30 @@ namespace A_P_SmartHub.Graphics.Additional
 
         public async void LoadFromDB()
         {
+           
             MySql sql = new MySql();
             string id = SessionInfo.ID;
-           await sql.ReturnBasicFromDB(id);
-            dashHomeName.Text = sql.HomeName.ToString();
+           
+            await sql.ReturnBasicFromDB(id);
+            City = sql.City;
+            MessageBox.Show(sql.City);
+            dashHomeName.Text = sql.HomeName;
+           
             string LengthCheck = dashHomeName.Text;
+         
             if (LengthCheck.Length == 0)
             {
                 dashHomeName.Text = "Defaultne Meno";
             }
-
+            await UpdateWeather();
           
-            
-        
+
+        }
+
+        public async Task UpdateWeather()
+        { // toto uz nie je ai
+            await data.getTemperature(City);
+            Weather.Text = $"Current Temperature In {City} is {data.Temperature} °C";
         }
     }
 }
