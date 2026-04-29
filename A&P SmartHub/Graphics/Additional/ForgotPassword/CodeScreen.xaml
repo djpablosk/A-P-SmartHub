@@ -12,7 +12,7 @@
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Check your mail" FontSize="34" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBox Width="400" Height="40" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+                <TextBox x:Name="ForgotPassCode" Width="400" Height="40" Margin="0,20,0,0" HorizontalAlignment="Center"/>
 
                 <Border Width="400" Height="45" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
                     <Border.CacheMode>

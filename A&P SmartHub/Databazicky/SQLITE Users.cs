@@ -12,7 +12,7 @@ namespace A_P_SmartHub.Databazicky
         public string UseriID { get; set; }
         //--------------------------------(len si rozdelujem infos od code)
 
-     
+
 
 
         public void CreateDB()
@@ -62,18 +62,26 @@ namespace A_P_SmartHub.Databazicky
                 FROM users
                  WHERE Mail = $mail ";
             GetFromDB.Parameters.AddWithValue("$mail", Mail);
-            
-            using var reader = GetFromDB.ExecuteReader();
-            reader.Read();
 
-            UseriID = reader.GetString(0);
-            FetchedMail = reader.GetString(1);
-            FetchedHash = reader.GetString(2);
-          
+            using var reader = GetFromDB.ExecuteReader();
+           
+
+            if (reader.Read())
+            {
+                UseriID = reader.GetInt32(0).ToString();
+                FetchedMail = reader.GetString(1);
+                FetchedHash = reader.GetString(2);
+            }
+            else
+            {
+                UseriID = null;
+                FetchedMail = null;
+                FetchedHash = null;
+            }
 
         }
 
-        public void UpdateHashInDb(string Mail,string Hash)
+        public void UpdateHashInDb(string Mail, string Hash)
         {
             using var connection = new SqliteConnection("Data Source=users.db");
             connection.Open();
@@ -85,7 +93,24 @@ namespace A_P_SmartHub.Databazicky
               WHERE Mail = $mail;";
             UpdateHashInDb.Parameters.AddWithValue("$mail", Mail);
             UpdateHashInDb.Parameters.AddWithValue("$hash", Hash);
-                
-            }
+            UpdateHashInDb.ExecuteNonQuery();
+
         }
+
+        public string GetUserId(string mail)
+        {
+            using var connection = new SqliteConnection("Data Source=users.db");
+            connection.Open();
+
+            var getUserId = connection.CreateCommand();
+            getUserId.CommandText = "SELECT UserID FROM users WHERE Mail = $mail"; 
+            getUserId.Parameters.AddWithValue("$mail", mail);
+
+            var result = getUserId.ExecuteScalar();
+
+            return result?.ToString();
+        }
+
+      
     }
+}
