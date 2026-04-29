@@ -7,92 +7,66 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1000">
   
-        <Border Background="#1A2235" CornerRadius="30" BorderThickness="1" BorderBrush="#2A3342" Margin="15">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.6" Color="Black"/>
-            </Border.Effect>
+        <Border VerticalAlignment="Center" Width="700" Background="#1A2235" CornerRadius="30" BorderThickness="1" BorderBrush="#2A3342" Margin="15">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="40" ShadowDepth="10" Opacity="0.4" Color="Black"/>
+        </Border.Effect>
 
-            <Grid Margin="35">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0" Margin="0,0,0,30">
-                    <StackPanel>
-                        <TextBlock Text="Osvetlenie Obývačka" FontSize="26" FontFamily="Bahnschrift" Foreground="#E0E6ED" FontWeight="Bold"/>
-                        <TextBlock Text="3 aktívne zdroje" FontSize="14" FontFamily="Bahnschrift" Foreground="#8A99A8"/>
-                    </StackPanel>
-                <Button Content="✕" FontSize="20" Foreground="#8A99A8" Background="Transparent" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Hand" Click="CloseButton_Click"/>
-                </Grid>
-
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,40">
-                    <Border Width="100" Height="100" Background="#D9A05B" CornerRadius="50" Cursor="Hand">
-                        <Border.Effect>
-                            <DropShadowEffect Color="#D9A05B" BlurRadius="50" Opacity="0.4"/>
-                        </Border.Effect>
-                        <TextBlock Text="💡" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
+        <StackPanel>
+            <Grid Margin="0,0,0,25">
+                <StackPanel>
+                    <TextBlock Text="Stojatá lampa" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                    <TextBlock Text="Miestnosť: Obývačka • Online" Foreground="#4ADE80" FontSize="12" Margin="0,3,0,0" FontWeight="SemiBold"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Margin="0,0,0,40">
-                    <TextBlock Text="Intenzita jasu (85%)" FontSize="14" FontFamily="Bahnschrift" Foreground="#E0E6ED" Margin="0,0,0,10"/>
-                    <Slider Maximum="100" Value="85" Foreground="#D9A05B" Margin="0,0,0,25" Height="30"/>
-
-                    <TextBlock Text="Teplota svetla (Kľudný režim)" FontSize="14" FontFamily="Bahnschrift" Foreground="#E0E6ED" Margin="0,0,0,10"/>
-                    <Grid>
-                        <Slider Maximum="100" Value="30" Foreground="#4DA8DA" Height="30"/>
-                    </Grid>
-                    <Grid Margin="0,5,0,0">
-                        <TextBlock Text="Teplá" Foreground="#D9A05B" FontSize="12" HorizontalAlignment="Left"/>
-                        <TextBlock Text="Studená" Foreground="#4DA8DA" FontSize="12" HorizontalAlignment="Right"/>
-                    </Grid>
-                </StackPanel>
-
-                <StackPanel Grid.Row="3" Margin="0,0,0,30">
-                    <TextBlock Text="Scény pre digitálnu hygienu" FontSize="14" FontFamily="Bahnschrift" Foreground="#8A99A8" Margin="0,0,0,15"/>
-                    <UniformGrid Columns="3">
-                        <Border Background="#101725" Height="45" CornerRadius="10" Margin="5" BorderThickness="1" BorderBrush="#2A3342" Cursor="Hand">
-                            <TextBlock Text="Sústredenie" Foreground="#E0E6ED" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                        </Border>
-                        <Border Background="#D9A05B" Height="45" CornerRadius="10" Margin="5" Cursor="Hand">
-                            <TextBlock Text="Relax" Foreground="#101725" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                        </Border>
-                        <Border Background="#101725" Height="45" CornerRadius="10" Margin="5" BorderThickness="1" BorderBrush="#2A3342" Cursor="Hand">
-                            <TextBlock Text="Večer" Foreground="#E0E6ED" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12"/>
-                        </Border>
-                    </UniformGrid>
-                </StackPanel>
-
-                <StackPanel Grid.Row="4">
-                    <TextBlock Text="Jednotlivé zdroje" FontSize="14" FontFamily="Bahnschrift" Foreground="#8A99A8" Margin="0,0,0,10"/>
-                    <ScrollViewer Height="120" VerticalScrollBarVisibility="Auto">
-                        <StackPanel>
-                            <Border Background="#101725" Padding="15,10" CornerRadius="10" Margin="0,0,0,8">
-                                <Grid>
-                                    <TextBlock Text="Hlavný luster" Foreground="#E0E6ED" VerticalAlignment="Center"/>
-                                    <CheckBox IsChecked="True" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                            <Border Background="#101725" Padding="15,10" CornerRadius="10" Margin="0,0,0,8">
-                                <Grid>
-                                    <TextBlock Text="Stojatá lampa" Foreground="#E0E6ED" VerticalAlignment="Center"/>
-                                    <CheckBox IsChecked="True" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                            <Border Background="#101725" Padding="15,10" CornerRadius="10">
-                                <Grid>
-                                    <TextBlock Text="Podsvietenie TV" Foreground="#8A99A8" VerticalAlignment="Center"/>
-                                    <CheckBox IsChecked="False" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
-                    </ScrollViewer>
-                </StackPanel>
+                <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                    Background="Transparent" Foreground="#8A99A8" BorderThickness="0" 
+                    FontSize="18" Cursor="Hand"/>
             </Grid>
+
+            <Border Width="80" Height="80" CornerRadius="40" Background="#33F59E0B" HorizontalAlignment="Center" Margin="0,0,0,25">
+                <TextBlock Text="💡" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Background="#101725" CornerRadius="12" Padding="15" Margin="0,0,0,25">
+                <Grid>
+                    <TextBlock Text="Hlavné napájanie" Foreground="White" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <CheckBox Content="Zapnuté" IsChecked="True" Foreground="#4ADE80" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <StackPanel Margin="0,0,0,25">
+                <Grid Margin="0,0,0,10">
+                    <TextBlock Text="Intenzita jasu" Foreground="White" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Left"/>
+                    <TextBlock Text="85%" Foreground="#8A99A8" FontSize="12" HorizontalAlignment="Right"/>
+                </Grid>
+                <Slider Minimum="0" Maximum="100" Value="85" Foreground="#F59E0B" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Teplota svetla (Kľudný režim)" Foreground="White" FontSize="12" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                <Grid>
+                    <TextBlock Text="Teplá" Foreground="#F59E0B" FontSize="11" HorizontalAlignment="Left" Margin="0,25,0,0"/>
+                    <Slider Minimum="0" Maximum="100" Value="30" Foreground="#4DA8DA" Margin="0,0,0,15"/>
+                    <TextBlock Text="Studená" Foreground="#4DA8DA" FontSize="11" HorizontalAlignment="Right" Margin="0,25,0,0"/>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Scény pre digitálnu hygienu" Foreground="#8A99A8" FontSize="12" FontWeight="SemiBold" Margin="0,0,0,15"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="Sústredenie" Background="#101725" Foreground="White" Margin="0,0,5,0" Padding="10" BorderThickness="0"  Cursor="Hand"/>
+                    <Button Grid.Column="1" Content="Relax" Background="#F59E0B" Foreground="#101725" FontWeight="Bold" Margin="5,0,5,0" Padding="10" BorderThickness="0"  Cursor="Hand"/>
+                    <Button Grid.Column="2" Content="Večer" Background="#101725" Foreground="White" Margin="5,0,0,0" Padding="10" BorderThickness="0"  Cursor="Hand"/>
+                </Grid>
+            </StackPanel>
+
+        </StackPanel>
+        
         </Border>
     
 </UserControl>
