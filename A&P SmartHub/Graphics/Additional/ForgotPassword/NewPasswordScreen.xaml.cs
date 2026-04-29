@@ -29,22 +29,23 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         // Called by child screens to switch the displayed content to the code entry screen
         public void ShowCodeScreen(CodeScreen screen)
         {
-            passwordnewControl.Content = new CodeScreen();
-            NewPasswordContentControl.Content = screen;
+            
+           
+            passwordnewControl.Content = screen;
         }
 
         // Switch to the mail entry screen
         public void ShowMailScreen(MailScreen screen)
         {
-            NewPasswordContentControl.Content = screen;
+            passwordnewControl.Content = screen;
         }
 
         // Show the new password screen
         // Switch to the new password entry screen
         public void ShowNewPasswordScreen(NewPassword newPassword)
         {
-            passwordnewControl.Content = new NewPassword();
-            NewPasswordContentControl.Content = newPassword;
+            
+            passwordnewControl.Content = newPassword;
         }
     }
 }
