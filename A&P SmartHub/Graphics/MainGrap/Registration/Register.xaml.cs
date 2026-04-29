@@ -76,23 +76,23 @@ namespace A_P_SmartHub.Graphics.MainGrap
                 PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
                 SessionInfo.Mail = Mail;
 
-                bool result = sQLITE_Users.RegisterNewUser(Mail, PassHash);
+                bool result = sQLITE_Users.IsMailInDB(Mail);
 
-                if (!result)
+                if (result)
                 {
 
 
 
-                    MessageBox.Show("Looks Like This Mail is already Used Please Log In");
+                    MessageBox.Show("Looks Like This Mail is already Used  Please Log In");
                     if (mainWindow != null)
                     {
 
                         mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
                     }
                 }
-                else if (result)
+                else
                 {
-
+                    SessionInfo.Mail = Mail;
                     verificationCode.Mail = EmailRegWind.Text;
                     verificationCode.PassHash = this.PassHash;
                     mainWindow.MainDisplay.Content = verificationCode;
