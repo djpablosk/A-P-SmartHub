@@ -8,25 +8,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
     /// <summary>
-    /// Interaction logic for MenuPage.xaml
+    /// Interaction logic for NewScheludeWindow.xaml
     /// </summary>
-    public partial class MenuPage : UserControl
+    public partial class NewScheludeWindow : Window
     {
-        public MenuPage()
+        public NewScheludeWindow()
         {
             InitializeComponent();
-        }
-
-
-        private void NewSchelude_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

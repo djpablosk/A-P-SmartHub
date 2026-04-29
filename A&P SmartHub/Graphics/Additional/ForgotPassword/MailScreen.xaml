@@ -5,15 +5,76 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Additional.ForgotPassword"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="500">
+             d:DesignHeight="300" d:DesignWidth="600">
     <Grid >
-        <Border Background="#374151" CornerRadius="30" Padding="20" Width="500" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        
+        <Border Background="#374151" CornerRadius="30" Padding="20" Width="600" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <StackPanel>
-                <TextBlock Text="Write down your mail" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBox x:Name="forgotPassMail" Width="300" Height="30" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+            <Grid>
 
-                <Border Width="300" Height="35" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
+                <Button Cursor="Hand"  Height="50" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="exit" Click="Exit_Click" Grid.Row="1" Grid.Column="1" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </Setter.Value>
+                            </Setter>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                     To="2" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                     To="2" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+                                     To="1.5" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+                                      To="1.5" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="Transparent">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Viewbox Width="25" Height="25">
+                        <Path Data="M18.4,12.2l-4.5-4.5c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l2.8,2.8H8.5c-3.6,0-6.5,2.9-6.5,6.5s2.9,6.5,6.5,6.5h2c0.6,0,1-0.4,1-1s-0.4-1-1-1h-2c-2.5,0-4.5-2-4.5-4.5s2-4.5,4.5-4.5h6.8l-2.8,2.8c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l4.5-4.5C18.8,13.2,18.8,12.6,18.4,12.2z" 
+      Fill="White"
+      RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="-1" />
+                            </Path.RenderTransform>
+                        </Path>
+                    </Viewbox>
+                </Button>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Write down your mail" FontSize="34" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBox x:Name="forgotPassMail" Width="400" Height="40" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+               
+                <Border Width="400" Height="45" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20" >
                     <Border.CacheMode>
                         <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
                     </Border.CacheMode>
@@ -31,7 +92,7 @@
                             </ControlTemplate>
                         </Button.Template>
                         <Border CacheMode="BitmapCache" Background="#22FFFFFF" CornerRadius="20">
-                            <TextBlock Text="Send Code" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" >
+                            <TextBlock Text="Send Code" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#E0E6ED" FontFamily="Bahnschrift" >
                                 
                             </TextBlock>
                         </Border>
@@ -69,6 +130,7 @@
                     </Border.Style>
                 </Border>
             </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
