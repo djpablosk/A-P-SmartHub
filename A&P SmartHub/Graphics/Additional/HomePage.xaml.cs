@@ -47,9 +47,15 @@ namespace A_P_SmartHub.Graphics.Additional
             MyDevices = new ObservableCollection<DeviceType>();
 
             DeviceList.ItemsSource = MyDevices;
-            LoadTestData();
-            // Load data from database and update UI
             LoadFromDB();
+
+            timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
+            timer.Tick += async (s, e) => //*
+            {
+                await UpdateWeather();  // *
+            };
+            timer.Start();//*
+
         }
         private void LoadTestData()
         {
@@ -89,7 +95,7 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-        public async Task LoadFromDB(getData getData)
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button stlaceneButton = sender as Button;
