@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using A_P_SmartHub.Graphics.Additional;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -20,6 +21,21 @@ namespace A_P_SmartHub.Graphics.Additional
         public AddNewDeviceWindow()
         {
             InitializeComponent();
+        }
+
+       
+
+        public SmartDevice NewDevice { get; set; }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            NewDevice = new SmartDevice
+            {
+                Name = DeviceName.Text,
+                Type = deviceType.Text,
+                IpAddress = DeviceIPAddress.Text
+            };
+            this.DialogResult = true;
         }
     }
 }

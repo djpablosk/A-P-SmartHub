@@ -45,6 +45,8 @@ namespace A_P_SmartHub.Graphics.Login
             MySql mySql = new MySql();
 
             bool success = CheckLogin(users, mySql);
+            //Teraz už 'await' nebude podčiarknuté
+            await System.Threading.Tasks.Task.Delay(5000);
 
             if (!success)
             {
@@ -66,6 +68,16 @@ namespace A_P_SmartHub.Graphics.Login
             MessageBox.Show("ide to");
 
             await mySql.DataBase();
+                SQLITE_Users users = new SQLITE_Users();
+                MySql mySql = new MySql();
+                bool success = CheckLogin(users, mySql);
+                if (success)
+                {
+                    mainWindow.SlideViewTransition(new MainDashboard(), true);
+                    MessageBox.Show("ide to");
+                    mySql.DataBase();
+                }
+            }
         }
 
 
@@ -98,9 +110,18 @@ namespace A_P_SmartHub.Graphics.Login
             else if (users.FetchedMail != LoginMail.Text || checkHash != true)
             {
 
+            if (users.FetchedMail == LoginMail.Text && checkHash)
+            {
+                SessionInfo.ID = users.GetUserId(tempMail);
+                mySql.ReturnBasicFromDB(SessionInfo.ID);
+                MessageBox.Show("login ok");
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(" Mail or Password is incorrect");
                 return false;
             }
-            return false;
         }
                 
             
