@@ -27,17 +27,17 @@
                     
                     <TextBlock Text="Please enter your home name to get started" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,160,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift" />
                     <Border Width="500" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,200,0,0" Height="60" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
-                        <TextBox  FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
+                        <TextBox  Name="HomeName" FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
                     </Border>
                     
                     <TextBlock Text="Enter your name" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,280,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift" />
                     <Border Width="500" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,320,0,0" Height="60" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
-                        <TextBox  FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
+                        <TextBox  Name="UserName" FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
                     </Border>
 
                     <TextBlock Text="Enter your city" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,410,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift" />
                     <Border Width="500" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,450,0,0" Height="60" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
-                        <TextBox  FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
+                        <TextBox Name="City"  FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
                     </Border>
 
                     <Border Width="500" Margin="0,0" VerticalAlignment="Bottom" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">

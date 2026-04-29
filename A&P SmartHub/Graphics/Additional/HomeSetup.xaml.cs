@@ -1,4 +1,6 @@
-﻿using System;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.MainGrap;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -58,5 +60,36 @@ namespace A_P_SmartHub.Graphics.Additional
         }
 
 
+
+        public async Task SaveToDB()
+        {
+            string mail = SessionInfo.Mail;
+
+            SQLITE_Users users = new SQLITE_Users();
+            string id = users.GetUserId(mail);
+
+            SessionInfo.ID = id;
+
+            MySql sql = new MySql();
+            await sql.SaveToDB(id, HomeName.Text, UserName.Text, City.Text);
+        }
+
+
+ 
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Await the asynchronous database operation
+                    await SaveToDB();
+                MessageBox.Show("pokracovanie nabuduce");
+            }
+            catch (Exception ex)
+            {
+                // Shows the error if the database save fails (e.g., missing .env variables, connection failure)
+                MessageBox.Show($"Error saving to database: {ex.Message}");
+            }
+        }
     }
 }
