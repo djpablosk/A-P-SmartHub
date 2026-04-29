@@ -89,7 +89,7 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-        public async Task LoadFromDB(getData getData)
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button stlaceneButton = sender as Button;
@@ -135,7 +135,7 @@ namespace A_P_SmartHub.Graphics.Additional
         public async Task UpdateWeather()
         { // toto uz nie je ai
             await data.getTemperature(City);
-            Weather.Text = $"Current Temperature In {City} is {data.Temperature} °C";
+          //  Weather.Text = $"Current Temperature In {City} is {data.Temperature} °C";
         }
     }
 }

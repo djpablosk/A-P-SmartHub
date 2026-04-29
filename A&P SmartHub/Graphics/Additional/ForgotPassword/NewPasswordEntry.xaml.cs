@@ -11,7 +11,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
     {
         public NewPasswordEntry()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
