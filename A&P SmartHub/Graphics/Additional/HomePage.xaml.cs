@@ -40,6 +40,8 @@ namespace A_P_SmartHub.Graphics.Additional
 
             DeviceList.ItemsSource = MyDevices;
             LoadTestData();
+            // Load data from database and update UI
+            LoadFromDB();
         }
         private void LoadTestData()
         {
@@ -48,16 +50,6 @@ namespace A_P_SmartHub.Graphics.Additional
             MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský Pás", Type = DeviceTypeEnum.Lights });
             MyDevices.Add(new DeviceType { ID = 3, Name = "Termostat Obývačka", Type = DeviceTypeEnum.Climates });
             MyDevices.Add(new DeviceType { ID = 4, Name = "Kávovar", Type = DeviceTypeEnum.Toggles });
-        }
-            LoadFromDB();
-
-  
-
-
-
-
-            // A tu to pripojíme na ten náš XAML zoznam
-            DeviceList.ItemsSource = myDevices;
         }
         public class SmartDevice
         {

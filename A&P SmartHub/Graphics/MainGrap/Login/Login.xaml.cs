@@ -41,9 +41,8 @@ namespace A_P_SmartHub.Graphics.Login
         {
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
 
-
             //Teraz už 'await' nebude podčiarknuté
-            await Task.Delay(5000);
+            await System.Threading.Tasks.Task.Delay(5000);
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
@@ -51,19 +50,13 @@ namespace A_P_SmartHub.Graphics.Login
             {
                 SQLITE_Users users = new SQLITE_Users();
                 MySql mySql = new MySql();
-                bool success = CheckLogin(users, mySql); // make CheckLogin return bool
+                bool success = CheckLogin(users, mySql);
                 if (success)
                 {
-
                     mainWindow.SlideViewTransition(new MainDashboard(), true);
                     MessageBox.Show("ide to");
                     mySql.DataBase();
-
-
-
-               // }
-
-
+                }
             }
         }
 
@@ -77,27 +70,18 @@ namespace A_P_SmartHub.Graphics.Login
                 checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
 
-            if (users.FetchedMail == LoginMail.Text && checkHash == true)
+            if (users.FetchedMail == LoginMail.Text && checkHash)
             {
+                SessionInfo.ID = users.GetUserId(tempMail);
+                mySql.ReturnBasicFromDB(SessionInfo.ID);
                 MessageBox.Show("login ok");
                 return true;
-                if (users.FetchedMail == LoginMail.Text && checkHash == true)
-                {
-                    SessionInfo.ID = users.GetUserId(tempMail);
-                    mySql.ReturnBasicFromDB(SessionInfo.ID);
-                    MessageBox.Show("login ok");
-                    return true;
-
-
-                }
-                else if (users.FetchedMail != LoginMail.Text || checkHash != true)
-                {
-                    MessageBox.Show(" Mail or Password is incorrect");
-                }
-                return false;
-
             }
-            return false;
+            else
+            {
+                MessageBox.Show(" Mail or Password is incorrect");
+                return false;
+            }
         }
 
 
