@@ -38,7 +38,8 @@ namespace A_P_SmartHub.Graphics.MainGrap
         }
 
 
-        public string Mail { get; set; }
+        public   string Mail { get; set; }
+
         private string Password { get; set; }
         private string PassHash { get; set; }
 
