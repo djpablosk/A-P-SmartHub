@@ -11,7 +11,7 @@
             <RowDefinition Height="180"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="500"/>
-           
+
         </Grid.RowDefinitions>
         <Border Style="{StaticResource GradientHoverPanel}" CornerRadius="30" Background="#374151" Margin="10">
             <Grid Margin="10">
@@ -135,6 +135,9 @@
             </Grid.ColumnDefinitions>
 
             <Border x:Name="cast" Background="#000000" CornerRadius="30" Margin="5" >
+                <TextBlock x:Name="Weather" FontSize="15"
+                 Text="" Foreground="White" Margin="10"
+                   TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
 
             </Border>
             <Border Grid.Column="1" Background="#000000" CornerRadius="30" Margin="5" >
@@ -176,6 +179,6 @@
         </Border>
 
 
-     
+
     </Grid>
 </UserControl>

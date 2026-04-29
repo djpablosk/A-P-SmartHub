@@ -34,7 +34,7 @@
 
 
                 <Border Margin="10"  Background="#22FFFFFF" CornerRadius="20" BorderThickness="1" BorderBrush="White" HorizontalAlignment="Stretch" Height="55">
-                    <Button  FontFamily="Bahnschrift" FontSize="40" Background="Transparent" BorderThickness="0" >
+                    <Button  FontFamily="Bahnschrift" FontSize="40" Background="Transparent" BorderThickness="0" Click="Button_Click_1" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
