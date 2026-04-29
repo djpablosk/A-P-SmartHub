@@ -111,7 +111,7 @@ To="1" Duration="0:0:0.2" />
                                     <Border Background="#2A3342" CornerRadius="10" Padding="10" Margin="5">
                                         <Grid>
                                             
-                                                <TextBlock Text="{Binding Name}" Foreground="White" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Bold"/>
                                             <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" 
                                     Background="Transparent" Foreground="Red" BorderThickness="0"
                                     Click="DeleteDevice_Click" Tag="{Binding}"/>
