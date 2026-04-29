@@ -44,15 +44,15 @@ namespace A_P_SmartHub.Graphics.Login
 
             
 
-            bool success = CheckLogin(users, mySql);
+           // bool success = CheckLogin(users, mySql);
             //Teraz už 'await' nebude podčiarknuté
-            await System.Threading.Tasks.Task.Delay(5000);
+           // await System.Threading.Tasks.Task.Delay(5000);
 
-            if (!success)
-            {
-                MessageBox.Show("Mail Or Password Is Incorrect");
-                return;
-            }
+            //if (!success)
+            //{
+            //    MessageBox.Show("Mail Or Password Is Incorrect");
+            //    return;
+            //}
 
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
 
@@ -65,89 +65,69 @@ namespace A_P_SmartHub.Graphics.Login
 
             mainWindow.SlideViewTransition(new MainDashboard(), true);
 
-            MessageBox.Show("ide to");
+           // MessageBox.Show("ide to");
 
             await mySql.DataBase();
 
            
-                if (success)
-                {
-                    mainWindow.SlideViewTransition(new MainDashboard(), true);
-                    MessageBox.Show("ide to");
-                    mySql.DataBase();
-                }
+                //if (success)
+                //{
+                //    mainWindow.SlideViewTransition(new MainDashboard(), true);
+                //    MessageBox.Show("ide to");
+                //    mySql.DataBase();
+                //}
             }
         
 
 
 
-        public bool CheckLogin(SQLITE_Users users, MySql mySql)
-        {
+        //public bool CheckLogin(SQLITE_Users users, MySql mySql)
+        //{
 
-            bool checkHash = false;
-            if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
-              string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
-            users.LoggingInDB(LoginMail.Text);
-            if (string.IsNullOrEmpty(users.FetchedMail)) return false;
-            if (string.IsNullOrEmpty(users.FetchedHash)) return false;
-            string tempMail = LoginMail.Text;
+        //    bool checkHash = false;
+        //    if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
+        //      string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
+        //    users.LoggingInDB(LoginMail.Text);
+        //    if (string.IsNullOrEmpty(users.FetchedMail)) return false;
+        //    if (string.IsNullOrEmpty(users.FetchedHash)) return false;
+        //    string tempMail = LoginMail.Text;
 
-            if (users.FetchedMail == LoginMail.Text)
-            {
-                checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
-            }
+        //    if (users.FetchedMail == LoginMail.Text)
+        //    {
+        //        checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+        //    }
 
 
 
-            if (users.FetchedMail == LoginMail.Text && checkHash == true)
-            {
-                SessionInfo.ID = users.GetUserId(tempMail);
-                mySql.ReturnBasicFromDB(SessionInfo.ID);
+        //    if (users.FetchedMail == LoginMail.Text && checkHash == true)
+        //    {
+        //        SessionInfo.ID = users.GetUserId(tempMail);
+        //        mySql.ReturnBasicFromDB(SessionInfo.ID);
 
-                return true;
-            }
-            else if (users.FetchedMail != LoginMail.Text || checkHash != true)
-            {
+        //        return true;
+        //    }
+        //    else if (users.FetchedMail != LoginMail.Text || checkHash != true)
+        //    {
 
-                if (users.FetchedMail == LoginMail.Text && checkHash)
-                {
-                    SessionInfo.ID = users.GetUserId(tempMail);
-                    mySql.ReturnBasicFromDB(SessionInfo.ID);
-                    MessageBox.Show("login ok");
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show(" Mail or Password is incorrect");
-                    return false;
-                }
+        //        if (users.FetchedMail == LoginMail.Text && checkHash)
+        //        {
+        //            SessionInfo.ID = users.GetUserId(tempMail);
+        //            mySql.ReturnBasicFromDB(SessionInfo.ID);
+        //            MessageBox.Show("login ok");
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(" Mail or Password is incorrect");
+        //            return false;
+        //        }
                
-            }
-            return false;
-        }
+        //    }
+        //    return false;
+        //}
           
                 
             
-            
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;

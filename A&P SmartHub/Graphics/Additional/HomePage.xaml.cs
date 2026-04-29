@@ -46,15 +46,16 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
+            LoadTestData();
             DeviceList.ItemsSource = MyDevices;
             LoadFromDB();
 
-            timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
-            timer.Tick += async (s, e) => //*
-            {
-                await UpdateWeather();  // *
-            };
-            timer.Start();//*
+            //timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
+            //timer.Tick += async (s, e) => //*
+            //{
+            //    await UpdateWeather();  // *
+            //};
+            //timer.Start();//*
 
         }
         private void LoadTestData()
@@ -124,7 +125,7 @@ namespace A_P_SmartHub.Graphics.Additional
            
             await sql.ReturnBasicFromDB(id);
             City = sql.City;
-            MessageBox.Show(sql.City);
+           // MessageBox.Show(sql.City);
             dashHomeName.Text = sql.HomeName;
            
             string LengthCheck = dashHomeName.Text;
