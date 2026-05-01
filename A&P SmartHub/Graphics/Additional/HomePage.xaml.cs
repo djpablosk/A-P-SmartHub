@@ -32,7 +32,7 @@ namespace A_P_SmartHub.Graphics.Additional
     /// Interaction logic for HomePage.xaml
     /// </summary>
     /// 
-   
+
     public partial class HomePage : UserControl
     {
         DispatcherTimer timer = new DispatcherTimer();
@@ -48,7 +48,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             DeviceList.ItemsSource = MyDevices;
             LoadFromDB();
-
+            LoadTestData();
             timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
             timer.Tick += async (s, e) => //*
             {
@@ -68,7 +68,7 @@ namespace A_P_SmartHub.Graphics.Additional
         public class SmartDevice
         {
             public string Name { get; set; }
-            
+
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
@@ -95,7 +95,7 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-      
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button stlaceneButton = sender as Button;
@@ -118,23 +118,25 @@ namespace A_P_SmartHub.Graphics.Additional
 
         public async void LoadFromDB()
         {
-           
+
             MySql sql = new MySql();
             string id = SessionInfo.ID;
-           
+
             await sql.ReturnBasicFromDB(id);
-            City = sql.City;
-            MessageBox.Show(sql.City);
             dashHomeName.Text = sql.HomeName;
-           
+            City = sql.City;
+            await UpdateWeather();
+
+
+
             string LengthCheck = dashHomeName.Text;
-         
+
             if (LengthCheck.Length == 0)
             {
                 dashHomeName.Text = "Defaultne Meno";
             }
-            await UpdateWeather();
-          
+
+
 
         }
 

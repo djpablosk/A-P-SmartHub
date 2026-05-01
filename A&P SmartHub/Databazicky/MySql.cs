@@ -25,6 +25,26 @@ namespace A_P_SmartHub.Databazicky
             return connStr;
         }
 
+        public async Task AddDevice(string id, string devicename, string ipadress, string devicetype)
+        {
+           using (var conn = new MySqlConnection(getConn()))
+            {
+                await conn.OpenAsync();
+                var addDevice = conn.CreateCommand();
+                addDevice.CommandText = @"
+                INSERT INTO devices (Id, DeviceName,IpAddress,DeviceType)
+                 VALUES (@id, @devicename, @ipadress, @devicetype);
+";
+                addDevice.Parameters.AddWithValue("@id", id);
+                addDevice.Parameters.AddWithValue("@devicename", devicename);
+                addDevice.Parameters.AddWithValue("@ipadress", ipadress);
+                addDevice.Parameters.AddWithValue("@devicetype", devicetype);
+
+                await addDevice.ExecuteNonQueryAsync();
+
+
+            }
+        }
 
 
 

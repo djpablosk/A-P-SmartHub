@@ -56,6 +56,8 @@ namespace A_P_SmartHub.Graphics.Additional
                 SQLITE_Users sQLITE_Users = new SQLITE_Users();
 
                 sQLITE_Users.CreateDB();
+                bool result = sQLITE_Users.RegisterNewUser(Mail, PassHash);
+
 
 
                 MessageBox.Show("verification successful");
