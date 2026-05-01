@@ -51,21 +51,21 @@ namespace A_P_SmartHub.Databazicky
 
         public async Task DataBase()
         {
-            using (var conn = new MySqlConnection(getConn()))
-            {
-                await conn.OpenAsync();
+//            using (var conn = new MySqlConnection(getConn()))
+//            {
+//                await conn.OpenAsync();
 
-                var cmd = conn.CreateCommand();
-                cmd.CommandText = @"
-SELECT * FROM apdefaultinfos";
+//                var cmd = conn.CreateCommand();
+//                cmd.CommandText = @"
+//SELECT * FROM apdefaultinfos";
 
-                var reader = await cmd.ExecuteReaderAsync();
-                while (await reader.ReadAsync())
-                {
-                    MessageBox.Show(reader["UserName"].ToString());
-                }
+//                var reader = await cmd.ExecuteReaderAsync();
+//                while (await reader.ReadAsync())
+//                {
+//                    MessageBox.Show(reader["UserName"].ToString());
+//                }
 
-            }
+//            }
         }
         public async Task SaveToDB(string id ,string homename, string username, string city)
         {
@@ -85,21 +85,21 @@ SELECT * FROM apdefaultinfos";
 
         public async Task ReturnBasicFromDB(string id)
         {
-            using var conn = new MySqlConnection(getConn());
-            await conn.OpenAsync();
+            //using var conn = new MySqlConnection(getConn());
+            ////await conn.OpenAsync();
 
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM apdefaultinfos WHERE Id = @id";
-            cmd.Parameters.AddWithValue("@id", id);
+            //using var cmd = conn.CreateCommand();
+            //cmd.CommandText = @"SELECT * FROM apdefaultinfos WHERE Id = @id";
+            //cmd.Parameters.AddWithValue("@id", id);
 
-            using var reader = await cmd.ExecuteReaderAsync();
+            //using var reader = await cmd.ExecuteReaderAsync();
 
-            if (await reader.ReadAsync())
-            {
-                HomeName = reader["HomeName"].ToString();
-                UserName = reader["UserName"].ToString();
-                City = reader["City"].ToString();
-            }
+            //if (await reader.ReadAsync())
+            //{
+            //    HomeName = reader["HomeName"].ToString();
+            //    UserName = reader["UserName"].ToString();
+            //    City = reader["City"].ToString();
+            //}
         }
     }
 }

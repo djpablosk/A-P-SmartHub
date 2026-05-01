@@ -46,6 +46,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
+            LoadTestData();
             DeviceList.ItemsSource = MyDevices;
             LoadFromDB();
             LoadTestData();
