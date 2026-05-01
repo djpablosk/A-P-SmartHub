@@ -19,7 +19,7 @@
                     <TextBlock Text="Miestnosť: Obývačka • Online" Foreground="#4ADE80" FontSize="12" Margin="0,3,0,0" FontWeight="SemiBold"/>
                 </StackPanel>
 
-                <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top" 
+                <Button Click="CloseButton_Click" Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top" 
                     Background="Transparent" Foreground="#8A99A8" BorderThickness="0" 
                     FontSize="18" Cursor="Hand"/>
             </Grid>
