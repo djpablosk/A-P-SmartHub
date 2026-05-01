@@ -44,7 +44,7 @@ namespace A_P_SmartHub.Graphics.Login
 
 
 
-            bool success = CheckLogin(users, mySql);
+           // bool success = CheckLogin(users, mySql);
             //Teraz už 'await' nebude podčiarknuté
           
 
@@ -80,21 +80,21 @@ namespace A_P_SmartHub.Graphics.Login
 
 
 
-        public bool CheckLogin(SQLITE_Users users, MySql mySql)
-        {
+        //public bool CheckLogin(SQLITE_Users users, MySql mySql)
+        //{
 
-            bool checkHash = false;
-            if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
-              string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
-            users.LoggingInDB(LoginMail.Text);
-            if (string.IsNullOrEmpty(users.FetchedMail)) return false;
-            if (string.IsNullOrEmpty(users.FetchedHash)) return false;
-            string tempMail = LoginMail.Text;
+        //    bool checkHash = false;
+        //    if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
+        //      string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
+        //    users.LoggingInDB(LoginMail.Text);
+        //    if (string.IsNullOrEmpty(users.FetchedMail)) return false;
+        //    if (string.IsNullOrEmpty(users.FetchedHash)) return false;
+        //    string tempMail = LoginMail.Text;
 
-            if (users.FetchedMail == LoginMail.Text)
-            {
-                checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
-            }
+        //    if (users.FetchedMail == LoginMail.Text)
+        //    {
+        //        checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+        //    }
 
 
 
