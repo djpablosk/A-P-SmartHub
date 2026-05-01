@@ -36,17 +36,21 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         private async void SlideAnimation(UserControl newScreen)
         {
-
+           
             newScreen.Opacity = 0;
             TranslateTransform slide = new TranslateTransform(0, 30);
             newScreen.RenderTransform = slide;
 
-
+          
             MainDisplay.Content = newScreen;
 
+          
 
+          
 
+            // 4. Obrazovka je plne načítaná v pamäti, spúšťame plynulé animácie
 
+            // 4. Obrazovka je plne načítaná v pamäti, spúšťame plynulé animácie
             DoubleAnimation fadeAnimation = new DoubleAnimation
             {
                 From = 0.0,

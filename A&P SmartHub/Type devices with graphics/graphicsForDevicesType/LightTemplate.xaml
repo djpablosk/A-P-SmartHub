@@ -6,67 +6,49 @@
              xmlns:local="clr-namespace:A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1000">
-  
-        <Border VerticalAlignment="Center" Width="700" Background="#1A2235" CornerRadius="30" BorderThickness="1" BorderBrush="#2A3342" Margin="15">
-        <Border.Effect>
-            <DropShadowEffect BlurRadius="40" ShadowDepth="10" Opacity="0.4" Color="Black"/>
-        </Border.Effect>
+    <Grid>
 
-        <StackPanel>
-            <Grid Margin="0,0,0,25">
-                <StackPanel>
-                    <TextBlock Text="Stojatá lampa" Foreground="White" FontSize="24" FontWeight="Bold"/>
-                    <TextBlock Text="Miestnosť: Obývačka • Online" Foreground="#4ADE80" FontSize="12" Margin="0,3,0,0" FontWeight="SemiBold"/>
-                </StackPanel>
+        <Border Height="500"  Width="700" Background="#1A2235" CornerRadius="30" BorderThickness="1" BorderBrush="#2A3342" Margin="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="40" ShadowDepth="10" Opacity="0.4" Color="Black"/>
+            </Border.Effect>
 
-                <Button Click="CloseButton_Click" Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top" 
-                    Background="Transparent" Foreground="#8A99A8" BorderThickness="0" 
-                    FontSize="18" Cursor="Hand"/>
-            </Grid>
+            <Border CornerRadius="30"  HorizontalAlignment="Stretch" Background="#374151">
+                <Grid Margin="10" >
+                    <TextBlock Text="Light" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Bahnschrift" Margin="0,10,10,0"/>
+                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Background="Transparent" Content="X" Click="CloseButton_Click" Foreground="White" FontSize="30" BorderThickness="0" Height="50" />
 
-            <Border Width="80" Height="80" CornerRadius="40" Background="#33F59E0B" HorizontalAlignment="Center" Margin="0,0,0,25">
-                <TextBlock Text="💡" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
 
-            <Border Background="#101725" CornerRadius="12" Padding="15" Margin="0,0,0,25">
-                <Grid>
-                    <TextBlock Text="Hlavné napájanie" Foreground="White" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                    <CheckBox Content="Zapnuté" IsChecked="True" Foreground="#4ADE80" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="400">
+
+                        <Border>
+                            
+                        <Path Data="{StaticResource IconLights}" Fill="White" Width="100" Height="100" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+                        </Border>
+
+
+                        <Grid>
+                            <TextBlock Text="{Binding ElementName=BrightnessSlider, Path=Value, StringFormat='{}{0:F0}%'}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                        <Slider  Margin="0,40,0,0" VerticalAlignment="Center"  x:Name="BrightnessSlider" 
+                         Minimum="0" 
+                          Maximum="100" 
+                         Value="{Binding Brightness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      Foreground="#F59E0B"
+                      MouseWheel="BrightnessSlider_MouseWheel"/>
+                        </Grid>
+                        
+                        
+
+
+
+
+                    </StackPanel>
                 </Grid>
             </Border>
 
-            <StackPanel Margin="0,0,0,25">
-                <Grid Margin="0,0,0,10">
-                    <TextBlock Text="Intenzita jasu" Foreground="White" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Left"/>
-                    <TextBlock Text="85%" Foreground="#8A99A8" FontSize="12" HorizontalAlignment="Right"/>
-                </Grid>
-                <Slider Minimum="0" Maximum="100" Value="85" Foreground="#F59E0B" Margin="0,0,0,20"/>
 
-                <TextBlock Text="Teplota svetla (Kľudný režim)" Foreground="White" FontSize="12" FontWeight="SemiBold" Margin="0,0,0,10"/>
-                <Grid>
-                    <TextBlock Text="Teplá" Foreground="#F59E0B" FontSize="11" HorizontalAlignment="Left" Margin="0,25,0,0"/>
-                    <Slider Minimum="0" Maximum="100" Value="30" Foreground="#4DA8DA" Margin="0,0,0,15"/>
-                    <TextBlock Text="Studená" Foreground="#4DA8DA" FontSize="11" HorizontalAlignment="Right" Margin="0,25,0,0"/>
-                </Grid>
-            </StackPanel>
 
-            <StackPanel>
-                <TextBlock Text="Scény pre digitálnu hygienu" Foreground="#8A99A8" FontSize="12" FontWeight="SemiBold" Margin="0,0,0,15"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="0" Content="Sústredenie" Background="#101725" Foreground="White" Margin="0,0,5,0" Padding="10" BorderThickness="0"  Cursor="Hand"/>
-                    <Button Grid.Column="1" Content="Relax" Background="#F59E0B" Foreground="#101725" FontWeight="Bold" Margin="5,0,5,0" Padding="10" BorderThickness="0"  Cursor="Hand"/>
-                    <Button Grid.Column="2" Content="Večer" Background="#101725" Foreground="White" Margin="5,0,0,0" Padding="10" BorderThickness="0"  Cursor="Hand"/>
-                </Grid>
-            </StackPanel>
-
-        </StackPanel>
-        
         </Border>
-    
+
+    </Grid>
 </UserControl>
