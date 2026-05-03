@@ -19,15 +19,17 @@
                     <Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Background="Transparent" Content="X" Click="CloseButton_Click" Foreground="White" FontSize="30" BorderThickness="0" Height="50" />
 
 
-                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="400">
+                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="450">
 
-                        <Border>
-                            
-                        <Path Data="{StaticResource IconLights}" Fill="White" Width="100" Height="100" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+                        <Border Width="90" Height="80">
+                            <Viewbox>
+                                
+                                 <Path Data="{StaticResource IconLights}" Fill="White"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Viewbox>
                         </Border>
 
 
-                        <Grid>
+                        <Grid Margin="0,50,0,0">
                             <TextBlock Text="{Binding ElementName=BrightnessSlider, Path=Value, StringFormat='{}{0:F0}%'}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
                         <Slider  Margin="0,40,0,0" VerticalAlignment="Center"  x:Name="BrightnessSlider" 
                          Minimum="0" 
@@ -35,6 +37,28 @@
                          Value="{Binding Brightness, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                       Foreground="#F59E0B"
                       MouseWheel="BrightnessSlider_MouseWheel"/>
+                        </Grid>
+
+                        <Grid Height="130" Margin="0,30,0,0">
+                            <TextBlock Text="Scene" FontSize="25" Foreground="White" Margin="0,0,0,10"/>
+                            <StackPanel VerticalAlignment="Bottom" Height="90" Orientation="Horizontal">
+                                <Button Content="Morning" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <Button Content="DayLight" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <Button Content="Evening" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <Button Content="Night" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                            </StackPanel>
+                            
+                        </Grid>
+
+                        <Grid VerticalAlignment="Bottom" Height="100">
+                            <TextBlock Text="Color" FontSize="25" Foreground="White" Margin="0,0,0,10"/>
+                            <StackPanel VerticalAlignment="Bottom" Height="70" Orientation="Horizontal">
+                               <Button Content="White" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="40,0"/>
+                                <Button Content="RGB" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="70,0"/>
+                               
+                            </StackPanel>
+
+
                         </Grid>
                         
                         

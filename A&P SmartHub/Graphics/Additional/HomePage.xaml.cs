@@ -112,6 +112,12 @@ namespace A_P_SmartHub.Graphics.Additional
                         PopupContent.Content = lightWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
+
+                        case DeviceTypeEnum.Toggles:
+                        var toggleWindow = new ToggleTemplate(stlaceneDevice);
+                        PopupContent.Content = toggleWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
                 }
             }
         }

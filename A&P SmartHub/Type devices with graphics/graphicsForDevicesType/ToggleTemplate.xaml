@@ -5,8 +5,63 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
-            
+             d:DesignHeight="900" d:DesignWidth="1000">
+    <Grid>
+
+        <Border Height="500"  Width="700" Background="#1A2235" CornerRadius="30" BorderThickness="1" BorderBrush="#2A3342" Margin="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="40" ShadowDepth="10" Opacity="0.4" Color="Black"/>
+            </Border.Effect>
+
+            <Border CornerRadius="30"  HorizontalAlignment="Stretch" Background="#374151">
+                <Grid Margin="10" >
+                    <TextBlock Text="Toggle" FontSize="40" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Bahnschrift" Margin="0,10,10,0"/>
+                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Background="Transparent" Content="X" Click="CloseButton_Click" Foreground="White" FontSize="30" BorderThickness="0" Height="50" />
+
+
+                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="450">
+
+                        <Border Width="90" Height="90">
+                            <Viewbox>
+
+                                <Path  Data="{StaticResource IconToggles}" Fill="White"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                            </Viewbox>
+                        </Border>
+
+
+                        <Grid Margin="0,60,0,0" Height="50">
+                            <TextBlock Text="Power-on state" FontSize="25" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock Text="On" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                                <RadioButton GroupName="PowerState" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <TextBlock Text="Off" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                                <RadioButton GroupName="PowerState" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <TextBlock Text="Last State" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                                <RadioButton GroupName="PowerState" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+
+                            </StackPanel>
+
+                            <Grid Margin="0,60,0,0" Height="50">
+                                <TextBlock Text="Lock child" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="White"  Margin="0,0,0,0"/>
+                            </Grid>
+                            
+                        </Grid>
+                        
+
+                      
+
+
+
+
+
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+
+
+        </Border>
+
     </Grid>
 </UserControl>
