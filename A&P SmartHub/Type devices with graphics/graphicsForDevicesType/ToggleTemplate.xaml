@@ -41,11 +41,11 @@
 
                             </StackPanel>
 
-                            <Grid Margin="0,60,0,0" Height="50">
-                                <TextBlock Text="Lock child" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="White"  Margin="0,0,0,0"/>
-                            </Grid>
                             
                         </Grid>
+                            <Grid Margin="0,60,0,0" Height="50">
+                                <TextBlock Text="Lock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="White"   Margin="0,0,0,0"/>
+                            </Grid>
                         
 
                       
