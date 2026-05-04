@@ -62,9 +62,10 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             // Vytvárame nové zariadenia a hádžeme ich do zoznamu
             MyDevices.Add(new DeviceType { ID = 1, Name = "Stolná Lampa", Type = DeviceTypeEnum.Lights });
-            MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský Pás", Type = DeviceTypeEnum.Lights });
-            MyDevices.Add(new DeviceType { ID = 3, Name = "Termostat Obývačka", Type = DeviceTypeEnum.Climates });
-            MyDevices.Add(new DeviceType { ID = 4, Name = "Kávovar", Type = DeviceTypeEnum.Toggles });
+            MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský LED Pás", Type = DeviceTypeEnum.Lights });
+            MyDevices.Add(new DeviceType { ID = 3, Name = "Klimatizácia", Type = DeviceTypeEnum.Climates });
+            MyDevices.Add(new DeviceType { ID = 4, Name = "Zasuvka", Type = DeviceTypeEnum.Toggles });
+            MyDevices.Add(new DeviceType { ID = 5, Name = "Žalúzia", Type = DeviceTypeEnum.Covers });
         }
         public class SmartDevice
         {
@@ -116,6 +117,18 @@ namespace A_P_SmartHub.Graphics.Additional
                         case DeviceTypeEnum.Toggles:
                         var toggleWindow = new ToggleTemplate(stlaceneDevice);
                         PopupContent.Content = toggleWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Climates:
+                        var climateWindow = new ClimateTemplate(stlaceneDevice);
+                        PopupContent.Content = climateWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Covers:
+                        var coverWindow = new CoverTemplate(stlaceneDevice);
+                        PopupContent.Content = coverWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
                 }
