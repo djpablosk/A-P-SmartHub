@@ -103,6 +103,8 @@ namespace A_P_SmartHub.Graphics.Login
             {
                 SessionInfo.ID = users.GetUserId(tempMail);
                 mySql.ReturnBasicFromDB(SessionInfo.ID);
+
+                mySql.LoadDevices(SessionInfo.ID);
                 
                 return true;
             }

@@ -46,6 +46,28 @@ namespace A_P_SmartHub.Databazicky
             }
         }
 
+        public async Task LoadDevices(string id)
+        {
+            using (var conn = new MySqlConnection(getConn()))
+            {
+                await conn.OpenAsync();
+                var loadDevices = conn.CreateCommand();
+                loadDevices.CommandText = @"
+            SELECT DeviceName,IpAddress,DeviceType
+            FROM devices 
+            WHERE Id = @id;";
+                loadDevices.Parameters.AddWithValue("@Id", id);
+                using var Reader = await loadDevices.ExecuteReaderAsync();
+                 while (Reader.Read())
+                {
+                    MessageBox.Show(Reader.GetString("DeviceName"));
+                    MessageBox.Show(Reader.GetString("IpAddress"));
+                    MessageBox.Show(Reader.GetString("DeviceType"));
+                }
+            }
+            
+        }
+
 
 
 
