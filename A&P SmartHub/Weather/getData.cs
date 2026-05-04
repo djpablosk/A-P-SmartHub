@@ -17,14 +17,26 @@ namespace A_P_SmartHub.Weather
         public async Task  getTemperature(string city)
         {
             Env.Load();
-          
-            using HttpClient client = new HttpClient();
-            string weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Environment.GetEnvironmentVariable("WeatherApi")}&units=metric";
-           HttpResponseMessage httpResponseMessage = await client.GetAsync(weatherUrl);
-            string data  = await httpResponseMessage.Content.ReadAsStringAsync();
-           JsonDocument jsonDocument = JsonDocument.Parse(data);
-            double temp = jsonDocument.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
-          Temperature = (int)Math.Round(temp);
+
+            try
+            {
+
+                using HttpClient client = new HttpClient();
+                string weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Environment.GetEnvironmentVariable("WeatherApi")}&units=metric";
+                HttpResponseMessage httpResponseMessage = await client.GetAsync(weatherUrl);
+                string data = await httpResponseMessage.Content.ReadAsStringAsync();
+                JsonDocument jsonDocument = JsonDocument.Parse(data);
+                double temp = jsonDocument.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
+                Temperature = (int)Math.Round(temp);
+            }
+            catch (Exception)
+            {
+             
+                Temperature = 404;
+
+                MessageBox.Show($"Looks like we couldn't find {city}");
+
+            }
          
 
             //Pato ak skusas a crashuje to
