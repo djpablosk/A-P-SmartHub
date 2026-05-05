@@ -47,6 +47,10 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
           
 
           
+
+            // 4. Obrazovka je plne načítaná v pamäti, spúšťame plynulé animácie
+
+            // 4. Obrazovka je plne načítaná v pamäti, spúšťame plynulé animácie
             DoubleAnimation fadeAnimation = new DoubleAnimation
             {
                 From = 0.0,
