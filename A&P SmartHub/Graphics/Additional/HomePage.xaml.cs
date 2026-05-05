@@ -3,7 +3,6 @@ using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Weather;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
-using A_P_SmartHub.Databazicky;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -22,7 +21,6 @@ using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Type_devices_with_graphics;
-using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 
 using static A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard;
 
