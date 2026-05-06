@@ -1,5 +1,8 @@
-﻿using System;
+﻿using A_P_SmartHub.Type_devices_with_graphics;
+using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,35 +21,69 @@ namespace A_P_SmartHub.Graphics.Additional
     /// </summary>
     public partial class AllDevices : UserControl
     {
+        public ObservableCollection<DeviceType> MyDevices { get; set; }
         public AllDevices()
         {
             InitializeComponent();
-            var myDevices = new List<SmartDevice>
-{
-    new SmartDevice { Name = "Main Light" },
-    new SmartDevice { Name = "Thermostat" },
-    new SmartDevice { Name = "TV Living Room" },
-    new SmartDevice { Name = "Led Strip" },
-    new SmartDevice { Name = "Humidifier" },
-    new SmartDevice { Name = "PC Station" },
-    new SmartDevice { Name = "Camera 1" },
-    new SmartDevice { Name = "Router" },
-     new SmartDevice { Name = "Humidifier" },
-    new SmartDevice { Name = "PC Station" },
-    new SmartDevice { Name = "Camera 1" },
-    new SmartDevice { Name = "Router" },
-     new SmartDevice { Name = "Humidifier" },
-    new SmartDevice { Name = "PC Station" },
-    new SmartDevice { Name = "Camera 1" },
-    new SmartDevice { Name = "Router" }
-};
+            MyDevices = new ObservableCollection<DeviceType>();
+            DeviceList.ItemsSource = MyDevices;
+            LoadTestData();
 
-            // A tu to pripojíme na ten náš XAML zoznam
-            DeviceList.ItemsSource = myDevices;
         }
-        public class SmartDevice
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            public string Name { get; set; }
+            Button stlaceneButton = sender as Button;
+            DeviceType stlaceneDevice = stlaceneButton.DataContext as DeviceType;
+
+            if (stlaceneDevice != null)
+            {
+                switch (stlaceneDevice.Type)
+                {
+                    case DeviceTypeEnum.Lights:
+                        // Oprava chyby CS1503: Posielame presne ten typ, ktorý okno čaká
+                        var lightWindow = new LightTemplate(stlaceneDevice);
+                        PopupContent.Content = lightWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Toggles:
+                        var toggleWindow = new ToggleTemplate(stlaceneDevice);
+                        PopupContent.Content = toggleWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Climates:
+                        var climateWindow = new ClimateTemplate(stlaceneDevice);
+                        PopupContent.Content = climateWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Covers:
+                        var coverWindow = new CoverTemplate(stlaceneDevice);
+                        PopupContent.Content = coverWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Media:
+                        var mediaWindow = new MediaTemplate(stlaceneDevice);
+                        PopupContent.Content = mediaWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
         }
+
+        public void LoadTestData()
+        {
+            // Vytvárame nové zariadenia a hádžeme ich do zoznamu
+            MyDevices.Add(new DeviceType { ID = 1, Name = "Stolná Lampa", Type = DeviceTypeEnum.Lights });
+            MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský LED Pás", Type = DeviceTypeEnum.Lights });
+            MyDevices.Add(new DeviceType { ID = 3, Name = "Klimatizácia", Type = DeviceTypeEnum.Climates });
+            MyDevices.Add(new DeviceType { ID = 4, Name = "Zasuvka", Type = DeviceTypeEnum.Toggles });
+            MyDevices.Add(new DeviceType { ID = 5, Name = "Žalúzia", Type = DeviceTypeEnum.Covers });
+            MyDevices.Add(new DeviceType { ID = 6, Name = "TV", Type = DeviceTypeEnum.Media });
+        }
+
     }
 }

@@ -56,7 +56,7 @@ namespace A_P_SmartHub.Graphics.Additional
             timer.Start();//*
 
         }
-        private void LoadTestData()
+        public void LoadTestData()
         {
             // Vytvárame nové zariadenia a hádžeme ich do zoznamu
             MyDevices.Add(new DeviceType { ID = 1, Name = "Stolná Lampa", Type = DeviceTypeEnum.Lights });
@@ -66,11 +66,7 @@ namespace A_P_SmartHub.Graphics.Additional
             MyDevices.Add(new DeviceType { ID = 5, Name = "Žalúzia", Type = DeviceTypeEnum.Covers });
             MyDevices.Add(new DeviceType {ID = 6, Name = "TV", Type = DeviceTypeEnum.Media });
         }
-        public class SmartDevice
-        {
-            public string Name { get; set; }
-
-        }
+       
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
