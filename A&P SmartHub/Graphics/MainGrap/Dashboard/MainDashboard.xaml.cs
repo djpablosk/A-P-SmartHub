@@ -23,14 +23,14 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         private HomePage _homePage;
         private AllDevices _allDevices;
-        private MenuPage _menuPage;
+       
 
         public MainDashboard()
         {
             InitializeComponent();
             _homePage = new HomePage();
             _allDevices = new AllDevices();
-            _menuPage = new MenuPage();
+            
             MainDisplay.Content = _homePage;
         }
 
@@ -85,10 +85,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
         {
             SlideAnimation(_allDevices);
         }
-        private void Menu_Click(object sender, RoutedEventArgs e)
-        {
-            SlideAnimation(_menuPage);
-        }
+       
 
     }
 }
