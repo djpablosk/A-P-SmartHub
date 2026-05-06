@@ -152,10 +152,7 @@
                 </Border>
 
                
-                <TextBlock x:Name="Weather" FontSize="15"
-                 Text="" Foreground="White" Margin="10"
-                   TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
-
+              
 
 
             </Grid>
