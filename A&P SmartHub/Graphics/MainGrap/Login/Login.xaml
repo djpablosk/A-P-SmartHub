@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Login"
              mc:Ignorable="d" 
+             xmlns:root="clr-namespace:A_P_SmartHub"
              d:DesignHeight="900" d:DesignWidth="1500">
 
    
@@ -196,8 +197,9 @@
                 </StackPanel>
             </Border>
 
-           
 
-        </Grid>
-   
+    </Grid>
+        
+            
+        
 </UserControl>
