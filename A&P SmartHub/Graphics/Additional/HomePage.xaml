@@ -122,9 +122,14 @@
                 <Border Grid.Column="0" Background="#1C2331" CornerRadius="30" Margin="5" >
                     <Grid Margin="10">
                         <TextBlock TextAlignment="Center" Text="Home safety" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"  />
+                        
+                        <TextBlock TextAlignment="Center" Text="Air quality is good" FontSize="25" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,50,0,0"/>
                     </Grid>
                 </Border>
                 <Border Grid.Column="1" Background="#1C2331" CornerRadius="30" Margin="5" >
+                    <TextBlock TextAlignment="Center" Text="Climate control" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    
+                    
                 </Border>
 
 
@@ -132,7 +137,9 @@
 
 
             </Grid>
-            <Grid    Background="#1C2331" Grid.Row="2" VerticalAlignment="Stretch"  Margin="10"   >
+            <Border  CornerRadius="30" Background="#1C2331" Grid.Row="2" VerticalAlignment="Stretch">
+                
+            <Grid  Margin="10"   >
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl x:Name="DeviceList">
                         <ItemsControl.ItemTemplate>
@@ -154,6 +161,7 @@
                     </ItemsControl>
                 </ScrollViewer>
             </Grid>
+            </Border>
 
 
 
