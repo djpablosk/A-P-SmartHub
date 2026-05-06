@@ -176,7 +176,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Width="160" Height="80" Background="#101725" CornerRadius="20" Margin="10">
-                                    <Button Content="{Binding Name}" 
+                                    <Button x:Name="DeviceButton" Content="{Binding DeviceName}" 
                                 Click="Button_Click" 
                                 Foreground="White" 
                                 Background="Transparent" 

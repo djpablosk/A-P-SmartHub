@@ -72,7 +72,7 @@ namespace A_P_SmartHub.Graphics.Login
                 await mySql.DataBase();
 
                 mainWindow.SlideViewTransition(new MainDashboard(), true);
-                MessageBox.Show("ide to");
+               // MessageBox.Show("ide to");
               
             }
         }
