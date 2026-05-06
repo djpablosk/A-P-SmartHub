@@ -8,7 +8,7 @@
              d:DesignHeight="900" d:DesignWidth="1500">
     <Viewbox Stretch="UniformToFill">
 
-        <Grid Background="#101725" Height="900" Width="1500">
+        <Grid Background="#10141D" Height="900" Width="1500">
 
             <Grid Margin="25">
         <Grid.ColumnDefinitions>
@@ -23,7 +23,7 @@
             <RowDefinition Height="190"/>
         </Grid.RowDefinitions>
 
-                <Border Style="{StaticResource GradientHoverPanel}" Grid.Row="1" Grid.Column="1" CornerRadius="30"  Background="#374151"   HorizontalAlignment="Stretch" >
+                <Border  Grid.Row="1" Grid.Column="1" CornerRadius="30"  Background="#1C2331"   HorizontalAlignment="Stretch" >
 
            
         </Border>
@@ -81,12 +81,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <Border.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#FF1493" Offset="0.0" />
-                                <GradientStop Color="#FFC400" Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Border.BorderBrush>
+                       
                     </Border>
 
 

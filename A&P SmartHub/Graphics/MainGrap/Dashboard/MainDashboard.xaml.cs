@@ -23,7 +23,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         private HomePage _homePage;
         private AllDevices _allDevices;
-        private MenuPage _menuPage;
+        private SettingsScreen _settings;
 
 
         public MainDashboard()
@@ -31,7 +31,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
             InitializeComponent();
             _homePage = new HomePage();
             _allDevices = new AllDevices();
-            
+            _settings = new SettingsScreen();
             MainDisplay.Content = _homePage;
         }
 
@@ -86,7 +86,12 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
         {
             SlideAnimation(_allDevices);
         }
-       
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+           SlideAnimation(_settings);
+        }
+
 
     }
 }

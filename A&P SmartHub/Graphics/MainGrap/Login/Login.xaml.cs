@@ -54,7 +54,6 @@ namespace A_P_SmartHub.Graphics.Login
                 return;
             }
 
-            VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
 
             await Task.Delay(5000);
 

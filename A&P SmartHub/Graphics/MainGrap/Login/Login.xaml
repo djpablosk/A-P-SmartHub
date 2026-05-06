@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Login"
              mc:Ignorable="d" 
-             d:DesignHeight="1000" d:DesignWidth="1500">
+             d:DesignHeight="900" d:DesignWidth="1500">
 
-    <Viewbox Stretch="UniformToFill">
-        <Grid x:Name="MainRoot" Background="#101725" Height="900" Width="1500">
+   
+        <Grid x:Name="MainRoot" Background="#10141D" >
 
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="LoginFlowStates">
@@ -38,13 +38,13 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+               
             </Grid.ColumnDefinitions>
 
-            <Border Style="{StaticResource GradientHoverPanel}" x:Name="LoginForm" Grid.Column="0" Width="680" Height="700" CornerRadius="30"  Background="#374151" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="44,0,0,0" Width="509" >
+            <Border  x:Name="LoginForm" Grid.Column="0" Width="670" Height="680" CornerRadius="30"  Background="#1C2331" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" Width="509" >
 
-                    <TextBlock HorizontalAlignment="Left" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="185" FontSize="72" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="185" FontSize="72" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
 
                     <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
                     <Border Margin="10,0" BorderBrush="White" CornerRadius="20" HorizontalAlignment="Left" Height="64" Width="482" BorderThickness="1">
@@ -196,34 +196,8 @@
                 </StackPanel>
             </Border>
 
-            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="670" Height="800">
-
-                <Grid.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform x:Name="LogoScale" ScaleX="1" ScaleY="1" />
-                        <TranslateTransform x:Name="LogoTranslate" X="0" Y="0" />
-                    </TransformGroup>
-                </Grid.RenderTransform>
-                <Grid.RenderTransformOrigin>0.5,0.5</Grid.RenderTransformOrigin>
-
-                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="688" Width="670" Source="/Graphics/MainGrap/Login/Picture Login.png"/>
-
-                <StackPanel x:Name="LoadingArea" Opacity="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,40">
-                    <ProgressBar IsIndeterminate="True" 
-                                 Width="120" 
-                                 Height="4" 
-                                 Foreground="#53FFDC" 
-                                 Background="#22FFFFFF" 
-                                 BorderThickness="0"/>
-                    <TextBlock Text="Logging in..." 
-                               Foreground="#53FFDC" 
-                               HorizontalAlignment="Center" 
-                               Margin="0,15,0,0"
-                               FontSize="16"
-                               FontWeight="SemiBold"/>
-                </StackPanel>
-            </Grid>
+           
 
         </Grid>
-    </Viewbox>
+   
 </UserControl>
