@@ -9,54 +9,56 @@
     <Grid Background="#101725">
         <Grid>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="18*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="18*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="18*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="18*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <Border Style="{StaticResource GradientHoverPanel}" Grid.Column="1" Grid.Row="1" Margin="10" Background="#374151" CornerRadius="30">
-                <Grid Margin="10">
-                    <Grid.RowDefinitions>
+        <Border Style="{StaticResource GradientHoverPanel}" Grid.Column="1" Grid.Row="1" Margin="10" Background="#374151" CornerRadius="30">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="All Devices" FontFamily="Bahnschrift" FontSize="46" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                <Grid Grid.Row="1">
+                    
 
-                        <RowDefinition Height="90" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="All Devices" FontFamily="Bahnschrift" FontSize="46" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                    <Grid Grid.Row="1">
-
-
-
+                   
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ItemsControl x:Name="DeviceList">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Width="160" Height="80" Background="#101725" CornerRadius="20" Margin="10">
-                                            <Button Content="{Binding Name}" 
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border Width="160" Height="80" Background="#101725" CornerRadius="20" Margin="10">
+                                        <Button Content="{Binding Name}" 
                                             Click="Button_Click" 
-                                             Foreground="White" 
+                                          Foreground="White" 
                                              Background="Transparent" 
                                              BorderThickness="0"/>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
+                                    </Border>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel />
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
-                            </ItemsControl>
+                        </ItemsControl>
                         </ScrollViewer>
-
-                    </Grid>
-
+                  
                 </Grid>
-            </Border>
+                
+            </Grid>
+        </Border>
 
 
         </Grid>

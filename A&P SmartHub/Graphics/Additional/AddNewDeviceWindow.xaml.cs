@@ -1,4 +1,7 @@
-﻿using System;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Additional;
+using A_P_SmartHub.Type_devices_with_graphics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using A_P_SmartHub.Databazicky;
-using A_P_SmartHub.Graphics.Additional;
+using static MaterialDesignThemes.Wpf.Theme;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -35,14 +37,16 @@ namespace A_P_SmartHub.Graphics.Additional
 
             NewDevice = new SmartDevice
             {
-                Name = DeviceNameBox.Text,
+               Name = DeviceNameBox.Text,
                 Type = deviceType.Text,
                 IpAddress = DeviceIPAddressBox.Text
             };
            
             string id = sQLITE_Users.GetUserId(SessionInfo.Mail);
+            var selected = deviceType.SelectedItem as ComboBoxItem;
+            string devtype = selected?.Content.ToString();
 
-            await mySql.AddDevice(id, DeviceNameBox.Text, DeviceIPAddressBox.Text, deviceType.SelectedItem.ToString());
+            await mySql.AddDevice(id, DeviceNameBox.Text, DeviceIPAddressBox.Text,devtype);
 
             this.DialogResult = true;
         }

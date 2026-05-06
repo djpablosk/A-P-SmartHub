@@ -46,7 +46,7 @@ namespace A_P_SmartHub.Graphics.Login
 
             bool success = CheckLogin(users, mySql);
             //Teraz už 'await' nebude podčiarknuté
-
+          
 
             if (!success)
             {
@@ -63,16 +63,17 @@ namespace A_P_SmartHub.Graphics.Login
             if (mainWindow == null)
                 return;
 
-
-
-            await mySql.DataBase();
-
+           
 
             if (success)
             {
+                HomePage homePage = new HomePage();
+    
+                await mySql.DataBase();
+
                 mainWindow.SlideViewTransition(new MainDashboard(), true);
                 MessageBox.Show("ide to");
-                mySql.DataBase();
+              
             }
         }
 
@@ -97,32 +98,32 @@ namespace A_P_SmartHub.Graphics.Login
 
 
 
-            if (users.FetchedMail == LoginMail.Text && checkHash == true)
-            {
-                SessionInfo.ID = users.GetUserId(tempMail);
-                mySql.ReturnBasicFromDB(SessionInfo.ID);
-
-                return true;
-            }
 
             if (users.FetchedMail == LoginMail.Text && checkHash)
             {
                 SessionInfo.ID = users.GetUserId(tempMail);
                 mySql.ReturnBasicFromDB(SessionInfo.ID);
-                MessageBox.Show("login ok");
+
+                mySql.LoadDevices(SessionInfo.ID);
+                
                 return true;
             }
+
             else
             {
-                MessageBox.Show(" Mail or Password is incorrect");
+             
                 return false;
             }
-         return false;
+          
+
         }
+            
         
+          
                 
             
-       
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -144,7 +145,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (mainWindow != null)
             {
 
-                mainWindow.SlideViewTransition(new NewPasswordScreen(), true);
+                mainWindow.SlideViewTransition(new newpasswordScreen(), true);
             }
         }
     }

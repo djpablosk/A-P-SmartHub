@@ -23,7 +23,8 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         private HomePage _homePage;
         private AllDevices _allDevices;
-       
+        private MenuPage _menuPage;
+
 
         public MainDashboard()
         {

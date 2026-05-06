@@ -32,7 +32,7 @@ namespace A_P_SmartHub.Graphics.Additional
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+{
             Button stlaceneButton = sender as Button;
             DeviceType stlaceneDevice = stlaceneButton.DataContext as DeviceType;
 

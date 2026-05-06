@@ -49,6 +49,14 @@ namespace A_P_SmartHub
 
         }
 
+
+        private void usernamebox_Copy1_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+            //if (usernamebox_Copy1.Text == "Username...")
+            // usernamebox_Copy1.Clear();
+
+        }
+
         public void SlideViewTransition(UserControl newView, bool v)    //animacia blur 
         {
 
