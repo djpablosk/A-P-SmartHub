@@ -42,5 +42,10 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
                 overlay.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void BrightnessSlider_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+           BrightnessSlider.Value -= e.Delta > 0 ? 1 : -1;
+        }
     }
 }

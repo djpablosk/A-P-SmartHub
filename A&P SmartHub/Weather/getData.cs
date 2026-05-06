@@ -16,15 +16,15 @@ namespace A_P_SmartHub.Weather
      
         public async Task  getTemperature(string city)
         {
-            Env.Load();
+          //  Env.Load();
             
-            using HttpClient client = new HttpClient();
-            string weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Environment.GetEnvironmentVariable("WeatherApi")}&units=metric";
-           HttpResponseMessage httpResponseMessage = await client.GetAsync(weatherUrl);
-            string data  = await httpResponseMessage.Content.ReadAsStringAsync();
-           JsonDocument jsonDocument = JsonDocument.Parse(data);
-            double temp = jsonDocument.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
-          Temperature = (int)Math.Round(temp);
+          //  using HttpClient client = new HttpClient();
+          //  string weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Environment.GetEnvironmentVariable("WeatherApi")}&units=metric";
+          // HttpResponseMessage httpResponseMessage = await client.GetAsync(weatherUrl);
+          //  string data  = await httpResponseMessage.Content.ReadAsStringAsync();
+          // JsonDocument jsonDocument = JsonDocument.Parse(data);
+          //  double temp = jsonDocument.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
+          //Temperature = (int)Math.Round(temp);
          
 
             

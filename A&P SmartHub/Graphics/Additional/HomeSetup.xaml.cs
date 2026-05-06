@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -54,11 +55,7 @@ namespace A_P_SmartHub.Graphics.Additional
             TempDevices.Remove(device); 
         }
 
-        private void CreateHome_Click(object sender, RoutedEventArgs e)
-        {
-            this.Content = new CreatingProfileLoading();
-        }
-
+        
 
 
         public async Task SaveToDB()
@@ -91,5 +88,14 @@ namespace A_P_SmartHub.Graphics.Additional
                 MessageBox.Show($"Error saving to database: {ex.Message}");
             }
         }
+
+        private async void CreateHome_Click(object sender, RoutedEventArgs e)
+        {
+              
+        
+            await SaveToDB();
+            this.Content = new CreatingProfileLoading();
+        
+    }
     }
 }

@@ -7,9 +7,11 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Teal" SecondaryColor="Teal" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="GradientHoverPanel" TargetType="Border">
@@ -75,6 +77,9 @@
                     </EventTrigger>
                 </Style.Triggers>
             </Style>
+            
+            
+            
 
         </ResourceDictionary>
     </Application.Resources>

@@ -3,7 +3,6 @@ using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Weather;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
-using A_P_SmartHub.Databazicky;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -22,7 +21,6 @@ using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Type_devices_with_graphics;
-using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 
 using static A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard;
 
@@ -32,7 +30,7 @@ namespace A_P_SmartHub.Graphics.Additional
     /// Interaction logic for HomePage.xaml
     /// </summary>
     /// 
-   
+
     public partial class HomePage : UserControl
     {
         DispatcherTimer timer = new DispatcherTimer();
@@ -46,24 +44,29 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
+            
             DeviceList.ItemsSource = MyDevices;
-            LoadTestData();
-            // Load data from database and update UI
             LoadFromDB();
+            LoadTestData();
+            timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
+            timer.Tick += async (s, e) => //*
+            {
+                await UpdateWeather();  // *
+            };
+            timer.Start();//*
+
         }
-        private void LoadTestData()
+        public void LoadTestData()
         {
             // Vytvárame nové zariadenia a hádžeme ich do zoznamu
             MyDevices.Add(new DeviceType { ID = 1, Name = "Stolná Lampa", Type = DeviceTypeEnum.Lights });
-            MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský Pás", Type = DeviceTypeEnum.Lights });
-            MyDevices.Add(new DeviceType { ID = 3, Name = "Termostat Obývačka", Type = DeviceTypeEnum.Climates });
-            MyDevices.Add(new DeviceType { ID = 4, Name = "Kávovar", Type = DeviceTypeEnum.Toggles });
+            MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský LED Pás", Type = DeviceTypeEnum.Lights });
+            MyDevices.Add(new DeviceType { ID = 3, Name = "Klimatizácia", Type = DeviceTypeEnum.Climates });
+            MyDevices.Add(new DeviceType { ID = 4, Name = "Zasuvka", Type = DeviceTypeEnum.Toggles });
+            MyDevices.Add(new DeviceType { ID = 5, Name = "Žalúzia", Type = DeviceTypeEnum.Covers });
+            MyDevices.Add(new DeviceType {ID = 6, Name = "TV", Type = DeviceTypeEnum.Media });
         }
-        public class SmartDevice
-        {
-            public string Name { get; set; }
-            
-        }
+       
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
@@ -105,6 +108,30 @@ namespace A_P_SmartHub.Graphics.Additional
                         PopupContent.Content = lightWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
+
+                        case DeviceTypeEnum.Toggles:
+                        var toggleWindow = new ToggleTemplate(stlaceneDevice);
+                        PopupContent.Content = toggleWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Climates:
+                        var climateWindow = new ClimateTemplate(stlaceneDevice);
+                        PopupContent.Content = climateWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Covers:
+                        var coverWindow = new CoverTemplate(stlaceneDevice);
+                        PopupContent.Content = coverWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Media:
+                        var mediaWindow = new MediaTemplate(stlaceneDevice);
+                        PopupContent.Content = mediaWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
                 }
             }
         }
@@ -112,23 +139,25 @@ namespace A_P_SmartHub.Graphics.Additional
 
         public async void LoadFromDB()
         {
-           
+
             MySql sql = new MySql();
             string id = SessionInfo.ID;
-           
+
             await sql.ReturnBasicFromDB(id);
-            City = sql.City;
-            MessageBox.Show(sql.City);
             dashHomeName.Text = sql.HomeName;
-           
+            City = sql.City;
+            await UpdateWeather();
+
+
+
             string LengthCheck = dashHomeName.Text;
-         
+
             if (LengthCheck.Length == 0)
             {
                 dashHomeName.Text = "Defaultne Meno";
             }
-            await UpdateWeather();
-          
+
+
 
         }
 

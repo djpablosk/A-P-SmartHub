@@ -28,7 +28,8 @@ namespace A_P_SmartHub.Graphics.Login
     /// </summary>
     public partial class Login : UserControl
     {
-
+        SQLITE_Users users = new SQLITE_Users();
+        MySql mySql = new MySql();
         public Login()
         {
             InitializeComponent();
@@ -41,12 +42,11 @@ namespace A_P_SmartHub.Graphics.Login
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-            SQLITE_Users users = new SQLITE_Users();
-            MySql mySql = new MySql();
+
 
             bool success = CheckLogin(users, mySql);
             //Teraz už 'await' nebude podčiarknuté
-            await System.Threading.Tasks.Task.Delay(5000);
+          
 
             if (!success)
             {
@@ -63,9 +63,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (mainWindow == null)
                 return;
 
-            mainWindow.SlideViewTransition(new MainDashboard(), true);
-
-            MessageBox.Show("ide to");
+           
 
             await mySql.DataBase();
                
@@ -103,11 +101,9 @@ namespace A_P_SmartHub.Graphics.Login
             {
                 SessionInfo.ID = users.GetUserId(tempMail);
                 mySql.ReturnBasicFromDB(SessionInfo.ID);
-
+                
                 return true;
             }
-            else if (users.FetchedMail != LoginMail.Text || checkHash != true)
-            {
 
                 if (users.FetchedMail == LoginMail.Text && checkHash)
                 {
@@ -166,7 +162,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (mainWindow != null)
             {
 
-                mainWindow.SlideViewTransition(new NewPasswordScreen(), true);
+                mainWindow.SlideViewTransition(new newpasswordScreen(), true);
             }
         }
     }
