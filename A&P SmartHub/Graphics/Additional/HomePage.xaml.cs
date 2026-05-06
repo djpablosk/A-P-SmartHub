@@ -44,7 +44,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
-            LoadTestData();
+            
             DeviceList.ItemsSource = MyDevices;
             LoadFromDB();
             LoadTestData();
@@ -64,6 +64,7 @@ namespace A_P_SmartHub.Graphics.Additional
             MyDevices.Add(new DeviceType { ID = 3, Name = "Klimatizácia", Type = DeviceTypeEnum.Climates });
             MyDevices.Add(new DeviceType { ID = 4, Name = "Zasuvka", Type = DeviceTypeEnum.Toggles });
             MyDevices.Add(new DeviceType { ID = 5, Name = "Žalúzia", Type = DeviceTypeEnum.Covers });
+            MyDevices.Add(new DeviceType {ID = 6, Name = "TV", Type = DeviceTypeEnum.Media });
         }
         public class SmartDevice
         {
@@ -127,6 +128,12 @@ namespace A_P_SmartHub.Graphics.Additional
                     case DeviceTypeEnum.Covers:
                         var coverWindow = new CoverTemplate(stlaceneDevice);
                         PopupContent.Content = coverWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Media:
+                        var mediaWindow = new MediaTemplate(stlaceneDevice);
+                        PopupContent.Content = mediaWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
                 }

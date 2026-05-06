@@ -24,19 +24,19 @@
                         <Border Width="90" Height="90">
                             <Viewbox>
 
-                                <Path  Data="{StaticResource IconToggles}" Fill="White"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                <Path  Data="{StaticResource IconCovers}" Fill="White"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
                             </Viewbox>
                         </Border>
 
 
                         <Grid Margin="0,60,0,0" Height="50">
-                            <TextBlock Text="Power-on state" FontSize="25" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
+                            <TextBlock Text="Control" FontSize="25" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
                             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                                <TextBlock Text="On" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                                <TextBlock Text="Open" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
                                 <RadioButton GroupName="PowerState" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
-                                <TextBlock Text="Off" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                                <TextBlock Text="Stop" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
                                 <RadioButton GroupName="PowerState" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
-                                <TextBlock Text="Last State" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
+                                <TextBlock Text="Close" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
                                 <RadioButton GroupName="PowerState" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
 
                             </StackPanel>
@@ -44,7 +44,7 @@
 
                         </Grid>
                         <Grid Margin="0,60,0,0" Height="50">
-                            <TextBlock Text="Child button lock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="White"   Margin="0,0,0,0"/>
+                            <TextBlock Text="Lock" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="White"   Margin="0,0,0,0"/>
                             <ToggleButton Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#4B5563" BorderThickness="0" Margin="0,0,10,0"/>
 
                         </Grid>
