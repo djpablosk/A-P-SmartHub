@@ -40,26 +40,26 @@ namespace A_P_SmartHub.Graphics.Additional
             {
                 switch (stlaceneDevice.Type)
                 {
-                    case DeviceTypeEnum.Lights:
+                    case DeviceTypeEnum.Light:
                         // Oprava chyby CS1503: Posielame presne ten typ, ktorý okno čaká
                         var lightWindow = new LightTemplate(stlaceneDevice);
                         PopupContent.Content = lightWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
 
-                    case DeviceTypeEnum.Toggles:
+                    case DeviceTypeEnum.Toggle:
                         var toggleWindow = new ToggleTemplate(stlaceneDevice);
                         PopupContent.Content = toggleWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
 
-                    case DeviceTypeEnum.Climates:
+                    case DeviceTypeEnum.Climate:
                         var climateWindow = new ClimateTemplate(stlaceneDevice);
                         PopupContent.Content = climateWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
 
-                    case DeviceTypeEnum.Covers:
+                    case DeviceTypeEnum.Cover:
                         var coverWindow = new CoverTemplate(stlaceneDevice);
                         PopupContent.Content = coverWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
@@ -77,12 +77,12 @@ namespace A_P_SmartHub.Graphics.Additional
         public void LoadTestData()
         {
             // Vytvárame nové zariadenia a hádžeme ich do zoznamu
-            MyDevices.Add(new DeviceType { ID = 1, Name = "Stolná Lampa", Type = DeviceTypeEnum.Lights });
-            MyDevices.Add(new DeviceType { ID = 2, Name = "Kuchynský LED Pás", Type = DeviceTypeEnum.Lights });
-            MyDevices.Add(new DeviceType { ID = 3, Name = "Klimatizácia", Type = DeviceTypeEnum.Climates });
-            MyDevices.Add(new DeviceType { ID = 4, Name = "Zasuvka", Type = DeviceTypeEnum.Toggles });
-            MyDevices.Add(new DeviceType { ID = 5, Name = "Žalúzia", Type = DeviceTypeEnum.Covers });
-            MyDevices.Add(new DeviceType { ID = 6, Name = "TV", Type = DeviceTypeEnum.Media });
+            MyDevices.Add(new DeviceType { IpAddress = "1", DeviceName = "Stolná Lampa", Type = DeviceTypeEnum.Light });
+            MyDevices.Add(new DeviceType { IpAddress = "2", DeviceName = "Kuchynský LED Pás", Type = DeviceTypeEnum.Light });
+            MyDevices.Add(new DeviceType { IpAddress = "3", DeviceName = "Klimatizácia", Type = DeviceTypeEnum.Climate });
+            MyDevices.Add(new DeviceType { IpAddress = "4", DeviceName = "Zasuvka", Type = DeviceTypeEnum.Toggle });
+            MyDevices.Add(new DeviceType { IpAddress = "5", DeviceName = "Žalúzia", Type = DeviceTypeEnum.Cover });
+            MyDevices.Add(new DeviceType { IpAddress = "6", DeviceName = "TV", Type = DeviceTypeEnum.Media });
         }
 
     }

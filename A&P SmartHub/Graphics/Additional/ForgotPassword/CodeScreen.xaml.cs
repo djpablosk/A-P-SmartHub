@@ -44,7 +44,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
                     while (parent != null)
                     {
                         parent = VisualTreeHelper.GetParent(parent);
-                        if (parent is newpasswordScreen newPasswordScreen)
+                        if (parent is NewPasswordScreen newPasswordScreen)
                         {
                             newPassword.ResMail = Mail;
                             newPasswordScreen.ShowNewPasswordScreen(newPassword);

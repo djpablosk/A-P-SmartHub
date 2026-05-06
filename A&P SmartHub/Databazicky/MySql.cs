@@ -68,7 +68,7 @@ namespace A_P_SmartHub.Databazicky
                 devices.Add(new DeviceType
                 {
                     DeviceName = reader.GetString("DeviceName"),
-                    IpAddress = reader.GetString("IpAddress"),
+                    IpAddress = reader.GetString("IpAddress"),  
                     Type = Enum.Parse<DeviceTypeEnum>(reader.GetString("DeviceType"))
                 });
                 MessageBox.Show($"pridane zariadenia");

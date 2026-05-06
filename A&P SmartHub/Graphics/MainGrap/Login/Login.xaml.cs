@@ -145,7 +145,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (mainWindow != null)
             {
 
-                mainWindow.SlideViewTransition(new newpasswordScreen(), true);
+                mainWindow.SlideViewTransition(new NewPasswordScreen(), true);
             }
         }
     }

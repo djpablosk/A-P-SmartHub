@@ -123,19 +123,19 @@
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
 
-                        case DeviceTypeEnum.Toggles:
+                        case DeviceTypeEnum.Toggle:
                         var toggleWindow = new ToggleTemplate(stlaceneDevice);
                         PopupContent.Content = toggleWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
 
-                    case DeviceTypeEnum.Climates:
+                    case DeviceTypeEnum.Climate:
                         var climateWindow = new ClimateTemplate(stlaceneDevice);
                         PopupContent.Content = climateWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
                         break;
 
-                    case DeviceTypeEnum.Covers:
+                    case DeviceTypeEnum.Cover:
                         var coverWindow = new CoverTemplate(stlaceneDevice);
                         PopupContent.Content = coverWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
