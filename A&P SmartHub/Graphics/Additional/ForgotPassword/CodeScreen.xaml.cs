@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,38 +28,45 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
             RandomCode= random.Next(100000, 1000000);
 
         }
-        
-        
+
+
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
             string test = ForgotPassCode.Text;
-            int inputCode = int.Parse(test);
-            if (inputCode == RandomCode)
+            if (int.TryParse(test, out int inputCode))
             {
-                MessageBox.Show("reset hesla ide ");
-                NewPassword newPassword = new NewPassword();
-                DependencyObject parent = this;
-              
-                while (parent != null)
+                if (inputCode == RandomCode)
                 {
-                    parent = VisualTreeHelper.GetParent(parent);
-                    if (parent is newpasswordScreen newPasswordScreen)
+                    //  MessageBox.Show("reset hesla ide ");
+                    NewPassword newPassword = new NewPassword();
+                    DependencyObject parent = this;
+
+                    while (parent != null)
                     {
-                        newPassword.ResMail = Mail;
-                        newPasswordScreen.ShowNewPasswordScreen(newPassword);
-                        break;
+                        parent = VisualTreeHelper.GetParent(parent);
+                        if (parent is newpasswordScreen newPasswordScreen)
+                        {
+                            newPassword.ResMail = Mail;
+                            newPasswordScreen.ShowNewPasswordScreen(newPassword);
+                            break;
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Wrong Code broski;");
-            }
+                else
+                {
+                    MessageBox.Show("Wrong Code broski;");
+                }
 
-            
-            }
-        
 
-        
+            }
+            else MessageBox.Show("This is not a number");
+
+        }
+          
+
+        private void ForgotPassCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //
+        }
     }
 }

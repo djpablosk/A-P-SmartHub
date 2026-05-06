@@ -10,18 +10,18 @@ namespace A_P_SmartHub.Type_devices_with_graphics
 
         public enum DeviceTypeEnum
         {
-            Lights,           //vsetko co sa tyka osvetlenia
-            Toggles,         //vypinace zasuvky predlzovacky 
-            Climates,       //aj termostaty aj hlavice a ostatne
-            Covers,         //zaluzie, roletky, brany, garazove brany
+            Light,           //vsetko co sa tyka osvetlenia
+            Toggle,         //vypinace zasuvky predlzovacky 
+            Climate,       //aj termostaty aj hlavice a ostatne
+            Cover,         //zaluzie, roletky, brany, garazove brany
             Media,          //televizory, audio systemy, prehravace
             Readonly     //vsetko co sa da len citat senzory kamery teplomery a adt
         }
 
         public class DeviceType
         {
-            public int ID { get; set; }
-            public string Name { get; set; }
+            public string IpAddress { get; set; }
+            public string DeviceName { get; set; }
             public DeviceTypeEnum Type { get; set; }
 
         }
