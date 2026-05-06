@@ -60,9 +60,9 @@ namespace A_P_SmartHub.Databazicky
                 using var Reader = await loadDevices.ExecuteReaderAsync();
                  while (Reader.Read())
                 {
-                    MessageBox.Show(Reader.GetString("DeviceName"));
-                    MessageBox.Show(Reader.GetString("IpAddress"));
-                    MessageBox.Show(Reader.GetString("DeviceType"));
+                    MessageBox.Show("!_TEST ONLY !_ " + Reader.GetString("DeviceName"));
+                    MessageBox.Show("!_TEST ONLY !_ " +Reader.GetString("IpAddress"));
+                    MessageBox.Show("!_TEST ONLY !_ " + Reader.GetString("DeviceType"));
                 }
             }
             
