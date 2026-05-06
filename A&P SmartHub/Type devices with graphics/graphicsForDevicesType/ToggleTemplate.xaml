@@ -21,7 +21,7 @@
 
                     <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="450">
 
-                        <Border Width="90" Height="90">
+                        <Border Width="90" Height="90"> 
                             <Viewbox>
 
                                 <Path  Data="{StaticResource IconToggles}" Fill="White"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />

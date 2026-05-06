@@ -99,11 +99,14 @@
 
                     </Grid>
                 </Border>
-                <Border x:Name="cast" Background="Transparent" HorizontalAlignment="Right" CornerRadius="30" Margin="5" >
+                <Border x:Name="cast" Width="400" Background="Transparent" HorizontalAlignment="Right" CornerRadius="30" Margin="10" >
                     <Grid Margin="10">
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+                            <TextBlock TextAlignment="Center" Text="London" Name="WeatherCity" FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                            <TextBlock Margin="5,0" TextAlignment="Center" Text="|" FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                            <TextBlock TextAlignment="Center" Text="20°C" Name="WeatherTemp" FontSize="30" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Right" />
 
-                        <TextBlock TextAlignment="Center" Text="London" Name="Weather" FontSize="20" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="444" />
-
+                        </StackPanel>
                     </Grid>
 
                 </Border>

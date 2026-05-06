@@ -179,7 +179,8 @@ namespace A_P_SmartHub.Graphics.Additional
         public async Task UpdateWeather()
         { // toto uz nie je ai
             await data.getTemperature(City);
-            Weather.Text = $"Current Temperature In {City} is {data.Temperature} °C";
+            WeatherCity.Text = City;
+            WeatherTemp.Text = $"{data.Temperature}°C";
         }
     }
 }
