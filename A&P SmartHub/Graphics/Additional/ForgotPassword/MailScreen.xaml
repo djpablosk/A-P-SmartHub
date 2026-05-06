@@ -85,7 +85,7 @@
                         </LinearGradientBrush>
                     </Border.BorderBrush>
 
-                    <Button Cursor="Hand" Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="SendCode_Click">
+                    <Button IsDefault="True" Cursor="Hand" Background="Transparent" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="SendCode_Click">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
