@@ -43,7 +43,6 @@ namespace A_P_SmartHub.Graphics.Additional
                 switch (stlaceneDevice.Type)
                 {
                     case DeviceTypeEnum.Light:
-                        // Oprava chyby CS1503: Posielame presne ten typ, ktorý okno čaká
                         var lightWindow = new LightTemplate(stlaceneDevice);
                         PopupContent.Content = lightWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
@@ -80,7 +79,6 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             string id = SessionInfo.ID;
             var devices = await sql1.LoadDevices(id);
-            // Vytvárame nové zariadenia a hádžeme ich do zoznamu
             foreach (var device in devices)
             {
                 var newdevice = new DeviceType();
