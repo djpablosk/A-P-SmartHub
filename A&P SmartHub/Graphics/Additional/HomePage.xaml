@@ -31,6 +31,20 @@
 
                     <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" >
 
+                        <Button Margin="10" Width="50" Height="50" Cursor="Hand" BorderThickness="0" ToolTip="Your personall assistant">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="#4B5563" CornerRadius="25">
+                                        <Path Data="M19,21L17.74,18.26L15,17L17.74,15.74L19,13L20.26,15.74L23,17L20.26,18.26L19,21M9,19L6.58,13.58L1,11L6.58,8.42L9,3L11.42,8.42L17,11L11.42,13.58L9,19M9,15.47C9.35,14.65 9.94,14.06 10.76,13.71C9.94,13.36 9.35,12.77 9,11.95C8.65,12.77 8.06,13.36 7.24,13.71C8.06,14.06 8.65,14.65 9,15.47M19,10L18.26,8.26L16.5,7.5L18.26,6.74L19,5L19.74,6.74L21.5,7.5L19.74,8.26L19,10Z" 
+                      Fill="#38BDF8" 
+                      Width="22" Height="22" 
+                      Stretch="Uniform" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                         <Button Cursor="Hand" ToolTip="Settings" Margin="10" Grid.Column="1" Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" Click="Settings_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
