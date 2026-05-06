@@ -74,6 +74,7 @@ namespace A_P_SmartHub.Graphics.Additional
                 var newdevice = new DeviceType();
 
                 newdevice.DeviceName = device.DeviceName;
+                newdevice.Type = device.Type;
 
                 MyDevices.Add(newdevice);
                 DeviceList.ItemsSource = MyDevices;

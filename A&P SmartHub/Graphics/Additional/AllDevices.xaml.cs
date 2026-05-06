@@ -82,11 +82,14 @@ namespace A_P_SmartHub.Graphics.Additional
             var devices = await sql1.LoadDevices(id);
             // Vytvárame nové zariadenia a hádžeme ich do zoznamu
             foreach (var device in devices)
-
-
             {
+                var newdevice = new DeviceType();
 
-                MyDevices.Add(device);
+                newdevice.DeviceName = device.DeviceName;
+                newdevice.Type = device.Type;
+
+                MyDevices.Add(newdevice);
+                DeviceList.ItemsSource = MyDevices;
             }
         }
 
