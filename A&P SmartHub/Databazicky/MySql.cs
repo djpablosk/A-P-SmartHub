@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using A_P_SmartHub.Type_devices_with_graphics;
 using DotNetEnv;
 using MySqlConnector;
 
@@ -46,28 +47,35 @@ namespace A_P_SmartHub.Databazicky
             }
         }
 
-        public async Task LoadDevices(string id)
+        public async Task<List<DeviceType>> LoadDevices(string id)
         {
-            using (var conn = new MySqlConnection(getConn()))
-            {
-                await conn.OpenAsync();
-                var loadDevices = conn.CreateCommand();
-                loadDevices.CommandText = @"
-            SELECT DeviceName,IpAddress,DeviceType
-            FROM devices 
-            WHERE Id = @id;";
-                loadDevices.Parameters.AddWithValue("@Id", id);
-                using var Reader = await loadDevices.ExecuteReaderAsync();
-                 while (Reader.Read())
-                {
-                    MessageBox.Show("!_TEST ONLY !_ " + Reader.GetString("DeviceName"));
-                    MessageBox.Show("!_TEST ONLY !_ " +Reader.GetString("IpAddress"));
-                    MessageBox.Show("!_TEST ONLY !_ " + Reader.GetString("DeviceType"));
-                }
-            }
-            
-        }
+            var devices = new List<DeviceType>();
 
+            using var conn = new MySqlConnection(getConn());
+            await conn.OpenAsync();
+
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = @"
+        SELECT DeviceName, IpAddress, DeviceType
+        FROM devices 
+        WHERE Id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            using var reader = await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                
+                devices.Add(new DeviceType
+                {
+                    DeviceName = reader.GetString("DeviceName"),
+                    IpAddress = reader.GetString("IpAddress"),
+                    Type = Enum.Parse<DeviceTypeEnum>(reader.GetString("DeviceType"))
+                });
+                MessageBox.Show($"pridane zariadenia");
+            }
+
+            return devices;
+        }
 
 
 
