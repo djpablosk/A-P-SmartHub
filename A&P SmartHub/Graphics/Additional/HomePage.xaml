@@ -137,14 +137,14 @@
 
 
             </Grid>
-            <Border  CornerRadius="30" Background="#1C2331" Grid.Row="2" VerticalAlignment="Stretch">
+            <Border   Margin="5" CornerRadius="30" Background="#1C2331" Grid.Row="2" VerticalAlignment="Stretch">
                 
             <Grid  Margin="10"   >
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl x:Name="DeviceList">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Width="160" Height="80" Background="#101725" CornerRadius="20" Margin="10">
+                                <Border Width="160" Height="100" Background="#101725" CornerRadius="20" Margin="10">
                                     <Button x:Name="DeviceButton" Content="{Binding DeviceName}" 
                                 Click="Button_Click" 
                                 Foreground="White" 
