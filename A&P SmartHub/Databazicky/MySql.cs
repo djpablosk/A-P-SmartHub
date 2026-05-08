@@ -71,7 +71,7 @@ namespace A_P_SmartHub.Databazicky
                     IpAddress = reader.GetString("IpAddress"),  
                     Type = Enum.Parse<DeviceTypeEnum>(reader.GetString("DeviceType"))
                 });
-             //   MessageBox.Show($"pridane zariadenia");
+              //  MessageBox.Show($"pridane zariadenia");
             }
 
             return devices;

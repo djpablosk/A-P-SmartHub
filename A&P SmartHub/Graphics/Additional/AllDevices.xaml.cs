@@ -1,4 +1,5 @@
-﻿using A_P_SmartHub.Type_devices_with_graphics;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Type_devices_with_graphics;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace A_P_SmartHub.Graphics.Additional
     public partial class AllDevices : UserControl
     {
         public ObservableCollection<DeviceType> MyDevices { get; set; }
+        MySql sql1 = new MySql();
         public AllDevices()
         {
             InitializeComponent();
@@ -41,7 +43,6 @@ namespace A_P_SmartHub.Graphics.Additional
                 switch (stlaceneDevice.Type)
                 {
                     case DeviceTypeEnum.Light:
-                        // Oprava chyby CS1503: Posielame presne ten typ, ktorý okno čaká
                         var lightWindow = new LightTemplate(stlaceneDevice);
                         PopupContent.Content = lightWindow;
                         PopupOverlay.Visibility = Visibility.Visible;
@@ -74,15 +75,20 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-        public void LoadTestData()
+        public async void LoadTestData()
         {
-            // Vytvárame nové zariadenia a hádžeme ich do zoznamu
-            MyDevices.Add(new DeviceType { IpAddress = "1", DeviceName = "Stolná Lampa", Type = DeviceTypeEnum.Light });
-            MyDevices.Add(new DeviceType { IpAddress = "2", DeviceName = "Kuchynský LED Pás", Type = DeviceTypeEnum.Light });
-            MyDevices.Add(new DeviceType { IpAddress = "3", DeviceName = "Klimatizácia", Type = DeviceTypeEnum.Climate });
-            MyDevices.Add(new DeviceType { IpAddress = "4", DeviceName = "Zasuvka", Type = DeviceTypeEnum.Toggle });
-            MyDevices.Add(new DeviceType { IpAddress = "5", DeviceName = "Žalúzia", Type = DeviceTypeEnum.Cover });
-            MyDevices.Add(new DeviceType { IpAddress = "6", DeviceName = "TV", Type = DeviceTypeEnum.Media });
+            string id = SessionInfo.ID;
+            var devices = await sql1.LoadDevices(id);
+            foreach (var device in devices)
+            {
+                var newdevice = new DeviceType();
+
+                newdevice.DeviceName = device.DeviceName;
+                newdevice.Type = device.Type;
+
+                MyDevices.Add(newdevice);
+                DeviceList.ItemsSource = MyDevices;
+            }
         }
 
     }

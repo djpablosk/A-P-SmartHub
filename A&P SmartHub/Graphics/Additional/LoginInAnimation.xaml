@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="A_P_SmartHub.Graphics.Additional.LoginInAnimation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Additional"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Ellipse Width="60" Height="60" StrokeThickness="4" StrokeDashArray="12, 6" Stroke="#7A9CCC" RenderTransformOrigin="0.5,0.5">
+            <Ellipse.RenderTransform>
+                <RotateTransform x:Name="SpinTransform" Angle="0" />
+            </Ellipse.RenderTransform>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="SpinTransform" 
+                                             Storyboard.TargetProperty="Angle" 
+                                             From="0" To="360" 
+                                             Duration="0:0:1.5" 
+                                             RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+
+        <TextBlock Text="Logging in..." 
+                   Foreground="#FFFFFF" 
+                   FontSize="18" 
+                   FontWeight="SemiBold" 
+                   Margin="0,20,0,0" 
+                   HorizontalAlignment="Center" 
+                   />
+
+    
+    </Grid>
+</UserControl>
