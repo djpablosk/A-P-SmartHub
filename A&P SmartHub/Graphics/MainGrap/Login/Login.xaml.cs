@@ -55,7 +55,7 @@ namespace A_P_SmartHub.Graphics.Login
             }
 
 
-            await Task.Delay(5000);
+            await Task.Delay(2300);
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
@@ -71,7 +71,7 @@ namespace A_P_SmartHub.Graphics.Login
                 await mySql.DataBase();
 
                 mainWindow.SlideViewTransition(new MainDashboard(), true);
-               // MessageBox.Show("ide to");
+              //  MessageBox.Show("ide to");
               
             }
         }
@@ -101,7 +101,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (users.FetchedMail == LoginMail.Text && checkHash)
             {
                 SessionInfo.ID = users.GetUserId(tempMail);
-                mySql.ReturnBasicFromDB(SessionInfo.ID);
+               
 
                 mySql.LoadDevices(SessionInfo.ID);
                 

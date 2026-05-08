@@ -29,7 +29,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         // Called by child screens to switch the displayed content to the code entry screen
         public void ShowCodeScreen(CodeScreen screen)
         {
-            passwordnewControl.Content = new CodeScreen();
+            passwordnewControl.Content = screen;
             // Ensure the content control for the newly shown screen hosts the provided screen
             // If the XAML defines a second content control named NewPasswordContentControl, set it.
             var field = this.GetType().GetField("NewPasswordContentControl", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
@@ -57,7 +57,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         // Switch to the new password entry screen
         public void ShowNewPasswordScreen(NewPassword newPassword)
         {
-            passwordnewControl.Content = new NewPassword();
+            passwordnewControl.Content = newPassword;
             var field = this.GetType().GetField("NewPasswordContentControl", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
             if (field != null)
             {

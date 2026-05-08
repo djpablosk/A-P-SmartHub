@@ -21,6 +21,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
     public partial class NewPassword : UserControl
     {
         public string ResMail { get; set; }
+        SQLITE_Users sQLITE_Users = new SQLITE_Users();
         public NewPassword()
         {
             
@@ -31,7 +32,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
        
         private void ResetPassword_Click(object sender, RoutedEventArgs e)
         {
-           SQLITE_Users sQLITE_Users = new SQLITE_Users();
+         
 
             if (ResPasB0.Text != ResPasB1.Text)
             {
@@ -47,7 +48,6 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
             else
             {
                 string pass = BCrypt.Net.BCrypt.EnhancedHashPassword(ResPasB1.Text);
-                
                 sQLITE_Users.UpdateHashInDb(ResMail, pass);
                 var mainWindow = Window.GetWindow(this) as MainWindow;
                 if (mainWindow != null)
