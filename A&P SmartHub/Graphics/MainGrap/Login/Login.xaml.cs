@@ -56,7 +56,7 @@ namespace A_P_SmartHub.Graphics.Login
 
             VisualStateManager.GoToElementState(this.MainRoot, "LoggingInState", true);
 
-            await Task.Delay(5000);
+            await Task.Delay(2300);
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
