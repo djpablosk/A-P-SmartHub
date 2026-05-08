@@ -71,7 +71,7 @@ namespace A_P_SmartHub.Databazicky
                     IpAddress = reader.GetString("IpAddress"),  
                     Type = Enum.Parse<DeviceTypeEnum>(reader.GetString("DeviceType"))
                 });
-                MessageBox.Show($"pridane zariadenia");
+             //   MessageBox.Show($"pridane zariadenia");
             }
 
             return devices;
@@ -89,10 +89,11 @@ namespace A_P_SmartHub.Databazicky
                 cmd.CommandText = @"
 SELECT * FROM apdefaultinfos";
 
+
                 var reader = await cmd.ExecuteReaderAsync();
                 while (await reader.ReadAsync())
                 {
-                    MessageBox.Show(reader["UserName"].ToString());
+                  //  MessageBox.Show(reader["UserName"].ToString());
                 }
 
             }

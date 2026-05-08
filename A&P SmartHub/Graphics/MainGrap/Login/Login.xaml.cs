@@ -72,7 +72,7 @@ namespace A_P_SmartHub.Graphics.Login
                 await mySql.DataBase();
 
                 mainWindow.SlideViewTransition(new MainDashboard(), true);
-                MessageBox.Show("ide to");
+              //  MessageBox.Show("ide to");
               
             }
         }
@@ -102,7 +102,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (users.FetchedMail == LoginMail.Text && checkHash)
             {
                 SessionInfo.ID = users.GetUserId(tempMail);
-                mySql.ReturnBasicFromDB(SessionInfo.ID);
+               
 
                 mySql.LoadDevices(SessionInfo.ID);
                 
