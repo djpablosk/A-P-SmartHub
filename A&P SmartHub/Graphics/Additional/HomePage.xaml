@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
             <Grid   >
 
-                <Border  CornerRadius="30" Width="560" HorizontalAlignment="Left" Background="#1C2331" Margin="10">
+                <Border x:Name="___No_Name_"  CornerRadius="30" Width="560" HorizontalAlignment="Left" Background="#1C2331" Margin="10">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="400"/>

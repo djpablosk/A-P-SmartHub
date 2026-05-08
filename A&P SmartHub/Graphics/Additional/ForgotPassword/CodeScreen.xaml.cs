@@ -19,35 +19,49 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
     /// </summary>
     public partial class CodeScreen : UserControl
     {
+        
         public int RandomCode { get; set; }
         public string Mail { get; set; }
+        NewPassword newPassword1 = new NewPassword();
         public CodeScreen()
         {
-            InitializeComponent();
             Random random = new Random();
-            RandomCode= random.Next(100000, 1000000);
+            RandomCode = random.Next(100000, 1000000);
+
+            InitializeComponent();
+           
+           
 
         }
 
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
+            
             string test = ForgotPassCode.Text;
+
+            
+
             if (int.TryParse(test, out int inputCode))
             {
                 if (inputCode == RandomCode)
                 {
+              
                     //  MessageBox.Show("reset hesla ide ");
-                    NewPassword newPassword = new NewPassword();
+
                     DependencyObject parent = this;
+                
 
                     while (parent != null)
                     {
                         parent = VisualTreeHelper.GetParent(parent);
                         if (parent is NewPasswordScreen newPasswordScreen)
                         {
-                            newPassword.ResMail = Mail;
-                            newPasswordScreen.ShowNewPasswordScreen(newPassword);
+                            newPassword1.ResMail = Mail;
+
+                            MessageBox.Show(Mail);
+
+                            newPasswordScreen.ShowNewPasswordScreen(newPassword1);
                             break;
                         }
                     }
