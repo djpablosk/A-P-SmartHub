@@ -80,7 +80,7 @@ namespace A_P_SmartHub.Graphics.Additional
             {
                 // Await the asynchronous database operation
                     await SaveToDB();
-                MessageBox.Show("pokracovanie nabuduce");
+            //    MessageBox.Show("pokracovanie nabuduce");
             }
             catch (Exception ex)
             {

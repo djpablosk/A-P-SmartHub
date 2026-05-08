@@ -19,8 +19,11 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
     /// </summary>
     public partial class MailScreen : UserControl
     {
-       
-        
+        CodeScreen codeScreen = new CodeScreen();
+        smtpClientMail smtpClientMail = new smtpClientMail();
+        SQLITE_Users users = new SQLITE_Users();
+        NewPassword password = new NewPassword();
+
         public MailScreen()
         {
             
@@ -30,14 +33,14 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
 
         private void SendCode_Click(object sender, RoutedEventArgs e)
         {
-            NewPassword password = new NewPassword();
+           
            
 
             ForgotMail = forgotPassMail.Text;
+            codeScreen.Mail = ForgotMail;
             
-            smtpClientMail smtpClientMail = new smtpClientMail();
-            SQLITE_Users users = new SQLITE_Users();
-            CodeScreen codeScreen   = new CodeScreen();
+            
+            
             
             string exists = users.GetUserId(forgotPassMail.Text);
 
@@ -54,10 +57,10 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
                 while (parent != null)
                 {
                     parent = VisualTreeHelper.GetParent(parent);
-                    if (parent is newpasswordScreen newPasswordScreen)
+                    if (parent is NewPasswordScreen  newPasswordScreen)
                     {
                         
-                        newPasswordScreen.ShowCodeScreen(codeScreen); // ✅ SAME OBJECT
+                        newPasswordScreen.ShowCodeScreen(codeScreen); 
                         break;
                     }
                 }
