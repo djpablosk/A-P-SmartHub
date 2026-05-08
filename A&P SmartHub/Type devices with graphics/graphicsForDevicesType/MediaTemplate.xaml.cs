@@ -18,9 +18,25 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
     /// </summary>
     public partial class MediaTemplate : UserControl
     {
-        public MediaTemplate()
+        public MediaTemplate(DeviceType media)
         {
             InitializeComponent();
+            this.DataContext = media;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            DependencyObject parent = VisualTreeHelper.GetParent(this);
+            while (parent != null && !(parent is Grid && ((Grid)parent).Name == "PopupOverlay"))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            if (parent is Grid overlay)
+            {
+                overlay.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

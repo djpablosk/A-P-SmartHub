@@ -127,6 +127,8 @@ namespace A_P_SmartHub.Databazicky
               WHERE Mail = $mail;";
             UpdateHashInDb.Parameters.AddWithValue("$mail", Mail);
             UpdateHashInDb.Parameters.AddWithValue("$hash", Hash);
+            MessageBox.Show($"Mail: {Mail}");
+            MessageBox.Show($"Hash: {Hash}");
             UpdateHashInDb.ExecuteNonQuery();
 
         }

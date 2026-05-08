@@ -112,15 +112,17 @@ namespace A_P_SmartHub.Graphics.MainGrap
 
 
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //
-        }
+    
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //
-        }
+       
+        
+        
+        
+
+
+
+
+       
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

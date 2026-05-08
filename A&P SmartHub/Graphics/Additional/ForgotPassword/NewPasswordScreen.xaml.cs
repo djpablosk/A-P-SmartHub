@@ -14,38 +14,53 @@ using System.Windows.Shapes;
 namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
 {
     /// <summary>
-    /// Interaction logic for newpasswordScreen.xaml
+    /// Interaction logic for NewPasswordScreen.xaml
     /// </summary>
-    public partial class newpasswordScreen : UserControl
+    public partial class NewPasswordScreen : UserControl
     {
-        public newpasswordScreen()
+        public NewPasswordScreen()
         {
             InitializeComponent();
-            // Show initial screen (mail entry) when this control is constructed
+            
             passwordnewControl.Content = new MailScreen();
         }
 
-        // Show the code entry screen
-        // Called by child screens to switch the displayed content to the code entry screen
+      
         public void ShowCodeScreen(CodeScreen screen)
         {
-            
-           
             passwordnewControl.Content = screen;
+            var field = this.GetType().GetField("NewPasswordContentControl", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            if (field != null)
+            {
+                var control = field.GetValue(this) as ContentControl;
+                if (control != null)
+                    control.Content = screen;
+            }
         }
 
-        // Switch to the mail entry screen
+        
         public void ShowMailScreen(MailScreen screen)
         {
-            passwordnewControl.Content = screen;
+            var field = this.GetType().GetField("NewPasswordContentControl", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            if (field != null)
+            {
+                var control = field.GetValue(this) as ContentControl;
+                if (control != null)
+                    control.Content = screen;
+            }
         }
 
-        // Show the new password screen
-        // Switch to the new password entry screen
+
         public void ShowNewPasswordScreen(NewPassword newPassword)
-        {
-            
+        { 
             passwordnewControl.Content = newPassword;
+            var field = this.GetType().GetField("NewPasswordContentControl", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            if (field != null)
+            {
+                var control = field.GetValue(this) as ContentControl;
+                if (control != null)
+                    control.Content = newPassword;
+            }
         }
     }
 }

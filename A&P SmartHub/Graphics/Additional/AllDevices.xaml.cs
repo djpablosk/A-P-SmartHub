@@ -1,5 +1,9 @@
-﻿using System;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Type_devices_with_graphics;
+using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,35 +22,74 @@ namespace A_P_SmartHub.Graphics.Additional
     /// </summary>
     public partial class AllDevices : UserControl
     {
+        public ObservableCollection<DeviceType> MyDevices { get; set; }
+        MySql sql1 = new MySql();
         public AllDevices()
         {
             InitializeComponent();
-            var myDevices = new List<SmartDevice>
-{
-    new SmartDevice { Name = "Main Light" },
-    new SmartDevice { Name = "Thermostat" },
-    new SmartDevice { Name = "TV Living Room" },
-    new SmartDevice { Name = "Led Strip" },
-    new SmartDevice { Name = "Humidifier" },
-    new SmartDevice { Name = "PC Station" },
-    new SmartDevice { Name = "Camera 1" },
-    new SmartDevice { Name = "Router" },
-     new SmartDevice { Name = "Humidifier" },
-    new SmartDevice { Name = "PC Station" },
-    new SmartDevice { Name = "Camera 1" },
-    new SmartDevice { Name = "Router" },
-     new SmartDevice { Name = "Humidifier" },
-    new SmartDevice { Name = "PC Station" },
-    new SmartDevice { Name = "Camera 1" },
-    new SmartDevice { Name = "Router" }
-};
+            MyDevices = new ObservableCollection<DeviceType>();
+            DeviceList.ItemsSource = MyDevices;
+            LoadTestData();
 
-            // A tu to pripojíme na ten náš XAML zoznam
-            DeviceList.ItemsSource = myDevices;
         }
-        public class SmartDevice
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+{
+            Button stlaceneButton = sender as Button;
+            DeviceType stlaceneDevice = stlaceneButton.DataContext as DeviceType;
+
+            if (stlaceneDevice != null)
+            {
+                switch (stlaceneDevice.Type)
+                {
+                    case DeviceTypeEnum.Light:
+                        var lightWindow = new LightTemplate(stlaceneDevice);
+                        PopupContent.Content = lightWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Toggle:
+                        var toggleWindow = new ToggleTemplate(stlaceneDevice);
+                        PopupContent.Content = toggleWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Climate:
+                        var climateWindow = new ClimateTemplate(stlaceneDevice);
+                        PopupContent.Content = climateWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Cover:
+                        var coverWindow = new CoverTemplate(stlaceneDevice);
+                        PopupContent.Content = coverWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+
+                    case DeviceTypeEnum.Media:
+                        var mediaWindow = new MediaTemplate(stlaceneDevice);
+                        PopupContent.Content = mediaWindow;
+                        PopupOverlay.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
+        }
+
+        public async void LoadTestData()
         {
-            public string Name { get; set; }
+            string id = SessionInfo.ID;
+            var devices = await sql1.LoadDevices(id);
+            foreach (var device in devices)
+            {
+                var newdevice = new DeviceType();
+
+                newdevice.DeviceName = device.DeviceName;
+                newdevice.Type = device.Type;
+
+                MyDevices.Add(newdevice);
+                DeviceList.ItemsSource = MyDevices;
+            }
         }
+
     }
 }

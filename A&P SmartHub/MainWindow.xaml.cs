@@ -13,8 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Animation;
-using System.Windows.Media;
 
 namespace A_P_SmartHub
 {
@@ -33,7 +31,7 @@ namespace A_P_SmartHub
             
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
+            {
             base.OnMouseLeftButtonDown(e);
 
 
@@ -50,6 +48,9 @@ namespace A_P_SmartHub
             // usernamebox_Copy1.Clear();
 
         }
+
+
+       
 
         public void SlideViewTransition(UserControl newView, bool v)    //animacia blur 
         {
