@@ -2,6 +2,8 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using DotNetEnv;
+using System; 
+
 
 namespace A_P_SmartHub.Databazicky
 {
@@ -10,6 +12,8 @@ namespace A_P_SmartHub.Databazicky
         public string FetchedMail { get; set; }
         public string FetchedHash { get; set; }
         public string UseriID { get; set; }
+        // Nasiel som bug, ktory som nevedel optavit sam
+        // oprava je oznacena textom "ai helped"
         //--------------------------------(len si rozdelujem infos od code)
 
 
@@ -21,7 +25,7 @@ namespace A_P_SmartHub.Databazicky
             connection.Open();
 
             string sql = @"CREATE TABLE IF NOT EXISTS users(
-                UserID INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserID TEXT PRIMARY KEY,-- ai helped
                 Mail TEXT UNIQUE NOT NULL,
                 Hash TEXT NOT NULL
             );";
@@ -37,14 +41,18 @@ namespace A_P_SmartHub.Databazicky
             {
                 using var connection = new SqliteConnection("Data Source=users.db");
                 connection.Open();
+                
+                string newUserId = Guid.NewGuid().ToString(); // ai helped
+                
                 var AddToDB = connection.CreateCommand();
                 AddToDB.CommandText = @"
-             INSERT INTO  users (Mail,Hash)
-            VALUES ($mail, $hash); ";
+             INSERT INTO  users (UserID, Mail, Hash) -- ai helped
+            VALUES ($userid, $mail, $hash); "; // ai helped
+                AddToDB.Parameters.AddWithValue("$userid", newUserId); // ai helped
                 AddToDB.Parameters.AddWithValue("$mail", Mail);
                 AddToDB.Parameters.AddWithValue("$hash", Hash);
                 AddToDB.ExecuteNonQuery();
-                return true;
+                return true;                  
             }
             catch (SqliteException)
             {
@@ -68,7 +76,7 @@ namespace A_P_SmartHub.Databazicky
             using var reader = isMailInDb.ExecuteReader();
             if (reader.Read())
             {
-                UseriID = reader.GetInt32(0).ToString();
+                UseriID = reader.GetString(0); // ai helped
                 return true;
             }
             else
@@ -94,7 +102,7 @@ namespace A_P_SmartHub.Databazicky
 
             if (reader.Read())
             {
-                UseriID = reader.GetInt32(0).ToString();
+                UseriID = reader.GetString(0); // ai helped
                 FetchedMail = reader.GetString(1);
                 FetchedHash = reader.GetString(2);
             }
@@ -142,4 +150,3 @@ namespace A_P_SmartHub.Databazicky
       
     }
 }
-    

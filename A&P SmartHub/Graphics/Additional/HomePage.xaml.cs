@@ -48,9 +48,9 @@ namespace A_P_SmartHub.Graphics.Additional
             MyDevices = new ObservableCollection<DeviceType>();
 
             DeviceList.ItemsSource = MyDevices;
-
-            LoadTestData();
             LoadFromDB();
+             LoadTestData();
+            
 
 
 
@@ -66,6 +66,8 @@ namespace A_P_SmartHub.Graphics.Additional
         {
 
             string id = SessionInfo.ID;
+            sql1.ReturnBasicFromDB(id);
+
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
             foreach (var device in devices)
@@ -155,9 +157,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             string id = SessionInfo.ID;
 
-            sql1.ReturnBasicFromDB(id);
-
-            await sql1.LoadDevices(id);
+            await sql1.ReturnBasicFromDB(id);
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
             await UpdateWeather();

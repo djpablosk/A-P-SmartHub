@@ -67,6 +67,7 @@ namespace A_P_SmartHub.Graphics.Additional
        
         public void SendMail(VerificationCodeWindow verificationCode, Register register)
         {
+            SessionInfo.Mail = register.Mail;
             Env.Load();
              string MailCode = Environment.GetEnvironmentVariable("mailPass");
 
