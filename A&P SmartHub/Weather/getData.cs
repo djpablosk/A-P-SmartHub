@@ -15,7 +15,7 @@ namespace A_P_SmartHub.Weather
         public int Temperature { get; set; }
      
         public async Task  getTemperature(string city)
-        {
+       do{
             Env.Load();
 
             try
