@@ -46,8 +46,8 @@ namespace A_P_SmartHub.Databazicky
                 
                 var AddToDB = connection.CreateCommand();
                 AddToDB.CommandText = @"
-             INSERT INTO  users (UserID, Mail, Hash) -- ai helped
-            VALUES ($userid, $mail, $hash); "; // ai helped
+             INSERT INTO  users (UserID, Mail, Hash)
+            VALUES ($userid, $mail, $hash); "; 
                 AddToDB.Parameters.AddWithValue("$userid", newUserId); // ai helped
                 AddToDB.Parameters.AddWithValue("$mail", Mail);
                 AddToDB.Parameters.AddWithValue("$hash", Hash);
