@@ -81,17 +81,7 @@ namespace A_P_SmartHub.Graphics.Additional
         }
 
 
-        private void Settings_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Window.GetWindow(this) as MainWindow;
-
-
-            if (mainWindow != null)
-            {
-
-                mainWindow.SlideViewTransition(new SettingsScreen(), true);
-            }
-        }
+       
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -113,37 +103,46 @@ namespace A_P_SmartHub.Graphics.Additional
 
             if (stlaceneDevice != null)
             {
-                switch (stlaceneDevice.Type)
+                try
                 {
-                    case DeviceTypeEnum.Light:
-                        var lightWindow = new LightTemplate(stlaceneDevice);
-                        PopupContent.Content = lightWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
 
-                    case DeviceTypeEnum.Toggle:
-                        var toggleWindow = new ToggleTemplate(stlaceneDevice);
-                        PopupContent.Content = toggleWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                    switch (stlaceneDevice.Type)
+                    {
+                        case DeviceTypeEnum.Light:
+                            var lightWindow = new LightTemplate(stlaceneDevice);
+                            PopupContent.Content = lightWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
 
-                    case DeviceTypeEnum.Climate:
-                        var climateWindow = new ClimateTemplate(stlaceneDevice);
-                        PopupContent.Content = climateWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                        case DeviceTypeEnum.Toggle:
+                            var toggleWindow = new ToggleTemplate(stlaceneDevice);
+                            PopupContent.Content = toggleWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
 
-                    case DeviceTypeEnum.Cover:
-                        var coverWindow = new CoverTemplate(stlaceneDevice);
-                        PopupContent.Content = coverWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                        case DeviceTypeEnum.Climate:
+                            var climateWindow = new ClimateTemplate(stlaceneDevice);
+                            PopupContent.Content = climateWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
 
-                    case DeviceTypeEnum.Media:
-                        var mediaWindow = new MediaTemplate(stlaceneDevice);
-                        PopupContent.Content = mediaWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                        case DeviceTypeEnum.Cover:
+                            var coverWindow = new CoverTemplate(stlaceneDevice);
+                            PopupContent.Content = coverWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+
+                        case DeviceTypeEnum.Media:
+                            var mediaWindow = new MediaTemplate(stlaceneDevice);
+                            PopupContent.Content = mediaWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading device template: {ex.Message}");
                 }
             }
         }

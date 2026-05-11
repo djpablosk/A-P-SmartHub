@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+        <Grid Grid.Row="1" Grid.Column="1" >
             <Border Width="600" CornerRadius="30"  Background="#1C2331" HorizontalAlignment="Left" Padding="10">
                 <Grid Margin="10">
                     <TextBlock Text="Welcome to AP SmartHub!" FontSize="24" FontWeight="Medium" FontFamily="Bahnschrift" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
@@ -45,7 +45,7 @@
                 </Grid>
             </Border>
 
-            <Border HorizontalAlignment="Right" Width="600" CornerRadius="30"  Background="#1C2331" Padding="10" Margin="150,0">
+            <Border HorizontalAlignment="Right" Width="600" CornerRadius="30"  Background="#1C2331" Padding="10" Margin="0,0">
                 <Grid Margin="10">
                     <TextBlock Text="Here you can add your first devices to your home!" FontSize="24" Margin="0,30,0,0" FontWeight="Medium" Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift" />
 
@@ -128,7 +128,7 @@
                     </Border>
                 </Grid> 
             </Border>
-        </StackPanel>
+        </Grid>
 
 
         <Border Grid.Row="3" Grid.Column="1" Width="600" Margin="0,0" VerticalAlignment="Center" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">

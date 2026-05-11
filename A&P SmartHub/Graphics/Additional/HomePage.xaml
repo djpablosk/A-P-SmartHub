@@ -30,6 +30,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Welcome back," FontSize="25" Foreground="#8B95A5" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
                         <TextBlock x:Name="dashHomeName" Grid.Column="0" Grid.Row="0" Text="YourHomeName" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" >
 
@@ -120,11 +121,107 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0" Background="#1C2331" CornerRadius="30" Margin="5" >
-                    <Grid Margin="10">
-                        <TextBlock TextAlignment="Center" Text="Home safety" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"  />
-                        
-                        <TextBlock TextAlignment="Center" Text="Air quality is good" FontSize="25" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,50,0,0"/>
-                    </Grid>
+                    <StackPanel>
+
+                       
+                        <Grid Margin="0,0,0,15">
+                            <TextBlock Margin="5" Text="Home Safety &amp; Environment" Foreground="#FFFFFF" FontSize="30" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="&#xE257;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,3,0,0"/>
+
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Air Quality: " Foreground="#8B95A5" FontSize="25"/>
+                                    <TextBlock Text="Good" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Ellipse Width="4" Height="4" Fill="#8B95A5" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <TextBlock Text="CO2: " Foreground="#8B95A5" FontSize="15"/>
+                                    <TextBlock Text="450 ppm" Foreground="#FFFFFF" FontSize="15" Margin="3,0,5,0"/>
+                                    <Ellipse Width="8" Height="8" Fill="#00D06C" VerticalAlignment="Center" Margin="5,0,20,0">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect Color="#00D06C" BlurRadius="8" ShadowDepth="0"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+
+                                    <Ellipse Width="4" Height="4" Fill="#8B95A5" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <TextBlock Text="VOCs: " Foreground="#8B95A5" FontSize="15"/>
+                                    <TextBlock Text="Low" Foreground="#FFFFFF" FontSize="15" Margin="3,0,5,0"/>
+                                    <Ellipse Width="8" Height="8" Fill="#00D06C" VerticalAlignment="Center" Margin="5,0,0,0">
+                                        <Ellipse.Effect>
+                                            <DropShadowEffect Color="#00D06C" BlurRadius="8" ShadowDepth="0"/>
+                                        </Ellipse.Effect>
+                                    </Ellipse>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Background="#2A3445" Margin="0,15" Opacity="0.3"/>
+
+                       
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="&#xEC40;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Smoke Detectors: " Foreground="#8B95A5" FontSize="25"/>
+                                <TextBlock Text="OK" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <Ellipse Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#00D06C" BlurRadius="10" ShadowDepth="0"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="&#xF74A;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Water Leak: " Foreground="#8B95A5" FontSize="25"/>
+                                <TextBlock Text="None" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <Ellipse Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#00D06C" BlurRadius="10" ShadowDepth="0"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="&#xF753;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Air Purifier: " Foreground="#8B95A5" FontSize="25"/>
+                                <TextBlock Text="Active" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <Ellipse Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#00D06C" BlurRadius="10" ShadowDepth="0"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+
+                    </StackPanel>
                 </Border>
                 <Border Grid.Column="1" Background="#1C2331" CornerRadius="30" Margin="5" >
                     <TextBlock TextAlignment="Center" Text="Climate control" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
