@@ -7,6 +7,7 @@ using A_P_SmartHub.Weather;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Media;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Text;
@@ -36,13 +37,13 @@ namespace A_P_SmartHub.Graphics.Login
 
         }
 
-
+         
 
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-
+         
 
             bool success = CheckLogin(users, mySql);
             //Teraz už 'await' nebude podčiarknuté

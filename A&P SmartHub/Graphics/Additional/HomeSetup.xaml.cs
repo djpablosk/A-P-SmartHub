@@ -39,7 +39,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void AddDeviceButton_Click(object sender, RoutedEventArgs e)
         {
-            //AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
+           // AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
             //addDeviceWindow.ShowDialog();
             var addWindow = new AddNewDeviceWindow();
             if (addWindow.ShowDialog() == true)
@@ -78,9 +78,8 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             try
             {
-                // Await the asynchronous database operation
-                    await SaveToDB();
-            //    MessageBox.Show("pokracovanie nabuduce");
+
+                await SaveToDB();
             }
             catch (Exception ex)
             {

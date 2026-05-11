@@ -1,4 +1,5 @@
-﻿using A_P_SmartHub.Graphics.MainGrap.Registration;
+﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.MainGrap.Registration;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,8 @@ namespace A_P_SmartHub.Graphics.Additional
 
             if (mainWindow != null)
             {
-
+                MySql mySql = new MySql();
+              await  mySql.ReturnBasicFromDB(SessionInfo.ID);
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard(), true);
             }
 
