@@ -25,10 +25,11 @@ namespace A_P_SmartHub.Graphics.Additional
         public NoWifiScreen()
         {
             InitializeComponent();
-            FullWifi();
+
+            this.Loaded += (s, e) => FullWifi();
         }
 
-        public bool WifiOn() 
+        public bool WifiOn()
         {
             return NetworkInterface.GetAllNetworkInterfaces()
                 .Any(n => n.NetworkInterfaceType == NetworkInterfaceType.Wireless80211
@@ -37,22 +38,23 @@ namespace A_P_SmartHub.Graphics.Additional
 
         public void FullWifi()
         {
-           
-            if (Window.GetWindow(this) is not MainWindow mainWindow)
-            {
-                MessageBox.Show("Could not find the main window.", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+
 
             if (WifiOn())
             {
-                mainWindow.SlideViewTransition(new LoginScreen(), true);
-            }
+              
+        
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+          
+            
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+            
+        
+              }
             else
             {
-                MessageBox.Show("No Wi-Fi connection detected. Please connect and try again.",
-                    "No Connection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                this.Visibility = Visibility.Visible;
             }
         }
     }
