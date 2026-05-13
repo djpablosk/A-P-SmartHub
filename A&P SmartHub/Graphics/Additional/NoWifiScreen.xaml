@@ -21,7 +21,7 @@
                    Foreground="White" 
                    HorizontalAlignment="Center" />
             <TextBlock Text="Please check your Wi-Fi settings and try again." Foreground="White" Margin="10"/>
-            <Button Content="Retry" Width="100" Margin="10" Click="RetryButton_Click"/>
+            <Button Content="Retry" Width="100" Margin="10" />
         </StackPanel>
     </Grid>
 </UserControl>
