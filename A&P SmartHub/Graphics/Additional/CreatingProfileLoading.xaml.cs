@@ -48,7 +48,7 @@ namespace A_P_SmartHub.Graphics.Additional
             if (mainWindow != null)
             {
                 MySql mySql = new MySql();
-              await  mySql.ReturnBasicFromDB(SessionInfo.ID);
+              await mySql.ReturnBasicFromDB(SessionInfo.ID);
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard(), true);
             }
 
