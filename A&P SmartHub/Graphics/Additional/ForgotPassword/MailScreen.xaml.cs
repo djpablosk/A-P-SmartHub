@@ -21,7 +21,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
     {
         CodeScreen codeScreen = new CodeScreen();
         smtpClientMail smtpClientMail = new smtpClientMail();
-        SQLITE_Users users = new SQLITE_Users();
+       MySQL_Users users = new MySQL_Users();
         NewPassword password = new NewPassword();
 
         public MailScreen()

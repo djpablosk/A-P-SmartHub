@@ -22,8 +22,9 @@ namespace A_P_SmartHub.Graphics.Additional
     /// </summary>
     public partial class AddNewDeviceWindow : Window
     {
-        SQLITE_Users sQLITE_Users = new SQLITE_Users();
+       
         MySql mySql = new MySql();
+        MySQL_Users mySqlUsers = new MySQL_Users();
         public AddNewDeviceWindow()
         {
             InitializeComponent();
@@ -41,8 +42,8 @@ namespace A_P_SmartHub.Graphics.Additional
                 Type = deviceType.Text,
                 IpAddress = DeviceIPAddressBox.Text
             };
-           
-            string id = sQLITE_Users.GetUserId(SessionInfo.Mail);
+
+            string id = mySqlUsers.GetUserId(SessionInfo.Mail);
             var selected = deviceType.SelectedItem as ComboBoxItem;
             string devtype = selected?.Content.ToString();
 

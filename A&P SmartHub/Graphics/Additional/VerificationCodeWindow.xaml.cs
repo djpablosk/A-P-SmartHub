@@ -27,11 +27,12 @@ namespace A_P_SmartHub.Graphics.Additional
     public partial class VerificationCodeWindow : UserControl
 
     {
-        SQLITE_Users sQLITE_Users = new SQLITE_Users();
+     
         public int RandomCode { get; set; }
         public string Mail { get; set; }
         public string PassHash { get; set; }
-        public VerificationCodeWindow()
+        MySQL_Users users = new MySQL_Users();
+        public async Task VerificationCodeWindow_()
         {
             InitializeComponent();
             Random random = new Random();
@@ -56,8 +57,8 @@ namespace A_P_SmartHub.Graphics.Additional
             {
               
 
-                sQLITE_Users.CreateDB();
-                bool result = sQLITE_Users.RegisterNewUser(Mail, PassHash);
+               
+                bool result = users.RegisterNewUser(Mail, PassHash);
 
 
 
@@ -65,7 +66,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
                 MessageBox.Show("verification successful");
 
-                SessionInfo.ID = sQLITE_Users.GetUserId(SessionInfo.Mail);
+                SessionInfo.ID = users.GetUserId(SessionInfo.Mail);
                 if (mainWindow != null)
                 {
                     mainWindow.MainDisplay.Content = new HomeSetup();
