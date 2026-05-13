@@ -7,11 +7,37 @@
         mc:Ignorable="d"
         Title="WelcomeWidow" Height="450" Width="800">
     <Grid Background="#101725">
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,50,0,0">
-            <TextBlock Text="Welcome" FontSize="24" Foreground="White"  HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding UserName}" FontSize="16" Foreground="LightGray" HorizontalAlignment="Center" Margin="10,0,0,0"/>   
-        </StackPanel>
-        
-        
+        <Grid Background="#10141D">
+
+            <Border Background="#1C2331" CornerRadius="20" Width="420" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,50,40,40">
+
+                <Border.Effect>
+                    <DropShadowEffect Color="Black" BlurRadius="30" ShadowDepth="10" Opacity="0.3"/>
+                </Border.Effect>
+
+                <StackPanel>
+
+                    <Grid Width="90" Height="90" HorizontalAlignment="Center" Margin="0,0,0,25">
+                        <Ellipse Fill="#00D06C" Opacity="0.15"/>
+                        <Ellipse Width="60" Height="60" Fill="#00D06C">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Color="#00D06C" BlurRadius="20" ShadowDepth="0"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+                        <TextBlock Text="&#xE73E;" FontFamily="Segoe Fluent Icons" Foreground="#10141D" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    </Grid>
+
+                    <TextBlock x:Name="WelcomeText" Text="Welcome, User" Foreground="#FFFFFF" FontSize="26" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Thank you for using A&amp;P SmartHub." Foreground="#00D06C" FontSize="15" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+
+                    <TextBlock Text="Your secure and peaceful environment is now ready to be configured." 
+                       Foreground="#8B95A5" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" LineHeight="22"/>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+
+
     </Grid>
 </Window>

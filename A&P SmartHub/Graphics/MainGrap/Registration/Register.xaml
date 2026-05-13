@@ -20,9 +20,9 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="420"/>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="630" />
+            <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
 
@@ -33,20 +33,39 @@
 
         <Border   Grid.Row="1" Grid.Column="1"  CornerRadius="30"  Background="#1C2331"   HorizontalAlignment="Stretch" >
 
-            <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="Transparent" >
                 <TextBlock Margin="0,10" Height="100" HorizontalAlignment="Center" Width="400" Text="Registration" FontFamily="Bahnschrift" FontSize="72" Foreground="White"  />
-                <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
+                <TextBlock Height="42" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10,0" TextWrapping="Wrap" Text="Email:" Width="164" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
                 <Border Background="Transparent" Margin="0,20" Width="500" CornerRadius="20" BorderThickness="1" HorizontalAlignment="Center" BorderBrush="White">
-                    <TextBox x:Name="EmailRegWind" FontSize="48" Width="475" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="64"  />
+                    <TextBox Foreground="White" x:Name="EmailRegWind" FontSize="40" Width="475" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"      BorderThickness="0"  Height="60"  />
                 </Border>
-                <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Password:" Width="168" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
-                <Border Margin="0,20" Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                    <TextBox Name="Passw1" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
+                <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10,0" TextWrapping="Wrap" Text="Password:" Width="168" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
+                <Grid Margin="0,20" Width="500">
+                    <Border x:Name="notSeePassword"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                        <PasswordBox Foreground="White" Name="Passw1" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
+                    </Border>
+                    <Border Visibility="Collapsed" x:Name="SeePassword"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                    <TextBox  Foreground="White" Name="PasswSEE" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
                 </Border>
-                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="100,0" TextWrapping="Wrap" Text="Confirm password:" Width="350" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
-                <Border Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64" Margin="0,20">
-                    <TextBox x:Name="Passw2" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="48"/>
-                </Border>
+                    <Button Background="Transparent" BorderThickness="0" x:Name="ShowPassw" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" PreviewMouseDown="Down_Click" PreviewMouseUp="Up_Click">
+                        
+                        <Viewbox Margin="-10,0" Width="30" Height="20">
+                            <Path Data="M1,12 C1,12 5,3 12,3 C19,3 23,12 23,12 C23,12 19,21 12,21 C5,21 1,12 1,12 Z M12,17 C14.7614237,17 17,14.7614237 17,12 C17,9.23857625 14.7614237,7 12,7 C9.23857625,7 7,9.23857625 7,12 C7,14.7614237 9.23857625,17 12,17 Z M12,15 C10.3431458,15 9,13.6568542 9,12 C9,10.3431458 10.3431458,9 12,9 C13.6568542,9 15,10.3431458 15,12 C15,13.6568542 13.6568542,15 12,15 Z"
+                                  Fill="White"/>
+                        
+                        </Viewbox>
+                    </Button>
+                </Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10,0" TextWrapping="Wrap" Text="Confirm password:" Width="350" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
+                <Grid Margin="0,20" Width="500">
+                    <Border x:Name="notSeePassword2"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                        <PasswordBox Foreground="White" Name="Passw2" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
+                    </Border>
+                    <Border Visibility="Collapsed" x:Name="SeePassword2"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
+                        <TextBox  Foreground="White" Name="PasswSEE2" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
+                    </Border>
+                   
+                </Grid>
                 <Border Width="500" Margin="0,30" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
                     <Button IsDefault="True" Cursor="Hand" BorderThickness="0"  HorizontalAlignment="Stretch"  Height="64" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
                         <Button.Template>
