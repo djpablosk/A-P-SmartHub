@@ -28,10 +28,10 @@ namespace A_P_SmartHub
             UpperBar.Content = new CustomUpperBar();
             this.WindowState = WindowState.Maximized;
 
-            
+
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-            {
+        {
             base.OnMouseLeftButtonDown(e);
 
 
@@ -50,7 +50,7 @@ namespace A_P_SmartHub
         }
 
 
-       
+
 
         public void SlideViewTransition(UserControl newView, bool v)    //animacia blur 
         {
