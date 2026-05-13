@@ -14,9 +14,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-       
 
-        <ContentControl Grid.Row="0" Grid.Column="1" x:Name="MainDisplay"/>
+        <Grid Grid.Column="1" Background="#10141D">
+            <ContentControl Grid.Row="0" Grid.Column="1" x:Name="MainDisplay"/>
+        </Grid>
 
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
@@ -26,14 +27,17 @@
 
             </Grid.RowDefinitions>
 
-            <Button BorderThickness="0" Background="Transparent" Click="HomePage_Click" >
+            <Grid>
+                
+            <Button BorderThickness="0" HorizontalAlignment="Stretch" Height="200" Background="Transparent" Click="HomePage_Click" >
                 <Path HorizontalAlignment="Center"  VerticalAlignment="Center" 
               Width="40" Height="40" Stretch="Uniform" 
               Fill="#A9ACBB" 
               Data="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
             </Button>
+            </Grid>
 
-            <Button BorderThickness="0" Grid.Column="1" Grid.Row="1" Background="Transparent" Click="AllDevices_Click">
+            <Button BorderThickness="0" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Height="200" Background="Transparent" Click="AllDevices_Click">
 
                 <Path HorizontalAlignment="Center" VerticalAlignment="Center" 
               Width="40" Height="40" Stretch="Uniform" 
@@ -60,5 +64,6 @@ Fill="White" />
         </Grid>
 
 
+       
     </Grid>
 </UserControl>
