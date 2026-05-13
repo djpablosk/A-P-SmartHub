@@ -46,11 +46,13 @@ namespace A_P_SmartHub.Graphics.Additional
             InitializeComponent();
 
             MyDevices = new ObservableCollection<DeviceType>();
+           
 
             DeviceList.ItemsSource = MyDevices;
             LoadFromDB();
              LoadTestData();
-            
+
+
 
 
 
@@ -70,6 +72,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
+            WelcomeBack.Text = $"Welcome Back,{sql1.UserName}";
             foreach (var device in devices)
             {
                 var newdevice = new DeviceType();

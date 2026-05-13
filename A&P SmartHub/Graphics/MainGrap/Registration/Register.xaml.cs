@@ -1,16 +1,14 @@
 ﻿using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Login;
-using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Interfaces;
 using BCrypt.Net;
-using Microsoft.Data.Sqlite;
 using Microsoft.Win32;
-using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,36 +22,26 @@ using VerificationCodeWindow = A_P_SmartHub.Graphics.Additional.VerificationCode
 
 namespace A_P_SmartHub.Graphics.MainGrap
 {
-    /// <summary>
-    /// Interaction logic for Register.xaml
-    /// </summary>
-    /// 
-
-
-    public partial class Register : UserControl
+        public partial class Register : UserControl
     {
         public Register()
         {
             InitializeComponent();
         }
 
-
-        public   string Mail { get; set; }
-
+        public string Mail { get; set; }
         private string Password { get; set; }
         private string PassHash { get; set; }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
             smtpClientMail smtpClientMail = new smtpClientMail();
             VerificationCodeWindow verificationCode = new VerificationCodeWindow();
-            SQLITE_Users sQLITE_Users = new SQLITE_Users();
-            sQLITE_Users.CreateDB();
-
-
-
+            
+            MySQL_Users users = new MySQL_Users();
+           
+            
             if (Passw1.Password != Passw2.Password)
             {
                 MessageBox.Show("Password do not match");
@@ -76,17 +64,13 @@ namespace A_P_SmartHub.Graphics.MainGrap
                 PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
                 SessionInfo.Mail = Mail;
 
-                bool result = sQLITE_Users.IsMailInDB(Mail);
+                bool result = users.IsMailInDB(Mail);
 
                 if (result)
                 {
-
-
-
                     MessageBox.Show("Looks Like This Mail is already Used  Please Log In");
                     if (mainWindow != null)
                     {
-
                         mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
                     }
                 }
@@ -97,16 +81,20 @@ namespace A_P_SmartHub.Graphics.MainGrap
                     verificationCode.PassHash = this.PassHash;
                     mainWindow.MainDisplay.Content = verificationCode;
                     smtpClientMail.SendMail(verificationCode, this);
+                    mainWindow.MainDisplay.Content = verificationCode;
                 }
-
-
-
-                // 2. Ak sme ho našli, povieme mu, nech spustí SVOJU funkciu na prechod
-
             }
         }
-        
-        
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+            }
+        }
         private void Down_Click(object sender, RoutedEventArgs e)
         {
             PasswSEE.Text = Passw1.Password;
@@ -125,18 +113,6 @@ namespace A_P_SmartHub.Graphics.MainGrap
             notSeePassword2.Visibility = Visibility.Visible;
             SeePassword.Visibility = Visibility.Collapsed;
             notSeePassword.Visibility = Visibility.Visible;
-        }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = Window.GetWindow(this) as MainWindow;
-
-
-            if (mainWindow != null)
-            {
-
-                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
-            }
         }
     }
 }
