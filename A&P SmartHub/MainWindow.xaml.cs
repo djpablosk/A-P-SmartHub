@@ -24,7 +24,7 @@ namespace A_P_SmartHub
         public MainWindow()
         {
             InitializeComponent();
-            MainDisplay.Content = new Login();
+            MainDisplay.Content = new NoWifiScreen();
             UpperBar.Content = new CustomUpperBar();
             this.WindowState = WindowState.Maximized;
 

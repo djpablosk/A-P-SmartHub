@@ -1,29 +1,39 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.Additional;
+using A_P_SmartHub.Graphics.Login;
+using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Windows;
 
 namespace A_P_SmartHub
 {
     internal class wifiCheck
     {
-   public  bool wifion()
+
+        public bool wifion()
         {
             return NetworkInterface.GetAllNetworkInterfaces().Any(n => n.NetworkInterfaceType == NetworkInterfaceType.Wireless80211
             && n.OperationalStatus == OperationalStatus.Up);
         }
+
+        NoWifiScreen nowifi = new NoWifiScreen();
+        Login login = new Login();
+
         public void Fullwifi()
         {
-          bool isOn =  wifion();
+
+            //            var mainWindow = Window.GetWindow(this) as MainWindow;
+            bool isOn = wifion();
             if (isOn)
             {
-                // prepneme spat ba login
+                //  mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
             }
             else
             {
-                // prepnutie na tu blbost
+
             }
         }
     }
-  
+
 }
