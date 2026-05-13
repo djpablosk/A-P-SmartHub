@@ -54,12 +54,12 @@ namespace A_P_SmartHub.Graphics.MainGrap
 
 
 
-            if (Passw1.Text != Passw2.Text)
+            if (Passw1.Password != Passw2.Password)
             {
                 MessageBox.Show("Password do not match");
                 return;
             }
-            else if (Passw1.Text.Length < 8)
+            else if (Passw1.Password.Length < 8)
             {
                 MessageBox.Show("This password is too weak, please use password with 8 or more chars");
                 return;
@@ -71,7 +71,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
             }
             else
             {
-                Password = Passw1.Text;
+                Password = Passw1.Password;
                 Mail = EmailRegWind.Text;
                 PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
                 SessionInfo.Mail = Mail;
@@ -107,22 +107,25 @@ namespace A_P_SmartHub.Graphics.MainGrap
         }
         
         
-        
+        private void Down_Click(object sender, RoutedEventArgs e)
+        {
+            PasswSEE.Text = Passw1.Password;
+            SeePassword.Visibility = Visibility.Visible;
+            notSeePassword.Visibility = Visibility.Collapsed;
 
+            PasswSEE2.Text = Passw2.Password;
+            SeePassword2.Visibility = Visibility.Visible;
+            notSeePassword2.Visibility = Visibility.Collapsed;
 
+        }
 
-
-    
-
-       
-        
-        
-        
-
-
-
-
-       
+        private void Up_Click(object sender, RoutedEventArgs e)
+        {
+            SeePassword2.Visibility = Visibility.Collapsed;
+            notSeePassword2.Visibility = Visibility.Visible;
+            SeePassword.Visibility = Visibility.Collapsed;
+            notSeePassword.Visibility = Visibility.Visible;
+        }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
