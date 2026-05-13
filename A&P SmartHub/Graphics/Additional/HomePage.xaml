@@ -30,7 +30,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Welcome back," FontSize="25" Foreground="#8B95A5" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
+                        <TextBlock x:Name="WelcomeBack" Grid.Column="0" Grid.Row="1" Text="Welcome back," FontSize="25" Foreground="#8B95A5" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
                         <TextBlock x:Name="dashHomeName" Grid.Column="0" Grid.Row="0" Text="YourHomeName" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" >
 

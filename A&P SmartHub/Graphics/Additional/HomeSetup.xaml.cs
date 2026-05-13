@@ -62,7 +62,7 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             string mail = SessionInfo.Mail;
 
-            SQLITE_Users users = new SQLITE_Users();
+            MySQL_Users users = new MySQL_Users();
             string id = users.GetUserId(mail);
 
             SessionInfo.ID = id;

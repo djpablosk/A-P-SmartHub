@@ -29,8 +29,9 @@ namespace A_P_SmartHub.Graphics.Login
     /// </summary>
     public partial class Login : UserControl
     {
-        SQLITE_Users users = new SQLITE_Users();
+       
         MySql mySql = new MySql();
+        MySQL_Users users = new MySQL_Users();
         public Login()
         {
             InitializeComponent();
@@ -77,15 +78,14 @@ namespace A_P_SmartHub.Graphics.Login
             }
         }
 
-
-
-
-        public bool CheckLogin(SQLITE_Users users, MySql mySql)
+        public bool CheckLogin( MySQL_Users users , MySql mySql) 
         {
 
             bool checkHash = false;
-            if (string.IsNullOrWhiteSpace(LoginMail.Text) ||
-              string.IsNullOrWhiteSpace(LoginPasword.Password)) return false;
+            
+            if (string.IsNullOrWhiteSpace(LoginMail.Text) || string.IsNullOrWhiteSpace(LoginPasword.Password)) 
+                return false;
+                    
             users.LoggingInDB(LoginMail.Text);
             if (string.IsNullOrEmpty(users.FetchedMail)) return false;
             if (string.IsNullOrEmpty(users.FetchedHash)) return false;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A_P_SmartHub.Databazicky;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,23 @@ namespace A_P_SmartHub.Graphics.MainGrap.Registration
     /// </summary>
     public partial class WelcomeWidow : Window
     {
-        public WelcomeWidow()
+        MySql MySql = new MySql();
+
+        public  WelcomeWidow()
         {
             InitializeComponent();
+            WelcomeUser();
+        }
+
+        public async Task WelcomeUser()
+        {
+            await MySql.ReturnBasicFromDB(SessionInfo.ID);
+            //   MessageBox.Show(SessionInfo.ID);
+            string name = MySql.UserName;
+            //  MessageBox.Show(name);
+
+
+            WelcomeText.Text = $"Welcome {name}";
         }
     }
 }
