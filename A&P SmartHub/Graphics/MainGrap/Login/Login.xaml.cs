@@ -33,7 +33,7 @@ namespace A_P_SmartHub.Graphics.Login
         MySql mySql = new MySql();
         MySQL_Users users = new MySQL_Users();
         wifiCheck wifi = new wifiCheck();
-        public Login()
+        public Login() // nove
         {
            
             InitializeComponent();

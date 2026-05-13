@@ -102,7 +102,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
         private void Down_Click(object sender, RoutedEventArgs e)
         {
             PasswSEE.Text = Passw1.Password;
-            SeePassword.Visibility = Visibility.Visible;
+            SeePassword.Visibility = Visibility.Visible; // nove
             notSeePassword.Visibility = Visibility.Collapsed;
 
             PasswSEE2.Text = Passw2.Password;
