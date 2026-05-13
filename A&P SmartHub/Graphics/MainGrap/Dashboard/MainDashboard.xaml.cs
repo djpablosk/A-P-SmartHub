@@ -79,7 +79,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Dashboard
 
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
-            SlideAnimation(_homePage);
+            SlideAnimation(_homePage); //fixed
         }
 
         private void AllDevices_Click(object sender, RoutedEventArgs e)

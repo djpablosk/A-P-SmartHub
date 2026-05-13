@@ -18,6 +18,8 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
     /// <summary>
     /// Interaction logic for NewPassword.xaml
     /// </summary>
+    
+    
     public partial class NewPassword : UserControl
     {
         public string ResMail { get; set; }
