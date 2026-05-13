@@ -40,9 +40,9 @@ namespace A_P_SmartHub.Graphics.MainGrap
             VerificationCodeWindow verificationCode = new VerificationCodeWindow();
             
             MySQL_Users users = new MySQL_Users();
-            users.CreateDB();
+           
             
-            if (Passw1.Text != Passw2.Text)
+            if (Passw1.Password != Passw2.Password)
             {
                 MessageBox.Show("Password do not match");
                 return;
@@ -81,6 +81,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
                     verificationCode.PassHash = this.PassHash;
                     mainWindow.MainDisplay.Content = verificationCode;
                     smtpClientMail.SendMail(verificationCode, this);
+                    mainWindow.MainDisplay.Content = verificationCode;
                 }
             }
         }
@@ -93,6 +94,25 @@ namespace A_P_SmartHub.Graphics.MainGrap
             {
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
             }
+        }
+        private void Down_Click(object sender, RoutedEventArgs e)
+        {
+            PasswSEE.Text = Passw1.Password;
+            SeePassword.Visibility = Visibility.Visible;
+            notSeePassword.Visibility = Visibility.Collapsed;
+
+            PasswSEE2.Text = Passw2.Password;
+            SeePassword2.Visibility = Visibility.Visible;
+            notSeePassword2.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void Up_Click(object sender, RoutedEventArgs e)
+        {
+            SeePassword2.Visibility = Visibility.Collapsed;
+            notSeePassword2.Visibility = Visibility.Visible;
+            SeePassword.Visibility = Visibility.Collapsed;
+            notSeePassword.Visibility = Visibility.Visible;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace A_P_SmartHub.Graphics.Additional
         public string Mail { get; set; }
         public string PassHash { get; set; }
         MySQL_Users users = new MySQL_Users();
-        public async Task VerificationCodeWindow_()
+        public  VerificationCodeWindow()
         {
             InitializeComponent();
             Random random = new Random();
