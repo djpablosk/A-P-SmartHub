@@ -14,9 +14,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-       
 
-        <ContentControl Grid.Row="0" Grid.Column="1" x:Name="MainDisplay"/>
+        <Grid Grid.Column="1" Background="#10141D">
+            <ContentControl Grid.Row="0" Grid.Column="1" x:Name="MainDisplay"/>
+        </Grid>
 
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
@@ -60,5 +61,6 @@ Fill="White" />
         </Grid>
 
 
+       
     </Grid>
 </UserControl>
