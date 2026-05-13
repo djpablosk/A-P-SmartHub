@@ -24,7 +24,7 @@ namespace A_P_SmartHub.Graphics.Additional
         public CreatingProfileLoading()
         {
             InitializeComponent();
-            this.Loaded += UserControl_Loaded;
+            this.Loaded += UserControl_Loaded; // nove
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)

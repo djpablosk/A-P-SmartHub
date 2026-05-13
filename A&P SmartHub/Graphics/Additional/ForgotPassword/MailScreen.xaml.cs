@@ -39,7 +39,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
             ForgotMail = forgotPassMail.Text;
             codeScreen.Mail = ForgotMail;
             
-            
+             // nove 
             
             
             string exists = users.GetUserId(forgotPassMail.Text);

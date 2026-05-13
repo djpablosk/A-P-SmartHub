@@ -19,6 +19,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VerificationCodeWindow = A_P_SmartHub.Graphics.Additional.VerificationCodeWindow;
+using System.Net.NetworkInformation;
+using System.Net;
+
 
 namespace A_P_SmartHub.Graphics.MainGrap
 {
@@ -40,9 +43,10 @@ namespace A_P_SmartHub.Graphics.MainGrap
             VerificationCodeWindow verificationCode = new VerificationCodeWindow();
             
             MySQL_Users users = new MySQL_Users();
-           
+          
+
             
-            if (Passw1.Password != Passw2.Password)
+            if (Passw1.Password  != Passw2.Password)
             {
                 MessageBox.Show("Password do not match");
                 return;
@@ -98,7 +102,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
         private void Down_Click(object sender, RoutedEventArgs e)
         {
             PasswSEE.Text = Passw1.Password;
-            SeePassword.Visibility = Visibility.Visible;
+            SeePassword.Visibility = Visibility.Visible; // nove
             notSeePassword.Visibility = Visibility.Collapsed;
 
             PasswSEE2.Text = Passw2.Password;
