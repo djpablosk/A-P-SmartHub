@@ -1,7 +1,7 @@
 ﻿using A_P_SmartHub.Graphics.Login;
 using System;
 using System.Collections.Generic;
-using System.Linq; // ✅ Added - required for .Any()
+using System.Linq; 
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows;
@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using LoginScreen = A_P_SmartHub.Graphics.Login.Login; // ✅ Add this alias
+
 using System.Windows.Shapes;
 
 namespace A_P_SmartHub.Graphics.Additional

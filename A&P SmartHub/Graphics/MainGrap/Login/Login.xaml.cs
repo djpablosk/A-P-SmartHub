@@ -32,7 +32,7 @@ namespace A_P_SmartHub.Graphics.Login
        
         MySql mySql = new MySql();
         MySQL_Users users = new MySQL_Users();
-        public Login() // nove
+        public Login()
         {
            
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace A_P_SmartHub.Graphics.Login
          
 
             bool success = CheckLogin(users, mySql);
-            //Teraz už 'await' nebude podčiarknuté
+           
           
 
             if (!success)
