@@ -47,7 +47,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
                 MessageBox.Show("Password do not match");
                 return;
             }
-            else if (Passw1.Text.Length < 8)
+            else if (Passw1.Password.Length < 8)
             {
                 MessageBox.Show("This password is too weak, please use password with 8 or more chars");
                 return;
@@ -59,7 +59,7 @@ namespace A_P_SmartHub.Graphics.MainGrap
             }
             else
             {
-                Password = Passw1.Text;
+                Password = Passw1.Password;
                 Mail = EmailRegWind.Text;
                 PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
                 SessionInfo.Mail = Mail;
