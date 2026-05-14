@@ -27,7 +27,7 @@
             </Path>
 
             <!-- Text pod kolieskom -->
-            <TextBlock Text="Prihlasujem sa..." Foreground="#FFFFFF" FontSize="18" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+            <TextBlock Text="Loginning in..." Foreground="#FFFFFF" FontSize="18" Margin="0,20,0,0" HorizontalAlignment="Center"/>
 
         </StackPanel>
     </Grid>
