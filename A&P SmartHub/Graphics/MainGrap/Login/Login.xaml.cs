@@ -58,7 +58,7 @@ namespace A_P_SmartHub.Graphics.Login
             }
 
 
-            await Task.Delay(2300);
+            
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
@@ -73,7 +73,7 @@ namespace A_P_SmartHub.Graphics.Login
     
                 await mySql.DataBase();
 
-                mainWindow.SlideViewTransition(new MainDashboard(), true);
+                mainWindow.SlideViewTransition(new LoginInAnimation(), true);
               //  MessageBox.Show("ide to");
               
             }

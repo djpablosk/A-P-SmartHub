@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A_P_SmartHub.Graphics.MainGrap.Dashboard;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,15 @@ namespace A_P_SmartHub.Graphics.Additional
         public LoginInAnimation()
         {
             InitializeComponent();
+            UserLoad();
+        }
+
+
+        private async Task UserLoad()
+        {
+            await Task.Delay(3000);
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            mainWindow.SlideViewTransition(new MainDashboard(), true);
         }
     }
 }
