@@ -25,6 +25,7 @@ using A_P_SmartHub.Type_devices_with_graphics;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 
 using static A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard;
+using A_P_SmartHub.AI;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -35,9 +36,12 @@ namespace A_P_SmartHub.Graphics.Additional
 
     public partial class HomePage : UserControl
     {
-        DispatcherTimer timer = new DispatcherTimer();
-        getData data = new getData();
         MySql sql1 = new MySql();
+        getData data = new getData();
+        Chatbot Chatbot = new Chatbot();
+        DispatcherTimer timer = new DispatcherTimer();
+        
+       
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
         public HomePage()
@@ -59,7 +63,10 @@ namespace A_P_SmartHub.Graphics.Additional
             timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
             timer.Tick += async (s, e) => //*
             {
+                await Greet(); //nie je ai!
                 await UpdateWeather();  // *
+                
+                
             };
             timer.Start();//*
 
@@ -72,7 +79,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
-            WelcomeBack.Text = $"Welcome Back,{sql1.UserName}";
+           // WelcomeBack.Text = $"Welcome Back,{sql1.UserName}";
             foreach (var device in devices)
             {
                 var newdevice = new DeviceType();
@@ -158,11 +165,13 @@ namespace A_P_SmartHub.Graphics.Additional
 
 
             string id = SessionInfo.ID;
-
             await sql1.ReturnBasicFromDB(id);
+            await Chatbot.AiChat("tell me basic infos abt me so like whats my username city temperature etc",data);
+           
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
             await UpdateWeather();
+            await Greet();
 
 
 
@@ -183,6 +192,24 @@ namespace A_P_SmartHub.Graphics.Additional
             await data.getTemperature(City);
             WeatherCity.Text = City;
             WeatherTemp.Text = $"{data.Temperature}°C";
+        }
+
+        public async Task Greet()
+        {
+            if (DateTime.Now.Hour <= 11)
+            {
+                WelcomeBack.Text = $"Good Morning, {sql1.UserName} !";
+            }
+            else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 19)
+            {
+                WelcomeBack.Text = $"Good Afternoon, {sql1.UserName} !";
+            }
+            else
+            {
+                WelcomeBack.Text = $"Good Evening, {sql1.UserName} !";
+
+
+            }
         }
     }
 }
