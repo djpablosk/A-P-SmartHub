@@ -1,4 +1,5 @@
-﻿using A_P_SmartHub.Databazicky;
+﻿using A_P_SmartHub.AI;
+using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
@@ -31,6 +32,7 @@ namespace A_P_SmartHub.Graphics.Login
     {
        
         MySql mySql = new MySql();
+        
         MySQL_Users users = new MySQL_Users();
         public Login()
         {
@@ -72,7 +74,7 @@ namespace A_P_SmartHub.Graphics.Login
                 HomePage homePage = new HomePage();
     
                 await mySql.DataBase();
-
+               
                 mainWindow.SlideViewTransition(new LoginInAnimation(), true);
               //  MessageBox.Show("ide to");
               
