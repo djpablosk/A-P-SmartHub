@@ -42,11 +42,15 @@ namespace A_P_SmartHub.Graphics.Additional
 
         }
 
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
 
-
-
-
-
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+            }
+        }
 
 
         private void Button_Click(object sender, RoutedEventArgs e) // nove

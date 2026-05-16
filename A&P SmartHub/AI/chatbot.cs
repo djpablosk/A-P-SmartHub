@@ -51,7 +51,9 @@ namespace A_P_SmartHub.AI
                 var aiDoc = JsonDocument.Parse(json);
                 // MessageBox.Show(json);
                 string AIAnswer = aiDoc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
+                MessageBox.Show(AIAnswer);
                 return AIAnswer;
+                
             }
             catch (Exception ex)
             {
