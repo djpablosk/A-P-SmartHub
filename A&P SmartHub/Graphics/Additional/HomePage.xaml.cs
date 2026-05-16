@@ -137,7 +137,7 @@ namespace A_P_SmartHub.Graphics.Additional
                             PopupContent.Content = climateWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
-
+                              
                         case DeviceTypeEnum.Cover:
                             var coverWindow = new CoverTemplate(stlaceneDevice);
                             PopupContent.Content = coverWindow;
@@ -145,7 +145,7 @@ namespace A_P_SmartHub.Graphics.Additional
                             break;
 
                         case DeviceTypeEnum.Media:
-                            var mediaWindow = new MediaTemplate(stlaceneDevice);
+                            var mediaWindow = new MediaTemplate(stlaceneDevice);    
                             PopupContent.Content = mediaWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
@@ -166,7 +166,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             string id = SessionInfo.ID;
             await sql1.ReturnBasicFromDB(id);
-            await Chatbot.AiChat("tell me basic infos abt me so like whats my username city temperature etc",data);
+            await Chatbot.AiChat("kamo preco mi je taka zima co mam robit a potrebujem aj vyvetrat a je tu strasna zima",data);
            
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
