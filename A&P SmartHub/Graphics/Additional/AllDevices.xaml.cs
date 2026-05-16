@@ -24,53 +24,77 @@ namespace A_P_SmartHub.Graphics.Additional
     {
         public ObservableCollection<DeviceType> MyDevices { get; set; }
         MySql sql1 = new MySql();
+
         public AllDevices()
         {
             InitializeComponent();
             MyDevices = new ObservableCollection<DeviceType>();
             DeviceList.ItemsSource = MyDevices;
             LoadTestData();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-{
+        {
             Button stlaceneButton = sender as Button;
+            if (stlaceneButton == null) return;
+
             DeviceType stlaceneDevice = stlaceneButton.DataContext as DeviceType;
 
             if (stlaceneDevice != null)
             {
-                switch (stlaceneDevice.Type)
+              
+                if (SmartHubRAM.RecentDevices.Contains(stlaceneDevice))
                 {
-                    case DeviceTypeEnum.Light:
-                        var lightWindow = new LightTemplate(stlaceneDevice);
-                        PopupContent.Content = lightWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                    SmartHubRAM.RecentDevices.Remove(stlaceneDevice);
+                }
 
-                    case DeviceTypeEnum.Toggle:
-                        var toggleWindow = new ToggleTemplate(stlaceneDevice);
-                        PopupContent.Content = toggleWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                SmartHubRAM.RecentDevices.Insert(0, stlaceneDevice);
 
-                    case DeviceTypeEnum.Climate:
-                        var climateWindow = new ClimateTemplate(stlaceneDevice);
-                        PopupContent.Content = climateWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+            
+                if (SmartHubRAM.RecentDevices.Count > 5)
+                {
+                    SmartHubRAM.RecentDevices.RemoveAt(5);
+                }
+             
 
-                    case DeviceTypeEnum.Cover:
-                        var coverWindow = new CoverTemplate(stlaceneDevice);
-                        PopupContent.Content = coverWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                try
+                {
+                    switch (stlaceneDevice.Type)
+                    {
+                        case DeviceTypeEnum.Light:
+                            var lightWindow = new LightTemplate(stlaceneDevice);
+                            PopupContent.Content = lightWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
 
-                    case DeviceTypeEnum.Media:
-                        var mediaWindow = new MediaTemplate(stlaceneDevice);
-                        PopupContent.Content = mediaWindow;
-                        PopupOverlay.Visibility = Visibility.Visible;
-                        break;
+                        case DeviceTypeEnum.Toggle:
+                            var toggleWindow = new ToggleTemplate(stlaceneDevice);
+                            PopupContent.Content = toggleWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+
+                        case DeviceTypeEnum.Climate:
+                            var climateWindow = new ClimateTemplate(stlaceneDevice);
+                            PopupContent.Content = climateWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+
+                        case DeviceTypeEnum.Cover:
+                            var coverWindow = new CoverTemplate(stlaceneDevice);
+                            PopupContent.Content = coverWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+
+                        case DeviceTypeEnum.Media:
+                            var mediaWindow = new MediaTemplate(stlaceneDevice);
+                            PopupContent.Content = mediaWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading device template: {ex.Message}");
                 }
             }
         }
@@ -79,17 +103,17 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             string id = SessionInfo.ID;
             var devices = await sql1.LoadDevices(id);
+
             foreach (var device in devices)
             {
                 var newdevice = new DeviceType();
-
                 newdevice.DeviceName = device.DeviceName;
                 newdevice.Type = device.Type;
 
                 MyDevices.Add(newdevice);
-                DeviceList.ItemsSource = MyDevices;
             }
-        }
 
+            
+        }
     }
 }

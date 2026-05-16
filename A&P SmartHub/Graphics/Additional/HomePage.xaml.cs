@@ -3,7 +3,6 @@ using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Weather;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
-using A_P_SmartHub.Databazicky;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -22,102 +21,99 @@ using System.Windows.Threading;
 using System.Collections.ObjectModel;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Type_devices_with_graphics;
-using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
-
 using static A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard;
 using A_P_SmartHub.AI;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
-    /// <summary>
-    /// Interaction logic for HomePage.xaml
-    /// </summary>
-    /// 
-
     public partial class HomePage : UserControl
     {
         MySql sql1 = new MySql();
         getData data = new getData();
         Chatbot Chatbot = new Chatbot();
         DispatcherTimer timer = new DispatcherTimer();
-        
-       
+
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
+
         public HomePage()
         {
-
             InitializeComponent();
 
             MyDevices = new ObservableCollection<DeviceType>();
-           
 
-            DeviceList.ItemsSource = MyDevices;
+          
+            DeviceList.ItemsSource = SmartHubRAM.RecentDevices;
+
             LoadFromDB();
-             LoadTestData();
+            LoadTestData();
 
-
-
-
-
-            timer.Interval = TimeSpan.FromMinutes(2); //na update casu som pouzil ai (zakomentujem '*')
-            timer.Tick += async (s, e) => //*
+            timer.Interval = TimeSpan.FromMinutes(2);
+            timer.Tick += async (s, e) =>
             {
-                await Greet(); //nie je ai!
-                await UpdateWeather();  // *
-                
-                
+                await Greet();
+                await UpdateWeather();
             };
-            timer.Start();//*
-
+            timer.Start();
         }
+
         private async Task LoadTestData()
         {
-
             string id = SessionInfo.ID;
             sql1.ReturnBasicFromDB(id);
 
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
-           // WelcomeBack.Text = $"Welcome Back,{sql1.UserName}";
+
             foreach (var device in devices)
             {
                 var newdevice = new DeviceType();
-
                 newdevice.DeviceName = device.DeviceName;
                 newdevice.Type = device.Type;
 
+               
                 MyDevices.Add(newdevice);
-                DeviceList.ItemsSource = MyDevices;
             }
+
+     
         }
-
-
-       
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;
-
-
             if (mainWindow != null)
             {
-
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
             }
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button stlaceneButton = sender as Button;
+            if (stlaceneButton == null) return;
+
             DeviceType stlaceneDevice = stlaceneButton.DataContext as DeviceType;
 
             if (stlaceneDevice != null)
             {
+         
+                if (SmartHubRAM.RecentDevices.Contains(stlaceneDevice))
+                {
+                    SmartHubRAM.RecentDevices.Remove(stlaceneDevice);
+                }
+
+               
+                SmartHubRAM.RecentDevices.Insert(0, stlaceneDevice);
+
+           
+                if (SmartHubRAM.RecentDevices.Count > 5)
+                {
+                    SmartHubRAM.RecentDevices.RemoveAt(5);
+                }
+
+
                 try
                 {
-
                     switch (stlaceneDevice.Type)
                     {
                         case DeviceTypeEnum.Light:
@@ -149,7 +145,6 @@ namespace A_P_SmartHub.Graphics.Additional
                             PopupContent.Content = mediaWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
-
                     }
                 }
                 catch (Exception ex)
@@ -159,36 +154,26 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-
         public async void LoadFromDB()
         {
-
-
             string id = SessionInfo.ID;
             await sql1.ReturnBasicFromDB(id);
-            await Chatbot.AiChat("tell me basic infos abt me so like whats my username city temperature etc",data);
-           
+            await Chatbot.AiChat("tell me basic infos abt me so like whats my username city temperature etc", data);
+
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
             await UpdateWeather();
             await Greet();
 
-
-
             string LengthCheck = dashHomeName.Text;
-
             if (LengthCheck.Length == 0)
             {
                 dashHomeName.Text = "Defaultne Meno";
             }
-
-
-
-
         }
 
         public async Task UpdateWeather()
-        { // toto uz nie je ai
+        {
             await data.getTemperature(City);
             WeatherCity.Text = City;
             WeatherTemp.Text = $"{data.Temperature}°C";
@@ -207,10 +192,7 @@ namespace A_P_SmartHub.Graphics.Additional
             else
             {
                 WelcomeBack.Text = $"Good Evening, {sql1.UserName} !";
-
-
             }
         }
     }
 }
-

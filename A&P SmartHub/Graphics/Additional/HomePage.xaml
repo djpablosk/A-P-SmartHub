@@ -246,16 +246,19 @@
                 <Border.CacheMode>
                     <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                 </Border.CacheMode>
-                <Grid  Margin="10"   >
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                    
+                    <TextBlock Text="Last used devices" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Bahnschrift"/>
+                    <Grid HorizontalAlignment="Right" Width="1200"  Margin="10"   >
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl x:Name="DeviceList">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Width="160" Height="100" Background="#101725" CornerRadius="20" Margin="10">
+                                <Border Width="160" Height="200" Background="#101725" CornerRadius="20" Margin="10">
                                         <Border.CacheMode>
                                             <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                                         </Border.CacheMode>
-                                        <Button x:Name="DeviceButton" Content="{Binding DeviceName}" 
+                                        <Button Height="150" HorizontalAlignment="Stretch" x:Name="DeviceButton" FontSize="20" Content="{Binding DeviceName}" 
                                 Click="Button_Click" 
                                 Foreground="White" 
                                 Background="Transparent" 
@@ -271,6 +274,7 @@
                     </ItemsControl>
                 </ScrollViewer>
             </Grid>
+                </StackPanel>
             </Border>
 
 
