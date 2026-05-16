@@ -147,13 +147,13 @@
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Air Quality: " Foreground="#8B95A5" FontSize="25"/>
-                                    <TextBlock Text="Good" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                                    <TextBlock x:Name="AirQualityText" Text="Good" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Ellipse Width="4" Height="4" Fill="#8B95A5" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                     <TextBlock Text="CO2: " Foreground="#8B95A5" FontSize="15"/>
-                                    <TextBlock Text="450 ppm" Foreground="#FFFFFF" FontSize="15" Margin="3,0,5,0"/>
+                                    <TextBlock x:Name="AirQualityValueText" Text="450 ppm" Foreground="#FFFFFF" FontSize="15" Margin="3,0,5,0"/>
                                     <Ellipse Width="8" Height="8" Fill="#00D06C" VerticalAlignment="Center" Margin="5,0,20,0">
                                         <Ellipse.Effect>
                                             <DropShadowEffect Color="#00D06C" BlurRadius="8" ShadowDepth="0"/>
@@ -183,8 +183,8 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="&#xEC40;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="Smoke Detectors: " Foreground="#8B95A5" FontSize="25"/>
-                                <TextBlock Text="OK" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="Indoor Temperature: " Foreground="#8B95A5" FontSize="25"/>
+                                <TextBlock x:Name="IndoorTempText" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Ellipse Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>
@@ -201,8 +201,8 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="&#xF74A;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="Water Leak: " Foreground="#8B95A5" FontSize="25"/>
-                                <TextBlock Text="None" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="Indoor Humidity: " Foreground="#8B95A5" FontSize="25"/>
+                                <TextBlock x:Name="IndoorHumidityText" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Ellipse Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>
@@ -219,8 +219,8 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="&#xF753;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="Air Purifier: " Foreground="#8B95A5" FontSize="25"/>
-                                <TextBlock Text="Active" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock Text="ESP Data" Foreground="#8B95A5" FontSize="25"/>
+                                <TextBlock x:Name="EspDataText" Text="Active" Foreground="#FFFFFF" FontSize="25" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Ellipse Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>
@@ -232,6 +232,10 @@
                     </StackPanel>
                 </Border>
                 <Border Grid.Column="1" Background="#1C2331" CornerRadius="30" Margin="5" >
+                    <Border.CacheMode>
+                        <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                    </Border.CacheMode>
+
                     <TextBlock TextAlignment="Center" Text="Alerts" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
                     
                     

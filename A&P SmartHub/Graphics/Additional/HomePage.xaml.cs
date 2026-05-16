@@ -1,10 +1,15 @@
-﻿using A_P_SmartHub.Databazicky;
+﻿using A_P_SmartHub.AI;
+using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
-using A_P_SmartHub.Weather;
+using A_P_SmartHub.Type_devices_with_graphics;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
+using A_P_SmartHub.Weather;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +23,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Collections.ObjectModel;
-using A_P_SmartHub.Graphics.Additional;
-using A_P_SmartHub.Type_devices_with_graphics;
 using static A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard;
-using A_P_SmartHub.AI;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -35,6 +36,10 @@ namespace A_P_SmartHub.Graphics.Additional
 
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
+
+        private static readonly HttpClient _httpClient = new HttpClient();
+        DispatcherTimer espTimer = new DispatcherTimer();
+        private const string _espAddress = "http://192.168.0.208/data"; // tu sa IP adresa !!MENI!! 
 
         public HomePage()
         {
@@ -55,6 +60,70 @@ namespace A_P_SmartHub.Graphics.Additional
                 await UpdateWeather();
             };
             timer.Start();
+
+            espTimer.Interval = TimeSpan.FromSeconds(3);
+            espTimer.Tick += async (s, e) =>
+            {
+                await FetchEspData();
+            };
+            espTimer.Start();
+        }
+
+        private async Task FetchEspData()
+        {
+            try
+            {
+                string response = await _httpClient.GetStringAsync(_espAddress);
+                string[] splitData = response.Split(',');
+
+                if (splitData.Length == 3)
+                {
+                    string Temperature = splitData[0];
+                    string Humidity = splitData[1];
+                    int gasValue = int.Parse(splitData[2]);
+
+
+                    if (IndoorTempText != null)
+                    {
+                        IndoorTempText.Text = $"{Temperature}°C";
+                    }
+                    if (IndoorHumidityText != null)
+                    {
+                        IndoorHumidityText.Text = $"{Humidity}%";
+                    }
+                    if (AirQualityValueText != null)
+                    {
+                        AirQualityValueText.Text = $"{gasValue}";
+                    }
+
+                    if(AirQualityText != null)
+                    {
+                        if(gasValue < 300)
+                        {
+                            AirQualityText.Text = "Good";
+                            AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
+                        }
+                        else if (gasValue >= 300 && gasValue < 600)
+                        {
+                            AirQualityText.Text = "Moderate";
+                            AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
+                        }
+                        else
+                        {
+                            AirQualityText.Text = "DANGER";
+                            AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
+                        }
+                    }
+                    EspDataText.Text = "Online";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching ESP data: {ex.Message}");
+
+                EspDataText.Text = "Offline";
+            }
         }
 
         private async Task LoadTestData()
