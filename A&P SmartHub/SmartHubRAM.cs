@@ -1,5 +1,7 @@
-﻿using System;
+﻿using A_P_SmartHub.Type_devices_with_graphics;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace A_P_SmartHub
@@ -15,5 +17,8 @@ namespace A_P_SmartHub
 
         //media
         public static double SavecurrentVolumeLevel = 0;
+
+        //mainDashboard
+        public static ObservableCollection<DeviceType> RecentDevices { get; set; } = new ObservableCollection<DeviceType>();
     }
 }
