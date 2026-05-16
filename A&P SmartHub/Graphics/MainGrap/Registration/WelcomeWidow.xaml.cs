@@ -34,7 +34,7 @@ namespace A_P_SmartHub.Graphics.MainGrap.Registration
             //  MessageBox.Show(name);
 
 
-            WelcomeText.Text = $"Welcome {name}";
+            WelcomeText.Text = $"Glad to have you here, {name}!";
         }
     }
 }
