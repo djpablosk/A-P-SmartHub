@@ -29,25 +29,25 @@
                         </Border>
 
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" >
-                            <TextBlock Text="25°C" FontSize="55" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
-                            <TextBlock Text="/27°C" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Margin="0,0,35,10"/>
-                            <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="-30,0,10,-10" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="15" Padding="10,5"/>
-                            <Button Content="+" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-30,0,-10,-10" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="15" Padding="10,5"/>
+                            <TextBlock x:Name="CurrentTemp" Text="25°C" FontSize="55" VerticalAlignment="Center" Foreground="White" Margin="0,0,0,10"/>
+                            <TextBlock x:Name="TargetTemp" Text="/27°C" FontSize="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Margin="0,0,25,10"/>
+                            <Button Click="ButtonMinus_click" Content="-" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="-30,0,10,-10" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="15" Padding="10,5"/>
+                            <Button Click="ButtonPlus_click" Content="+" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-30,0,-10,-10" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="15" Padding="10,5"/>
 
                         </Grid>
-                        <TextBlock Text="Cooling" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="White" Margin="0,20,30,10"/>
+                        <TextBlock x:Name="CurrentStat" Text="Cooling" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="White" Margin="0,20,30,10"/>
 
                         <Grid VerticalAlignment="Center">
                             <TextBlock Text="Mode" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Margin="0,0,0,10"/>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <TextBlock Text="Auto" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
-                                <RadioButton GroupName="Mode" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <RadioButton Click="AUTOstat_click" x:Name="AUTOstat" GroupName="Mode" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
                                 <TextBlock Text="Cool" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
-                                <RadioButton GroupName="Mode" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <RadioButton Click="COOLstat_click" x:Name="COOLstat" GroupName="Mode" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
                                 <TextBlock Text="Heat" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
-                                <RadioButton GroupName="Mode" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <RadioButton Click="HEATstat_click" x:Name="HEATstat" GroupName="Mode" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
                                 <TextBlock Text="Eco" FontSize="20" Foreground="White" Margin="0,0,10,0"/>
-                                <RadioButton GroupName="Mode" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
+                                <RadioButton Click="ECOstat_click" x:Name="ECOstat" GroupName="Mode" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="20,0"/>
                             </StackPanel>
                         </Grid>
 

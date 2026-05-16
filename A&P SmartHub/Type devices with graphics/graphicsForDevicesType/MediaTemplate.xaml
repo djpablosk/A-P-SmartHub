@@ -62,7 +62,7 @@
                         <Grid Margin="0,20,0,0">
                                 <TextBlock Text="Volume" FontSize="25" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0"/>
                                 <Slider x:Name="VolumeSlider" Width="200" Minimum="0" Maximum="100" Value="{Binding Volume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#F59E0B"/>
-                                <TextBlock Text="{Binding ElementName=VolumeSlider, Path=Value, StringFormat='{}{0:F0}%'}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Foreground="White" Margin="0,0,0,0"/>
+                                <TextBlock x:Name="VolumeText" Text="{Binding ElementName=VolumeSlider, Path=Value, StringFormat='{}{0:F0}%'}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="30" Foreground="White" Margin="0,0,0,0"/>
                           
                         </Grid>
 
