@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Login"
              mc:Ignorable="d" 
              xmlns:root="clr-namespace:A_P_SmartHub"
+             RenderOptions.EdgeMode="Aliased"
+             RenderOptions.BitmapScalingMode="LowQuality"
              d:DesignHeight="900" d:DesignWidth="1500">
 
    
@@ -43,22 +45,34 @@
             </Grid.ColumnDefinitions>
 
             <Border  x:Name="LoginForm" Grid.Column="0" Width="670" Height="680" CornerRadius="30"  Background="#1C2331" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" Width="509" >
+            <Border.CacheMode>
+                <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+            </Border.CacheMode>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" Width="509" >
 
                     <TextBlock HorizontalAlignment="Center" Margin="0,10,10,60" Height="88" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Width="185" FontSize="72" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
 
                     <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
                     <Border Margin="10,0" BorderBrush="White" CornerRadius="20" HorizontalAlignment="Left" Height="64" Width="482" BorderThickness="1">
-                        <TextBox x:Name="LoginMail" BorderThickness="0" TextWrapping="Wrap" Width="460" VerticalAlignment="Center" Grid.Row="1" FontSize="40" Background="{x:Null}" Height="62" Foreground="White" CaretBrush="White"/>
+                    <Border.CacheMode>
+                        <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                    </Border.CacheMode>
+                    <TextBox x:Name="LoginMail" BorderThickness="0" TextWrapping="Wrap" Width="460" VerticalAlignment="Center" Grid.Row="1" FontSize="40" Background="{x:Null}" Height="62" Foreground="White" CaretBrush="White"/>
                     </Border>
 
                     <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
                     <Border CornerRadius="20" Width="482" Height="64" BorderThickness="1" BorderBrush="White">
-                        <PasswordBox x:Name="LoginPasword" Width="460" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{x:Null}" FontSize="48" Foreground="White" CaretBrush="White"/>
+                    <Border.CacheMode>
+                        <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                    </Border.CacheMode>
+                    <PasswordBox x:Name="LoginPasword" Width="460" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="{x:Null}" FontSize="48" Foreground="White" CaretBrush="White"/>
                     </Border>
 
                     <Border HorizontalAlignment="Right" Width="160" >
-                        <Button Cursor="Hand" BorderThickness="0" Background="Transparent" Content="Forgot password" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Padding="8,4" FontFamily="Bahnschrift" FontSize="19" Foreground="#E0E6ED" Click="ForgotPassword_Click">
+                    <Border.CacheMode>
+                        <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                    </Border.CacheMode>
+                    <Button Cursor="Hand" BorderThickness="0" Background="Transparent" Content="Forgot password" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Padding="8,4" FontFamily="Bahnschrift" FontSize="19" Foreground="#E0E6ED" Click="ForgotPassword_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>

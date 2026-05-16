@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:A_P_SmartHub.Graphics.Additional"
              mc:Ignorable="d" 
+             RenderOptions.EdgeMode="Aliased"
+             RenderOptions.BitmapScalingMode="LowQuality"
              d:DesignHeight="900" d:DesignWidth="1500">
     <Grid>
 
@@ -19,6 +21,9 @@
             <Grid   >
 
                 <Border x:Name="___No_Name_"  CornerRadius="30" Width="560" HorizontalAlignment="Left" Background="#1C2331" Margin="10">
+                    <Border.CacheMode>
+                        <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                    </Border.CacheMode>
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="400"/>
@@ -121,6 +126,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column="0" Background="#1C2331" CornerRadius="30" Margin="5" >
+                    <Border.CacheMode>
+                        <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                    </Border.CacheMode>
                     <StackPanel>
 
                        
@@ -235,14 +243,19 @@
 
             </Grid>
             <Border   Margin="5" CornerRadius="30" Background="#1C2331" Grid.Row="2" VerticalAlignment="Stretch">
-                
-            <Grid  Margin="10"   >
+                <Border.CacheMode>
+                    <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                </Border.CacheMode>
+                <Grid  Margin="10"   >
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl x:Name="DeviceList">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Width="160" Height="100" Background="#101725" CornerRadius="20" Margin="10">
-                                    <Button x:Name="DeviceButton" Content="{Binding DeviceName}" 
+                                        <Border.CacheMode>
+                                            <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                                        </Border.CacheMode>
+                                        <Button x:Name="DeviceButton" Content="{Binding DeviceName}" 
                                 Click="Button_Click" 
                                 Foreground="White" 
                                 Background="Transparent" 

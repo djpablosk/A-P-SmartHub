@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using A_P_SmartHub.Graphics.Additional;
+using System.Windows.Controls.Primitives;
 
 namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
 {
@@ -60,6 +61,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
         private void LightControl_Loaded(object sender, RoutedEventArgs e)
         {
             BrightnessSlider.ValueChanged -= BrightnessSlider_ValueChanged;
+            BrightnessSlider.RemoveHandler(Thumb.DragCompletedEvent, new DragCompletedEventHandler(BrightnessSlider_DragCompleted));
 
             BrightnessSlider.Value = SmartHubRAM.SavecurrentBrightnessLight;
 
@@ -69,6 +71,13 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
             }
 
             BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
+            BrightnessSlider.AddHandler(Thumb.DragCompletedEvent, new DragCompletedEventHandler(BrightnessSlider_DragCompleted));
+        }
+
+        private void BrightnessSlider_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            SmartHubRAM.SavecurrentBrightnessLight = BrightnessSlider.Value;
+
         }
     }
 }
