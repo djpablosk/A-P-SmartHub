@@ -23,11 +23,10 @@
             <TextBlock Grid.Row="1" Grid.Column="1" Text="All Devices" FontFamily="Bahnschrift" FontSize="46" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" />
 
             <Border  Grid.Column="1" Grid.Row="2" Margin="10" Background="#1C2331" CornerRadius="30">
+                <Border.CacheMode>
+                    <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                </Border.CacheMode>
                 <Grid Margin="10">
-
-
-
-
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <ItemsControl x:Name="DeviceList">

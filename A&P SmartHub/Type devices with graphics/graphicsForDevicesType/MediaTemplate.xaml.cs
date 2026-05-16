@@ -22,6 +22,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
         {
             InitializeComponent();
             this.DataContext = media;
+            this.Loaded += MediaControl_Loaded;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,33 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
             {
                 overlay.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void VolumeSlider_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            VolumeSlider.Value -= e.Delta > 0 ? 1 : -1;
+        }
+
+        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            SmartHubRAM.SavecurrentVolumeLevel = e.NewValue;
+            if (VolumeText != null)
+            {
+                VolumeText.Text = $"{Math.Round(e.NewValue)}%";
+            }
+        }
+
+
+        private void MediaControl_Loaded(object sender, RoutedEventArgs e)
+        {
+           VolumeSlider.ValueChanged -= VolumeSlider_ValueChanged;
+           VolumeSlider.Value = SmartHubRAM.SavecurrentVolumeLevel;
+            if(VolumeText != null)
+            {
+                VolumeText.Text = $"{Math.Round(SmartHubRAM.SavecurrentVolumeLevel)}%";
+            }
+
+           VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
         }
     }
 }

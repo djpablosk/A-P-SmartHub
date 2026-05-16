@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using A_P_SmartHub.Graphics.Additional;
+using System.Windows.Controls.Primitives;
 
 namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
 {
@@ -19,18 +20,16 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
     /// </summary>
     public partial class LightTemplate : UserControl
     {
-        // Konštruktor, ktorý prijíma dáta
-        // Konštruktor teraz presne vie, čo je DeviceType
+        
         public LightTemplate(DeviceType device)
         {
             InitializeComponent();
             this.DataContext = device;
+            this.Loaded += LightControl_Loaded;
         }
 
-        // Metóda pre krížik (zavretie)
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            // Hľadáme PopupOverlay na HomePage, aby sme ho skryli
             DependencyObject parent = VisualTreeHelper.GetParent(this);
             while (parent != null && !(parent is Grid && ((Grid)parent).Name == "PopupOverlay"))
             {
@@ -46,6 +45,39 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
         private void BrightnessSlider_MouseWheel(object sender, MouseWheelEventArgs e)
         {
            BrightnessSlider.Value -= e.Delta > 0 ? 1 : -1;
+        }
+
+       
+
+        private void BrightnessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            SmartHubRAM.SavecurrentBrightnessLight = e.NewValue;
+
+            if (BrightnessText != null)
+            {
+                BrightnessText.Text = $"{Math.Round(e.NewValue)}%";
+            }
+        }
+        private void LightControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BrightnessSlider.ValueChanged -= BrightnessSlider_ValueChanged;
+            BrightnessSlider.RemoveHandler(Thumb.DragCompletedEvent, new DragCompletedEventHandler(BrightnessSlider_DragCompleted));
+
+            BrightnessSlider.Value = SmartHubRAM.SavecurrentBrightnessLight;
+
+            if (BrightnessText != null)
+            {
+                BrightnessText.Text = $"{Math.Round(SmartHubRAM.SavecurrentBrightnessLight)}%";
+            }
+
+            BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
+            BrightnessSlider.AddHandler(Thumb.DragCompletedEvent, new DragCompletedEventHandler(BrightnessSlider_DragCompleted));
+        }
+
+        private void BrightnessSlider_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            SmartHubRAM.SavecurrentBrightnessLight = BrightnessSlider.Value;
+
         }
     }
 }
