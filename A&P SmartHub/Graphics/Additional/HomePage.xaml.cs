@@ -31,15 +31,17 @@ namespace A_P_SmartHub.Graphics.Additional
     {
         MySql sql1 = new MySql();
         getData data = new getData();
+        bool  notsafeMessageShown = false;
         Chatbot Chatbot = new Chatbot();
         DispatcherTimer timer = new DispatcherTimer();
+        smtpClientMail mail = new smtpClientMail();
 
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.208/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://192.168.0.110/data"; // tu sa IP adresa !!MENI!! 
 
         public HomePage()
         {
@@ -98,7 +100,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
                     if(AirQualityText != null)
                     {
-                        if(gasValue < 300)
+                        if (gasValue < 300)
                         {
                             AirQualityText.Text = "Good";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
@@ -110,8 +112,12 @@ namespace A_P_SmartHub.Graphics.Additional
                         }
                         else
                         {
-                            AirQualityText.Text = "DANGER";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
+                            AirQualityText.Text = "DANGER";
+                          // dorobim textbox ci messagebox
+                       await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName);
+                            
+                            
                         }
                     }
                     EspDataText.Text = "Online";

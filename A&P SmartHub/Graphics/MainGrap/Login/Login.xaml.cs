@@ -105,6 +105,7 @@ namespace A_P_SmartHub.Graphics.Login
             if (users.FetchedMail == LoginMail.Text && checkHash)
             {
                 SessionInfo.ID = users.GetUserId(tempMail);
+                SessionInfo.Mail = LoginMail.Text;
                
 
                 mySql.LoadDevices(SessionInfo.ID);
