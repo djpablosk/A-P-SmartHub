@@ -45,14 +45,8 @@
               Data="M4,6H22V20H24V22H0V20H2V6C2,4.89 2.89,4 4,4H20C21.1,4 22,4.89 22,6V8H20V6H4V18H10V20H4Z M20,10H16C15.45,10 15,10.45 15,11V21C15,21.55 15.45,22 16,22H20C20.55,22 21,21.55 21,21V11C21,10.45 20.55,10 20,10Z M19,19H17V12H19Z"/>
             </Button>
 
-            <Button Cursor="Hand" ToolTip="Settings" Margin="10" Grid.Row="2" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Click="Settings_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="Transparent">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
+            <Button Cursor="Hand" ToolTip="Settings"  Grid.Row="2" VerticalAlignment="Center"   Height="200"  HorizontalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Click="Settings_Click">
+               
 
 
                 <Viewbox Width="35" Height="35">
