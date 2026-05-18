@@ -147,13 +147,13 @@
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Air Quality: " Foreground="#8B95A5" FontSize="30"/>
-                                    <TextBlock x:Name="AirQualityText" Text="Good" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
+                                    <TextBlock x:Name="AirQualityText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Ellipse Width="4" Height="4" Fill="#8B95A5" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                     <TextBlock Text="CO2: " Foreground="#8B95A5" FontSize="25"/>
-                                    <TextBlock x:Name="AirQualityValueText" Text="450 ppm" Foreground="#FFFFFF" FontSize="25" Margin="3,0,5,0"/>
+                                    <TextBlock x:Name="AirQualityValueText" Text="-" Foreground="#FFFFFF" FontSize="25" Margin="3,0,5,0"/>
                                     <Ellipse Width="8" Height="8" Fill="#00D06C" VerticalAlignment="Center" Margin="5,0,20,0">
                                         <Ellipse.Effect>
                                             <DropShadowEffect Color="#00D06C" BlurRadius="8" ShadowDepth="0"/>
@@ -184,7 +184,7 @@
                             <TextBlock Text="&#xEC40;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="Indoor Temperature: " Foreground="#8B95A5" FontSize="30"/>
-                                <TextBlock x:Name="IndoorTempText" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="IndoorTempText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Ellipse Margin="10" Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>
@@ -202,7 +202,7 @@
                             <TextBlock Text="&#xF74A;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="Indoor Humidity: " Foreground="#8B95A5" FontSize="30"/>
-                                <TextBlock x:Name="IndoorHumidityText" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="IndoorHumidityText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Ellipse Margin="10" Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>
@@ -220,7 +220,7 @@
                             <TextBlock Text="&#xF753;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="ESP Data" Foreground="#8B95A5" FontSize="30"/>
-                                <TextBlock x:Name="EspDataText" Text="Active" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="15,0,0,0"/>
+                                <TextBlock x:Name="EspDataText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="15,0,0,0"/>
                             </StackPanel>
                             <Ellipse Margin="10" Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>

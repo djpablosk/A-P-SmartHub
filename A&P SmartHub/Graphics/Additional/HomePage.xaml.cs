@@ -39,7 +39,8 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.208/data"; // tu sa IP adresa !!MENI!! 
+       
+        private const string _espAddress = "http://smarthub.local/data";
 
         public HomePage()
         {
