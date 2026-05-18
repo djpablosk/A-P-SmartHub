@@ -26,7 +26,24 @@ namespace A_P_SmartHub
             InitializeComponent();
             MainDisplay.Content = new NoWifiScreen();
             UpperBar.Content = new CustomUpperBar();
-            this.WindowState = WindowState.Maximized;
+            if (this.WindowState == WindowState.Normal)
+            {
+                // 1. Zistíme veľkosť obrazovky bez taskbaru a zamkneme ju ako maximálnu
+                this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+                this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+
+                // 2. Až teraz maximalizujeme
+                this.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                // 1. Vrátime do normálu
+                this.WindowState = WindowState.Normal;
+
+                // 2. Odomkneme maximálnu veľkosť, inak by sa to mohlo bugnúť pri presúvaní na iný monitor
+                this.MaxHeight = double.PositiveInfinity;
+                this.MaxWidth = double.PositiveInfinity;
+            }
 
 
         }
