@@ -124,6 +124,10 @@ namespace A_P_SmartHub.Graphics.Additional
                 Console.WriteLine($"Error fetching ESP data: {ex.Message}");
 
                 EspDataText.Text = "Offline";
+                AirQualityText.Text = "-";
+                IndoorTempText.Text = "-";
+                IndoorHumidityText.Text = "-";
+                AirQualityValueText.Text = "-";
             }
         }
 
