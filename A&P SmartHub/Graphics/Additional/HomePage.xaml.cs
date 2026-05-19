@@ -39,7 +39,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-       
+
         private const string _espAddress = "http://smarthub.local/data";
 
         public HomePage()
@@ -48,7 +48,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
-          
+
             DeviceList.ItemsSource = SmartHubRAM.RecentDevices;
 
             LoadFromDB();
@@ -97,9 +97,9 @@ namespace A_P_SmartHub.Graphics.Additional
                         AirQualityValueText.Text = $"{gasValue}";
                     }
 
-                    if(AirQualityText != null)
+                    if (AirQualityText != null)
                     {
-                        if(gasValue < 300)
+                        if (gasValue < 300)
                         {
                             AirQualityText.Text = "Good";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
@@ -141,11 +141,11 @@ namespace A_P_SmartHub.Graphics.Additional
                 newdevice.DeviceName = device.DeviceName;
                 newdevice.Type = device.Type;
 
-               
+
                 MyDevices.Add(newdevice);
             }
 
-     
+
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -166,16 +166,16 @@ namespace A_P_SmartHub.Graphics.Additional
 
             if (stlaceneDevice != null)
             {
-         
+
                 if (SmartHubRAM.RecentDevices.Contains(stlaceneDevice))
                 {
                     SmartHubRAM.RecentDevices.Remove(stlaceneDevice);
                 }
 
-               
+
                 SmartHubRAM.RecentDevices.Insert(0, stlaceneDevice);
 
-           
+
                 if (SmartHubRAM.RecentDevices.Count > 5)
                 {
                     SmartHubRAM.RecentDevices.RemoveAt(5);
@@ -262,6 +262,17 @@ namespace A_P_SmartHub.Graphics.Additional
             else
             {
                 WelcomeBack.Text = $"Good Evening, {sql1.UserName} !";
+            }
+        }
+
+
+        private void AddNewDevice_Click(object sender, RoutedEventArgs e)
+        {
+
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new AddDeviceMainDashboard(), true);
             }
         }
     }
