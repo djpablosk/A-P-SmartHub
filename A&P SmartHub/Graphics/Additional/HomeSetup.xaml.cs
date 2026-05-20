@@ -26,6 +26,7 @@ namespace A_P_SmartHub.Graphics.Additional
             public string Name { get; set; }
             public string Type { get; set; }
             public string IpAddress { get; set; }
+            public bool IsNew { get; set; } = true;
         }
     public partial class HomeSetup : UserControl
     {

@@ -66,7 +66,7 @@
                     </Border>
                    
                 </Grid>
-                <Border Width="500" Margin="0,30" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
+                <Border BorderBrush="#145A32" Width="500" Margin="0,30" Background="#22FFFFFF"  Height="64"  BorderThickness="1.5" CornerRadius="20">
                     <Button IsDefault="True" Cursor="Hand" BorderThickness="0"  HorizontalAlignment="Stretch"  Height="64" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="500" Click="Button_Click" >
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
@@ -81,12 +81,7 @@
 
 
                     </Button>
-                    <Border.BorderBrush>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#FF1493" Offset="0.0" />
-                            <GradientStop Color="#FFC400" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.BorderBrush>
+                    
 
                     <Border.Style>
                         <Style TargetType="Border">

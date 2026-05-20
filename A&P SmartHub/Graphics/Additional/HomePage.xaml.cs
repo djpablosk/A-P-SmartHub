@@ -39,7 +39,8 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.208/data"; // tu sa IP adresa !!MENI!! 
+
+        private const string _espAddress = "http://10.251.255.215/data";
 
         public HomePage()
         {
@@ -47,7 +48,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
-          
+
             DeviceList.ItemsSource = SmartHubRAM.RecentDevices;
 
             LoadFromDB();
@@ -61,7 +62,7 @@ namespace A_P_SmartHub.Graphics.Additional
             };
             timer.Start();
 
-            espTimer.Interval = TimeSpan.FromSeconds(3);
+            espTimer.Interval = TimeSpan.FromSeconds(6);
             espTimer.Tick += async (s, e) =>
             {
                 await FetchEspData();
@@ -96,9 +97,9 @@ namespace A_P_SmartHub.Graphics.Additional
                         AirQualityValueText.Text = $"{gasValue}";
                     }
 
-                    if(AirQualityText != null)
+                    if (AirQualityText != null)
                     {
-                        if(gasValue < 300)
+                        if (gasValue < 300)
                         {
                             AirQualityText.Text = "Good";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
@@ -111,6 +112,7 @@ namespace A_P_SmartHub.Graphics.Additional
                         else
                         {
                             AirQualityText.Text = "DANGER";
+                            MessageBox.Show("Air quality is in DANGER zone! Please ventilate the room immediately!", "Air Quality Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
                         }
                     }
@@ -123,13 +125,17 @@ namespace A_P_SmartHub.Graphics.Additional
                 Console.WriteLine($"Error fetching ESP data: {ex.Message}");
 
                 EspDataText.Text = "Offline";
+                AirQualityText.Text = "-";
+                IndoorTempText.Text = "-";
+                IndoorHumidityText.Text = "-";
+                AirQualityValueText.Text = "-";
             }
         }
 
         private async Task LoadTestData()
         {
             string id = SessionInfo.ID;
-            sql1.ReturnBasicFromDB(id);
+        await   sql1.ReturnBasicFromDB(id);
 
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
@@ -140,11 +146,11 @@ namespace A_P_SmartHub.Graphics.Additional
                 newdevice.DeviceName = device.DeviceName;
                 newdevice.Type = device.Type;
 
-               
+
                 MyDevices.Add(newdevice);
             }
 
-     
+
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -165,16 +171,16 @@ namespace A_P_SmartHub.Graphics.Additional
 
             if (stlaceneDevice != null)
             {
-         
+
                 if (SmartHubRAM.RecentDevices.Contains(stlaceneDevice))
                 {
                     SmartHubRAM.RecentDevices.Remove(stlaceneDevice);
                 }
 
-               
+
                 SmartHubRAM.RecentDevices.Insert(0, stlaceneDevice);
 
-           
+
                 if (SmartHubRAM.RecentDevices.Count > 5)
                 {
                     SmartHubRAM.RecentDevices.RemoveAt(5);
@@ -261,6 +267,17 @@ namespace A_P_SmartHub.Graphics.Additional
             else
             {
                 WelcomeBack.Text = $"Good Evening, {sql1.UserName} !";
+            }
+        }
+
+
+        private void AddNewDevice_Click(object sender, RoutedEventArgs e)
+        {
+
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new AddDeviceMainDashboard(), true);
             }
         }
     }
