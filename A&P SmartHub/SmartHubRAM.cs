@@ -9,14 +9,14 @@ namespace A_P_SmartHub
     public static class SmartHubRAM
     {
         //climate
-        public static double SavecurrentTemperatureClimate = 25.0;
+        public static double SavecurrentTemperatureClimate {  get; set; }
         public static string SavecurrentstatClimate = "AUTO";
 
         //light
-        public static double SavecurrentBrightnessLight = 0;
+        public static double SavecurrentBrightnessLight {  get; set; }
 
         //media
-        public static double SavecurrentVolumeLevel = 0;
+        public static double SavecurrentVolumeLevel { get; set; }
 
         //mainDashboard
         public static ObservableCollection<DeviceType> RecentDevices { get; set; } = new ObservableCollection<DeviceType>();

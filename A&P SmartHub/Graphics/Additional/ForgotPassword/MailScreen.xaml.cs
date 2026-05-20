@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -31,7 +32,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
         }
        public string ForgotMail {  get; set; }
 
-        private void SendCode_Click(object sender, RoutedEventArgs e)
+        private async void SendCode_Click(object sender, RoutedEventArgs e)
         {
            
            
@@ -64,7 +65,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
                         break;
                     }
                 }
-                smtpClientMail.SendCode(codeScreen, this);
+               await smtpClientMail.SendCode(codeScreen, this);
 
 
 

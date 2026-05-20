@@ -42,10 +42,10 @@
                 <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10,0" TextWrapping="Wrap" Text="Password:" Width="168" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
                 <Grid Margin="0,20" Width="500">
                     <Border x:Name="notSeePassword"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                        <PasswordBox Foreground="White" Name="Passw1" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
+                        <PasswordBox Foreground="White" Name="Passw1" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="36"/>
                     </Border>
                     <Border Visibility="Collapsed" x:Name="SeePassword"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                    <TextBox  Foreground="White" Name="PasswSEE" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
+                    <TextBox  Foreground="White" Name="PasswSEE" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="36"/>
                 </Border>
                     <Button Background="Transparent" BorderThickness="0" x:Name="ShowPassw" Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0" PreviewMouseDown="Down_Click" PreviewMouseUp="Up_Click">
                         
@@ -59,7 +59,7 @@
                 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="10,0" TextWrapping="Wrap" Text="Confirm password:" Width="350" FontSize="36" FontFamily="Bahnschrift" Foreground="White"/>
                 <Grid Margin="0,20" Width="500">
                     <Border x:Name="notSeePassword2"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
-                        <PasswordBox Foreground="White" Name="Passw2" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>
+                        <PasswordBox Foreground="White" Name="Passw2" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="36"/>
                     </Border>
                     <Border Visibility="Collapsed" x:Name="SeePassword2"  Width="500" CornerRadius="20" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Center" Height="64">
                         <TextBox  Foreground="White" Name="PasswSEE2" Width="475" Background="Transparent" BorderThickness="0" FontFamily="Bahnschrift" FontSize="40"/>

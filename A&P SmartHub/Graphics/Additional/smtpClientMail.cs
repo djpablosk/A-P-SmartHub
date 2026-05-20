@@ -15,7 +15,7 @@ namespace A_P_SmartHub.Graphics.Additional
     internal class smtpClientMail
     {
         public string ResetMail {  get; set; }
-        public void SendCode( CodeScreen screen, MailScreen mailScreen)
+        public async Task SendCode( CodeScreen screen, MailScreen mailScreen)
         {
            
             ResetMail = mailScreen.ForgotMail;
@@ -119,11 +119,11 @@ namespace A_P_SmartHub.Graphics.Additional
 </body>
 </html>";
 
-            smtp.Send(mail);
+            smtp.SendMailAsync(mail);
 
         }
 
-        public async Task GasAlert(string adresa, string UserName, string HomeName)
+        public async Task GasAlert(string adresa, string UserName, string HomeName,int gasvalue)
         {
             Env.Load();
             string MailCode = Environment.GetEnvironmentVariable("mailPass");
@@ -140,7 +140,7 @@ namespace A_P_SmartHub.Graphics.Additional
             mail.Subject = "Critical Safety Alert: Gas Level High";
             mail.IsBodyHtml = true;
 
-            mail.Body = @$"
+            mail.Body = $@"
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,7 +159,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
           <tr>
             <td style=""background:#1c1f26; padding:14px 20px; font-size:12px; color:#888;"">
-              A&P SmartHub • Security Alert
+              A&P SmartHub • Safety System
             </td>
           </tr>
 
@@ -171,22 +171,42 @@ namespace A_P_SmartHub.Graphics.Additional
               </h2>
 
               <p style=""margin:0 0 18px; color:#b5b5b5; font-size:14px; line-height:1.5;"">
-                Gas leak warning detected in your smart home system.
+                Gas sensor network has detected abnormal air quality levels.
               </p>
 
               <div style=""background:#2a1b1b; border-left:4px solid #ff4d4d; padding:14px; border-radius:8px; margin-bottom:18px;"">
                 <p style=""margin:0; color:#ff6b6b; font-weight:bold; font-size:14px;"">
-                  ⚠ Gas detected in {HomeName}
+                  ⚠ Location: {HomeName}
+                </p>
+                <p style=""margin:6px 0 0; color:#ffb3b3; font-size:13px;"">
+                  Measured gas value: {gasvalue}
                 </p>
               </div>
 
-              <p style=""margin:0 0 16px; color:#9aa0a6; font-size:13px; line-height:1.6;"">
-                Dangerous gas levels were detected by your sensors.<br>
-                Open windows immediately and ensure ventilation.
+              <table width=""100%"" cellpadding=""6"" cellspacing=""0"" border=""0""
+                style=""margin-bottom:18px; font-size:12px; color:#cfcfcf;"">
+
+                <tr style=""color:#888;"">
+                  <td>SAFE</td>
+                  <td>0 - 300</td>
+                </tr>
+                <tr style=""color:#f5c542;"">
+                  <td>MODERATE</td>
+                  <td>301 - 700</td>
+                </tr>
+                <tr style=""color:#ff4d4d;"">
+                  <td>DANGEROUS</td>
+                  <td>701+</td>
+                </tr>
+
+              </table>
+
+              <p style=""margin:0; color:#9aa0a6; font-size:13px; line-height:1.6;"">
+                Recommended action: ventilate the area immediately and avoid ignition sources.
               </p>
 
-              <p style=""margin:0; color:#6b7280; font-size:11px;"">
-                If this is a false alarm, you can ignore this message.
+              <p style=""margin:10px 0 0; color:#6b7280; font-size:11px;"">
+                SmartHub will continue real-time monitoring.
               </p>
 
             </td>
@@ -194,7 +214,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
           <tr>
             <td style=""padding:14px 20px; background:#12141a; font-size:11px; color:#666;"">
-              SmartHub Safety System
+              SmartHub IoT Core
             </td>
           </tr>
 
@@ -208,7 +228,7 @@ namespace A_P_SmartHub.Graphics.Additional
 </html>
 ";
 
-          await  smt.SendMailAsync(mail);
+            await  smt.SendMailAsync(mail);
         }
     }
 }

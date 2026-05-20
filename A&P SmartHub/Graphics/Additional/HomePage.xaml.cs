@@ -31,17 +31,19 @@ namespace A_P_SmartHub.Graphics.Additional
     {
         MySql sql1 = new MySql();
         getData data = new getData();
-        bool  notsafeMessageShown = false;
+        bool notsafeMessageShown = false;
         Chatbot Chatbot = new Chatbot();
         DispatcherTimer timer = new DispatcherTimer();
         smtpClientMail mail = new smtpClientMail();
 
+        bool isFirstRUN = true;
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.110/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://10.251.255.189/data"; // tu sa IP adresa !!MENI!! 
+        DateTime checkTime = DateTime.MinValue;
 
         public HomePage()
         {
@@ -49,16 +51,16 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
-          
+
             DeviceList.ItemsSource = SmartHubRAM.RecentDevices;
 
             LoadFromDB();
-            LoadTestData();
+          LoadTestData();
 
             timer.Interval = TimeSpan.FromMinutes(2);
             timer.Tick += async (s, e) =>
             {
-                await Greet();
+                Greet();
                 await UpdateWeather();
             };
             timer.Start();
@@ -98,32 +100,71 @@ namespace A_P_SmartHub.Graphics.Additional
                         AirQualityValueText.Text = $"{gasValue}";
                     }
 
-                    if(AirQualityText != null)
+                    if (AirQualityText != null)
                     {
                         if (gasValue < 300)
                         {
                             AirQualityText.Text = "Good";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
+
                         }
-                        else if (gasValue >= 300 && gasValue < 600)
+                        else if (gasValue >= 300 && gasValue < 701)
                         {
+
                             AirQualityText.Text = "Moderate";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
                         }
-                        else
+                        else if (gasValue > 701)
                         {
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
                             AirQualityText.Text = "DANGER";
-                          // dorobim textbox ci messagebox
-                       await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName);
-                            
-                            
-                        }
-                    }
-                    EspDataText.Text = "Online";
-                }
+                            // dorobim textbox ci messagebox
 
+                            if (isFirstRUN || (DateTime.Now - checkTime).TotalMinutes >= 3)
+                            {
+                                isFirstRUN = false;          
+                                espTimer.Stop();
+                                checkTime = DateTime.Now;
+                              await  mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasValue);
+
+                                MessageBox.Show($@"
+    SMART HUB ALERT
+
+    Gas sensor detected unsafe air quality levels.
+
+    User: {sql1.UserName}
+
+    Action required:
+    Evacuate the area immediately and avoid using electrical devices or open flames.
+
+    Follow safety routes and wait for clearance before re-entry.
+    ",
+              "SmartHub System Warning",
+              MessageBoxButton.OK,
+              MessageBoxImage.Warning);
+                                
+
+
+
+                            }
+                            espTimer.Stop();
+                        }
+                        else
+                        {
+                            //
+                        }
+
+
+
+
+
+
+                    }
+                }
+                EspDataText.Text = "Online";
             }
+
+
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching ESP data: {ex.Message}");
@@ -132,10 +173,12 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
+
+
         private async Task LoadTestData()
         {
             string id = SessionInfo.ID;
-            sql1.ReturnBasicFromDB(id);
+           await sql1.ReturnBasicFromDB(id);
 
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
@@ -146,11 +189,11 @@ namespace A_P_SmartHub.Graphics.Additional
                 newdevice.DeviceName = device.DeviceName;
                 newdevice.Type = device.Type;
 
-               
+
                 MyDevices.Add(newdevice);
             }
 
-     
+
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -171,16 +214,16 @@ namespace A_P_SmartHub.Graphics.Additional
 
             if (stlaceneDevice != null)
             {
-         
+
                 if (SmartHubRAM.RecentDevices.Contains(stlaceneDevice))
                 {
                     SmartHubRAM.RecentDevices.Remove(stlaceneDevice);
                 }
 
-               
+
                 SmartHubRAM.RecentDevices.Insert(0, stlaceneDevice);
 
-           
+
                 if (SmartHubRAM.RecentDevices.Count > 5)
                 {
                     SmartHubRAM.RecentDevices.RemoveAt(5);
@@ -208,7 +251,7 @@ namespace A_P_SmartHub.Graphics.Additional
                             PopupContent.Content = climateWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
-                              
+
                         case DeviceTypeEnum.Cover:
                             var coverWindow = new CoverTemplate(stlaceneDevice);
                             PopupContent.Content = coverWindow;
@@ -216,7 +259,7 @@ namespace A_P_SmartHub.Graphics.Additional
                             break;
 
                         case DeviceTypeEnum.Media:
-                            var mediaWindow = new MediaTemplate(stlaceneDevice);    
+                            var mediaWindow = new MediaTemplate(stlaceneDevice);
                             PopupContent.Content = mediaWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
@@ -238,7 +281,7 @@ namespace A_P_SmartHub.Graphics.Additional
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
             await UpdateWeather();
-            await Greet();
+            Greet();
 
             string LengthCheck = dashHomeName.Text;
             if (LengthCheck.Length == 0)
@@ -254,7 +297,7 @@ namespace A_P_SmartHub.Graphics.Additional
             WeatherTemp.Text = $"{data.Temperature}°C";
         }
 
-        public async Task Greet()
+        public void Greet()
         {
             if (DateTime.Now.Hour <= 11)
             {
