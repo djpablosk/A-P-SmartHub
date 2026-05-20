@@ -40,7 +40,7 @@ namespace A_P_SmartHub.Graphics.Additional
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
 
-        private const string _espAddress = "http://smarthub.local/data";
+        private const string _espAddress = "http://10.251.255.215/data";
 
         public HomePage()
         {
@@ -62,7 +62,7 @@ namespace A_P_SmartHub.Graphics.Additional
             };
             timer.Start();
 
-            espTimer.Interval = TimeSpan.FromSeconds(3);
+            espTimer.Interval = TimeSpan.FromSeconds(6);
             espTimer.Tick += async (s, e) =>
             {
                 await FetchEspData();
@@ -112,6 +112,7 @@ namespace A_P_SmartHub.Graphics.Additional
                         else
                         {
                             AirQualityText.Text = "DANGER";
+                            MessageBox.Show("Air quality is in DANGER zone! Please ventilate the room immediately!", "Air Quality Alert", MessageBoxButton.OK, MessageBoxImage.Warning);
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
                         }
                     }
@@ -134,7 +135,7 @@ namespace A_P_SmartHub.Graphics.Additional
         private async Task LoadTestData()
         {
             string id = SessionInfo.ID;
-            sql1.ReturnBasicFromDB(id);
+        await   sql1.ReturnBasicFromDB(id);
 
             var name = sql1.HomeName;
             var devices = await sql1.LoadDevices(id);
