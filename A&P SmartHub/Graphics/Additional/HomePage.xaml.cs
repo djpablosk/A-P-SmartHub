@@ -65,7 +65,7 @@ namespace A_P_SmartHub.Graphics.Additional
             };
             timer.Start();
 
-            espTimer.Interval = TimeSpan.FromSeconds(3);
+            espTimer.Interval = TimeSpan.FromSeconds(6);
             espTimer.Tick += async (s, e) =>
             {
                 await FetchEspData();
@@ -170,6 +170,10 @@ namespace A_P_SmartHub.Graphics.Additional
                 Console.WriteLine($"Error fetching ESP data: {ex.Message}");
 
                 EspDataText.Text = "Offline";
+                AirQualityText.Text = "-";
+                IndoorTempText.Text = "-";
+                IndoorHumidityText.Text = "-";
+                AirQualityValueText.Text = "-";
             }
         }
 
@@ -310,6 +314,17 @@ namespace A_P_SmartHub.Graphics.Additional
             else
             {
                 WelcomeBack.Text = $"Good Evening, {sql1.UserName} !";
+            }
+        }
+
+
+        private void AddNewDevice_Click(object sender, RoutedEventArgs e)
+        {
+
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new AddDeviceMainDashboard(), true);
             }
         }
     }

@@ -114,16 +114,11 @@
                         </Button>
                     </Border>
 
-                    <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="482" Height="64" Margin="0,20" BorderThickness="1.5" Background="#2A3342" CornerRadius="20">
+                <Border BorderBrush="#145A32" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="482" Height="64" Margin="0,20" BorderThickness="2" Background="#2A3342" CornerRadius="20">
                         <Border.CacheMode>
                             <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="True" />
                         </Border.CacheMode>
-                        <Border.BorderBrush>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#FF1493" Offset="0.0" />
-                                <GradientStop Color="#FFC400" Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Border.BorderBrush>
+                       
 
                         <Button IsDefault="True" Cursor="Hand" Background="Transparent" Height="64"  HorizontalAlignment="Stretch" BorderThickness="0" FocusVisualStyle="{x:Null}" Click="Button_Click_2">
                             <TextBlock Text="Login" FontSize="40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="#E0E6ED" FontFamily="Bahnschrift" />
