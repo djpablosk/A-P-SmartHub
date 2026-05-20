@@ -57,7 +57,7 @@
                     <Border.CacheMode>
                         <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                     </Border.CacheMode>
-                    <TextBox x:Name="LoginMail" BorderThickness="0" TextWrapping="Wrap" Width="460" VerticalAlignment="Center" Grid.Row="1" FontSize="40" Background="{x:Null}" Height="62" Foreground="White" CaretBrush="White"/>
+                    <TextBox x:Name="LoginMail" BorderThickness="0" TextWrapping="Wrap" Width="460" VerticalAlignment="Center" Grid.Row="1" FontSize="36" Background="{x:Null}" Height="62" Foreground="White" CaretBrush="White"/>
                     </Border>
 
                     <TextBlock Margin="10,10,0,30" HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Width="163" FontSize="36" FontFamily="Bahnschrift" Foreground="#E0E6ED"/>
