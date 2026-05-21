@@ -35,6 +35,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
+                        <Button Grid.Column="1" Grid.Row="1" Content="Login with Spotify"  FontSize="18" Click="Button_Click_1"></Button>
                         <TextBlock x:Name="WelcomeBack" Grid.Column="0" Grid.Row="1" Text="Welcome back," FontSize="25" Foreground="#8B95A5" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
                         <TextBlock x:Name="dashHomeName" Grid.Column="0" Width="270" Grid.Row="0" Text="YourHomeName" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Bahnschrift"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" >

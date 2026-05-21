@@ -132,6 +132,39 @@ SELECT * FROM apdefaultinfos";
                 City = reader["City"].ToString();
             }
         }
+        public async Task SpotifyLogin(string id, string refreshtoken)
+        {
+            using var connection = new MySqlConnection(getConn());
+           await connection.OpenAsync();
+            var spotifyLogin = connection.CreateCommand();
+            spotifyLogin.CommandText = @"
+            UPDATE apdefaultinfos
+             SET RefreshToken = @refreshtoken
+            WHERE Id = @id;";
+            spotifyLogin.Parameters.AddWithValue("@refreshtoken", refreshtoken);
+            spotifyLogin.Parameters.AddWithValue("@id", id);
+             spotifyLogin.ExecuteNonQuery();
+        }
 
+        public async Task ReturnSpotifyRefresh(string id)
+        {
+            using var conn = new MySqlConnection(getConn());
+            await conn.OpenAsync();
+            var returnid = conn.CreateCommand();
+            returnid.CommandText = @"
+        SELECT RefreshToken
+        FROM apdefaultinfos
+        WHERE Id = @id;";
+            returnid.Parameters.AddWithValue("@id", id);
+            using var reader = await returnid.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                SmartHubRAM.SpotifyRefreshKey = reader["RefreshToken"].ToString();
+            }
+            else
+            {
+                SmartHubRAM.SpotifyRefreshKey = "Err404";
+            }
+        }
     }
 }
