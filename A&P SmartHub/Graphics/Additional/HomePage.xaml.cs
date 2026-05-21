@@ -3,6 +3,7 @@ using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
+using A_P_SmartHub.spotify;
 using A_P_SmartHub.Type_devices_with_graphics;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 using A_P_SmartHub.Weather;
@@ -35,6 +36,7 @@ namespace A_P_SmartHub.Graphics.Additional
         Chatbot Chatbot = new Chatbot();
         DispatcherTimer timer = new DispatcherTimer();
         smtpClientMail mail = new smtpClientMail();
+        SpotifyConnector connector = new SpotifyConnector();
 
         bool isFirstRUN = true;
         public string City { get; set; }
@@ -57,20 +59,37 @@ namespace A_P_SmartHub.Graphics.Additional
             LoadFromDB();
           LoadTestData();
 
-            timer.Interval = TimeSpan.FromMinutes(2);
+            timer.Interval = TimeSpan.FromSeconds(4);
             timer.Tick += async (s, e) =>
             {
                 Greet();
+                await connector.LoadCurrentlyPlaying();
+                
                 await UpdateWeather();
+              
+               
             };
-            timer.Start();
+           
 
             espTimer.Interval = TimeSpan.FromSeconds(6);
             espTimer.Tick += async (s, e) =>
             {
                 await FetchEspData();
+                
             };
             espTimer.Start();
+           
+
+            _ = InitSpotifyThenStartTimer();
+
+        }
+        private async Task InitSpotifyThenStartTimer()
+        {
+            await sql1.ReturnSpotifyRefresh(SessionInfo.ID);// pockam kym sa nacita z databaze refresher
+            if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey)// ak refresher nie je prazdny
+                && SmartHubRAM.SpotifyRefreshKey != "Err404")//alebo sa nerovna err404 = stale nie je preazdny
+                await connector.RefreshAccessToken();// pockam kym sa ziska novy acces token
+            timer.Start(); // az potom zacnem timer cize nacitavanie pocasia a currently listnening
         }
 
         private async Task FetchEspData()
@@ -327,5 +346,16 @@ namespace A_P_SmartHub.Graphics.Additional
                 mainWindow.SlideViewTransition(new AddDeviceMainDashboard(), true);
             }
         }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           
+          await  connector.SpotifyLogin();
+           await sql1.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+
+            
+        }
+
+        
     }
 }
