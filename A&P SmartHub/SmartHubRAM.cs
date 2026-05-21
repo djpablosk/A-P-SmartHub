@@ -17,6 +17,8 @@ namespace A_P_SmartHub
 
         //media
         public static double SavecurrentVolumeLevel { get; set; }
+        public static string spotifyAcceskey {  get; set; }
+        public static string SpotifyRefreshKey {  get; set; }
 
         //mainDashboard
         public static ObservableCollection<DeviceType> RecentDevices { get; set; } = new ObservableCollection<DeviceType>();

@@ -132,6 +132,19 @@ SELECT * FROM apdefaultinfos";
                 City = reader["City"].ToString();
             }
         }
+        public async Task SpotifyLogin(string id, string refreshtoken)
+        {
+            using var connection = new MySqlConnection(getConn());
+           await connection.OpenAsync();
+            var spotifyLogin = connection.CreateCommand();
+            spotifyLogin.CommandText = @"
+            UPDATE apdefaultinfos
+             SET RefreshToken = @refreshtoken
+            WHERE Id = @id;";
+            spotifyLogin.Parameters.AddWithValue("@refreshtoken", refreshtoken);
+            spotifyLogin.Parameters.AddWithValue("@id", id);
+             spotifyLogin.ExecuteNonQuery();
+        }
 
     }
 }

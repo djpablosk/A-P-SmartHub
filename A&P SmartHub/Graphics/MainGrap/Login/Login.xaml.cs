@@ -4,6 +4,7 @@ using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
+using A_P_SmartHub.spotify;
 using A_P_SmartHub.Weather;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace A_P_SmartHub.Graphics.Login
     {
        
         MySql mySql = new MySql();
+        SpotifyConnector connector = new SpotifyConnector();
         
         MySQL_Users users = new MySQL_Users();
         public Login()
@@ -74,10 +76,14 @@ namespace A_P_SmartHub.Graphics.Login
                 HomePage homePage = new HomePage();
     
                 await mySql.DataBase();
+             
+
                
                 mainWindow.SlideViewTransition(new LoginInAnimation(), true);
-              //  MessageBox.Show("ide to");
-              
+                //  MessageBox.Show("ide to");
+
+                connector.RefreshAccessToken();
+
             }
         }
 

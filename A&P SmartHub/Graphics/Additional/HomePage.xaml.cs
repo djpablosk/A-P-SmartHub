@@ -3,6 +3,7 @@ using A_P_SmartHub.Databazicky;
 using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Login;
 using A_P_SmartHub.Graphics.MainGrap;
+using A_P_SmartHub.spotify;
 using A_P_SmartHub.Type_devices_with_graphics;
 using A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType;
 using A_P_SmartHub.Weather;
@@ -326,6 +327,15 @@ namespace A_P_SmartHub.Graphics.Additional
             {
                 mainWindow.SlideViewTransition(new AddDeviceMainDashboard(), true);
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            SpotifyConnector connector = new SpotifyConnector();
+            connector.SpotifyLogin();
+            sql1.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+
+            
         }
     }
 }
