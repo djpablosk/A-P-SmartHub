@@ -43,17 +43,17 @@ namespace A_P_SmartHub.Graphics.Login
 
         }
 
-       
+
 
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-         
+
 
             bool success = CheckLogin(users, mySql);
-           
-          
+
+
 
             if (!success)
             {
@@ -62,30 +62,37 @@ namespace A_P_SmartHub.Graphics.Login
             }
 
 
-            
+
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
             if (mainWindow == null)
                 return;
 
-           
+
 
             if (success)
             {
                 HomePage homePage = new HomePage();
-    
-                await mySql.DataBase();
-             
 
-               
+                await mySql.DataBase();
+
+
+
                 mainWindow.SlideViewTransition(new LoginInAnimation(), true);
                 //  MessageBox.Show("ide to");
+                await mySql.ReturnSpotifyRefresh(SessionInfo.ID);
 
-                connector.RefreshAccessToken();
 
+                if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) && SmartHubRAM.SpotifyRefreshKey != "Err404")
+                {
+                    var spotifyConnector = new SpotifyConnector();
+                    await spotifyConnector.RefreshAccessToken();
+
+                }
             }
         }
+        
 
         public bool CheckLogin( MySQL_Users users , MySql mySql) 
         {

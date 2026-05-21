@@ -36,6 +36,7 @@ namespace A_P_SmartHub.Graphics.Additional
         Chatbot Chatbot = new Chatbot();
         DispatcherTimer timer = new DispatcherTimer();
         smtpClientMail mail = new smtpClientMail();
+        SpotifyConnector connector = new SpotifyConnector();
 
         bool isFirstRUN = true;
         public string City { get; set; }
@@ -58,20 +59,37 @@ namespace A_P_SmartHub.Graphics.Additional
             LoadFromDB();
           LoadTestData();
 
-            timer.Interval = TimeSpan.FromMinutes(2);
+            timer.Interval = TimeSpan.FromSeconds(4);
             timer.Tick += async (s, e) =>
             {
                 Greet();
+                await connector.LoadCurrentlyPlaying();
+                
                 await UpdateWeather();
+              
+               
             };
-            timer.Start();
+           
 
             espTimer.Interval = TimeSpan.FromSeconds(6);
             espTimer.Tick += async (s, e) =>
             {
                 await FetchEspData();
+                
             };
             espTimer.Start();
+           
+
+            _ = InitSpotifyThenStartTimer();
+
+        }
+        private async Task InitSpotifyThenStartTimer()
+        {
+            await sql1.ReturnSpotifyRefresh(SessionInfo.ID);// pockam kym sa nacita z databaze refresher
+            if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey)// ak refresher nie je prazdny
+                && SmartHubRAM.SpotifyRefreshKey != "Err404")//alebo sa nerovna err404 = stale nie je preazdny
+                await connector.RefreshAccessToken();// pockam kym sa ziska novy acces token
+            timer.Start(); // az potom zacnem timer cize nacitavanie pocasia a currently listnening
         }
 
         private async Task FetchEspData()
@@ -329,13 +347,15 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            SpotifyConnector connector = new SpotifyConnector();
-            connector.SpotifyLogin();
-            sql1.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+           
+          await  connector.SpotifyLogin();
+           await sql1.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
 
             
         }
+
+        
     }
 }

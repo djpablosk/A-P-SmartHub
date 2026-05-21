@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Newtonsoft.Json.Linq;
+using A_P_SmartHub.Databazicky;
+using A_P_SmartHub;
+using System.Text.Json;
 
 namespace A_P_SmartHub.spotify
 {
@@ -92,7 +95,7 @@ namespace A_P_SmartHub.spotify
             catch { }
         }
 
-        private async Task <string>ExchangeCodeForAccessToken(string authorizationCode)
+        private async Task<string> ExchangeCodeForAccessToken(string authorizationCode)
         {
             using var httpClient = new HttpClient();
 
@@ -114,36 +117,73 @@ namespace A_P_SmartHub.spotify
             var obj = JObject.Parse(json);
             SmartHubRAM.spotifyAcceskey = obj["access_token"]?.ToString();
             SmartHubRAM.SpotifyRefreshKey = obj["refresh_token"]?.ToString();
-            return obj["access_token"].ToString();
-            
-        }
 
-
-
-        private async Task LoadCurrentlyPlaying()
-        {
-            using var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", SmartHubRAM.spotifyAcceskey);
-
-            var response = await httpClient.GetAsync(
-                "https://api.spotify.com/v1/me/player/currently-playing"
-            );
-
-            if (response.StatusCode == HttpStatusCode.NoContent)
+           
+            if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) && !string.IsNullOrEmpty(SessionInfo.ID))
             {
-                MessageBox.Show("Nothing is playing");
-                return;
+                MySql sql = new MySql();
+                await sql.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
             }
 
-            string json = await response.Content.ReadAsStringAsync();
-            var obj = JObject.Parse(json);
-
-            string songName = obj["item"]["name"].ToString();
-            string artistName = obj["item"]["artists"][0]["name"].ToString();
-
-            MessageBox.Show($" Now playing :{songName} BY: {artistName}");
+            return obj["access_token"].ToString();
         }
+
+        public async Task LoadCurrentlyPlaying()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(SmartHubRAM.spotifyAcceskey))
+                {
+                    if (string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) || SmartHubRAM.SpotifyRefreshKey == "Err404")
+                        return;
+                    bool refreshed = await RefreshAccessToken();
+                    if (!refreshed) return;
+                }
+
+
+
+               
+                    
+                
+
+                using var httpClient = new HttpClient();
+
+                httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", SmartHubRAM.spotifyAcceskey);
+
+                var response = await httpClient.GetAsync(
+                    "https://api.spotify.com/v1/me/player/currently-playing"
+                );
+
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                   
+
+                   
+                    return;
+                }
+
+                if (response.StatusCode == HttpStatusCode.NoContent)
+                    MessageBox.Show("nothing is playing");
+
+                string json = await response.Content.ReadAsStringAsync();
+                var obj = JObject.Parse(json);
+
+                var item = obj["item"];
+                if (item == null) return;
+
+               
+
+                string songName = item["name"]?.ToString();
+                string artistName = item["artists"]?[0]?["name"]?.ToString();
+
+                MessageBox.Show($"Now playing: {songName} - {artistName}");
+            }
+            catch
+            {
+                // nič nenechaj crashnúť UI
+            }
+                }
 
         private string CreatePkceCodeVerifier()
         {
@@ -167,33 +207,56 @@ namespace A_P_SmartHub.spotify
                 .Replace("=", "");
 
         }
-        public async Task RefreshAccessToken()
+        public async Task<bool> RefreshAccessToken()
         {
-            using var httpClient = new HttpClient();
+            try
+            {
+                using var httpClient = new HttpClient();
+                var requestData = new List<KeyValuePair<string, string>>
+                {
+                    new("client_id", spotifyClientId),
+                    new("grant_type", "refresh_token"),
+                    new("refresh_token", SmartHubRAM.SpotifyRefreshKey)
+                };
 
-            var requestData = new List<KeyValuePair<string, string>>
-    {
-        new("client_id", spotifyClientId),
-        new("grant_type", "refresh_token"),
-        new("refresh_token", SmartHubRAM.SpotifyRefreshKey)
-    };
+                var response = await httpClient.PostAsync(
+                    "https://accounts.spotify.com/api/token",
+                    new FormUrlEncodedContent(requestData)
+                );
 
-            var response = await httpClient.PostAsync(
-                "https://accounts.spotify.com/api/token",
-                new FormUrlEncodedContent(requestData)
-            );
+                string json = await response.Content.ReadAsStringAsync();
 
-            response.EnsureSuccessStatusCode();
+                if (!response.IsSuccessStatusCode)
+                {
+                    // token je dead → force re-login
+                    SmartHubRAM.spotifyAcceskey = null;
+                    SmartHubRAM.SpotifyRefreshKey = null;
+                    return false;
+                }
 
-            string json = await response.Content.ReadAsStringAsync();
-            var obj = JObject.Parse(json);
-             string newToken = obj["access_token"]?.ToString();
+                var obj = JObject.Parse(json);
+                SmartHubRAM.spotifyAcceskey = obj["access_token"]?.ToString();
 
-            SmartHubRAM.spotifyAcceskey = newToken;
-            MessageBox.Show(newToken);
+                
+                var newRefresh = obj["refresh_token"]?.ToString();
+                if (!string.IsNullOrEmpty(newRefresh))
+                {
+                    SmartHubRAM.SpotifyRefreshKey = newRefresh;
+                    
+                    // IF rotating refresh token, SAVE TO DB AGAIN!
+                    if (!string.IsNullOrEmpty(SessionInfo.ID))
+                    {
+                        MySql sql = new MySql();
+                        await sql.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+                    }
+                }
 
-
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
-
     }
 }

@@ -146,5 +146,25 @@ SELECT * FROM apdefaultinfos";
              spotifyLogin.ExecuteNonQuery();
         }
 
+        public async Task ReturnSpotifyRefresh(string id)
+        {
+            using var conn = new MySqlConnection(getConn());
+            await conn.OpenAsync();
+            var returnid = conn.CreateCommand();
+            returnid.CommandText = @"
+        SELECT RefreshToken
+        FROM apdefaultinfos
+        WHERE Id = @id;";
+            returnid.Parameters.AddWithValue("@id", id);
+            using var reader = await returnid.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                SmartHubRAM.SpotifyRefreshKey = reader["RefreshToken"].ToString();
+            }
+            else
+            {
+                SmartHubRAM.SpotifyRefreshKey = "Err404";
+            }
+        }
     }
 }
