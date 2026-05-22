@@ -177,7 +177,7 @@ namespace A_P_SmartHub.spotify
                 string songName = item["name"]?.ToString();
                 string artistName = item["artists"]?[0]?["name"]?.ToString();
 
-                MessageBox.Show($"Now playing: {songName} - {artistName}");
+              //  MessageBox.Show($"Now playing: {songName} - {artistName}");
             }
             catch
             {

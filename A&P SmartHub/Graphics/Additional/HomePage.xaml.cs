@@ -104,6 +104,10 @@ namespace A_P_SmartHub.Graphics.Additional
                     string Temperature = splitData[0];
                     string Humidity = splitData[1];
                     int gasValue = int.Parse(splitData[2]);
+                    SmartHubRAM.GasVal = gasValue;
+                    SmartHubRAM.HumidityPerc = Humidity;
+                    SmartHubRAM.RoomTemperature = Temperature;
+
 
 
                     if (IndoorTempText != null)
@@ -299,7 +303,7 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             string id = SessionInfo.ID;
             await sql1.ReturnBasicFromDB(id);
-            await Chatbot.AiChat("tell me basic infos abt me so like whats my username city temperature etc", data);
+      
 
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
