@@ -21,6 +21,7 @@ namespace A_P_SmartHub.AI
     /// </summary>
     public partial class AI_Screen : UserControl
     {
+      
         public ObservableCollection<ChatMessage> ChatHistory { get; set; } = new ObservableCollection<ChatMessage>();
         public AI_Screen()
         {
@@ -31,8 +32,9 @@ namespace A_P_SmartHub.AI
         {
             public string Text { get; set; }
             public bool IsUser { get; set; }
-
+           
             public HorizontalAlignment Alignment => IsUser ? HorizontalAlignment.Right : HorizontalAlignment.Left;
+
 
         
             public SolidColorBrush BgColor => IsUser ?
@@ -74,18 +76,16 @@ namespace A_P_SmartHub.AI
 
             // 2. Tu sa volá metóda, do ktorej Alex napojí API!
              string aiResponse = await GetAIResponseFromAPI(userText);
-
+            
            
              ChatHistory.Add(new ChatMessage { Text = aiResponse, IsUser = false });
             ScrollToBottom();
         }
-        private async Task<string> GetAIResponseFromAPI(string userMessage)
+        private async Task <string> GetAIResponseFromAPI(string userText)
         {
-           
-            await Task.Delay(1500);
+            Chatbot Bot = new Chatbot();
+            return await Bot.AiChat(userText);
 
-            
-            return "Yes, I can help you with that.";
         }
 
         private void ScrollToBottom()

@@ -31,7 +31,9 @@ namespace A_P_SmartHub.Graphics.Additional
             deviceList.ItemsSource = TempDevices;
             this.Loaded += AddDeviceMainDashboard_Loaded;
         }
+        MySQL_Users users = new MySQL_Users();
 
+        MySql sql = new MySql();
         private async void AddDeviceMainDashboard_Loaded(object sender, RoutedEventArgs e)
         {
             await LoadDevicesFromDB();
@@ -39,10 +41,9 @@ namespace A_P_SmartHub.Graphics.Additional
         private async Task LoadDevicesFromDB()
         {
             string mail = SessionInfo.Mail;
-            MySQL_Users users = new MySQL_Users();
+          
             string id = users.GetUserId(mail);
 
-            MySql sql = new MySql();
 
            
             var existingDevices = await sql.LoadDevices(id);
@@ -80,44 +81,59 @@ namespace A_P_SmartHub.Graphics.Additional
             TempDevices.Remove(device);
         }
 
+        public void UpdateUser()
+        {
+            string homeName = string.IsNullOrEmpty(HomeName.Text) ? null : HomeName.Text;
+            string Cityname = string.IsNullOrEmpty(CityName.Text) ? null : CityName.Text;
+            sql.UpdateUser(homeName, null, Cityname, SessionInfo.ID);
+          //  string Username = string.IsNullOrEmpty(Username) ? null : Username.Text; -- musim pockat kym pato prida lebo je reatard
+        }
 
 
 
-        //public async Task SaveToDB()
-        //{
-        //    string mail = SessionInfo.Mail;
-        //    MySQL_Users users = new MySQL_Users();
-        //    string id = users.GetUserId(mail);
 
-        //    MySql sql = new MySql();
+        public async Task SaveToDB()
+        {
+            string mail = SessionInfo.Mail;
+            MySQL_Users users = new MySQL_Users();
+            string id = SessionInfo.ID;
 
-        //    foreach (var dev in DevicesToDelete)
-        //    {
-        //        await sql.DeleteDevice(id, dev.Name);
-        //    }
-        //    DevicesToDelete.Clear();
+            MySql sql = new MySql();
 
-        //    foreach (var device in TempDevices)
-        //    {
-        //        if (device.IsNew)
-        //        {
-        //            await sql.AddDevice(id, device.Name, device.Type);
-        //            device.IsNew = false;
-        //        }
-        //    }
-        //}
+            foreach (var dev in DevicesToDelete)
+                // toto nikde nevolas pato..
+            {
+                await sql.DeleteDevice(id, dev.IpAddress);
+            }
+            DevicesToDelete.Clear();
 
+            foreach (var device in TempDevices)
+            {
+                if (device.IsNew)
+                {
+// idk akoze co tu pato varil
+                }
+            }
+        }
+
+        
 
 
 
         
         private async void CreateHome_Click(object sender, RoutedEventArgs e)
-        {
+        {//save buttton
+            UpdateUser();
             var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {
                 mainWindow.SlideViewTransition(new MainDashboard(), true);
             }
+        }
+
+        private void HomeName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //
         }
     }
 }

@@ -27,7 +27,7 @@
 
                     <TextBlock Text="Here you can change you can change your home name" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,160,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift" />
                     <Border Width="500" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,200,0,0" Height="60" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
-                        <TextBox x:Name="HomeName"  FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480"  />
+                        <TextBox x:Name="HomeName"  FontSize="45  " Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="480" TextChanged="HomeName_TextChanged"  />
                     </Border>
 
                     <TextBlock Text="Here you can change your City" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,280,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift" />
