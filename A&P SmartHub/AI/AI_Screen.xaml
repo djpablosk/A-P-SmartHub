@@ -90,7 +90,8 @@
                         <DropShadowEffect BlurRadius="10" Color="#1ABC9C" ShadowDepth="0"/>
                     </Ellipse.Effect>
                 </Ellipse>
-                <TextBlock Text="Ethical AI Layer" Foreground="White" FontWeight="Bold" FontSize="18"/>
+                <TextBlock Text="James - SmartHub Assistant
+                           " Foreground="White" FontWeight="Bold" FontSize="18"/>
             </StackPanel>
 
             <ScrollViewer x:Name="ChatScrollViewer" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,0,0,15">
