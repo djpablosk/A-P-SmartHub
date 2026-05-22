@@ -9,7 +9,7 @@ namespace A_P_SmartHub
     public static class SmartHubRAM
     {
         //climate
-        public static double SavecurrentTemperatureClimate {  get; set; }
+        public static double SavecurrentTemperatureClimate {  get; set; } = 25.0;
         public static string SavecurrentstatClimate = "AUTO";
 
         //light
