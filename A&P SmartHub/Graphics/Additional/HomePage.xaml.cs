@@ -356,6 +356,15 @@ namespace A_P_SmartHub.Graphics.Additional
             
         }
 
-        
+
+        private void AIButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new AI_Screen(), true);
+            }
+
+        }
     }
 }
