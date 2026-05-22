@@ -44,7 +44,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://10.251.255.215/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://192.168.0.205/data"; // tu sa IP adresa !!MENI!! 
         DateTime checkTime = DateTime.MinValue;
 
         public HomePage()
@@ -97,43 +97,43 @@ namespace A_P_SmartHub.Graphics.Additional
             try
             {
                 string response = await _httpClient.GetStringAsync(_espAddress);
-                string[] splitData = response.Split(',');
+                string[] data = response.Split(',');
 
-                if (splitData.Length == 3)
+                if (data.Length == 5) 
                 {
-                    string Temperature = splitData[0];
-                    string Humidity = splitData[1];
-                    int gasValue = int.Parse(splitData[2]);
-
-
+                    float temp = float.Parse(data[0]);
+                    float hum = float.Parse(data[1]);
+                    int gasRaw = int.Parse(data[2]);
+                    float heatIndex = float.Parse(data[3]);
+                    int gasPercent = int.Parse(data[4]);
                     if (IndoorTempText != null)
                     {
-                        IndoorTempText.Text = $"{Temperature}°C";
+                        IndoorTempText.Text = $"{temp}°C";
                     }
                     if (IndoorHumidityText != null)
                     {
-                        IndoorHumidityText.Text = $"{Humidity}%";
+                        IndoorHumidityText.Text = $"{hum}%";
                     }
                     if (AirQualityValueText != null)
                     {
-                        AirQualityValueText.Text = $"{gasValue}";
+                        AirQualityValueText.Text = $"{gasPercent}";
                     }
 
                     if (AirQualityText != null)
                     {
-                        if (gasValue < 300)
+                        if (gasPercent < 300)
                         {
                             AirQualityText.Text = "Good";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
 
                         }
-                        else if (gasValue >= 300 && gasValue < 701)
+                        else if (gasPercent >= 300 && gasPercent < 701)
                         {
 
                             AirQualityText.Text = "Moderate";
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
                         }
-                        else if (gasValue > 701)
+                        else if (gasPercent > 701)
                         {
                             AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
                             AirQualityText.Text = "DANGER";
@@ -144,7 +144,7 @@ namespace A_P_SmartHub.Graphics.Additional
                                 isFirstRUN = false;          
                                 espTimer.Stop();
                                 checkTime = DateTime.Now;
-                              await  mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasValue);
+                              await  mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasPercent);
 
                                 MessageBox.Show($@"
     SMART HUB ALERT
@@ -193,6 +193,10 @@ namespace A_P_SmartHub.Graphics.Additional
                 IndoorTempText.Text = "-";
                 IndoorHumidityText.Text = "-";
                 AirQualityValueText.Text = "-";
+                if (!espTimer.IsEnabled)
+                {
+                    espTimer.Start();
+                }
             }
         }
 
