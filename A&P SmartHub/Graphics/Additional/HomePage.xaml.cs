@@ -42,7 +42,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://10.251.255.189/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://10.251.255.215/data"; // tu sa IP adresa !!MENI!! 
         DateTime checkTime = DateTime.MinValue;
 
         public HomePage()

@@ -1,4 +1,5 @@
 ﻿using A_P_SmartHub.Databazicky;
+using A_P_SmartHub.Graphics.MainGrap.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -112,11 +113,11 @@ namespace A_P_SmartHub.Graphics.Additional
         
         private async void CreateHome_Click(object sender, RoutedEventArgs e)
         {
-
-
-            //await SaveToDB();
-            this.Content = new CreatingProfileLoading();
-
+            var mainWindow = Window.GetWindow(this) as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.SlideViewTransition(new MainDashboard(), true);
+            }
         }
     }
 }
