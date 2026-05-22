@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,7 @@ namespace A_P_SmartHub.Graphics.Additional
         public SettingsScreen()
         {
             InitializeComponent();
+            LoadFakeMaintenanceData();
         }
 
         private void DeleteAccount_Click(object sender, RoutedEventArgs e)
@@ -35,7 +37,48 @@ namespace A_P_SmartHub.Graphics.Additional
            MessageBox.Show("Toggle button clicked.");
         }
 
-       
+        public class MaintenanceAlert
+        {
+            public string Message { get; set; }
+            public string Time { get; set; }
+            public string IconColor { get; set; }
+            public string Icon { get; set; }
+        }
+
+        public ObservableCollection<MaintenanceAlert> FakeAlerts { get; set; } = new ObservableCollection<MaintenanceAlert>();
+
+        private void LoadFakeMaintenanceData()
+        {
+            FakeAlerts.Add(new MaintenanceAlert
+            {
+                Icon = "⚠️",
+                IconColor = "#F59E0B", 
+                Message = "Gas sensor (Kitchen) requires routine calibration.",
+                Time = "10 mins ago"
+            });
+
+            FakeAlerts.Add(new MaintenanceAlert
+            {
+                Icon = "🔋",
+                IconColor = "#EF4444", 
+                Message = "Low battery in the front door sensor (15%).",
+                Time = "2 hours ago"
+            });
+
+            FakeAlerts.Add(new MaintenanceAlert
+            {
+                Icon = "✅",
+                IconColor = "#10B981", 
+                Message = "A&P SmartHub firmware v1.2.4 successfully installed.",
+                Time = "Yesterday"
+            });
+
+           
+            if (MaintenanceList != null)
+            {
+                MaintenanceList.ItemsSource = FakeAlerts;
+            }
+        }
 
     }
 }

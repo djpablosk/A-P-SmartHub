@@ -34,6 +34,8 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
             _currentTemp = SmartHubRAM.SavecurrentTemperatureClimate;
             _status = SmartHubRAM.SavecurrentstatClimate;
             CurrentStat.Text = _status;
+            CurrentTemp.Text = $"{_currentTemp} °C";
+            TargetTemp.Text = $"/ {_targetTemp} °C";
             UpdateUI();
         }
 

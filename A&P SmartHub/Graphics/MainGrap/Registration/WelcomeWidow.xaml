@@ -13,13 +13,13 @@
         </Grid.ColumnDefinitions>
         <Grid Background="#10141D" Grid.ColumnSpan="2">
 
-            <Border Background="#1C2331" CornerRadius="20" Width="420" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,50,40,40">
+            <Border Background="#1C2331" CornerRadius="20" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,50,40,40">
 
                 <Border.Effect>
                     <DropShadowEffect Color="Black" BlurRadius="30" ShadowDepth="10" Opacity="0.3"/>
                 </Border.Effect>
 
-                <StackPanel>
+                <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                     <Grid Width="90" Height="90" HorizontalAlignment="Center" Margin="0,0,0,25">
                         <Ellipse Fill="#00D06C" Opacity="0.15"/>
@@ -31,12 +31,12 @@
                         <TextBlock Text="&#xE73E;" FontFamily="Segoe Fluent Icons" Foreground="#10141D" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                     </Grid>
 
-                    <TextBlock x:Name="WelcomeText" Text="Welcome, User" Foreground="#FFFFFF" FontSize="26" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="WelcomeText" Text="Welcome, User" Foreground="#FFFFFF" FontSize="23" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Thank you for using A&amp;P SmartHub." Foreground="#00D06C" FontSize="15" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                    <TextBlock Text="Thank you for using A&amp;P SmartHub." Foreground="#00D06C" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,8"/>
 
                     <TextBlock Text="Your secure and peaceful environment is now ready to be configured." 
-                       Foreground="#8B95A5" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" LineHeight="22"/>
+                       Foreground="#8B95A5" FontSize="12" TextWrapping="Wrap" TextAlignment="Center" LineHeight="22"/>
 
                 </StackPanel>
             </Border>
