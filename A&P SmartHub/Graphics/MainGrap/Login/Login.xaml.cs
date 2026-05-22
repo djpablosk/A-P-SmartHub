@@ -4,6 +4,7 @@ using A_P_SmartHub.Graphics.Additional;
 using A_P_SmartHub.Graphics.Additional.ForgotPassword;
 using A_P_SmartHub.Graphics.MainGrap;
 using A_P_SmartHub.Graphics.MainGrap.Dashboard;
+using A_P_SmartHub.spotify;
 using A_P_SmartHub.Weather;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace A_P_SmartHub.Graphics.Login
     {
        
         MySql mySql = new MySql();
+        SpotifyConnector connector = new SpotifyConnector();
         
         MySQL_Users users = new MySQL_Users();
         public Login()
@@ -41,17 +43,17 @@ namespace A_P_SmartHub.Graphics.Login
 
         }
 
-       
+
 
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
-         
+
 
             bool success = CheckLogin(users, mySql);
-           
-          
+
+
 
             if (!success)
             {
@@ -60,26 +62,37 @@ namespace A_P_SmartHub.Graphics.Login
             }
 
 
-            
+
 
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
             if (mainWindow == null)
                 return;
 
-           
+
 
             if (success)
             {
                 HomePage homePage = new HomePage();
-    
+
                 await mySql.DataBase();
-               
+
+
+
                 mainWindow.SlideViewTransition(new LoginInAnimation(), true);
-              //  MessageBox.Show("ide to");
-              
+                //  MessageBox.Show("ide to");
+                await mySql.ReturnSpotifyRefresh(SessionInfo.ID);
+
+
+                if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) && SmartHubRAM.SpotifyRefreshKey != "Err404")
+                {
+                    var spotifyConnector = new SpotifyConnector();
+                    await spotifyConnector.RefreshAccessToken();
+
+                }
             }
         }
+        
 
         public bool CheckLogin( MySQL_Users users , MySql mySql) 
         {
