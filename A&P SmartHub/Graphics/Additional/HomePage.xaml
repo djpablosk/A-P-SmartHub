@@ -266,9 +266,28 @@
                         <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                     </Border.CacheMode>
 
+
+                    <Grid>
                     <TextBlock TextAlignment="Center" Text="Alerts" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                    
-                    
+                        
+                    <ScrollViewer Height="300" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
+                        <ItemsControl x:Name="AlertsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#1A1515" BorderBrush="#E74C3C" BorderThickness="2,0,0,0" CornerRadius="4" Padding="12" Margin="0,0,0,8">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Time}" Foreground="#888888" FontSize="11" Margin="0,0,0,4"/>
+                                            <TextBlock Text="{Binding Title}" Foreground="#E74C3C" FontWeight="Bold" FontSize="14"/>
+                                            <TextBlock Text="{Binding Message}" Foreground="White" FontSize="12" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    </Grid>
+
                 </Border>
 
 
