@@ -270,7 +270,7 @@
                     <Grid>
                     <TextBlock TextAlignment="Center" Text="Alerts" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
                         
-                    <ScrollViewer Height="200" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
+                    <ScrollViewer Height="300" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
                         <ItemsControl x:Name="AlertsList">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>

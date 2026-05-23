@@ -127,20 +127,23 @@ namespace A_P_SmartHub.Graphics.Additional
                         if (IndoorTempText != null) IndoorTempText.Text = $"{temp}°C";
                         if (IndoorHumidityText != null) IndoorHumidityText.Text = $"{hum}%";
                         if (AirQualityValueText != null) AirQualityValueText.Text = $"{gasPercent}";
+                        if (GasRawValueText != null) GasRawValueText.Text = $"{gasRaw}";
+                        if (HeatIndexText != null) HeatIndexText.Text = $"{heatIndex}°C";
+
 
                         if (AirQualityText != null)
                         {
-                            if (gasPercent < 300)
+                            if (gasPercent < 15)
                             {
                                 AirQualityText.Text = "Good";
                                 AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
                             }
-                            else if (gasPercent >= 300 && gasPercent < 701)
+                            else if (gasPercent >= 15 && gasPercent < 40)
                             {
                                 AirQualityText.Text = "Moderate";
                                 AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
                             }
-                            else if (gasPercent > 701)
+                            else 
                             {
                                 AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
                                 AirQualityText.Text = "DANGER";
@@ -149,6 +152,8 @@ namespace A_P_SmartHub.Graphics.Additional
                                 {
                                     isFirstRUN = false;
                                     checkTime = DateTime.Now;
+
+                             
                                     await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasPercent);
 
                                     SystemAlerts.Insert(0, new AlertMessage
@@ -161,9 +166,9 @@ namespace A_P_SmartHub.Graphics.Additional
                             }
                         }
 
-                        // --- TOTO JE ZMENA PRE ONLINE STAV ---
+                     
                         EspDataText.Text = "Online";
-                        isOfflineAlertShown = false; // Resetujeme príznak, keďže sme úspešne pripojení
+                        isOfflineAlertShown = false; 
                     }
                 }
             }
@@ -176,11 +181,13 @@ namespace A_P_SmartHub.Graphics.Additional
                 IndoorTempText.Text = "-";
                 IndoorHumidityText.Text = "-";
                 AirQualityValueText.Text = "-";
+                GasRawValueText.Text = "-";
+                HeatIndexText.Text = "-";
 
-                // --- TOTO JE NOVÝ BLOK PRE OFFLINE UPOZORNENIE ---
+             
                 if (!isOfflineAlertShown)
                 {
-                    isOfflineAlertShown = true; // Nastavíme, že sme už upozornenie zobrazili
+                    isOfflineAlertShown = true; 
 
                     SystemAlerts.Insert(0, new AlertMessage
                     {
@@ -189,7 +196,7 @@ namespace A_P_SmartHub.Graphics.Additional
                         Message = "SmartHub lost connection with ESP32 hardware module. Retrying automatically..."
                     });
                 }
-                // -------------------------------------------------
+             
 
                 if (!espTimer.IsEnabled)
                 {
