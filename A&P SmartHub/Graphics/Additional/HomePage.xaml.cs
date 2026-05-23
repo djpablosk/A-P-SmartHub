@@ -288,11 +288,7 @@ namespace A_P_SmartHub.Graphics.Additional
                             PopupContent.Content = mediaWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
-                        case DeviceTypeEnum.Readonly:
-                            var readonlyWindow = new ReadOnlyTemplate(stlaceneDevice);
-                            PopupContent.Content = readonlyWindow;
-                            PopupOverlay.Visibility = Visibility.Visible;
-                            break;
+                      
                     }
                 }
                 catch (Exception ex)

@@ -11,10 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="NewFolder\**" />
+    <Page Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Graphics\MainGrap\Dashboard\45a565a0-2808-4ea6-848d-363ef45072bb.png" />
     <None Remove="Graphics\MainGrap\Login\Picture Login.png" />
     <None Remove="Graphics\MainGrap\Registration\RegisterImageEDITED.png" />
-    <None Remove="Picture Login.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,17 +48,12 @@
     <Resource Include="Graphics\MainGrap\Registration\RegisterImageEDITED.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Picture Login.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update=".env">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
