@@ -174,8 +174,8 @@
                                     </Ellipse>
 
                                     <Ellipse Width="4" Height="4" Fill="#8B95A5" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                    <TextBlock Text="VOCs: " Foreground="#8B95A5" FontSize="25"/>
-                                    <TextBlock Text="Low" Foreground="#FFFFFF" FontSize="25" Margin="3,0,5,0"/>
+                                    <TextBlock Text="Gas: " Foreground="#8B95A5" FontSize="25"/>
+                                    <TextBlock x:Name="GasRawValueText" Text="-" Foreground="#FFFFFF" FontSize="25" Margin="3,0,5,0"/>
                                     <Ellipse Width="8" Height="8" Fill="#00D06C" VerticalAlignment="Center" Margin="5,0,0,0">
                                         <Ellipse.Effect>
                                             <DropShadowEffect Color="#00D06C" BlurRadius="8" ShadowDepth="0"/>
@@ -216,6 +216,23 @@
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="Indoor Humidity: " Foreground="#8B95A5" FontSize="30"/>
                                 <TextBlock x:Name="IndoorHumidityText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <Ellipse Margin="10" Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#00D06C" BlurRadius="10" ShadowDepth="0"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="&#xF74A;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Feeling temperature: " Foreground="#8B95A5" FontSize="30"/>
+                                <TextBlock x:Name="HeatIndexText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
                             </StackPanel>
                             <Ellipse Margin="10" Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
                                 <Ellipse.Effect>
