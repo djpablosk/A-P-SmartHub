@@ -112,8 +112,28 @@ SELECT * FROM apdefaultinfos";
             cmd.Parameters.AddWithValue("@city", city);
 
             await cmd.ExecuteNonQueryAsync();
-        }
 
+        }
+        public async Task UpdateUser(string HomeName,string UserName,string City,string Id)
+        {
+            using var conn = new MySqlConnection(getConn());
+            await conn.OpenAsync();
+            using var updateUser = conn.CreateCommand();
+            updateUser.CommandText = @"
+            UPDATE apdefaultinfos
+            SET HomeName = COALESCE(@HomeName, HomeName),
+            UserName = COALESCE(@UserName, UserName),
+            City = COALESCE(@City,City)
+        WHERE Id = @Id;";
+            updateUser.Parameters.AddWithValue("@Id", Id);
+            updateUser.Parameters.AddWithValue("@UserName", UserName);
+            updateUser.Parameters.AddWithValue("@HomeName", HomeName);
+            updateUser.Parameters.AddWithValue("@City",City);
+
+         await   updateUser.ExecuteNonQueryAsync();
+
+
+        }
         public async Task ReturnBasicFromDB(string id)
         {
             using var conn = new MySqlConnection(getConn());
@@ -165,6 +185,19 @@ SELECT * FROM apdefaultinfos";
             {
                 SmartHubRAM.SpotifyRefreshKey = "Err404";
             }
+        }
+
+        public async Task DeleteDevice(string id, string DeviceIp)
+        {
+            using var conn = new MySqlConnection(getConn());
+            await conn.OpenAsync();
+            var deleteDevice = conn.CreateCommand();
+            deleteDevice.CommandText = @"
+        DELETE FROM devices
+        WHERE Id = @id AND IpAddress = @DeviceIp;";
+            deleteDevice.Parameters.AddWithValue("@id", id);
+            deleteDevice.Parameters.AddWithValue("@DeviceIp",DeviceIp);
+            await deleteDevice.ExecuteNonQueryAsync();
         }
     }
 }

@@ -303,7 +303,7 @@ Follow safety routes and wait for clearance before re-entry.",
         {
             string id = SessionInfo.ID;
             await sql1.ReturnBasicFromDB(id);
-            await Chatbot.AiChat("tell me basic infos abt me so like whats my username city temperature etc", data);
+      
 
             dashHomeName.Text = sql1.HomeName;
             City = sql1.City;
