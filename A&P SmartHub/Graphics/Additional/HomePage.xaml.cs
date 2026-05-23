@@ -40,9 +40,11 @@ namespace A_P_SmartHub.Graphics.Additional
 
         bool isFirstRUN = true;
         bool isOfflineAlertShown = false;
+
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
         public ObservableCollection<AlertMessage> SystemAlerts { get; set; }
+
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
@@ -70,7 +72,7 @@ namespace A_P_SmartHub.Graphics.Additional
             DeviceList.ItemsSource = SmartHubRAM.RecentDevices;
 
             LoadFromDB();
-          LoadTestData();
+            LoadTestData();
 
             timer.Interval = TimeSpan.FromSeconds(4);
             timer.Tick += async (s, e) =>
@@ -284,6 +286,11 @@ namespace A_P_SmartHub.Graphics.Additional
                         case DeviceTypeEnum.Media:
                             var mediaWindow = new MediaTemplate(stlaceneDevice);
                             PopupContent.Content = mediaWindow;
+                            PopupOverlay.Visibility = Visibility.Visible;
+                            break;
+                        case DeviceTypeEnum.Readonly:
+                            var readonlyWindow = new ReadOnlyTemplate(stlaceneDevice);
+                            PopupContent.Content = readonlyWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
                     }
