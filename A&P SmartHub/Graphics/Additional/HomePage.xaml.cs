@@ -44,7 +44,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://10.251.255.215/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://192.168.0.205/data"; // tu sa IP adresa !!MENI!! 
         DateTime checkTime = DateTime.MinValue;
 
         public HomePage()
@@ -96,98 +96,91 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             try
             {
-                string response = await _httpClient.GetStringAsync(_espAddress);
-                string[] splitData = response.Split(',');
-
-                if (splitData.Length == 3)
+                
+                using (var cts = new System.Threading.CancellationTokenSource(TimeSpan.FromSeconds(2)))
                 {
-                    string Temperature = splitData[0];
-                    string Humidity = splitData[1];
-                    int gasValue = int.Parse(splitData[2]);
-                    SmartHubRAM.GasVal = gasValue;
-                    SmartHubRAM.HumidityPerc = Humidity;
-                    SmartHubRAM.RoomTemperature = Temperature;
+                    string response = await _httpClient.GetStringAsync(_espAddress, cts.Token);
+                    string[] data = response.Split(',');
 
+                    if (data.Length == 5)
+                    {
+                        float temp = float.Parse(data[0], System.Globalization.CultureInfo.InvariantCulture);
+                        float hum = float.Parse(data[1], System.Globalization.CultureInfo.InvariantCulture);
+                        int gasRaw = int.Parse(data[2]);
+                        float heatIndex = float.Parse(data[3], System.Globalization.CultureInfo.InvariantCulture);
+                        int gasPercent = int.Parse(data[4]);
 
+                        if (IndoorTempText != null) IndoorTempText.Text = $"{temp}°C";
+                        if (IndoorHumidityText != null) IndoorHumidityText.Text = $"{hum}%";
 
-                    if (IndoorTempText != null)
-                    {
-                        IndoorTempText.Text = $"{Temperature}°C";
-                    }
-                    if (IndoorHumidityText != null)
-                    {
-                        IndoorHumidityText.Text = $"{Humidity}%";
-                    }
-                    if (AirQualityValueText != null)
-                    {
-                        AirQualityValueText.Text = $"{gasValue}";
-                    }
+                        if (HeatIndexText != null) HeatIndexText.Text = $"{heatIndex}°C";
+                        if (GasRawValueText != null) GasRawValueText.Text = $"{gasRaw}";
 
-                    if (AirQualityText != null)
-                    {
-                        if (gasValue < 300)
+                        if (AirQualityValueText != null) AirQualityValueText.Text = $"{gasPercent}%";
+
+                        if (AirQualityText != null)
                         {
-                            AirQualityText.Text = "Good";
-                            AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
-
-                        }
-                        else if (gasValue >= 300 && gasValue < 701)
-                        {
-
-                            AirQualityText.Text = "Moderate";
-                            AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
-                        }
-                        else if (gasValue > 701)
-                        {
-                            AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
-                            AirQualityText.Text = "DANGER";
-                            // dorobim textbox ci messagebox
-
-                            if (isFirstRUN || (DateTime.Now - checkTime).TotalMinutes >= 3)
+                            if (gasPercent < 15)
                             {
-                                isFirstRUN = false;          
-                                espTimer.Stop();
-                                checkTime = DateTime.Now;
-                              await  mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasValue);
-
-                                MessageBox.Show($@"
-    SMART HUB ALERT
-
-    Gas sensor detected unsafe air quality levels.
-
-    User: {sql1.UserName}
-
-    Action required:
-    Evacuate the area immediately and avoid using electrical devices or open flames.
-
-    Follow safety routes and wait for clearance before re-entry.
-    ",
-              "SmartHub System Warning",
-              MessageBoxButton.OK,
-              MessageBoxImage.Warning);
-                                
-
-
-
+                                AirQualityText.Text = "Good";
+                                AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
                             }
-                            espTimer.Stop();
+                            else if (gasPercent >= 15 && gasPercent < 40)
+                            {
+                                AirQualityText.Text = "Moderate";
+                                AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
+                            }
+                            else
+                            {
+                                AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
+                                AirQualityText.Text = "DANGER";
+
+                                if (isFirstRUN || (DateTime.Now - checkTime).TotalMinutes >= 3)
+                                {
+                                    isFirstRUN = false;
+                                    checkTime = DateTime.Now;
+                                    await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasPercent);
+
+                                    MessageBox.Show($@"
+SMART HUB ALERT
+
+Gas sensor detected unsafe air quality levels ({gasPercent}%).
+
+User: {sql1.UserName}
+
+Action required:
+Evacuate the area immediately and avoid using electrical devices or open flames.
+Follow safety routes and wait for clearance before re-entry.",
+                                    "SmartHub System Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                }
+                            }
                         }
-                        else
+
+       
+                        if (IndoorTempText != null)
                         {
-                            //
+                            if (temp < 18.0)
+                                IndoorTempText.Foreground = new SolidColorBrush(Colors.LightBlue);
+                            else if (temp >= 18.0 && temp <= 27.0)
+                                IndoorTempText.Foreground = new SolidColorBrush(Colors.White);
+                            else
+                                IndoorTempText.Foreground = new SolidColorBrush(Colors.Red);
                         }
 
+                        if (IndoorHumidityText != null)
+                        {
+                            if (hum < 30.0)
+                                IndoorHumidityText.Foreground = new SolidColorBrush(Colors.Orange);
+                            else if (hum >= 30.0 && hum <= 60.0)
+                                IndoorHumidityText.Foreground = new SolidColorBrush(Colors.White);
+                            else
+                                IndoorHumidityText.Foreground = new SolidColorBrush(Colors.Cyan);
+                        }
 
-
-
-
-
+                        EspDataText.Text = "Online";
                     }
                 }
-                EspDataText.Text = "Online";
             }
-
-
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching ESP data: {ex.Message}");
@@ -197,6 +190,13 @@ namespace A_P_SmartHub.Graphics.Additional
                 IndoorTempText.Text = "-";
                 IndoorHumidityText.Text = "-";
                 AirQualityValueText.Text = "-";
+                GasRawValueText.Text = "-";
+                HeatIndexText.Text = "-";
+
+                if (!espTimer.IsEnabled)
+                {
+                    espTimer.Start();
+                }
             }
         }
 
