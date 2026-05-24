@@ -15,7 +15,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="160"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="300"/>
+                <RowDefinition Height="260"/>
 
             </Grid.RowDefinitions>
             <Grid   >
@@ -142,6 +142,8 @@
                     <Border.CacheMode>
                         <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                     </Border.CacheMode>
+                    <Grid>
+                        
                     <StackPanel>
 
 
@@ -174,8 +176,8 @@
                                     </Ellipse>
 
                                     <Ellipse Width="4" Height="4" Fill="#8B95A5" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                    <TextBlock Text="VOCs: " Foreground="#8B95A5" FontSize="25"/>
-                                    <TextBlock Text="Low" Foreground="#FFFFFF" FontSize="25" Margin="3,0,5,0"/>
+                                    <TextBlock Text="Gas: " Foreground="#8B95A5" FontSize="25"/>
+                                    <TextBlock x:Name="GasRawValueText" Text="-" Foreground="#FFFFFF" FontSize="25" Margin="3,0,5,0"/>
                                     <Ellipse Width="8" Height="8" Fill="#00D06C" VerticalAlignment="Center" Margin="5,0,0,0">
                                         <Ellipse.Effect>
                                             <DropShadowEffect Color="#00D06C" BlurRadius="8" ShadowDepth="0"/>
@@ -223,6 +225,23 @@
                                 </Ellipse.Effect>
                             </Ellipse>
                         </Grid>
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="&#xF74A;" FontFamily="Segoe Fluent Icons" Foreground="#8B95A5" FontSize="22" HorizontalAlignment="Center"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Feeling temperature: " Foreground="#8B95A5" FontSize="30"/>
+                                <TextBlock x:Name="HeatIndexText" Text="-" Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" Margin="5,0,0,0"/>
+                            </StackPanel>
+                            <Ellipse Margin="10" Grid.Column="2" Width="10" Height="10" Fill="#00D06C" VerticalAlignment="Center">
+                                <Ellipse.Effect>
+                                    <DropShadowEffect Color="#00D06C" BlurRadius="10" ShadowDepth="0"/>
+                                </Ellipse.Effect>
+                            </Ellipse>
+                        </Grid>
 
                         <Grid Margin="0,8">
                             <Grid.ColumnDefinitions>
@@ -243,14 +262,37 @@
                         </Grid>
 
                     </StackPanel>
+                    </Grid>
                 </Border>
                 <Border Grid.Column="1" Background="#1C2331" CornerRadius="30" Margin="5" >
                     <Border.CacheMode>
                         <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                     </Border.CacheMode>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
                     <TextBlock TextAlignment="Center" Text="Alerts" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                        
+                    <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
+                        <ItemsControl x:Name="AlertsList">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#1A1515" BorderBrush="#E74C3C" BorderThickness="2,0,0,0" CornerRadius="4" Padding="12" Margin="0,0,0,8">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Time}" Foreground="#888888" FontSize="11" Margin="0,0,0,4"/>
+                                            <TextBlock Text="{Binding Title}" Foreground="#E74C3C" FontWeight="Bold" FontSize="14"/>
+                                            <TextBlock Text="{Binding Message}" Foreground="White" FontSize="12" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
 
+                    </Grid>
 
                 </Border>
 

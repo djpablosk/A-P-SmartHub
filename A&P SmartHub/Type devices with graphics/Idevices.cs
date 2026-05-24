@@ -14,8 +14,8 @@ namespace A_P_SmartHub.Type_devices_with_graphics
             Toggle,         //vypinace zasuvky predlzovacky 
             Climate,       //aj termostaty aj hlavice a ostatne
             Cover,         //zaluzie, roletky, brany, garazove brany
-            Media,          //televizory, audio systemy, prehravace
-            Readonly     //vsetko co sa da len citat senzory kamery teplomery a adt
+            Media         //televizory, audio systemy, prehravace
+           
         }
 
         public class DeviceType
