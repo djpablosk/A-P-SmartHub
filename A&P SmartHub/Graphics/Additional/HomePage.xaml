@@ -15,7 +15,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="160"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="300"/>
+                <RowDefinition Height="260"/>
 
             </Grid.RowDefinitions>
             <Grid   >
@@ -142,6 +142,8 @@
                     <Border.CacheMode>
                         <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                     </Border.CacheMode>
+                    <Grid>
+                        
                     <StackPanel>
 
                        
@@ -260,17 +262,21 @@
                         </Grid>
 
                     </StackPanel>
+                    </Grid>
                 </Border>
                 <Border Grid.Column="1" Background="#1C2331" CornerRadius="30" Margin="5" >
                     <Border.CacheMode>
                         <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                     </Border.CacheMode>
-
-
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
                     <TextBlock TextAlignment="Center" Text="Alerts" FontSize="35" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0"/>
                         
-                    <ScrollViewer Height="300" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
+                    <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
                         <ItemsControl x:Name="AlertsList">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
