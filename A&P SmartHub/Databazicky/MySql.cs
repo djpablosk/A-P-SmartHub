@@ -16,6 +16,7 @@ namespace A_P_SmartHub.Databazicky
         
             public string HomeName { get; set; }
             public string UserName { get; set; }
+            public bool Islogged_ {  get; set; }
             public string City { get; set; }
         
         public string getConn()
@@ -134,6 +135,26 @@ SELECT * FROM apdefaultinfos";
 
 
         }
+        public async Task IsLogged(string id)
+        {
+            using var conn = new MySqlConnection(getConn());
+            await conn.OpenAsync();
+            using var loggerd = conn.CreateCommand();
+            loggerd.CommandText = @"
+         SELECT SpotifyLogged
+         FROM apdefaultinfos
+        WHERE @id = Id;";
+            loggerd.Parameters.AddWithValue("@id", id);
+            using var Reader = await loggerd.ExecuteReaderAsync();
+
+
+            if (await Reader.ReadAsync())
+            {
+                Islogged_ = Convert.ToBoolean(Reader["SpotifyLogged"]);
+            }
+                
+
+        }
         public async Task ReturnBasicFromDB(string id)
         {
             using var conn = new MySqlConnection(getConn());
@@ -152,16 +173,18 @@ SELECT * FROM apdefaultinfos";
                 City = reader["City"].ToString();
             }
         }
-        public async Task SpotifyLogin(string id, string refreshtoken)
+        public async Task SpotifyLogin(string id, string refreshtoken,bool islogged)
         {
             using var connection = new MySqlConnection(getConn());
            await connection.OpenAsync();
             var spotifyLogin = connection.CreateCommand();
             spotifyLogin.CommandText = @"
             UPDATE apdefaultinfos
-             SET RefreshToken = @refreshtoken
+             SET RefreshToken = @refreshtoken,
+                SpotifyLogged = @islogged
             WHERE Id = @id;";
             spotifyLogin.Parameters.AddWithValue("@refreshtoken", refreshtoken);
+            spotifyLogin.Parameters.AddWithValue("@islogged", islogged);
             spotifyLogin.Parameters.AddWithValue("@id", id);
              spotifyLogin.ExecuteNonQuery();
         }

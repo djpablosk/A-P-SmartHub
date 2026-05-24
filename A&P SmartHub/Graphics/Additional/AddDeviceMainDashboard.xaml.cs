@@ -85,7 +85,8 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             string homeName = string.IsNullOrEmpty(HomeName.Text) ? null : HomeName.Text;
             string Cityname = string.IsNullOrEmpty(CityName.Text) ? null : CityName.Text;
-            sql.UpdateUser(homeName, null, Cityname, SessionInfo.ID);
+            string userName = string.IsNullOrEmpty(UserName.Text) ? null : UserName.Text;
+            sql.UpdateUser(homeName, userName, Cityname, SessionInfo.ID);
           //  string Username = string.IsNullOrEmpty(Username) ? null : Username.Text; -- musim pockat kym pato prida lebo je reatard
         }
 

@@ -44,11 +44,13 @@ namespace A_P_SmartHub.Graphics.Additional
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
         public ObservableCollection<AlertMessage> SystemAlerts { get; set; }
+        
+
 
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.205/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://192.168.0.110/data"; // tu sa IP adresa !!MENI!! 
         DateTime checkTime = DateTime.MinValue;
 
 
@@ -58,10 +60,16 @@ namespace A_P_SmartHub.Graphics.Additional
             public string Title { get; set; }
             public string Message { get; set; }
         }
+      
 
         public HomePage()
         {
+   
             InitializeComponent();
+
+
+
+            spotifybutton.Visibility = Visibility.Hidden;
 
             MyDevices = new ObservableCollection<DeviceType>();
 
@@ -78,15 +86,16 @@ namespace A_P_SmartHub.Graphics.Additional
             timer.Tick += async (s, e) =>
             {
                 Greet();
+                await Islogged();
                 await connector.LoadCurrentlyPlaying();
-                
+                currentlyPlaying.Content = SmartHubRAM.currentlyPlaying;
                 await UpdateWeather();
               
                
             };
            
 
-            espTimer.Interval = TimeSpan.FromSeconds(6);
+            espTimer.Interval = TimeSpan.FromSeconds(3);
             espTimer.Tick += async (s, e) =>
             {
                 await FetchEspData();
@@ -104,6 +113,7 @@ namespace A_P_SmartHub.Graphics.Additional
             if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey)// ak refresher nie je prazdny
                 && SmartHubRAM.SpotifyRefreshKey != "Err404")//alebo sa nerovna err404 = stale nie je preazdny
                 await connector.RefreshAccessToken();// pockam kym sa ziska novy acces token
+
             timer.Start(); // az potom zacnem timer cize nacitavanie pocasia a currently listnening
         }
 
@@ -361,7 +371,9 @@ namespace A_P_SmartHub.Graphics.Additional
         {
            
           await  connector.SpotifyLogin();
-           await sql1.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+            
+           await sql1.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey,true);
+
 
             
         }
@@ -375,6 +387,20 @@ namespace A_P_SmartHub.Graphics.Additional
                 mainWindow.SlideViewTransition(new AI_Screen(), true);
             }
 
+        }
+        public async Task Islogged()
+        {
+            await sql1.IsLogged(SessionInfo.ID);
+            if (sql1.Islogged_ == true)
+            {
+                spotifybutton.Visibility = Visibility.Hidden;
+                currentlyPlaying.Visibility = Visibility.Visible;
+            }
+            else if (!sql1.Islogged_)
+            {
+                spotifybutton.Visibility = Visibility.Visible;
+                currentlyPlaying.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

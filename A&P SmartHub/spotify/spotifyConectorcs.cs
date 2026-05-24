@@ -122,7 +122,7 @@ namespace A_P_SmartHub.spotify
             if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) && !string.IsNullOrEmpty(SessionInfo.ID))
             {
                 MySql sql = new MySql();
-                await sql.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+                await sql.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey,true);
             }
 
             return obj["access_token"].ToString();
@@ -164,7 +164,11 @@ namespace A_P_SmartHub.spotify
                 }
 
                 if (response.StatusCode == HttpStatusCode.NoContent)
-                    MessageBox.Show("nothing is playing");
+                {
+                   
+                    SmartHubRAM.currentlyPlaying = $"No Songs Are Playing At The Moment";
+                }
+                
 
                 string json = await response.Content.ReadAsStringAsync();
                 var obj = JObject.Parse(json);
@@ -177,7 +181,9 @@ namespace A_P_SmartHub.spotify
                 string songName = item["name"]?.ToString();
                 string artistName = item["artists"]?[0]?["name"]?.ToString();
 
-              //  MessageBox.Show($"Now playing: {songName} - {artistName}");
+                SmartHubRAM.currentlyPlaying = $"Now Playing {songName} -- {artistName}";
+
+           //   MessageBox.Show($"Now playing: {songName} - {artistName}");
             }
             catch
             {
@@ -247,7 +253,7 @@ namespace A_P_SmartHub.spotify
                     if (!string.IsNullOrEmpty(SessionInfo.ID))
                     {
                         MySql sql = new MySql();
-                        await sql.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey);
+                        await sql.SpotifyLogin(SessionInfo.ID, SmartHubRAM.SpotifyRefreshKey, true);
                     }
                 }
 
