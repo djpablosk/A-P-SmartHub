@@ -66,6 +66,7 @@ namespace A_P_SmartHub.Graphics.Additional
         {
    
             InitializeComponent();
+     
 
 
 
@@ -184,7 +185,7 @@ namespace A_P_SmartHub.Graphics.Additional
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error fetching ESP data: {ex.Message}");
+               // Console.WriteLine($"Error fetching ESP data: {ex.Message}");
 
                 EspDataText.Text = "Offline";
                 AirQualityText.Text = "-";
@@ -244,6 +245,7 @@ namespace A_P_SmartHub.Graphics.Additional
             if (mainWindow != null)
             {
                 mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+
             }
         }
 
@@ -357,9 +359,9 @@ namespace A_P_SmartHub.Graphics.Additional
         }
 
 
-        private void AddNewDevice_Click(object sender, RoutedEventArgs e)
+        private async void AddNewDevice_Click(object sender, RoutedEventArgs e)
         {
-
+           await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, 63);
             var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {
