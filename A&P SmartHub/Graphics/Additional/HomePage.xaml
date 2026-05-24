@@ -35,23 +35,23 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" FontFamily="Bahnschrift"/>
-                        <Button Grid.Column="1" Grid.Row="1" Content="Login with Spotify"  FontSize="18" Click="Button_Click_1"></Button>
+                        <Button x:Name="spotifybutton" Grid.Column="1" Content="Login with Spotify"  FontSize="18" Click="Button_Click_1" Margin="544,-20,-496,47"/>
                         <TextBlock x:Name="WelcomeBack" Grid.Column="0" Grid.Row="1" Text="Welcome back," FontSize="25" Foreground="#8B95A5" VerticalAlignment="Top" FontFamily="Bahnschrift"/>
                         <TextBlock x:Name="dashHomeName" Grid.Column="0" Width="270" Grid.Row="0" Text="YourHomeName" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Bahnschrift"/>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" >
 
                             <Button Click="AddNewDevice_Click" ToolTip="Add Device" BorderThickness="0" Background="Transparent" Margin="10" Width="70">
                                 <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="50">
-                                    
-                                <Path Data="M11 5C11 4.44772 11.4477 4 12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5Z"
+
+                                    <Path Data="M11 5C11 4.44772 11.4477 4 12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5Z"
           Fill="White"
           Stretch="Uniform"
           Width="34" Height="24"
           HorizontalAlignment="Left"    
-          VerticalAlignment="Center"/>  
+          VerticalAlignment="Center"/>
                                 </Viewbox>
                             </Button>
-                            
+
                             <Button Click="AIButton_Click"  Margin="10" Width="50" Height="50" Cursor="Hand" BorderThickness="0" ToolTip="Your personall assistant">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
@@ -146,7 +146,7 @@
                         
                     <StackPanel>
 
-                       
+
                         <Grid Margin="0,0,0,15">
                             <TextBlock Margin="5" Text="Home Safety &amp; Environment" Foreground="#FFFFFF" FontSize="30" FontWeight="SemiBold" VerticalAlignment="Center"/>
                         </Grid>
@@ -189,7 +189,7 @@
 
                         <Separator Background="#2A3445" Margin="0,15" Opacity="0.3"/>
 
-                       
+
                         <Grid Margin="0,8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="45"/>
@@ -306,33 +306,33 @@
                     <BitmapCache EnableClearType="False" RenderAtScale="1"/>
                 </Border.CacheMode>
                 <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                    
+
                     <TextBlock Text="Last used devices" FontSize="35" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Bahnschrift"/>
                     <Grid HorizontalAlignment="Right" Width="1200"  Margin="10"   >
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl x:Name="DeviceList">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Width="160" Height="200" Background="#101725" CornerRadius="20" Margin="10">
-                                        <Border.CacheMode>
-                                            <BitmapCache EnableClearType="False" RenderAtScale="1"/>
-                                        </Border.CacheMode>
-                                        <Button Height="150" HorizontalAlignment="Stretch" x:Name="DeviceButton" FontSize="20" Content="{Binding DeviceName}" 
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsControl x:Name="DeviceList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Width="160" Height="200" Background="#101725" CornerRadius="20" Margin="10">
+                                            <Border.CacheMode>
+                                                <BitmapCache EnableClearType="False" RenderAtScale="1"/>
+                                            </Border.CacheMode>
+                                            <Button Height="150" HorizontalAlignment="Stretch" x:Name="DeviceButton" FontSize="20" Content="{Binding DeviceName}" 
                                 Click="Button_Click" 
                                 Foreground="White" 
                                 Background="Transparent" 
                                 BorderThickness="0"/>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
                 </StackPanel>
             </Border>
 
