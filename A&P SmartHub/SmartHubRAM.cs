@@ -25,6 +25,7 @@ namespace A_P_SmartHub
      
         public static string spotifyAcceskey {  get; set; }
         public static string SpotifyRefreshKey {  get; set; }
+        public static string currentlyPlaying { get; set; }
         public static bool Logged {  get; set; }
         
         //informacie pre ai
