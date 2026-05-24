@@ -34,7 +34,7 @@ namespace A_P_SmartHub.Weather
              
                 Temperature = 404;
 
-                MessageBox.Show($"Looks like we couldn't find {city}");
+             //   MessageBox.Show($"Looks like we couldn't find {city}");
 
             }
          
@@ -46,3 +46,4 @@ namespace A_P_SmartHub.Weather
         }
     }
 }
+    
