@@ -47,7 +47,7 @@ namespace A_P_SmartHub.spotify
                 UseShellExecute = true
             });
 
-            // MessageBox.Show("Login opened");
+            MessageBox.Show("Login opened");
 
             var authorizationCode = await WaitForSpotifyCallback();
 
@@ -183,7 +183,7 @@ namespace A_P_SmartHub.spotify
 
                 SmartHubRAM.currentlyPlaying = $"Now Playing {songName} -- {artistName}";
 
-           //   MessageBox.Show($"Now playing: {songName} - {artistName}");
+             MessageBox.Show($"Now playing: {songName} - {artistName}");
             }
             catch
             {
