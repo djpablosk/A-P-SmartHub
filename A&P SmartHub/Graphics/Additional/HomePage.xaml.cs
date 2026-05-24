@@ -39,13 +39,25 @@ namespace A_P_SmartHub.Graphics.Additional
         SpotifyConnector connector = new SpotifyConnector();
 
         bool isFirstRUN = true;
+        bool isOfflineAlertShown = false;
+
         public string City { get; set; }
         public ObservableCollection<DeviceType> MyDevices { get; set; }
+        public ObservableCollection<AlertMessage> SystemAlerts { get; set; }
+
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://10.251.255.215/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://192.168.0.205/data"; // tu sa IP adresa !!MENI!! 
         DateTime checkTime = DateTime.MinValue;
+
+
+        public class AlertMessage
+        {
+            public string Time { get; set; }
+            public string Title { get; set; }
+            public string Message { get; set; }
+        }
 
         public HomePage()
         {
@@ -53,11 +65,14 @@ namespace A_P_SmartHub.Graphics.Additional
 
             MyDevices = new ObservableCollection<DeviceType>();
 
+            SystemAlerts = new ObservableCollection<AlertMessage>();
+            AlertsList.ItemsSource = SystemAlerts;
+
 
             DeviceList.ItemsSource = SmartHubRAM.RecentDevices;
 
             LoadFromDB();
-          LoadTestData();
+            LoadTestData();
 
             timer.Interval = TimeSpan.FromSeconds(4);
             timer.Tick += async (s, e) =>
@@ -96,98 +111,67 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             try
             {
-                string response = await _httpClient.GetStringAsync(_espAddress);
-                string[] splitData = response.Split(',');
-
-                if (splitData.Length == 3)
+                using (var cts = new System.Threading.CancellationTokenSource(TimeSpan.FromSeconds(3)))
                 {
-                    string Temperature = splitData[0];
-                    string Humidity = splitData[1];
-                    int gasValue = int.Parse(splitData[2]);
-                    SmartHubRAM.GasVal = gasValue;
-                    SmartHubRAM.HumidityPerc = Humidity;
-                    SmartHubRAM.RoomTemperature = Temperature;
+                    string response = await _httpClient.GetStringAsync(_espAddress, cts.Token);
+                    string[] data = response.Split(',');
+
+                    if (data.Length == 5)
+                    {
+                        float temp = float.Parse(data[0], System.Globalization.CultureInfo.InvariantCulture);
+                        float hum = float.Parse(data[1], System.Globalization.CultureInfo.InvariantCulture);
+                        int gasRaw = int.Parse(data[2]);
+                        float heatIndex = float.Parse(data[3], System.Globalization.CultureInfo.InvariantCulture);
+                        int gasPercent = int.Parse(data[4]);
+
+                        if (IndoorTempText != null) IndoorTempText.Text = $"{temp}°C";
+                        if (IndoorHumidityText != null) IndoorHumidityText.Text = $"{hum}%";
+                        if (AirQualityValueText != null) AirQualityValueText.Text = $"{gasPercent}";
+                        if (GasRawValueText != null) GasRawValueText.Text = $"{gasRaw}";
+                        if (HeatIndexText != null) HeatIndexText.Text = $"{heatIndex}°C";
 
 
-
-                    if (IndoorTempText != null)
-                    {
-                        IndoorTempText.Text = $"{Temperature}°C";
-                    }
-                    if (IndoorHumidityText != null)
-                    {
-                        IndoorHumidityText.Text = $"{Humidity}%";
-                    }
-                    if (AirQualityValueText != null)
-                    {
-                        AirQualityValueText.Text = $"{gasValue}";
-                    }
-
-                    if (AirQualityText != null)
-                    {
-                        if (gasValue < 300)
+                        if (AirQualityText != null)
                         {
-                            AirQualityText.Text = "Good";
-                            AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
-
-                        }
-                        else if (gasValue >= 300 && gasValue < 701)
-                        {
-
-                            AirQualityText.Text = "Moderate";
-                            AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
-                        }
-                        else if (gasValue > 701)
-                        {
-                            AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
-                            AirQualityText.Text = "DANGER";
-                            // dorobim textbox ci messagebox
-
-                            if (isFirstRUN || (DateTime.Now - checkTime).TotalMinutes >= 3)
+                            if (gasPercent < 15)
                             {
-                                isFirstRUN = false;          
-                                espTimer.Stop();
-                                checkTime = DateTime.Now;
-                              await  mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasValue);
-
-                                MessageBox.Show($@"
-    SMART HUB ALERT
-
-    Gas sensor detected unsafe air quality levels.
-
-    User: {sql1.UserName}
-
-    Action required:
-    Evacuate the area immediately and avoid using electrical devices or open flames.
-
-    Follow safety routes and wait for clearance before re-entry.
-    ",
-              "SmartHub System Warning",
-              MessageBoxButton.OK,
-              MessageBoxImage.Warning);
-                                
-
-
-
+                                AirQualityText.Text = "Good";
+                                AirQualityText.Foreground = new SolidColorBrush(Colors.Green);
                             }
-                            espTimer.Stop();
+                            else if (gasPercent >= 15 && gasPercent < 40)
+                            {
+                                AirQualityText.Text = "Moderate";
+                                AirQualityText.Foreground = new SolidColorBrush(Colors.Orange);
+                            }
+                            else 
+                            {
+                                AirQualityText.Foreground = new SolidColorBrush(Colors.Red);
+                                AirQualityText.Text = "DANGER";
+
+                                if (isFirstRUN || (DateTime.Now - checkTime).TotalMinutes >= 3)
+                                {
+                                    isFirstRUN = false;
+                                    checkTime = DateTime.Now;
+
+                             
+                                    await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, gasPercent);
+
+                                    SystemAlerts.Insert(0, new AlertMessage
+                                    {
+                                        Time = DateTime.Now.ToString("HH:mm:ss"),
+                                        Title = "SMART HUB ALERT",
+                                        Message = $"Gas sensor detected unsafe air quality levels ({gasPercent}%)."
+                                    });
+                                }
+                            }
                         }
-                        else
-                        {
-                            //
-                        }
 
-
-
-
-
-
+                     
+                        EspDataText.Text = "Online";
+                        isOfflineAlertShown = false; 
                     }
                 }
-                EspDataText.Text = "Online";
             }
-
-
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching ESP data: {ex.Message}");
@@ -197,6 +181,27 @@ namespace A_P_SmartHub.Graphics.Additional
                 IndoorTempText.Text = "-";
                 IndoorHumidityText.Text = "-";
                 AirQualityValueText.Text = "-";
+                GasRawValueText.Text = "-";
+                HeatIndexText.Text = "-";
+
+             
+                if (!isOfflineAlertShown)
+                {
+                    isOfflineAlertShown = true; 
+
+                    SystemAlerts.Insert(0, new AlertMessage
+                    {
+                        Time = DateTime.Now.ToString("HH:mm:ss"),
+                        Title = "CONNECTION LOST",
+                        Message = "SmartHub lost connection with ESP32 hardware module. Retrying automatically..."
+                    });
+                }
+             
+
+                if (!espTimer.IsEnabled)
+                {
+                    espTimer.Start();
+                }
             }
         }
 
@@ -290,6 +295,7 @@ namespace A_P_SmartHub.Graphics.Additional
                             PopupContent.Content = mediaWindow;
                             PopupOverlay.Visibility = Visibility.Visible;
                             break;
+                      
                     }
                 }
                 catch (Exception ex)
