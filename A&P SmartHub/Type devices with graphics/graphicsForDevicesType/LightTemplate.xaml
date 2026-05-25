@@ -63,8 +63,8 @@
                         <Grid VerticalAlignment="Bottom" Height="100">
                             <TextBlock Text="Color" FontSize="25" Foreground="White" Margin="0,0,0,10"/>
                             <StackPanel VerticalAlignment="Bottom" Height="70" Orientation="Horizontal">
-                               <Button Content="White" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="40,0"/>
-                                <Button Content="RGB" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="70,0"/>
+                               <Button Click="White_Click" Content="White" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="40,0"/>
+                                <Button Click="RGB_Click" Content="RGB" Margin="0,0,10,0" Background="#4B5563" Foreground="White" BorderThickness="0" FontSize="20" HorizontalAlignment="Stretch" Padding="70,0"/>
                                
                             </StackPanel>
 

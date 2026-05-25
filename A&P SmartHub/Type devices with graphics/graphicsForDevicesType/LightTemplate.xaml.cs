@@ -20,7 +20,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
     /// </summary>
     public partial class LightTemplate : UserControl
     {
-        
+
         public LightTemplate(DeviceType device)
         {
             InitializeComponent();
@@ -44,10 +44,10 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
 
         private void BrightnessSlider_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-           BrightnessSlider.Value -= e.Delta > 0 ? 1 : -1;
+            BrightnessSlider.Value -= e.Delta > 0 ? 1 : -1;
         }
 
-       
+
 
         private void BrightnessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -78,6 +78,35 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
         {
             SmartHubRAM.SavecurrentBrightnessLight = BrightnessSlider.Value;
 
+        }
+
+
+        private async Task SetEspLedColor(int r, int g, int b)
+        {
+            try
+            {
+                using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromSeconds(3);
+                    string espIpAddress = "192.168.0.205"; // <-- TVOJA IP ADRESA ESP32
+                    string url = $"http://{espIpAddress}/set_led?r={r}&g={g}&b={b}";
+                    await client.GetStringAsync(url);
+                }
+            }
+            catch { 
+            MessageBox.Show("Failed to connect to ESP32. Please check the IP address and ensure the device is online.", "Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void White_Click(object sender, RoutedEventArgs e)
+        {
+            SetEspLedColor(255, 255, 255);
+        }
+
+        private void RGB_Click(object sender, RoutedEventArgs e)
+        {
+            RGB_SelectorWindow rgbWindow = new RGB_SelectorWindow();
+            rgbWindow.ShowDialog();
         }
     }
 }
