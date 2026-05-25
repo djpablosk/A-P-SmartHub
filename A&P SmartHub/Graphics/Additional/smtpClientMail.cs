@@ -185,21 +185,21 @@ namespace A_P_SmartHub.Graphics.Additional
 
                 <tr style=""color:#00FF44;"">
                   <td>SAFE</td>
-                  <td>0 - 300</td>
+                  <td>0% - 14%</td>
                 </tr>
                 <tr style=""color:#f5c542;"">
                   <td>MODERATE</td>
-                  <td>301 - 700</td>
+                  <td>15% - 40%</td>
                 </tr>
                 <tr style=""color:#ff4d4d;"">
                   <td>DANGEROUS</td>
-                  <td>701+</td>
+                  <td>40% and above</td>
                 </tr>
 
               </table>
 
               <p style=""margin:0; color:#9aa0a6; font-size:13px; line-height:1.6;"">
-                Recommended action: ventilate the area immediately.
+                Recommended action: ventilate and leave the area immediately.
               </p>
 
               <p style=""margin:10px 0 0; color:#6b7280; font-size:11px;"">
@@ -211,7 +211,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
           <tr>
             <td style=""padding:14px 20px; background:#12141a; font-size:11px; color:#666;"">
-              A&P SmartHub • Slovakia
+              A&P SmartHub • Intelligent Living Starts Here
             </td>
           </tr>
 
