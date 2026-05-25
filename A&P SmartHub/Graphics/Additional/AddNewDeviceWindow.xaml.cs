@@ -35,19 +35,33 @@ namespace A_P_SmartHub.Graphics.Additional
         public SmartDevice NewDevice { get; set; }
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            NewDevice = new SmartDevice
+            try
             {
-               Name = DeviceNameBox.Text,
-                Type = deviceType.Text,
-                IpAddress = DeviceIPAddressBox.Text
-            };
-
-            string id = mySqlUsers.GetUserId(SessionInfo.Mail);
-            var selected = deviceType.SelectedItem as ComboBoxItem;
-            string devtype = selected?.Content.ToString();
-
-            await mySql.AddDevice(id, DeviceNameBox.Text, DeviceIPAddressBox.Text,devtype);
+                string id = mySqlUsers.GetUserId(SessionInfo.Mail);
+                var selected = deviceType.SelectedItem as ComboBoxItem;
+                string devtype = selected?.Content.ToString();
+                if (string.IsNullOrWhiteSpace(devtype) ||
+     string.IsNullOrWhiteSpace(DeviceNameBox.Text) ||
+     string.IsNullOrWhiteSpace(DeviceIPAddressBox.Text))
+                {
+                    MessageBox.Show("Please Fill all fields");
+                    return;
+                }
+                else
+                {
+                    NewDevice = new SmartDevice
+                    {
+                        Name = DeviceNameBox.Text,
+                        Type = deviceType.Text,
+                        IpAddress = DeviceIPAddressBox.Text
+                    };
+                    await mySql.AddDevice(id, DeviceNameBox.Text, DeviceIPAddressBox.Text, devtype);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unknown error try again");
+            }
 
             this.DialogResult = true;
         }

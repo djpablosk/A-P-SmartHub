@@ -40,8 +40,8 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void AddDeviceButton_Click(object sender, RoutedEventArgs e)
         {
-           // AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
-            //addDeviceWindow.ShowDialog();
+          // AddNewDeviceWindow addDeviceWindow = new AddNewDeviceWindow();
+          //  addDeviceWindow.ShowDialog(); // idk ci to je potrebne alebo ne ale bolo to zakomentovane a to iste je pod tym takze asi ne ... who knows ?
             var addWindow = new AddNewDeviceWindow();
             if (addWindow.ShowDialog() == true)
             {

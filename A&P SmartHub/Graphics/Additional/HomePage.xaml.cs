@@ -50,7 +50,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.110/data"; // tu sa IP adresa !!MENI!! 
+        private const string _espAddress = "http://192.168.0.110/data"; // tu sa IP adresa !!MENI!!  // to je pekne ale povedz to zakaznikovi LOL
         DateTime checkTime = DateTime.MinValue;
 
 
@@ -241,6 +241,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
+            SessionInfo info = new SessionInfo(); // v podstate mazem ram aby stary pouzivatel nemal tieto infos keby nahodou
             var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {
@@ -361,7 +362,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private async void AddNewDevice_Click(object sender, RoutedEventArgs e)
         {
-           await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, 63);
+           
             var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {
