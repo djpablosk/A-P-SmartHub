@@ -93,7 +93,9 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
                     await client.GetStringAsync(url);
                 }
             }
-            catch { /* Ignorujeme chyby, aby apka nepadla ak je ESP vypnuté */ }
+            catch { 
+            MessageBox.Show("Failed to connect to ESP32. Please check the IP address and ensure the device is online.", "Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void White_Click(object sender, RoutedEventArgs e)
