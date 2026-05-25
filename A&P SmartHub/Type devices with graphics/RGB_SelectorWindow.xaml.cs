@@ -18,7 +18,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics
     /// </summary>
     public partial class RGB_SelectorWindow : Window
     {
-        private readonly string espIpAddress = "192.168.1.100";
+        private readonly string espIpAddress = "192.168.0.205";
         public RGB_SelectorWindow()
         {
             InitializeComponent();

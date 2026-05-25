@@ -88,7 +88,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
                 using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
                 {
                     client.Timeout = TimeSpan.FromSeconds(3);
-                    string espIpAddress = "192.168.1.100"; // <-- TVOJA IP ADRESA ESP32
+                    string espIpAddress = "192.168.0.205"; // <-- TVOJA IP ADRESA ESP32
                     string url = $"http://{espIpAddress}/set_led?r={r}&g={g}&b={b}";
                     await client.GetStringAsync(url);
                 }
