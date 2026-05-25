@@ -49,7 +49,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
 
 
 
-        private void BrightnessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private async void BrightnessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             SmartHubRAM.SavecurrentBrightnessLight = e.NewValue;
 
@@ -57,6 +57,23 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
             {
                 BrightnessText.Text = $"{Math.Round(e.NewValue)}%";
             }
+
+
+            int brightness = (int)e.NewValue;
+
+            try
+            {
+                using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromSeconds(2);
+                    string espIpAddress = "192.168.0.205"; // Nezabudni doplniť vašu IPčku
+
+                    string url = $"http://{espIpAddress}/set_brightness?v={brightness}";
+
+                    await client.GetStringAsync(url);
+                }
+            }
+            catch { /* Ignorujeme, ak potiahneš slider a ESP zrovna neodpovedá */ }
         }
         private void LightControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -88,7 +105,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
                 using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
                 {
                     client.Timeout = TimeSpan.FromSeconds(3);
-                    string espIpAddress = "192.168.0.205"; // <-- TVOJA IP ADRESA ESP32
+                    string espIpAddress = "192.168.0.205"; //ipcka esp !!MENI SA!!
                     string url = $"http://{espIpAddress}/set_led?r={r}&g={g}&b={b}";
                     await client.GetStringAsync(url);
                 }
@@ -101,6 +118,23 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
         private void White_Click(object sender, RoutedEventArgs e)
         {
             SetEspLedColor(255, 255, 255);
+        }
+
+        private async void MorningScene_Click(object sender, RoutedEventArgs e)
+        {
+            await SetEspLedColor(255, 200, 100);
+        }
+        private async void EveningScene_Click(object sender, RoutedEventArgs e)
+        {
+            await SetEspLedColor(255, 140, 50);
+        }
+        private async void NightScene_Click(object sender, RoutedEventArgs e)
+        {
+            await SetEspLedColor(10, 10, 30);
+        }
+        private async void DayScene_Click(object sender, RoutedEventArgs e)
+        {
+            await SetEspLedColor(255, 255, 200);
         }
 
         private void RGB_Click(object sender, RoutedEventArgs e)
