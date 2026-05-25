@@ -25,6 +25,7 @@ namespace A_P_SmartHub.Graphics.Additional
         {
             InitializeComponent();
             this.Loaded += UserControl_Loaded; // nove
+            
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)

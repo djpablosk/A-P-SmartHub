@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -50,15 +51,15 @@ namespace A_P_SmartHub.Graphics.Additional
 
             TempDevices.Clear();
 
-            
+
             foreach (var d in existingDevices)
             {
                 SmartDevice device = new SmartDevice();
 
-                
                 device.Name = d.DeviceName;
-                device.Type = d.Type.ToString(); 
-                device.IsNew = false; 
+                device.Type = d.Type.ToString();
+                device.IpAddress = d.IpAddress;
+                device.IsNew = false;
 
                 TempDevices.Add(device);
             }
@@ -74,19 +75,20 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
-        private void DeleteDevice_Click(object sender, RoutedEventArgs e)
+        private async void DeleteDevice_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
             var device = btn.Tag as SmartDevice;
+      await  sql.DeleteDevice(SessionInfo.ID, device.IpAddress, device.Type);
             TempDevices.Remove(device);
         }
 
-        public void UpdateUser()
+        public async Task UpdateUser()
         {
             string homeName = string.IsNullOrEmpty(HomeName.Text) ? null : HomeName.Text;
             string Cityname = string.IsNullOrEmpty(CityName.Text) ? null : CityName.Text;
             string userName = string.IsNullOrEmpty(UserName.Text) ? null : UserName.Text;
-            sql.UpdateUser(homeName, userName, Cityname, SessionInfo.ID);
+        await   sql.UpdateUser(homeName, userName, Cityname, SessionInfo.ID);
           //  string Username = string.IsNullOrEmpty(Username) ? null : Username.Text; -- musim pockat kym pato prida lebo je reatard
         }
 
@@ -103,8 +105,9 @@ namespace A_P_SmartHub.Graphics.Additional
 
             foreach (var dev in DevicesToDelete)
                 // toto nikde nevolas pato..
+                //uz hej haha
             {
-                await sql.DeleteDevice(id, dev.IpAddress);
+                await sql.DeleteDevice(id, dev.IpAddress,dev.Type);
             }
             DevicesToDelete.Clear();
 
