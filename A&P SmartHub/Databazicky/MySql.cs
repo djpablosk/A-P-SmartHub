@@ -210,17 +210,20 @@ SELECT * FROM apdefaultinfos";
             }
         }
 
-        public async Task DeleteDevice(string id, string DeviceIp)
+        public async Task DeleteDevice(string id, string DeviceIp,string devicetype)
         {
             using var conn = new MySqlConnection(getConn());
             await conn.OpenAsync();
             var deleteDevice = conn.CreateCommand();
             deleteDevice.CommandText = @"
         DELETE FROM devices
-        WHERE Id = @id AND IpAddress = @DeviceIp;";
+        WHERE Id = @id AND
+        IpAddress = @DeviceIp
+        AND DeviceType =@type;";
             deleteDevice.Parameters.AddWithValue("@id", id);
             deleteDevice.Parameters.AddWithValue("@DeviceIp",DeviceIp);
+            deleteDevice.Parameters.AddWithValue("@type",devicetype);
             await deleteDevice.ExecuteNonQueryAsync();
         }
-    }
+    } // trosku spagetka ci ? 
 }

@@ -241,6 +241,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
+            SessionInfo info = new SessionInfo(); // v podstate mazem ram aby stary pouzivatel nemal tieto infos keby nahodou
             var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {
@@ -361,7 +362,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private async void AddNewDevice_Click(object sender, RoutedEventArgs e)
         {
-           await mail.GasAlert(SessionInfo.Mail, sql1.UserName, sql1.HomeName, 63);
+           
             var mainWindow = Window.GetWindow(this) as MainWindow;
             if (mainWindow != null)
             {

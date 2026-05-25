@@ -26,7 +26,7 @@ namespace A_P_SmartHub.AI
         public string AiOutput { get; set; }
 
         public async Task<string> AiChat(string userInput) // asi to je jasne ale trosku som si pomohol ai :)
-        {
+        { // ale je to dost cool ci ?
 
             await Setter(weather);
             Env.Load();

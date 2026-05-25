@@ -10,9 +10,9 @@ namespace A_P_SmartHub
 {
     internal class wifiCheck
     {
-
+        // tu sme si pomohli s aikom nieco ak to citas tak zdravim
         public bool wifion()
-        {
+        { 
             return NetworkInterface.GetAllNetworkInterfaces().Any(n => n.NetworkInterfaceType == NetworkInterfaceType.Wireless80211
             && n.OperationalStatus == OperationalStatus.Up);
         }
