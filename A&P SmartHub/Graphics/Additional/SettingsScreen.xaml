@@ -111,23 +111,81 @@
                             <Grid Margin="10">
                                 <TextBlock Text="Manage Your Home" FontSize="36" Foreground="White" TextWrapping="Wrap" Margin="0,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift" FontWeight="Bold" />
 
-                                <TextBlock Text="Here you can change you can change your home name" FontSize="15" Foreground="White" TextWrapping="Wrap" Margin="0,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift" />
-                                <Border Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
+                                <TextBlock Text="Here you can change you can change your home name" FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift" />
+                                <Border Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,100,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
                                     <TextBox x:Name="HomeName"  FontSize="18" Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="380"   />
                                 </Border>
 
-                                <TextBlock Text="Here you can change your City" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,160,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift" />
-                                <Border Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,200,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
+                                <TextBlock Text="Here you can change your City" FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift" />
+                                <Border Width="350" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,175,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
                                     <TextBox x:Name="CityName"  FontSize="18" Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="380"  />
                                 </Border>
 
-                                <TextBlock Text="Here you can change your UserName" FontSize="18" Foreground="White" TextWrapping="Wrap" Margin="0,110,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Bahnschrift" />
-                                <Border Width="400" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,150,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
+                                <TextBlock Text="Here you can change your UserName" FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,70,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Bahnschrift" />
+                                <Border Width="350" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,100,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
                                     <TextBox x:Name="UserName"  FontSize="18" Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="380"  />
                                 </Border>
 
+                                <TextBlock Text="Here you can change your Mail" FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,150,70,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Bahnschrift" />
+                                <Border Width="350" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,175,0,0" Height="40" Background="Transparent" BorderBrush="White" BorderThickness="1" CornerRadius="20" >
+                                    <TextBox x:Name="Mail"  FontSize="18" Foreground="White" TextWrapping="Wrap"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Bahnschrift" Width="380"  />
+                                </Border>
+
+                                <Border BorderBrush="#145A32" BorderThickness="1.5" Grid.Row="0" Grid.Column="1" Width="250" Margin="0,0" VerticalAlignment="Bottom" Background="#22FFFFFF"  Height="40"   CornerRadius="20">
+                                    <Button Cursor="Hand" BorderThickness="0"  HorizontalAlignment="Stretch"  Height="40" Background="Transparent" FontSize="31" FontFamily="Bahnschrift" FontWeight="Bold"   BorderBrush="{x:Null}" Foreground="White" Width="250" >
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="Transparent">
+                                                    <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+
+                                        <TextBlock Background="{x:Null}" Text="Save" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" FontFamily="Bahnschrift" FontWeight="Bold" Foreground="White"/>
 
 
+
+                                    </Button>
+
+
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                                            <Setter Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                                </Setter.Value>
+                                            </Setter>
+
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+To="1.05" Duration="0:0:0.2" />
+                                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+To="1.05" Duration="0:0:0.2" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleX)"
+To="1" Duration="0:0:0.2" />
+                                                                <DoubleAnimation Storyboard.TargetProperty="(RenderTransform).(ScaleTransform.ScaleY)"
+To="1" Duration="0:0:0.2" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+
+
+                                </Border>
                             </Grid>
                         </Border>
                     <Border Grid.Row="0" Margin="10" CornerRadius="30" Background="#1C2331" >
