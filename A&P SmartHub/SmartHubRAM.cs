@@ -14,7 +14,7 @@ namespace A_P_SmartHub
         public static string SavecurrentstatClimate = "AUTO";
         //-----------------------------------
         //light
-     
+     public static string espIp {  get; set; }
         public static double SavecurrentBrightnessLight {  get; set; }
         //------------------------------------
         //media

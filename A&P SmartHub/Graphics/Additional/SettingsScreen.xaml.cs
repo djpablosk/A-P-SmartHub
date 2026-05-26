@@ -80,5 +80,17 @@ namespace A_P_SmartHub.Graphics.Additional
             }
         }
 
+        private void HomeName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //public async Task UpdateUser()
+            //{
+            //    string homeName = string.IsNullOrEmpty(HomeName.Text) ? null : HomeName.Text;
+            //    string Cityname = string.IsNullOrEmpty(CityName.Text) ? null : CityName.Text;
+            //    string userName = string.IsNullOrEmpty(UserName.Text) ? null : UserName.Text;
+            //await   sql.UpdateUser(homeName, userName, Cityname, SessionInfo.ID);
+            //  //  string Username = string.IsNullOrEmpty(Username) ? null : Username.Text; -- musim pockat kym pato prida lebo je reatard
+            //} potom treba pridat ked patrik headtrick  upravi rozpolozenie
+                
+        }
     }
 }
