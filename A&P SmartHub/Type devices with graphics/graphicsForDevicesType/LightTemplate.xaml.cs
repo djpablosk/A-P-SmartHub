@@ -66,7 +66,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
                 using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
                 {
                     client.Timeout = TimeSpan.FromSeconds(2);
-                    string espIpAddress = "192.168.0.205"; // Nezabudni doplniť vašu IPčku
+                    string espIpAddress = SmartHubRAM.espIp; // Nezabudni doplniť vašu IPčku
 
                     string url = $"http://{espIpAddress}/set_brightness?v={brightness}";
 

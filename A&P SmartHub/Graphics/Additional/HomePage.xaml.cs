@@ -25,6 +25,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using static A_P_SmartHub.Graphics.MainGrap.Dashboard.MainDashboard;
+using static System.Net.WebRequestMethods;
 
 namespace A_P_SmartHub.Graphics.Additional
 {
@@ -50,7 +51,12 @@ namespace A_P_SmartHub.Graphics.Additional
 
         private static readonly HttpClient _httpClient = new HttpClient();
         DispatcherTimer espTimer = new DispatcherTimer();
-        private const string _espAddress = "http://192.168.0.205/data"; // tu sa IP adresa !!MENI!! 
+        public const string _espAddress = "192.168.0.110"; // tu sa IP adresa !!MENI!! 
+        private const string espConnect = $"http://{_espAddress}/data";
+           
+
+
+
         DateTime checkTime = DateTime.MinValue;
 
 
@@ -66,6 +72,7 @@ namespace A_P_SmartHub.Graphics.Additional
         {
    
             InitializeComponent();
+            SmartHubRAM.espIp = _espAddress;
      
 
 
@@ -124,7 +131,7 @@ namespace A_P_SmartHub.Graphics.Additional
             {
                 using (var cts = new System.Threading.CancellationTokenSource(TimeSpan.FromSeconds(3)))
                 {
-                    string response = await _httpClient.GetStringAsync(_espAddress, cts.Token);
+                    string response = await _httpClient.GetStringAsync(espConnect, cts.Token);
                     string[] data = response.Split(',');
 
                     if (data.Length == 5)
