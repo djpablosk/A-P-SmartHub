@@ -73,7 +73,7 @@ namespace A_P_SmartHub.Graphics.Login
 
             if (success)
             {
-                HomePage homePage = new HomePage();
+               
 
                 await mySql.DataBase();
 

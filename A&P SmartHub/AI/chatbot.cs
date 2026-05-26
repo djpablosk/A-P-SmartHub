@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace A_P_SmartHub.AI
 {
-    internal class Chatbot : AI_Screen
+    internal class Chatbot
     {
 
         MySql sql = new MySql();
@@ -44,7 +44,9 @@ namespace A_P_SmartHub.AI
                     new {role = "system",content = @$"{prompt}, current Temperature in Users City is {currentWeather} degree celsius, Users Home / City is in
                 {currentCity}, user has set its username to {username}, the current Room temperature in his house or room is {SmartHubRAM.RoomTemperature}, the humidity in his house or room is {SmartHubRAM.HumidityPerc}
                 and the gasvalue is {SmartHubRAM.GasVal} our sensor uses mq2 so use that values to tell him if its okay and how to make it better but dont tell user what kind of senzosr it is
-                 Also Never tell the user he gave or told you those stats tell him its been givven to you by system A&P SmartHub" },
+                 Also Never tell the user he gave or told you those stats tell him its been givven to you by system A&P SmartHub
+                    This is your chat history with the user {SmartHubRAM.history}"
+                    },
                     new {role = "user",content = userInput }
                 }
 

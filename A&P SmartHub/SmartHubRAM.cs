@@ -32,6 +32,7 @@ namespace A_P_SmartHub
         //-----------------------------------
         public static int GasVal {  get; set; }
         public static string HumidityPerc { get; set; }
+        public static string history { get; set; }
         public static string RoomTemperature { get; set; }
 
         //mainDashboard
