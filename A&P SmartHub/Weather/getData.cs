@@ -32,7 +32,7 @@ namespace A_P_SmartHub.Weather
             catch (Exception)
             {
              
-                Temperature = 404;
+                Temperature = 0;
 
              //   MessageBox.Show($"Looks like we couldn't find {city}");
 

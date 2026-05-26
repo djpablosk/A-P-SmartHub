@@ -70,7 +70,7 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
                         {
                             newPassword1.ResMail = Mail;
 
-                            MessageBox.Show(Mail);
+                       
 
                             newPasswordScreen.ShowNewPasswordScreen(newPassword1);
                             break;
