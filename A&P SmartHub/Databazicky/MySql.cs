@@ -125,6 +125,7 @@ SELECT * FROM apdefaultinfos";
             SET HomeName = COALESCE(@HomeName, HomeName),
             UserName = COALESCE(@UserName, UserName),
             City = COALESCE(@City,City)
+            
         WHERE Id = @Id;";
             updateUser.Parameters.AddWithValue("@Id", Id);
             updateUser.Parameters.AddWithValue("@UserName", UserName);

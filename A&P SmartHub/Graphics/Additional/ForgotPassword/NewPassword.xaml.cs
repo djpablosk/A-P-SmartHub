@@ -49,5 +49,10 @@ namespace A_P_SmartHub.Graphics.Additional.ForgotPassword
                 }
             }
         }
+
+        private void ResPasB0_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //
+        }
     }
 }

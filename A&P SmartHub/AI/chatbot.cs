@@ -57,7 +57,7 @@ namespace A_P_SmartHub.AI
                 var response = await client.PostAsync("https://api.groq.com/openai/v1/chat/completions", content);
                 var json = await response.Content.ReadAsStringAsync();
                 var aiDoc = JsonDocument.Parse(json);
-                // MessageBox.Show(json);
+                
                 string AIAnswer = aiDoc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
                 AiOutput = AIAnswer;
                 return AIAnswer;
