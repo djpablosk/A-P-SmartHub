@@ -47,7 +47,7 @@ namespace A_P_SmartHub.spotify
                 UseShellExecute = true
             });
 
-            MessageBox.Show("Login opened");
+
 
             var authorizationCode = await WaitForSpotifyCallback();
 

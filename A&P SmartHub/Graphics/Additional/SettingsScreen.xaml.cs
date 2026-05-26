@@ -122,6 +122,8 @@ namespace A_P_SmartHub.Graphics.Additional
             }
 
             await users.ChangeMail(Mail, SessionInfo.ID);
+            // akoze viem ze by to chcelo este smtp ale uz to nestiham lebo som extremne unaveny to bude dalsi update <33
+
 
             await sql.UpdateUser(homeName,userName,Cityname,SessionInfo.ID);
         }

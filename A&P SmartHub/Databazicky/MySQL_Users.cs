@@ -121,8 +121,7 @@ namespace A_P_SmartHub.Databazicky
               WHERE Mail = @mail;";
             UpdateHashInDb.Parameters.AddWithValue("@mail", Mail);
             UpdateHashInDb.Parameters.AddWithValue("@hashpass", HashPass);
-           // MessageBox.Show($"Mail: {Mail}");
-            //MessageBox.Show($"Hash: {HashPass}");
+           
             UpdateHashInDb.ExecuteNonQuery();
         }
 
