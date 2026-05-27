@@ -69,7 +69,9 @@
                 }
             }
 
-            private async Task ProcessUserMessage()
+        private async Task ProcessUserMessage()
+        {
+            try
             {
 
                 string userText = ChatInputBox.Text.Trim();
@@ -80,12 +82,17 @@
                 ScrollToBottom();
 
                 // 2. Tu sa volá metóda, do ktorej Alex napojí API!
-                 string aiResponse = await GetAIResponseFromAPI(userText  );
-            
-           
-                 ChatHistory.Add(new ChatMessage { Text = aiResponse, IsUser = false });
+                string aiResponse = await GetAIResponseFromAPI(userText);
+
+
+                ChatHistory.Add(new ChatMessage { Text = aiResponse, IsUser = false });
                 ScrollToBottom();
-            SmartHubRAM.history = ChatHistory.ToList().ToString();
+                SmartHubRAM.history = ChatHistory.ToList().ToString();
+            }
+            catch
+            {
+                //
+            }
             }
             private async Task <string> GetAIResponseFromAPI(string userText)
             {
