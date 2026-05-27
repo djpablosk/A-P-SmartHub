@@ -68,7 +68,7 @@ namespace A_P_SmartHub.Graphics.Additional
 
 
 
-                MessageBox.Show("verification successful");
+              //  MessageBox.Show("verification successful");
 
                 SessionInfo.ID = users.GetUserId(SessionInfo.Mail);
                 if (mainWindow != null)

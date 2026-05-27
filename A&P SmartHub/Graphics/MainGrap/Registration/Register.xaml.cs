@@ -38,57 +38,63 @@ namespace A_P_SmartHub.Graphics.MainGrap
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = Window.GetWindow(this) as MainWindow;
-            smtpClientMail smtpClientMail = new smtpClientMail();
-            VerificationCodeWindow verificationCode = new VerificationCodeWindow();
-            
-            MySQL_Users users = new MySQL_Users();
-          
+            try
+            {
+                var mainWindow = Window.GetWindow(this) as MainWindow;
+                smtpClientMail smtpClientMail = new smtpClientMail();
+                VerificationCodeWindow verificationCode = new VerificationCodeWindow();
 
-            
-            if (Passw1.Password  != Passw2.Password)
-            {
-                MessageBox.Show("Password do not match");
-                return;
-            }
-            else if (Passw1.Password.Length < 8)
-            {
-                MessageBox.Show("This password is too weak, please use password with 8 or more chars");
-                return;
-            }
-            else if (!EmailRegWind.Text.Contains("@"))
-            {
-                MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
-                return;
-            }
-            else
-            {
-                Password = Passw1.Password;
-                Mail = EmailRegWind.Text;
-                PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
-                SessionInfo.Mail = Mail;
+                MySQL_Users users = new MySQL_Users();
 
-                bool result = users.IsMailInDB(Mail);
 
-                if (result)
+
+                if (Passw1.Password != Passw2.Password)
                 {
-                    MessageBox.Show("Looks Like This Mail is already Used  Please Log In");
-                    if (mainWindow != null)
-                    {
-                        mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
-                    }
+                    MessageBox.Show("Password do not match");
+                    return;
+                }
+                else if (Passw1.Password.Length < 8)
+                {
+                    MessageBox.Show("This password is too weak, please use password with 8 or more chars");
+                    return;
+                }
+                else if (!EmailRegWind.Text.Contains("@"))
+                {
+                    MessageBox.Show("Invalid Mail format, maybe you're missing '@'");
+                    return;
                 }
                 else
                 {
+                    Password = Passw1.Password;
+                    Mail = EmailRegWind.Text;
+                    PassHash = BCrypt.Net.BCrypt.EnhancedHashPassword(Password);
                     SessionInfo.Mail = Mail;
-                    verificationCode.Mail = EmailRegWind.Text;
-                    verificationCode.PassHash = this.PassHash;
-                    mainWindow.MainDisplay.Content = verificationCode;
-                    smtpClientMail.SendMail(verificationCode, this);
-                    mainWindow.MainDisplay.Content = verificationCode;
+
+                    bool result = users.IsMailInDB(Mail);
+
+                    if (result)
+                    {
+                        MessageBox.Show("Looks Like This Mail is already Used  Please Log In");
+                        if (mainWindow != null)
+                        {
+                            mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+                        }
+                    }
+                    else
+                    {
+                        SessionInfo.Mail = Mail;
+                        verificationCode.Mail = EmailRegWind.Text;
+                        verificationCode.PassHash = this.PassHash;
+                        mainWindow.MainDisplay.Content = verificationCode;
+                        smtpClientMail.SendMail(verificationCode, this);
+                        mainWindow.MainDisplay.Content = verificationCode;
+                    }
                 }
             }
-        }
+            catch { // LEN ABY TO NECRASHLO
+                return;}
+            }
+            
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

@@ -121,8 +121,7 @@ namespace A_P_SmartHub.Databazicky
               WHERE Mail = @mail;";
             UpdateHashInDb.Parameters.AddWithValue("@mail", Mail);
             UpdateHashInDb.Parameters.AddWithValue("@hashpass", HashPass);
-            MessageBox.Show($"Mail: {Mail}");
-            MessageBox.Show($"Hash: {HashPass}");
+           
             UpdateHashInDb.ExecuteNonQuery();
         }
 
@@ -138,6 +137,21 @@ namespace A_P_SmartHub.Databazicky
             var result = getUserId.ExecuteScalar();
 
             return result?.ToString();
+        }
+
+        public async Task ChangeMail (string Mail,string Id)
+        {
+
+            using var connection = new MySqlConnection(getConn());
+            connection.Open();
+            var changeMail = connection.CreateCommand();
+            changeMail.CommandText = @"
+            UPDATE users
+            SET Mail = COALESCE(@Mail,Mail)
+            WHERE Id = @Id;";
+            changeMail.Parameters.AddWithValue(@"Mail", Mail);
+            changeMail.Parameters.AddWithValue("@Id", Id);
+           await changeMail.ExecuteNonQueryAsync();
         }
       
 
