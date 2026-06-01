@@ -74,20 +74,28 @@ namespace A_P_SmartHub.Graphics.MainGrap
 
                     if (result)
                     {
-                        MessageBox.Show("Looks Like This Mail is already Used  Please Log In");
-                        if (mainWindow != null)
+                        try
                         {
-                            mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+                            MessageBox.Show("Looks Like This Mail is already Used  Please Log In");
+                            if (mainWindow != null)
+                            {
+                                mainWindow.SlideViewTransition(new A_P_SmartHub.Graphics.Login.Login(), true);
+                            }
+
+                            else
+                            {
+                                SessionInfo.Mail = Mail;
+                                verificationCode.Mail = EmailRegWind.Text;
+                                verificationCode.PassHash = this.PassHash;
+                                mainWindow.MainDisplay.Content = verificationCode;
+                                smtpClientMail.SendMail(verificationCode, this);
+                                mainWindow.MainDisplay.Content = verificationCode;
+                            }
                         }
-                    }
-                    else
-                    {
-                        SessionInfo.Mail = Mail;
-                        verificationCode.Mail = EmailRegWind.Text;
-                        verificationCode.PassHash = this.PassHash;
-                        mainWindow.MainDisplay.Content = verificationCode;
-                        smtpClientMail.SendMail(verificationCode, this);
-                        mainWindow.MainDisplay.Content = verificationCode;
+                        catch
+                        {
+                            //
+                        }
                     }
                 }
             }

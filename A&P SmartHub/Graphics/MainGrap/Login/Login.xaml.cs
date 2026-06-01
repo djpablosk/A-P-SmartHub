@@ -73,65 +73,74 @@ namespace A_P_SmartHub.Graphics.Login
 
             if (success)
             {
-               
 
-                await mySql.DataBase();
-
-
-
-                mainWindow.SlideViewTransition(new LoginInAnimation(), true);
-                //  MessageBox.Show("ide to");
-                await mySql.ReturnSpotifyRefresh(SessionInfo.ID);
-
-
-                if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) && SmartHubRAM.SpotifyRefreshKey != "Err404")
+                try
                 {
-                    var spotifyConnector = new SpotifyConnector();
-                    await spotifyConnector.RefreshAccessToken();
+                    await mySql.DataBase();
 
+
+
+                    mainWindow.SlideViewTransition(new LoginInAnimation(), true);
+                    //  MessageBox.Show("ide to");
+                    await mySql.ReturnSpotifyRefresh(SessionInfo.ID);
+
+
+                    if (!string.IsNullOrEmpty(SmartHubRAM.SpotifyRefreshKey) && SmartHubRAM.SpotifyRefreshKey != "Err404")
+                    {
+                        var spotifyConnector = new SpotifyConnector();
+                        await spotifyConnector.RefreshAccessToken();
+
+                    }
                 }
+                catch {//
+                       }
             }
         }
         
 
         public bool CheckLogin( MySQL_Users users , MySql mySql) 
         {
+            try
+            {
+                bool checkHash = false;
 
-            bool checkHash = false;
-            
-            if (string.IsNullOrWhiteSpace(LoginMail.Text) || string.IsNullOrWhiteSpace(LoginPasword.Password)) 
+                if (string.IsNullOrWhiteSpace(LoginMail.Text) || string.IsNullOrWhiteSpace(LoginPasword.Password))
+                    return false;
+
+                users.LoggingInDB(LoginMail.Text);
+                if (string.IsNullOrEmpty(users.FetchedMail)) return false;
+                if (string.IsNullOrEmpty(users.FetchedHash)) return false;
+                string tempMail = LoginMail.Text;
+
+                if (users.FetchedMail == LoginMail.Text)
+                {
+                    checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
+                }
+
+
+
+
+                if (users.FetchedMail == LoginMail.Text && checkHash)
+                {
+                    SessionInfo.ID = users.GetUserId(tempMail);
+                    SessionInfo.Mail = LoginMail.Text;
+
+
+                    mySql.LoadDevices(SessionInfo.ID);
+
+                    return true;
+                }
+
+                else
+                {
+
+                    return false;
+                }
+            }
+            catch
+            {
                 return false;
-                    
-            users.LoggingInDB(LoginMail.Text);
-            if (string.IsNullOrEmpty(users.FetchedMail)) return false;
-            if (string.IsNullOrEmpty(users.FetchedHash)) return false;
-            string tempMail = LoginMail.Text;
-
-            if (users.FetchedMail == LoginMail.Text)
-            {
-                checkHash = BCrypt.Net.BCrypt.EnhancedVerify(LoginPasword.Password, users.FetchedHash);
             }
-
-
-
-
-            if (users.FetchedMail == LoginMail.Text && checkHash)
-            {
-                SessionInfo.ID = users.GetUserId(tempMail);
-                SessionInfo.Mail = LoginMail.Text;
-               
-
-                mySql.LoadDevices(SessionInfo.ID);
-                
-                return true;
-            }
-
-            else
-            {
-             
-                return false;
-            }
-          
 
         }
             
