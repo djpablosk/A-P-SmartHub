@@ -105,7 +105,7 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
                 using (System.Net.Http.HttpClient client = new System.Net.Http.HttpClient())
                 {
                     client.Timeout = TimeSpan.FromSeconds(3);
-                    string espIpAddress = "192.168.0.205"; //ipcka esp !!MENI SA!!
+                    string espIpAddress = SmartHubRAM.espIp; //ipcka esp !!MENI SA!!
                     string url = $"http://{espIpAddress}/set_led?r={r}&g={g}&b={b}";
                     await client.GetStringAsync(url);
                 }
@@ -115,9 +115,9 @@ namespace A_P_SmartHub.Type_devices_with_graphics.graphicsForDevicesType
             }
         }
 
-        private void White_Click(object sender, RoutedEventArgs e)
+        private async void White_Click(object sender, RoutedEventArgs e)
         {
-            SetEspLedColor(255, 255, 255);
+           await SetEspLedColor(255, 255, 255);
         }
 
         private async void MorningScene_Click(object sender, RoutedEventArgs e)
